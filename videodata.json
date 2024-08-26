@@ -1,0 +1,143 @@
+const videoData = [
+	    {
+        "id": "1",
+        "title": "DIY Gravity-Based Water Filter",
+        "category": "Water Sources",
+        "description": "A simple gravity water filter using easily sourced materials like sand, gravel, and activated charcoal.",
+        "youtubeId": "v6O6jFs5DrQ",
+        "tags": ["water", "filter", "DIY", "purification"],
+        "rating": 4.5,
+        "date": "2023-05-15"
+    },
+    {
+        "id": "2",
+        "title": "Rainwater Harvesting System for Home",
+        "category": "Water Sources",
+        "description": "Learn how to set up a rainwater harvesting system for your home to collect and store rainwater for various uses.",
+        "youtubeId": "cXh5WFXwfj4",
+        "tags": ["rainwater", "harvesting", "sustainable", "water conservation"],
+        "rating": 4.7,
+        "date": "2023-08-22"
+    },
+    {
+        "id": "3",
+        "title": "DIY Solar Panel for Beginners",
+        "category": "Energy Systems",
+        "description": "Learn how to build a small solar panel from scratch, perfect for powering small devices.",
+        "youtubeId": "nzSgDrflA8s",
+        "tags": ["solar", "energy", "DIY", "renewable"],
+        "rating": 4.2,
+        "date": "2023-06-20"
+    },
+    {
+        "id": "4",
+        "title": "Build a Micro Wind Turbine",
+        "category": "Energy Systems",
+        "description": "A step-by-step guide on constructing a small wind turbine for generating electricity at home or for off-grid scenarios.",
+        "youtubeId": "5zWV6Hic40M",
+        "tags": ["wind", "turbine", "renewable energy", "DIY"],
+        "rating": 4.3,
+        "date": "2023-09-05"
+    },
+    {
+        "id": "5",
+        "title": "Compost Bin from Recycled Materials",
+        "category": "Waste Management",
+        "description": "A tutorial for building a compost bin from pallets and other recycled materials, perfect for waste management in gardens.",
+        "youtubeId": "W5WTckKAV2k",
+        "tags": ["compost", "recycling", "garden", "waste reduction"],
+        "rating": 4.7,
+        "date": "2023-07-10"
+    },
+    {
+        "id": "6",
+        "title": "DIY Biogas Digester for Kitchen Waste",
+        "category": "Waste Management",
+        "description": "Create your own biogas digester to convert kitchen waste into usable cooking gas and nutrient-rich fertilizer.",
+        "youtubeId": "KKEo4Wo-QLk",
+        "tags": ["biogas", "waste to energy", "sustainable", "DIY"],
+        "rating": 4.6,
+        "date": "2023-10-18"
+    },
+    {
+        "id": "7",
+        "title": "Homemade Ceramic Water Filter",
+        "category": "Water Sources",
+        "description": "Learn to create a ceramic water filter using locally available materials for clean drinking water in remote areas.",
+        "youtubeId": "4iUWJQrZt9c",
+        "tags": ["ceramic filter", "water purification", "appropriate technology", "DIY"],
+        "rating": 4.4,
+        "date": "2023-11-30"
+    },
+    {
+        "id": "8",
+        "title": "Build a Pedal-Powered Generator",
+        "category": "Energy Systems",
+        "description": "Construct a bicycle-based generator to produce electricity through pedal power, great for emergency situations or off-grid living.",
+        "youtubeId": "dyDb2Kgzh5A",
+        "tags": ["pedal power", "human energy", "sustainable", "DIY generator"],
+        "rating": 4.5,
+        "date": "2024-01-05"
+    },
+
+    {
+        "id": "9",
+        "title": "Car Alternator Windmill for Off-Grid Power",
+        "category": "Energy Systems",
+        "description": "Learn how to repurpose a car alternator to create a robust windmill for generating off-grid electricity.",
+        "youtubeId": "X8hE8XYOQN4",
+        "tags": ["windmill", "alternator", "off-grid", "DIY power"],
+        "rating": 4.6,
+        "date": "2024-02-10"
+    },
+    {
+        "id": "10",
+        "title": "Build a Solar Water Heater",
+        "category": "Energy Systems",
+        "description": "Step-by-step guide to constructing an efficient solar water heater for your home, reducing energy costs.",
+        "youtubeId": "eN6uJmovkrc",
+        "tags": ["solar", "water heater", "energy efficiency", "DIY"],
+        "rating": 4.7,
+        "date": "2024-01-25"
+    },
+    {
+        "id": "11",
+        "title": "Constructing a Reed Bed Water Treatment System",
+        "category": "Water Sources",
+        "description": "Detailed tutorial on building a natural reed bed system for greywater treatment and recycling.",
+        "youtubeId": "Qxt7X9fptfk",
+        "tags": ["reed bed", "water treatment", "greywater", "natural filtration"],
+        "rating": 4.5,
+        "date": "2023-12-05"
+    },
+    {
+        "id": "12",
+        "title": "DIY Plastic Bottle Vertical Garden",
+        "category": "Waste Management",
+        "description": "Create a space-efficient vertical garden using recycled plastic bottles, perfect for urban environments.",
+        "youtubeId": "VfvTApGKDzw",
+        "tags": ["vertical garden", "recycling", "urban gardening", "waste reduction"],
+        "rating": 4.4,
+        "date": "2024-03-01"
+    },
+    {
+        "id": "13",
+        "title": "Building a Rocket Mass Heater",
+        "category": "Energy Systems",
+        "description": "Learn to construct an ultra-efficient rocket mass heater for sustainable home heating using minimal fuel.",
+        "youtubeId": "DrD0YD6xLM4",
+        "tags": ["rocket mass heater", "efficient heating", "sustainable", "DIY"],
+        "rating": 4.8,
+        "date": "2024-02-20"
+    },
+    {
+        "id": "14",
+        "title": "Upcycling Workshop: Transforming Waste into Furniture",
+        "category": "Waste Management",
+        "description": "Comprehensive guide on upcycling various waste materials into functional and stylish furniture pieces.",
+        "youtubeId": "gETCXLm2Jlk",
+        "tags": ["upcycling", "furniture", "waste reduction", "creative recycling"],
+        "rating": 4.6,
+        "date": "2024-03-15"
+    }
+];

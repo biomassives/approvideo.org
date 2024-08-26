@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ApproVideo Aug 2024</title>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <meta name="description" content="Drinking water, Waste management, energy solutions' videos." />
+    <style>
+        body {
+            background-color: #f0f8ff;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .subheader {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        .video-card {
+            background-color: #ffffff;
+            border-left: 5px solid #4CAF50;
+            transition: transform 0.3s ease;
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .category-title {
+            color: #2196F3;
+            border-bottom: 2px solid #2196F3;
+            padding-bottom: 10px;
+        }
+        .tag {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            transition: background-color 0.3s ease;
+        }
+        .tag:hover {
+            background-color: #bbdefb;
+        }
+        .category-icon {
+            font-size: 2rem;
+            margin: 0 15px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .category-icon:hover {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        ApproVideo
+        <div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
+    </div>
+    
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-center mb-8">
+            <i class="fas fa-tint category-icon" title="Drinking Water" onclick="filterByCategory('Drinking Water')"></i>
+            <i class="fas fa-recycle category-icon" title="Waste Management" onclick="filterByCategory('Waste Management')"></i>
+            <i class="fas fa-solar-panel category-icon" title="Energy Systems" onclick="filterByCategory('Energy Systems')"></i>
+            <i class="fas fa-heartbeat category-icon" title="Health" onclick="filterByCategory('Health')"></i>
+        </div>
+
+        <div class="mb-4">
+            <input type="text" id="search" placeholder="Search videos..." class="w-full p-2 border rounded">
+        </div>
+        
+        <div class="mb-4">
+            <label for="sort" class="mr-2">Sort by:</label>
+            <select id="sort" class="p-2 border rounded">
+                <option value="title">Title</option>
+                <option value="rating">Rating</option>
+                <option value="date">Date</option>
+            </select>
+        </div>
+        
+        <div id="categories" class="space-y-8"></div>
+    </div>
+
+    <script>
+        const videoData = [
+   {
+                "id": "1",
+                "title": "DIY Gravity-Based Water Filter",
+                "categories": ["Drinking Water", "Health"],
+                "description": "A simple gravity water filter using easily sourced materials like sand, gravel, and activated charcoal.",
+                "youtubeId": "v6O6jFs5DrQ",
+                "tags": ["water", "filter", "DIY", "purification", "Drinking Water", "Health"],
+                "rating": 4.5,
+                "date": "2023-05-15"
+        },
+        {
+            "id": "2",
+            "title": "Rainwater Harvesting System for Home",
+            "categories": ["Drinking Water", "Waste Management"],
+            "description": "Learn how to set up a rainwater harvesting system for your home to collect and store rainwater for various uses.",
+            "youtubeId": "cXh5WFXwfj4",
+            "tags": ["rainwater", "harvesting", "sustainable", "water conservation", "Drinking Water", "Waste Management"],
+            "rating": 4.7,
+            "date": "2023-08-22"
+        },
+        {
+            "id": "3",
+            "title": "DIY Solar Panel for Beginners",
+            "categories": ["Energy Systems"],
+            "description": "Learn how to build a small solar panel from scratch, perfect for powering small devices.",
+            "youtubeId": "nzSgDrflA8s",
+            "tags": ["solar", "energy", "DIY", "renewable", "Energy Systems"],
+            "rating": 4.2,
+            "date": "2023-06-20"
+        },
+        {
+            "id": "4",
+            "title": "Build a Micro Wind Turbine",
+            "categories": ["Energy Systems"],
+            "description": "A step-by-step guide on constructing a small wind turbine for generating electricity at home or for off-grid scenarios.",
+            "youtubeId": "5zWV6Hic40M",
+            "tags": ["wind", "turbine", "renewable energy", "DIY", "Energy Systems"],
+            "rating": 4.3,
+            "date": "2023-09-05"
+        },
+        {
+            "id": "5",
+            "title": "Compost Bin from Recycled Materials",
+            "categories": ["Waste Management", "Health"],
+            "description": "A tutorial for building a compost bin from pallets and other recycled materials, perfect for waste management in gardens.",
+            "youtubeId": "W5WTckKAV2k",
+            "tags": ["compost", "recycling", "garden", "waste reduction", "Waste Management", "Health"],
+            "rating": 4.7,
+            "date": "2023-07-10"
+        },
+        {
+            "id": "6",
+            "title": "DIY Biogas Digester for Kitchen Waste",
+            "categories": ["Waste Management", "Energy Systems"],
+            "description": "Create your own biogas digester to convert kitchen waste into usable cooking gas and nutrient-rich fertilizer.",
+            "youtubeId": "KKEo4Wo-QLk",
+            "tags": ["biogas", "waste to energy", "sustainable", "DIY", "Waste Management", "Energy Systems"],
+            "rating": 4.6,
+            "date": "2023-10-18"
+        },
+        {
+            "id": "7",
+            "title": "Homemade Ceramic Water Filter",
+            "categories": ["Drinking Water", "Health"],
+            "description": "Learn to create a ceramic water filter using locally available materials for clean drinking water in remote areas.",
+            "youtubeId": "4iUWJQrZt9c",
+            "tags": ["ceramic filter", "water purification", "appropriate technology", "DIY", "Drinking Water", "Health"],
+            "rating": 4.4,
+            "date": "2023-11-30"
+        },
+        {
+            "id": "8",
+            "title": "Build a Pedal-Powered Generator",
+            "categories": ["Energy Systems", "Health"],
+            "description": "Construct a bicycle-based generator to produce electricity through pedal power, great for emergency situations or off-grid living.",
+            "youtubeId": "dyDb2Kgzh5A",
+            "tags": ["pedal power", "human energy", "sustainable", "DIY generator", "Energy Systems", "Health"],
+            "rating": 4.5,
+            "date": "2024-01-05"
+        },
+        {
+            "id": "9",
+            "title": "Car Alternator Windmill for Off-Grid Power",
+            "categories": ["Energy Systems"],
+            "description": "Learn how to repurpose a car alternator to create a robust windmill for generating off-grid electricity.",
+            "youtubeId": "X8hE8XYOQN4",
+            "tags": ["windmill", "alternator", "off-grid", "DIY power", "Energy Systems"],
+            "rating": 4.6,
+            "date": "2024-02-10"
+        },
+        {
+            "id": "10",
+            "title": "Build a Solar Water Heater",
+            "categories": ["Energy Systems", "Drinking Water"],
+            "description": "Step-by-step guide to constructing an efficient solar water heater for your home, reducing energy costs.",
+            "youtubeId": "eN6uJmovkrc",
+            "tags": ["solar", "water heater", "energy efficiency", "DIY", "Energy Systems", "Drinking Water"],
+            "rating": 4.7,
+            "date": "2024-01-25"
+        },
+        {
+            "id": "11",
+            "title": "Constructing a Reed Bed Water Treatment System",
+            "categories": ["Drinking Water", "Waste Management"],
+            "description": "Detailed tutorial on building a natural reed bed system for greywater treatment and recycling.",
+            "youtubeId": "Qxt7X9fptfk",
+            "tags": ["reed bed", "water treatment", "greywater", "natural filtration", "Drinking Water", "Waste Management"],
+            "rating": 4.5,
+            "date": "2023-12-05"
+        },
+        {
+            "id": "12",
+            "title": "DIY Plastic Bottle Vertical Garden",
+            "categories": ["Waste Management", "Health"],
+            "description": "Create a space-efficient vertical garden using recycled plastic bottles, perfect for urban environments.",
+            "youtubeId": "VfvTApGKDzw",
+            "tags": ["vertical garden", "recycling", "urban gardening", "waste reduction", "Waste Management", "Health"],
+            "rating": 4.4,
+            "date": "2024-03-01"
+        },
+        {
+            "id": "13",
+            "title": "Building a Rocket Mass Heater",
+            "categories": ["Energy Systems", "Health"],
+            "description": "Learn to construct an ultra-efficient rocket mass heater for sustainable home heating using minimal fuel.",
+            "youtubeId": "DrD0YD6xLM4",
+            "tags": ["rocket mass heater", "efficient heating", "sustainable", "DIY", "Energy Systems", "Health"],
+            "rating": 4.8,
+            "date": "2024-02-20"
+        },
+        {
+            "id": "14",
+            "title": "Upcycling Workshop: Transforming Waste into Furniture",
+            "categories": ["Waste Management", "Health"],
+            "description": "Comprehensive guide on upcycling various waste materials into functional and stylish furniture pieces.",
+            "youtubeId": "gETCXLm2Jlk",
+            "tags": ["upcycling", "furniture", "waste reduction", "creative recycling", "Waste Management", "Health"],
+            "rating": 4.6,
+            "date": "2024-03-15"
+        }
+        ];
+
+        function renderStars(rating) {
+            const fullStars = Math.floor(rating);
+            const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+            const emptyStars = 5 - fullStars - halfStar;
+
+            return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
+        }
+
+        function renderVideo(video) {
+            return `
+                <div class="video-card rounded-lg shadow-md p-4 mb-4">
+                    <h3 class="text-xl font-semibold mb-2">${video.title}</h3>
+                    <div class="aspect-w-16 aspect-h-9 mb-2">
+                        <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-64"></iframe>
+                    </div>
+                    <p class="mb-2">${video.description}</p>
+                    <div class="flex flex-wrap mb-2">
+                        ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer">${tag}</span>`).join('')}
+                    </div>
+                    <div class="text-yellow-400">${renderStars(video.rating)}</div>
+                    <div class="text-sm text-gray-500">Date: ${video.date}</div>
+                    <a href="video.html?id=${video.id}" class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Details</a>
+                </div>
+            `;
+        }
+
+        function renderCategories(videos) {
+            const categories = {};
+            videos.forEach(video => {
+                video.categories.forEach(category => {
+                    if (!categories[category]) {
+                        categories[category] = [];
+                    }
+                    categories[category].push(video);
+                });
+            });
+
+            const categoriesContainer = document.getElementById('categories');
+            categoriesContainer.innerHTML = '';
+
+            for (const [category, categoryVideos] of Object.entries(categories)) {
+                const categoryElement = document.createElement('div');
+                categoryElement.innerHTML = `
+                    <h2 class="category-title text-2xl font-bold mb-4">${category}</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        ${categoryVideos.map(renderVideo).join('')}
+                    </div>
+                `;
+                categoriesContainer.appendChild(categoryElement);
+            }
+        }
+
+        function filterAndSortVideos() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const sortBy = document.getElementById('sort').value;
+
+            let filteredVideos = videoData.filter(video => 
+                video.title.toLowerCase().includes(searchTerm) ||
+                video.description.toLowerCase().includes(searchTerm) ||
+                video.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+            );
+
+            filteredVideos.sort((a, b) => {
+                if (sortBy === 'title') {
+                    return a.title.localeCompare(b.title);
+                } else if (sortBy === 'rating') {
+                    return b.rating - a.rating;
+                } else if (sortBy === 'date') {
+                    return new Date(b.date) - new Date(a.date);
+                }
+            });
+
+            renderCategories(filteredVideos);
+        }
+
+        function filterByCategory(category) {
+            const filteredVideos = videoData.filter(video => video.categories.includes(category));
+            renderCategories(filteredVideos);
+        }
+
+        document.getElementById('search').addEventListener('input', filterAndSortVideos);
+        document.getElementById('sort').addEventListener('change', filterAndSortVideos);
+
+        // Initial render
+        renderCategories(videoData);
+    </script>
+</body>
+</html>
