@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Details - ApproVideo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f8ff;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .video-container {
+            background-color: #ffffff;
+            border-left: 5px solid #4CAF50;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html" class="text-white hover:text-gray-200">ApproVideo</a>
+    </div>
+    
+    <div class="container mx-auto px-4 py-8">
+        <div id="video-details"></div>
+    </div>
+
+    <script>
+        const videoData = [
+            // ... (include all your video data here) ...
+        ];
+
+        function getVideoById(id) {
+            return videoData.find(video => video.id === id);
+        }
+
+        function renderVideoDetails(video) {
+            const detailsContainer = document.getElementById('video-details');
+            detailsContainer.innerHTML = `
+                <div class="video-container rounded-lg shadow-md">
+                    <h1 class="text-3xl font-bold mb-4">${video.title}</h1>
+                    <div class="aspect-w-16 aspect-h-9 mb-4">
+                        <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-96"></iframe>
+                    </div>
+                    <p class="mb-4">${video.description}</p>
+                    <div class="mb-4">
+                        ${video.tags.map(tag => `<span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">${tag}</span>`).join('')}
+                    </div>
+                    <p class="text-gray-600 mb-4">Date: ${video.date}</p>
+                    <h2 class="text-2xl font-bold mb-2">Transcript</h2>
+                    <p class="mb-4">${getDummyTranscript()}</p>
+                    <h2 class="text-2xl font-bold mb-2">Screenshots</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        ${getDummyScreenshots()}
+                    </div>
+                </div>
+            `;
+        }
+
+        function getDummyTranscript() {
+            return "This is a placeholder transcript for the video. In a real implementation, this would contain the actual transcript of the video content.";
+        }
+
+        function getDummyScreenshots() {
+            const placeholderImages = [
+                "https://picsum.photos/400/300?random=1",
+                "https://picsum.photos/400/300?random=2",
+                "https://picsum.photos/400/300?random=3",
+            ];
+            return placeholderImages.map(img => `<img src="${img}" alt="Video Screenshot" class="screenshot rounded">`).join('');
+        }
+
+        // Get video ID from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoId = urlParams.get('id');
+
+        if (videoId) {
+            const video = getVideoById(videoId);
+            if (video) {
+                renderVideoDetails(video);
+            } else {
+                document.getElementById('video-details').innerHTML = '<p>Video not found.</p>';
+            }
+        } else {
+            document.getElementById('video-details').innerHTML = '<p>No video ID provided.</p>';
+        }
+    </script>
+</body>
+</html>
