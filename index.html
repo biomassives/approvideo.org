@@ -1,96 +1,301 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en" class="light">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+    <title>ApproVideo Aug 2024</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body.light {
+            background-color: #ffffff;
+            color: #333333;
+        }
+        body.dark {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        body.dark .bg-white {
+            background-color: #2d3748;
+        }
+        body.dark .text-gray-900 {
+            color: #e2e8f0;
+        }
+        body.dark .border-gray-200 {
+            border-color: #4a5568;
+        }
+        body.dark .video-card {
+            background-color: #2d3748;
+            color: #e2e8f0;
+        }
+        body.dark .tag {
+            background-color: #4a5568;
+            color: #e2e8f0;
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="light">
+    <button id="theme-toggle" class="theme-toggle text-2xl">
+        <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
+        <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
+    </button>
+
+    <nav class="bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
+        <div class="flex flex-wrap justify-between items-center">
+            <div class="flex justify-start items-center">
+                <a href="/" class="flex items-center justify-between mr-4">
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">ApproVideo</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="p-4 sm:ml-64 mt-16">
+        <div class="mb-4 flex justify-center space-x-4">
+            <a href="/?category=Drinking Water" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="fas fa-tint w-6 h-6 text-blue-500"></i>
+                <span class="ml-3">Drinking Water</span>
+            </a>
+            <a href="/?category=Waste Management" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="fas fa-recycle w-6 h-6 text-green-500"></i>
+                <span class="ml-3">Waste Management</span>
+            </a>
+            <a href="/?category=Energy Systems" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="fas fa-solar-panel w-6 h-6 text-yellow-500"></i>
+                <span class="ml-3">Energy Systems</span>
+            </a>
+            <a href="/?category=Health" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="fas fa-heartbeat w-6 h-6 text-red-500"></i>
+                <span class="ml-3">Health</span>
+            </a>
+        </div>
+
+        <div class="mb-4">
+            <input type="text" id="search" placeholder="Search videos..." class="w-full p-2 border rounded dark:bg-gray-700 dark:text-white">
+        </div>
+
+        <div id="categories" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </div>
+
+    <script>
+         const videoData = [
+        {
+                "id": "1",
+                "title": "DIY Gravity-Based Water Filter",
+                "categories": ["Drinking Water", "Health"],
+                "description": "A simple gravity water filter using easily sourced materials like sand, gravel, and activated charcoal.",
+                "youtubeId": "v6O6jFs5DrQ",
+                "tags": ["water", "filter", "DIY", "purification", "Drinking Water", "Health"],
+                "rating": 4.5,
+                "date": "2023-05-15"
+        },
+        {
+            "id": "2",
+            "title": "Rainwater Harvesting System for Home",
+            "categories": ["Drinking Water", "Waste Management"],
+            "description": "Learn how to set up a rainwater harvesting system for your home to collect and store rainwater for various uses.",
+            "youtubeId": "cXh5WFXwfj4",
+            "tags": ["rainwater", "harvesting", "sustainable", "water conservation", "Drinking Water", "Waste Management"],
+            "rating": 4.7,
+            "date": "2023-08-22"
+        },
+        {
+            "id": "3",
+            "title": "DIY Solar Panel for Beginners",
+            "categories": ["Energy Systems"],
+            "description": "Learn how to build a small solar panel from scratch, perfect for powering small devices.",
+            "youtubeId": "nzSgDrflA8s",
+            "tags": ["solar", "energy", "DIY", "renewable", "Energy Systems"],
+            "rating": 4.2,
+            "date": "2023-06-20"
+        },
+        {
+            "id": "4",
+            "title": "Build a Micro Wind Turbine",
+            "categories": ["Energy Systems"],
+            "description": "A step-by-step guide on constructing a small wind turbine for generating electricity at home or for off-grid scenarios.",
+            "youtubeId": "5zWV6Hic40M",
+            "tags": ["wind", "turbine", "renewable energy", "DIY", "Energy Systems"],
+            "rating": 4.3,
+            "date": "2023-09-05"
+        },
+        {
+            "id": "5",
+            "title": "Compost Bin from Recycled Materials",
+            "categories": ["Waste Management", "Health"],
+            "description": "A tutorial for building a compost bin from pallets and other recycled materials, perfect for waste management in gardens.",
+            "youtubeId": "W5WTckKAV2k",
+            "tags": ["compost", "recycling", "garden", "waste reduction", "Waste Management", "Health"],
+            "rating": 4.7,
+            "date": "2023-07-10"
+        },
+        {
+            "id": "6",
+            "title": "DIY Biogas Digester for Kitchen Waste",
+            "categories": ["Waste Management", "Energy Systems"],
+            "description": "Create your own biogas digester to convert kitchen waste into usable cooking gas and nutrient-rich fertilizer.",
+            "youtubeId": "KKEo4Wo-QLk",
+            "tags": ["biogas", "waste to energy", "sustainable", "DIY", "Waste Management", "Energy Systems"],
+            "rating": 4.6,
+            "date": "2023-10-18"
+        },
+        {
+            "id": "7",
+            "title": "Homemade Ceramic Water Filter",
+            "categories": ["Drinking Water", "Health"],
+            "description": "Learn to create a ceramic water filter using locally available materials for clean drinking water in remote areas.",
+            "youtubeId": "4iUWJQrZt9c",
+            "tags": ["ceramic filter", "water purification", "appropriate technology", "DIY", "Drinking Water", "Health"],
+            "rating": 4.4,
+            "date": "2023-11-30"
+        },
+        {
+            "id": "8",
+            "title": "Build a Pedal-Powered Generator",
+            "categories": ["Energy Systems", "Health"],
+            "description": "Construct a bicycle-based generator to produce electricity through pedal power, great for emergency situations or off-grid living.",
+            "youtubeId": "dyDb2Kgzh5A",
+            "tags": ["pedal power", "human energy", "sustainable", "DIY generator", "Energy Systems", "Health"],
+            "rating": 4.5,
+            "date": "2024-01-05"
+        },
+        {
+            "id": "9",
+            "title": "Car Alternator Windmill for Off-Grid Power",
+            "categories": ["Energy Systems"],
+            "description": "Learn how to repurpose a car alternator to create a robust windmill for generating off-grid electricity.",
+            "youtubeId": "X8hE8XYOQN4",
+            "tags": ["windmill", "alternator", "off-grid", "DIY power", "Energy Systems"],
+            "rating": 4.6,
+            "date": "2024-02-10"
+        },
+        {
+            "id": "10",
+            "title": "Build a Solar Water Heater",
+            "categories": ["Energy Systems", "Drinking Water"],
+            "description": "Step-by-step guide to constructing an efficient solar water heater for your home, reducing energy costs.",
+            "youtubeId": "eN6uJmovkrc",
+            "tags": ["solar", "water heater", "energy efficiency", "DIY", "Energy Systems", "Drinking Water"],
+            "rating": 4.7,
+            "date": "2024-01-25"
+        },
+        {
+            "id": "11",
+            "title": "Constructing a Reed Bed Water Treatment System",
+            "categories": ["Drinking Water", "Waste Management"],
+            "description": "Detailed tutorial on building a natural reed bed system for greywater treatment and recycling.",
+            "youtubeId": "Qxt7X9fptfk",
+            "tags": ["reed bed", "water treatment", "greywater", "natural filtration", "Drinking Water", "Waste Management"],
+            "rating": 4.5,
+            "date": "2023-12-05"
+        },
+        {
+            "id": "12",
+            "title": "DIY Plastic Bottle Vertical Garden",
+            "categories": ["Waste Management", "Health"],
+            "description": "Create a space-efficient vertical garden using recycled plastic bottles, perfect for urban environments.",
+            "youtubeId": "VfvTApGKDzw",
+            "tags": ["vertical garden", "recycling", "urban gardening", "waste reduction", "Waste Management", "Health"],
+            "rating": 4.4,
+            "date": "2024-03-01"
+        },
+        {
+            "id": "13",
+            "title": "Building a Rocket Mass Heater",
+            "categories": ["Energy Systems", "Health"],
+            "description": "Learn to construct an ultra-efficient rocket mass heater for sustainable home heating using minimal fuel.",
+            "youtubeId": "DrD0YD6xLM4",
+            "tags": ["rocket mass heater", "efficient heating", "sustainable", "DIY", "Energy Systems", "Health"],
+            "rating": 4.8,
+            "date": "2024-02-20"
+        },
+        {
+            "id": "14",
+            "title": "Upcycling Workshop: Transforming Waste into Furniture",
+            "categories": ["Waste Management", "Health"],
+            "description": "Comprehensive guide on upcycling various waste materials into functional and stylish furniture pieces.",
+            "youtubeId": "gETCXLm2Jlk",
+            "tags": ["upcycling", "furniture", "waste reduction", "creative recycling", "Waste Management", "Health"],
+            "rating": 4.6,
+            "date": "2024-03-15"
+        }
+        ];
+
+        function renderStars(rating) {
+            const fullStars = Math.floor(rating);
+            const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+            const emptyStars = 5 - fullStars - halfStar;
+
+            return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
+        }
+
+        function renderVideo(video) {
+            return `
+                <div class="video-card rounded-lg shadow-md p-4 mb-4 bg-white dark:bg-gray-800">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">${video.title}</h3>
+                    <div class="aspect-w-16 aspect-h-9 mb-2">
+                        <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-64"></iframe>
+                    </div>
+                    <p class="mb-2 text-gray-700 dark:text-gray-300">${video.description}</p>
+                    <div class="flex flex-wrap mb-2">
+                        ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">${tag}</span>`).join('')}
+                    </div>
+                    <div class="text-yellow-400">${renderStars(video.rating)}</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400">Date: ${video.date}</div>
+                    <a href="video.html?id=${video.id}" class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Details</a>
+                </div>
+            `;
+        }
+
+        function renderCategories(videos) {
+            const categoriesContainer = document.getElementById('categories');
+            categoriesContainer.innerHTML = videos.map(renderVideo).join('');
+        }
+
+        function filterAndSortVideos() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+
+            let filteredVideos = videoData.filter(video => 
+                (category ? video.categories.includes(category) : true) &&
+                (video.title.toLowerCase().includes(searchTerm) ||
+                video.description.toLowerCase().includes(searchTerm) ||
+                video.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
+            );
+
+            filteredVideos.sort((a, b) => b.rating - a.rating);
+
+            renderCategories(filteredVideos);
+        }
+
+        document.getElementById('search').addEventListener('input', filterAndSortVideos);
+
+        // Theme toggle functionality
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        let isDarkMode = false;
+
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark', isDarkMode);
+            document.body.classList.toggle('light', !isDarkMode);
+            themeToggleDarkIcon.classList.toggle('hidden', !isDarkMode);
+            themeToggleLightIcon.classList.toggle('hidden', isDarkMode);
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+
+        // Initial render
+        filterAndSortVideos();
+    </script>
+</body>
 </html>
