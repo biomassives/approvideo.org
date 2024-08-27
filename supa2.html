@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ApproVideo Aug 2024</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+        --bg-light: #f0f4f8;
+        --text-light: #2d3748;
+        --card-bg-light: #ffffff;
+        --card-text-light: #4a5568;
+        --bg-dark: #1a202c;
+        --text-dark: #e2e8f0;
+        --card-bg-dark: #2d3748;
+        --card-text-dark: #e2e8f0;
+    }
+    body {
+        transition: background-color 0.3s, color 0.3s;
+    }
+    body.light {
+        background-color: var(--bg-light);
+        color: var(--text-light);
+    }
+    body.dark {
+        background-color: var(--bg-dark);
+        color: var(--text-dark);
+    }
+    .header {
+        background: linear-gradient(45deg, #4CAF50, #2196F3);
+        padding: 20px;
+        text-align: center;
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .subheader {
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+    .video-card {
+        background-color: var(--card-bg-light);
+        color: var(--card-text-light);
+        transition: background-color 0.3s, color 0.3s;
+    }
+    body.dark .video-card {
+        background-color: var(--card-bg-dark);
+        color: var(--card-text-dark);
+    }
+    .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    body.dark .theme-toggle {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .panel-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    .info-panel {
+        background-color: #f0f4f8;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .info-panel h3 {
+        color: #2c5282;
+        margin-bottom: 0.5rem;
+    }
+    .info-panel p {
+        color: #4a5568;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    body.dark .info-panel {
+        background-color: #2d3748;
+    }
+    body.dark .info-panel h3 {
+        color: #90cdf4;
+    }
+    body.dark .info-panel p {
+        color: #e2e8f0;
+    }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
+        /* ... (existing styles) ... */
+        .admin-panel, .video-form {
+            background-color: var(--card-bg-light);
+            color: var(--card-text-light);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        body.dark .admin-panel, body.dark .video-form {
+            background-color: var(--card-bg-dark);
+            color: var(--card-text-dark);
+        }
+        .admin-controls {
+            display: none;
+        }
+        .video-form input, .video-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        body.dark .video-form input, body.dark .video-form textarea {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+            border-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="theme-toggle" class="theme-toggle text-2xl">
+        <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
+        <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
+    </button>
+
+    <div class="header">
+        ApproVideo
+        <div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
+    </div>
+
+    <div class="p-4 sm:ml-64 mt-4">
+        <div class="mb-4 flex justify-center space-x-4">
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Drinking Water">
+                <i class="fas fa-tint w-6 h-6 text-blue-500"></i>
+                <span class="ml-3">Drinking Water</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Waste Management">
+                <i class="fas fa-recycle w-6 h-6 text-green-500"></i>
+                <span class="ml-3">Waste Management</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Energy Systems">
+                <i class="fas fa-solar-panel w-6 h-6 text-yellow-500"></i>
+                <span class="ml-3">Energy Systems</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Health">
+                <i class="fas fa-heartbeat w-6 h-6 text-red-500"></i>
+                <span class="ml-3">Health</span>
+            </a>
+        </div>
+
+        <div class="mb-4">
+            <input type="text" id="search" placeholder="Search videos..." class="w-full p-2 border rounded dark:bg-gray-700 dark:text-white">
+        </div>
+
+        <div id="categories" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </div>
+
+    <div id="video-detail" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+        <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white dark:bg-gray-800">
+            <div id="video-content"></div>
+            <div class="text-center mt-4">
+                <button id="close-detail" class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                    Close
+                </button>
+            </div>
+        </div>
+
+
+        <div class="panel-container">
+            ${video.panels.map(panel => `
+                <div class="info-panel">
+                    <h3>${panel.title}</h3>
+                    <p>${panel.content}</p>
+                </div>
+            `).join('')}
+        </div>
+
+        
+    </div>
+
+    <div id="video-form" class="video-form fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+        <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white dark:bg-gray-800">
+            <h2 id="form-title" class="text-2xl font-bold mb-4">Add/Edit Video</h2>
+            <form id="video-edit-form">
+                <input type="hidden" id="video-id">
+                <input type="text" id="video-title" placeholder="Title" required>
+                <textarea id="video-description" placeholder="Description" required></textarea>
+                <input type="text" id="video-youtube-id" placeholder="YouTube ID" required>
+                <input type="text" id="video-tags" placeholder="Tags (comma-separated)" required>
+                <input type="number" id="video-rating" placeholder="Rating" step="0.1" min="0" max="5" required>
+                <input type="date" id="video-date" required>
+                <textarea id="video-transcript" placeholder="Transcript"></textarea>
+                <textarea id="video-materials" placeholder="Materials (one per line)" required></textarea>
+                <textarea id="video-steps" placeholder="Steps (one per line)" required></textarea>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Save</button>
+                <button type="button" id="cancel-edit" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 ml-2">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+       
+        function renderVideo(video) {
+            const mainCategory = video.categories[0];
+            const mainTag = video.tags[0];
+            const detailUrl = `/${slugify(mainCategory)}/${slugify(mainTag)}/${slugify(video.title)}`;
+            
+            return `
+                <div class="video-card rounded-lg shadow-md p-4 mb-4">
+                    <h3 class="text-xl font-semibold mb-2">${video.title}</h3>
+                    <div class="aspect-w-16 aspect-h-9 mb-2">
+                        <img src="https://img.youtube.com/vi/${video.youtubeId}/0.jpg" alt="${video.title}" class="w-full h-64 object-cover">
+                    </div>
+                    <p class="mb-2">${video.description}</p>
+                    <div class="flex flex-wrap mb-2">
+                        ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">${tag}</span>`).join('')}
+                    </div>
+                    <div class="text-yellow-400">${renderStars(video.rating)}</div>
+                    <div class="text-sm opacity-75">Date: ${video.date}</div>
+                    <a href="${detailUrl}" class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 video-detail-link" data-id="${video.id}">View Details</a>
+                </div>
+            `;
+        }
+
+        function renderVideoDetails(video) {
+            return `
+                <h1 class="text-3xl font-bold mb-4">${video.title}</h1>
+                <div class="aspect-w-16 aspect-h-9 mb-4">
+                    <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-96"></iframe>
+                </div>
+                <p class="mb-4">${video.description}</p>
+                <div class="mb-4">
+                    ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">${tag}</span>`).join('')}
+                </div>
+                <div class="text-yellow-400 mb-2">${renderStars(video.rating)}</div>
+                <p class="text-sm opacity-75 mb-4">Date: ${video.date}</p>
+                
+                <h2 class="text-2xl font-bold mb-2">Materials Needed:</h2>
+                <ul class="list-disc list-inside mb-4">
+                    ${video.materials.map(material => `<li>${material}</li>`).join('')}
+                </ul>
+
+                <h2 class="text-2xl font-bold mb-2">Steps:</h2>
+                <ol class="list-decimal list-inside mb-4">
+                    ${video.steps.map(step => `<li>${step}</li>`).join('')}
+                </ol>
+
+                <h2 class="text-2xl font-bold mb-2">Transcript:</h2>
+                <p class="mb-4">${video.transcript}</p>
+            `;
+
+            if (video.panels) {
+                    detailsContainer.innerHTML += `
+                        <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
+                        <div class="panel-container">
+                            ${video.panels.map(panel => `
+                                <div class="info-panel">
+                                    <h3>${panel.title}</h3>
+                                    <p>${panel.content}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+            }
+            
+        }
+
+        function renderCategories(videos) {
+            const categoriesContainer = document.getElementById('categories');
+            categoriesContainer.innerHTML = videos.map(renderVideo).join('');
+
+            // Add event listeners to detail links
+            document.querySelectorAll('.video-detail-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const videoId = this.getAttribute('data-id');
+                    const video = videoData.find(v => v.id === videoId);
+                    if (video) {
+                        document.getElementById('video-content').innerHTML = renderVideoDetails(video);
+                        document.getElementById('video-detail').classList.remove('hidden');
+                    }
+                });
+            });
+        }
+
+        function filterAndSortVideos() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+
+            let filteredVideos = videoData.filter(video => 
+                (category ? video.categories.includes(category) : true) &&
+                (video.title.toLowerCase().includes(searchTerm) ||
+                video.description.toLowerCase().includes(searchTerm) ||
+                video.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
+            );
+
+            filteredVideos.sort((a, b) => b.rating - a.rating);
+
+            renderCategories(filteredVideos);
+        }
+
+        document.getElementById('search').addEventListener('input', filterAndSortVideos);
+
+        // Category filtering
+        document.querySelectorAll('.category-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const category = this.getAttribute('data-category');
+                history.pushState(null, '', `?category=${category}`);
+                filterAndSortVideos();
+            });
+        });
+
+        // Close detail view
+        document.getElementById('close-detail').addEventListener('click', function() {
+            document.getElementById('video-detail').classList.add('hidden');
+        });
+
+
+        // Theme toggle functionality
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        function setTheme(isDark) {
+            document.body.classList.toggle('dark', isDark);
+            document.body.classList.toggle('light', !isDark);
+            themeToggleDarkIcon.classList.toggle('hidden', !isDark);
+            themeToggleLightIcon.classList.toggle('hidden', isDark);
+        }
+
+        function toggleTheme() {
+            const isDark = document.body.classList.contains('light');
+            setTheme(isDark);
+        }
+
+        // Detect user preference
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        setTheme(prefersDarkScheme.matches);
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        prefersDarkScheme.addListener((e) => setTheme(e.matches));
+
+
+        
+
+        // Initial render
+        filterAndSortVideos();
+
+        // Edit video functionality
+        function editVideo(videoId) {
+            const video = videoData.find(v => v.id === videoId);
+            if (video) {
+                document.getElementById('form-title').textContent = 'Edit Video';
+                document.getElementById('video-id').value = video.id;
+                document.getElementById('video-title').value = video.title;
+                document.getElementById('video-description').value = video.description;
+                document.getElementById('video-youtube-id').value = video.youtubeId;
+                document.getElementById('video-tags').value = video.tags.join(', ');
+                document.getElementById('video-rating').value = video.rating;
+                document.getElementById('video-date').value = video.date;
+                document.getElementById('video-transcript').value = video.transcript;
+                document.getElementById('video-materials').value = video.materials.join('\n');
+                document.getElementById('video-steps').value = video.steps.join('\n');
+                document.getElementById('video-form').classList.remove('hidden');
+            }
+        }
+
+        // Delete video functionality
+        function deleteVideo(videoId) {
+            if (confirm('Are you sure you want to delete this video?')) {
+                videoData = videoData.filter(v => v.id !== videoId);
+                filterAndSortVideos();
+                alert('Video deleted successfully');
+            }
+        }
+
+        // Add new video functionality
+        document.getElementById('add-video').addEventListener('click', function() {
+            document.getElementById('form-title').textContent = 'Add New Video';
+            document.getElementById('video-edit-form').reset();
+            document.getElementById('video-id').value = '';
+            document.getElementById('video-form').classList.remove('hidden');
+        });
+
+        // Handle form submission
+        document.getElementById('video-edit-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const videoId = document.getElementById('video-id').value;
+            const newVideo = {
+                id: videoId || String(videoData.length + 1),
+                title: document.getElementById('video-title').value,
+                description: document.getElementById('video-description').value,
+                youtubeId: document.getElementById('video-youtube-id').value,
+                tags: document.getElementById('video-tags').value.split(',').map(tag => tag.trim()),
+                rating: parseFloat(document.getElementById('video-rating').value),
+                date: document.getElementById('video-date').value,
+                transcript: document.getElementById('video-transcript').value,
+                materials: document.getElementById('video-materials').value.split('\n').filter(Boolean),
+                steps: document.getElementById('video-steps').value.split('\n').filter(Boolean)
+            };
+
+            if (videoId) {
+                // Edit existing video
+                const index = videoData.findIndex(v => v.id === videoId);
+                if (index !== -1) {
+                    videoData[index] = newVideo;
+                }
+            } else {
+                // Add new video
+                videoData.push(newVideo);
+            }
+
+            filterAndSortVideos();
+            document.getElementById('video-form').classList.add('hidden');
+            alert(videoId ? 'Video updated successfully' : 'New video added successfully');
+        });
+
+        // Cancel edit/add
+        document.getElementById('cancel-edit').addEventListener('click', function() {
+            document.getElementById('video-form').classList.add('hidden');
+        });
+
+        // Modify renderVideo function to include admin controls
+        function renderVideo(video) {
+            const mainCategory = video.categories[0];
+            const mainTag = video.tags[0];
+            const detailUrl = `/${slugify(mainCategory)}/${slugify(mainTag)}/${slugify(video.title)}`;
+
+            const adminControls = `
+                <div class="admin-controls" style="display: none;">
+                    <button class="edit-video bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 mr-2" data-id="${video.id}">Edit</button>
+                    <button class="delete-video bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600" data-id="${video.id}">Delete</button>
+                </div>
+            `;
+
+            return `
+                <div class="video-card rounded-lg shadow-md p-4 mb-4">
+                    <h3 class="text-xl font-semibold mb-2">${video.title}</h3>
+                    <div class="aspect-w-16 aspect-h-9 mb-2">
+                        <img src="https://img.youtube.com/vi/${video.youtubeId}/0.jpg" alt="${video.title}" class="w-full h-64 object-cover">
+                    </div>
+                    <p class="mb-2">${video.description}</p>
+                    <div class="flex flex-wrap mb-2">
+                        ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">${tag}</span>`).join('')}
+                    </div>
+                    <div class="text-yellow-400">${renderStars(video.rating)}</div>
+                    <div class="text-sm opacity-75">Date: ${video.date}</div>
+                    <a href="${detailUrl}" class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 video-detail-link" data-id="${video.id}">View Details</a>
+                    ${adminControls}
+                </div>
+            `;
+        }
+
+        // Initial render
+        filterAndSortVideos();
+    </script>
+</body>
+</html>
