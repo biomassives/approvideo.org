@@ -116,6 +116,9 @@
         <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
     </button>
 
+    <button id="test-supabase" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Test Supabase Connection</button>
+    
+
     <div class="header">
         ApproVideo
         <div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
@@ -228,6 +231,39 @@
             filterAndSortVideos()
         }
 
+// Add this function to your existing JavaScript code
+async function testSupabaseConnection() {
+    try {
+        const { data, error } = await supabase
+            .from('video')
+            .select('*')
+            .limit(5)
+
+        if (error) {
+            console.error('Error fetching data from Supabase:', error)
+            alert('Error fetching data from Supabase. Check the console for details.')
+            return
+        }
+
+        if (data && data.length > 0) {
+            const resultDiv = document.createElement('div')
+            resultDiv.innerHTML = `
+                <h2 class="text-xl font-bold mb-2">Supabase Test Results:</h2>
+                <pre class="bg-gray-100 p-4 rounded overflow-auto max-h-60">${JSON.stringify(data, null, 2)}</pre>
+            `
+            document.body.appendChild(resultDiv)
+        } else {
+            alert('No data found in the Supabase table.')
+        }
+    } catch (error) {
+        console.error('Error connecting to Supabase:', error)
+        alert('Error connecting to Supabase. Check the console for details.')
+    }
+}
+
+// Add this to your event listeners
+document.getElementById('test-supabase').addEventListener('click', testSupabaseConnection);
+        
         function renderStars(rating) {
             const fullStars = Math.floor(rating);
             const halfStar = rating % 1 >= 0.5 ? 1 : 0;
