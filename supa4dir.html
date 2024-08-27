@@ -309,11 +309,11 @@
             }
             
         }
-
+        
         function renderCategories(videos) {
             const categoriesContainer = document.getElementById('categories');
             categoriesContainer.innerHTML = videos.map(renderVideo).join('');
-
+        
             // Add event listeners to detail links
             document.querySelectorAll('.video-detail-link').forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -326,7 +326,7 @@
                     }
                 });
             });
-        }..
+        } // 
 
         // ==================== Editing Functions ====================
         async function handleEdit(videoId) {
