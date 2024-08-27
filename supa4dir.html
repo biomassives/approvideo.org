@@ -491,6 +491,24 @@
         themeToggleBtn.addEventListener('click', toggleTheme);
         prefersDarkScheme.addListener((e) => setTheme(e.matches));
 
+        
+function filterAndSortVideos() {
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+
+    let filteredVideos = videoData.filter(video => 
+        (category ? video.categories.includes(category) : true) &&
+        (video.title.toLowerCase().includes(searchTerm) ||
+        video.description.toLowerCase().includes(searchTerm) ||
+        video.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
+    );
+
+    filteredVideos.sort((a, b) => b.rating - a.rating);
+
+    renderCategories(filteredVideos);
+}
+
 
         
 
