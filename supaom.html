@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ApproVideo Aug 2024</title>
+  
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    // First, add the necessary libraries in your HTML head
+    <script src="https://unpkg.com/localforage@1.10.0/dist/localforage.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.24.0/dist/umd/supabase.min.js"></script>
+     
+    <style>
+            :root {
+            --bg-light: #f0f4f8;
+            --text-light: #2d3748;
+            --card-bg-light: #ffffff;
+            --card-text-light: #4a5568;
+            --bg-dark: #1a202c;
+            --text-dark: #e2e8f0;
+            --card-bg-dark: #2d3748;
+            --card-text-dark: #e2e8f0;
+        }
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.light {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+        }
+        body.dark {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+        .header {
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .subheader {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        .video-card {
+            background-color: var(--card-bg-light);
+            color: var(--card-text-light);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark .video-card {
+            background-color: var(--card-bg-dark);
+            color: var(--card-text-dark);
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        body.dark .theme-toggle {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+            .panel-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    .info-panel {
+        background-color: #f0f4f8;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .info-panel h3 {
+        color: #2c5282;
+        margin-bottom: 0.5rem;
+    }
+    .info-panel p {
+        color: #4a5568;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    body.dark .info-panel {
+        background-color: #2d3748;
+    }
+    body.dark .info-panel h3 {
+        color: #90cdf4;
+    }
+    body.dark .info-panel p {
+        color: #e2e8f0;
+    }
+    </style>
+    
+    <Script>
+    // Initialize Supabase client
+    const supabaseUrl = 'https://vlvbodwrtblttvwnxkjx.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsdmJvZHdydGJsdHR2d254a2p4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY3NDk2NzIsImV4cCI6MjAwMjMyNTY3Mn0.TRT1HeX85vP1zDxnU7qBz5GqNPgYZUj-BOdek4qmtEg';
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    
+    // Initialize localForage
+    localforage.config({
+        name: 'ApproVideo'
+    });
+    
+    let videoData = [];
+    let lastFetchTime = null;
+    
+    async function fetchDataFromSupabase() {
+        try {
+            const { data, error } = await supabase
+                .from('video')
+                .select('*');
+    
+            if (error) throw error;
+    
+            return data.map(video => ({
+                ...video,
+                categories: video.categories.split(',').map(cat => cat.trim()),
+                tags: video.tags.split(',').map(tag => tag.trim()),
+                materials: video.materials.split(',').map(material => material.trim()),
+                steps: video.steps.split(',').map(step => step.trim())
+            }));
+        } catch (error) {
+            console.error('Error fetching data from Supabase:', error);
+            return null;
+        }
+    }
+    
+    async function getLocalData() {
+        try {
+            const localData = await localforage.getItem('videoData');
+            const localFetchTime = await localforage.getItem('lastFetchTime');
+            return { localData, localFetchTime };
+        } catch (error) {
+            console.error('Error getting local data:', error);
+            return { localData: null, localFetchTime: null };
+        }
+    }
+    
+    async function setLocalData(data, time) {
+        try {
+            await localforage.setItem('videoData', data);
+            await localforage.setItem('lastFetchTime', time);
+        } catch (error) {
+            console.error('Error setting local data:', error);
+        }
+    }
+    
+    async function initializeApp() {
+        const { localData, localFetchTime } = await getLocalData();
+        const currentTime = new Date().getTime();
+    
+        if (navigator.onLine) {
+            const supabaseData = await fetchDataFromSupabase();
+            if (supabaseData) {
+                videoData = supabaseData;
+                lastFetchTime = currentTime;
+                await setLocalData(videoData, lastFetchTime);
+            } else if (localData) {
+                videoData = localData;
+                lastFetchTime = localFetchTime;
+            }
+        } else if (localData) {
+            videoData = localData;
+            lastFetchTime = localFetchTime;
+        }
+    
+        filterAndSortVideos();
+    }
+    
+    async function proposeEdit(videoId, editedData) {
+        const video = videoData.find(v => v.id === videoId);
+        if (!video) return;
+    
+        const editProposal = {
+            videoId,
+            originalData: { ...video },
+            editedData: { ...video, ...editedData },
+            timestamp: new Date().toISOString()
+        };
+    
+        try {
+            const { data, error } = await supabase
+                .from('edit_proposals')
+                .insert([editProposal]);
+    
+            if (error) throw error;
+    
+            console.log('Edit proposal submitted successfully');
+        } catch (error) {
+            console.error('Error submitting edit proposal:', error);
+            // Store locally if offline
+            if (!navigator.onLine) {
+                const localProposals = await localforage.getItem('editProposals') || [];
+                localProposals.push(editProposal);
+                await localforage.setItem('editProposals', localProposals);
+                console.log('Edit proposal stored locally');
+            }
+        }
+    }
+    
+    // Modify renderVideoDetails to include an edit button
+    function renderVideoDetails(video) {
+        // ... (previous renderVideoDetails code) ...
+    
+        return `
+            ${previousHtmlString}
+            <button class="edit-video-btn mt-4 bg-yellow-500 text-white px-4 py-2 rounded" data-id="${video.id}">
+                Propose Edit
+            </button>
+        `;
+    }
+    
+    // Add event listener for edit button
+    document.addEventListener('click', async function(e) {
+        if (e.target && e.target.classList.contains('edit-video-btn')) {
+            const videoId = e.target.getAttribute('data-id');
+            const video = videoData.find(v => v.id === videoId);
+            if (video) {
+                // Here you would typically open a form or modal for editing
+                // For this example, we'll just modify the title
+                const newTitle = prompt('Enter new title:', video.title);
+                if (newTitle && newTitle !== video.title) {
+                    await proposeEdit(videoId, { title: newTitle });
+                }
+            }
+        }
+    });
+    
+    // Modify your existing event listeners to use the new initializeApp function
+    document.addEventListener('DOMContentLoaded', initializeApp);
+    
+    // Add an event listener for online/offline status
+    window.addEventListener('online', initializeApp);
+    window.addEventListener('offline', () => {
+        console.log('App is offline. Using local data.');
+    });
+    
+    // ... (rest of your existing code) ...
