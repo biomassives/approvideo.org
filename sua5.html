@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ApproVideo Aug 2024</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <style>
+
+:root {
+            --bg-light: #f0f4f8;
+            --text-light: #2d3748;
+            --card-bg-light: #ffffff;
+            --card-text-light: #4a5568;
+            --bg-dark: #1a202c;
+            --text-dark: #e2e8f0;
+            --card-bg-dark: #2d3748;
+            --card-text-dark: #e2e8f0;
+        }
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.light {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+        }
+        body.dark {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+        .header {
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .subheader {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        .video-card {
+            background-color: var(--card-bg-light);
+            color: var(--card-text-light);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark .video-card {
+            background-color: var(--card-bg-dark);
+            color: var(--card-text-dark);
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        body.dark .theme-toggle {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+            .panel-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    .info-panel {
+        background-color: #f0f4f8;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .info-panel h3 {
+        color: #2c5282;
+        margin-bottom: 0.5rem;
+    }
+    .info-panel p {
+        color: #4a5568;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    body.dark .info-panel {
+        background-color: #2d3748;
+    }
+    body.dark .info-panel h3 {
+        color: #90cdf4;
+    }
+    body.dark .info-panel p {
+        color: #e2e8f0;
+    }
+
+    .menu-sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    z-index: 50;
+    transition: left 0.3s ease-in-out;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+body.dark .menu-sidebar {
+    background-color: #2d3748;
+    color: white;
+}
+
+.menu-sidebar.open {
+    left: 0;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+}
+
+        .menu-sidebar {
+
+    position: fixed;
+
+    top: 0;
+
+    left: -300px; /* Initially hidden */
+
+    width: 300px;
+
+    height: 100%;
+
+    background-color: white;
+
+    z-index: 50; /* Ensure it's above other content */
+
+    transition: left 0.3s ease-in-out; /* Smooth transition */
+
+    overflow-y: auto; /* Add scrollbar if content overflows */
+
+    padding: 1rem;
+
+}
+
+
+body.dark .menu-sidebar {
+
+    background-color: #2d3748;
+
+    color: white;
+
+}
+
+
+.menu-sidebar.open {
+
+    left: 0; /* Slide in when open */
+
+}
+
+
+.menu-overlay {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    z-index: 40; /* Below the sidebar */
+
+    opacity: 0; /* Initially hidden */
+
+    visibility: hidden;
+
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+}
+
+
+body.menu-open .menu-overlay {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+    </style>
+
+</head>
+
+<body class="light">
+
+    <div class="menu-overlay"></div>
+
+    <div class="menu-sidebar p-4">
+
+        <button id="close-menu" class="mb-4 text-2xl">&times;</button>
+
+        <a href="#" class="block mb-2 hover:underline" onclick="loadPage('about')">About</a>
+
+        <a href="#" class="block mb-2 hover:underline" onclick="loadPage('account')">Account</a>
+
+    </div>
+
+    <div class="flex flex-col min-h-screen">
+
+        <header class="bg-gradient-to-r from-green-500 to-blue-500 p-4 text-white">
+
+            <div class="container mx-auto flex justify-between items-center">
+
+                <button id="menu-toggle" class="text-2xl">☰</button>
+
+                <h1 class="text-3xl font-bold">ApproVideo</h1>
+
+                <div class="flex items-center">
+
+                    <button id="theme-toggle" class="text-2xl mr-4">
+
+                        <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
+
+                        <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <main class="flex-grow container mx-auto px-4 py-8">
+
+            <div class="mb-4 text-center">
+
+                <div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
+
+            </div>
+
+            <div class="mb-4 flex justify-center space-x-4 category-links">
+
+                </div>
+
+            <div class="mb-4">
+
+                <input type="text" id="search" placeholder="Search videos..." class="w-full p-2 border rounded dark:bg-gray-700 dark:text-white">
+
+            </div>
+
+            <div id="categories" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+            <div id="page-content" class="mt-8 hidden"></div>
+
+        </main>
+
+        <footer class="bg-gray-200 dark:bg-gray-800 p-4 text-center">
+
+            <p>&copy; 2024 ApproVideo. All rights reserved.</p>
+
+        </footer>
+
+    </div>
+
+
+    <div id="video-detail" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+
+        <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white dark:bg-gray-800">
+
+            <div id="video-content"></div>
+
+            <div class="text-center mt-4">
+
+                <button id="close-detail" class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
+
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const videoData = [
+
+            {
+
+                "id": "1",
+
+                "title": "DIY Gravity-Based Water Filter",
+
+                "categories": ["Drinking Water", "Health"],
+
+                "description": "A simple gravity water filter using easily sourced materials like sand, gravel, and activated charcoal.",
+
+                "youtubeId": "v6O6jFs5DrQ",
+
+                "tags": ["water", "filter", "DIY", "purification"],
+
+                "rating": 4.5,
+
+                "date": "2023-05-15",
+
+                "transcript": "This is a dummy transcript for the DIY Gravity-Based Water Filter video...",
+
+                "materials": ["Sand", "Gravel", "Activated Charcoal", "Large Plastic Containers", "PVC Pipe"],
+
+                "steps": [
+
+                    "Prepare the containers",
+
+                    "Layer the filtering materials",
+
+                    "Set up the water flow system",
+
+                    "Test the filter",
+
+                    "Maintain and clean regularly"
+
+                ]
+
+            },
+
+            // ... (rest of the video data) ...
+
+        ];
+
+
+        // ... (rest of your existing JavaScript code) ...
+
+
+        // Add the missing renderCategoryLinks function here
+
+        function renderCategoryLinks(videos) {
+
+    const uniqueCategories = [...new Set(videos.flatMap(video => video.categories))];
+
+    const categoriesContainer = document.querySelector('.category-links');
+
+    categoriesContainer.innerHTML = uniqueCategories.map(category => `
+
+        <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" data-category="${category}">
+
+            <i class="fas fa-tint w-6 h-6 text-blue-500"></i>
+
+            <span class="ml-3">${category}</span>
+
+        </a>
+
+    `).join('');
+
+
+    // Attach event listeners after rendering
+
+    document.querySelectorAll('.category-link').forEach(link => {
+
+        link.addEventListener('click', function(e) {
+
+            e.preventDefault();
+
+            const category = this.getAttribute('data-category');
+
+            history.pushState(null, '', `?category=${category}`);
+
+            filterAndSortVideos();
+
+        });
+
+    });
+
+}
+
+
+        // Call renderCategoryLinks when the page loads
+
+        renderCategoryLinks(videoData); 
+
+
+        // ... (rest of your JavaScript code) ...
+
+    </script>
+
+</body>
+
+</html>
