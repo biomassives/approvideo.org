@@ -7,8 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
-
-:root {
+            :root {
             --bg-light: #f0f4f8;
             --text-light: #2d3748;
             --card-bg-light: #ffffff;
@@ -95,83 +94,44 @@
     body.dark .info-panel p {
         color: #e2e8f0;
     }
-
-        .menu-sidebar {
-    position: fixed;
-    top: 0;
-    left: -300px;
-    width: 300px;
-    height: 100%;
-    background-color: white;
-    z-index: 50;
-    transition: left 0.3s ease-in-out;
-    overflow-y: auto;
-    padding: 1rem;
-}
-
-body.dark .menu-sidebar {
-    background-color: #2d3748;
-    color: white;
-}
-
-.menu-sidebar.open {
-    left: 0;
-}
-
-.menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 40;
-}
     </style>
 </head>
-<body class="light">
-    <div class="menu-overlay"></div>
-    <div class="menu-sidebar p-4">
-        <button id="close-menu" class="mb-4 text-2xl">&times;</button>
-        <a href="#" class="block mb-2 hover:underline" onclick="loadPage('about')">About</a>
-        <a href="#" class="block mb-2 hover:underline" onclick="loadPage('account')">Account</a>
+<body>
+    <button id="theme-toggle" class="theme-toggle text-2xl">
+        <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
+        <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
+    </button>
+
+    <div class="header">
+        ApproVideo
+        <div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
     </div>
 
-    <div class="flex flex-col min-h-screen">
-        <header class="bg-gradient-to-r from-green-500 to-blue-500 p-4 text-white">
-            <div class="container mx-auto flex justify-between items-center">
-                <button id="menu-toggle" class="text-2xl">☰</button>
-                <h1 class="text-3xl font-bold">ApproVideo</h1>
-                <div class="flex items-center">
-                    <button id="theme-toggle" class="text-2xl mr-4">
-                        <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
-                        <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
-                    </button>
-                </div>
-            </div>
-        </header>
+    <div class="p-4 sm:ml-64 mt-4">
+        <div class="mb-4 flex justify-center space-x-4">
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Drinking Water">
+                <i class="fas fa-tint w-6 h-6 text-blue-500"></i>
+                <span class="ml-3">Drinking Water</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Waste Management">
+                <i class="fas fa-recycle w-6 h-6 text-green-500"></i>
+                <span class="ml-3">Waste Management</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Energy Systems">
+                <i class="fas fa-solar-panel w-6 h-6 text-yellow-500"></i>
+                <span class="ml-3">Energy Systems</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Health">
+                <i class="fas fa-heartbeat w-6 h-6 text-red-500"></i>
+                <span class="ml-3">Health</span>
+            </a>
+        </div>
 
-        <main class="flex-grow container mx-auto px-4 py-8">
-            <div class="mb-4 text-center">
-                <div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
-            </div>
+        <div class="mb-4">
+            <input type="text" id="search" placeholder="Search videos..." class="w-full p-2 border rounded dark:bg-gray-700 dark:text-white">
+        </div>
 
-            <div class="mb-4 flex justify-center space-x-4">
-                <!-- ... (keep the category links) ... -->
-            </div>
-
-            <div class="mb-4">
-                <input type="text" id="search" placeholder="Search videos..." class="w-full p-2 border rounded dark:bg-gray-700 dark:text-white">
-            </div>
-
-            <div id="categories" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-
-            <div id="page-content" class="mt-8 hidden"></div>
-        </main>
-
-        <footer class="bg-gray-200 dark:bg-gray-800 p-4 text-center">
-            <p>&copy; 2024 ApproVideo. All rights reserved.</p>
-        </footer>
+        <div id="categories" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </div>
 
     <div id="video-detail" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
@@ -183,11 +143,23 @@ body.dark .menu-sidebar {
                 </button>
             </div>
         </div>
+
+
+        <div class="panel-container">
+            ${video.panels.map(panel => `
+                <div class="info-panel">
+                    <h3>${panel.title}</h3>
+                    <p>${panel.content}</p>
+                </div>
+            `).join('')}
+        </div>
+
+        
     </div>
 
+    
     <script>
-
-const videoData = [
+        const videoData = [
             {
                 "id": "1",
                 "title": "DIY Gravity-Based Water Filter",
@@ -425,14 +397,14 @@ const videoData = [
 },
 {
     "id": "13",
-    "title": "Building a Downdraft Mass Heater Bench ",
+    "title": "Building a Rocket Mass Heater",
     "categories": ["Energy Systems", "Health"],
     "description": "Learn to construct an ultra-efficient rocket mass heater for sustainable home heating using minimal fuel.",
-    "youtubeId": "XZc_mg3V0jw",
-    "tags": ["mass heater", "efficient heating", "sustainable", "DIY"],
+    "youtubeId": "DrD0YD6xLM4",
+    "tags": ["rocket mass heater", "efficient heating", "sustainable", "DIY"],
     "rating": 4.8,
     "date": "2024-02-20",
-    "transcript": "This is aBuilding a Downdraft Mass Heater Bench for the Venturi Mass Heater video...",
+    "transcript": "This is a dummy transcript for the Rocket Mass Heater video...",
     "materials": ["Fire Bricks", "Metal Barrel", "Stove Pipe", "Cob Mixture", "Sand", "Perlite"],
     "steps": [
         "Build the fire feed and combustion chamber",
@@ -480,60 +452,8 @@ const videoData = [
             "title": "Aeration",
             "content": "Turn the pile every 3-5 days or when the core temperature peaks and begins to drop. This introduces oxygen, which is essential for the aerobic bacteria that generate heat. Use a pitchfork or compost aerator for efficient turning."
         }
-            ]
-        },
-        
-        {
-            "id": "15", 
-            "title": "DIY First Flush Diverter: Cleaner Rainwater Harvesting", 
-            "categories": ["DIY", "Gardening", "Sustainability"], 
-            "description": "Build your own first flush diverter using readily available PVC and plastic components. Keep debris and contaminants out of your rain barrel, ensuring cleaner water for your garden.", 
-            "youtubeId": "fUuGvpRlKwY", 
-            "tags": ["first flush diverter", "rain barrel", "DIY", "water conservation", "sustainability"],
-            "rating": 4.5, 
-            "date": "2024-08-28", 
-            "transcript": "This is a dummy transcript for the DIY First Flush Diverter video...",
-            "materials": [
-                "PVC Pipe (3\" or 4\" diameter)",
-                "PVC Cap",
-                "PVC Tee Fitting",
-                "PVC Elbow Fitting",
-                "Plastic Ball or Floating Device",
-                "Clear Plastic Tubing or Flexible Hose",
-                "Hacksaw or PVC Cutter",
-                "PVC Cement & Primer",
-                "Measuring Tape",
-                "Marker"
-            ],
-            "steps": [
-                "Measure and cut the PVC pipe to the desired height (consider downspout size and desired diversion volume).",
-                "Attach the PVC cap to one end of the pipe using PVC cement and primer.",
-                "Connect the tee fitting to the top of the pipe, ensuring the side outlet faces the desired drainage direction.",
-                "Attach the elbow fitting to the side outlet of the tee fitting.",
-                "Connect the clear plastic tubing or hose to the elbow fitting.",
-                "Place the plastic ball or floating device inside the vertical pipe.",
-                "Connect the assembled diverter to the downspout using the tee fitting.",
-                "Direct the drainage hose away from the house's foundation to a suitable drainage area."
-            ],
-            "panels": [
-                {
-                    "title": "Function of a First Flush Diverter",
-                    "content": "The initial rainwater flowing from the roof often carries debris, leaves, and other contaminants. A first flush diverter collects this 'first flush' and redirects it away from the rain barrel, ensuring cleaner water is collected for gardening or other uses."
-                },
-                {
-                    "title": "Choosing the Right Size",
-                    "content": "The height of the vertical pipe determines how much initial water is diverted. A taller pipe diverts more but may be harder to install and maintain. Consider your downspout size and the typical rainfall in your area when choosing the pipe height."
-                },
-                {
-                    "title": "Maintenance Tips",
-                    "content": "Periodically inspect and clean the vertical pipe to remove any accumulated debris. Check the ball or floating device to ensure it's moving freely and not obstructed. Inspect the drainage hose for any clogs or leaks."
-                },
-                {
-                    "title": "Safety Precautions",
-                    "content": "Wear safety glasses and gloves when cutting and assembling PVC. Follow the manufacturer's instructions for using PVC cement and primer. Ensure the diverter is securely attached to the downspout to prevent it from falling during heavy rain."
-                }
-            ]
-        }        
+    ]
+}
         ];
 
         function renderStars(rating) {
@@ -576,9 +496,8 @@ const videoData = [
         }
 
         function renderVideoDetails(video) {
-            let detailsHtml = `
+            return `
                 <h1 class="text-3xl font-bold mb-4">${video.title}</h1>
-                
                 <div class="aspect-w-16 aspect-h-9 mb-4">
                     <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-96"></iframe>
                 </div>
@@ -604,20 +523,19 @@ const videoData = [
             `;
 
             if (video.panels) {
-                detailsHtml += `
-                    <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
-                    <div class="panel-container">
-                        ${video.panels.map(panel => `
-                            <div class="info-panel">
-                                <h3>${panel.title}</h3>
-                                <p>${panel.content}</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
+                    detailsContainer.innerHTML += `
+                        <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
+                        <div class="panel-container">
+                            ${video.panels.map(panel => `
+                                <div class="info-panel">
+                                    <h3>${panel.title}</h3>
+                                    <p>${panel.content}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
             }
-
-            return detailsHtml;
+            
         }
 
         function renderCategories(videos) {
@@ -639,7 +557,6 @@ const videoData = [
         }
 
         function filterAndSortVideos() {
-            
             const searchTerm = document.getElementById('search').value.toLowerCase();
             const urlParams = new URLSearchParams(window.location.search);
             const category = urlParams.get('category');
@@ -656,9 +573,9 @@ const videoData = [
             renderCategories(filteredVideos);
         }
 
-        // Event Listeners
         document.getElementById('search').addEventListener('input', filterAndSortVideos);
 
+        // Category filtering
         document.querySelectorAll('.category-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -668,32 +585,11 @@ const videoData = [
             });
         });
 
+        // Close detail view
         document.getElementById('close-detail').addEventListener('click', function() {
             document.getElementById('video-detail').classList.add('hidden');
         });
 
-        // Menu functionality
-        const menuToggle = document.getElementById('menu-toggle');
-        const closeMenu = document.getElementById('close-menu');
-        const menuOverlay = document.querySelector('.menu-overlay');
-
-        function toggleMenu() {
-            document.body.classList.toggle('menu-open');
-        }
-
-        menuToggle.addEventListener('click', toggleMenu);
-        closeMenu.addEventListener('click', toggleMenu);
-        menuOverlay.addEventListener('click', toggleMenu);
-
-        // Page loading functionality
-        function loadPage(pageName) {
-            const pageContent = document.getElementById('page-content');
-            pageContent.innerHTML = `<h2 class="text-2xl font-bold mb-4">${pageName.charAt(0).toUpperCase() + pageName.slice(1)} Page</h2>
-                                     <p>This is the ${pageName} page content. Add your specific content here.</p>`;
-            pageContent.classList.remove('hidden');
-            document.getElementById('categories').classList.add('hidden');
-            toggleMenu();
-        }
 
         // Theme toggle functionality
         const themeToggleBtn = document.getElementById('theme-toggle');
@@ -719,8 +615,17 @@ const videoData = [
         themeToggleBtn.addEventListener('click', toggleTheme);
         prefersDarkScheme.addListener((e) => setTheme(e.matches));
 
+
+        
+
         // Initial render
         filterAndSortVideos();
     </script>
 </body>
+</html>
+        // Initial render
+        filterAndSortVideos();
+    </script>
+</body>
+</html>
 </html>
