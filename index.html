@@ -147,15 +147,10 @@
             </div>
         </div>
 
-
-        <div class="panel-container">
-            ${video.panels.map(panel => `
-                <div class="info-panel">
-                    <h3>${panel.title}</h3>
-                    <p>${panel.content}</p>
-                </div>
-            `).join('')}
-        </div>
+<div class="panel-container">
+  <div class="info-panel">
+  </div>
+</div>
 
         
     </div>
@@ -578,19 +573,29 @@ const videoData = [
                 <p class="mb-4">${video.transcript}</p>
             `;
 
-            if (video.panels) {
-                    detailsContainer.innerHTML += `
-                        <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
-                        <div class="panel-container">
-                            ${video.panels.map(panel => `
-                                <div class="info-panel">
-                                    <h3>${panel.title}</h3>
-                                    <p>${panel.content}</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-            }
+        
+          if (video.panels) {
+            // Get the existing panel-container from the HTML
+            const panelContainer = document.querySelector('.panel-container');
+        
+            video.panels.forEach(panel => {
+              // Get the existing info-panel template from the HTML
+              const infoPanelTemplate = document.querySelector('.info-panel');
+        
+              // Clone the template to create a new info-panel for each panel in video.panels
+              const newInfoPanel = infoPanelTemplate.cloneNode(true); 
+        
+              // Populate the new info-panel with data
+              newInfoPanel.querySelector('h3').textContent = panel.title;
+              newInfoPanel.querySelector('p').textContent = panel.content;
+        
+              // Append the new info-panel to the panel-container
+              panelContainer.appendChild(newInfoPanel); 
+            });
+        
+            // Remove the original, empty info-panel template
+            infoPanelTemplate.remove();
+          }
             
         }
 
