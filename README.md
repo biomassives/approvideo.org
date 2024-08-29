@@ -10,7 +10,113 @@ relatedTemplates:
 
 # Approvideo
 
-This is a starter HTML5 templates which is configured with Vercel Analytics (through a `script` tag), advanced routing with [Vercel Edge Middleware](https://vercel.com/docs/concepts/functions/edge-middleware), as well as some basic styles
+This is a based on a starter HTML5 templates which is configured with Vercel Analytics (through a `script` tag), advanced routing with [Vercel Edge Middleware](https://vercel.com/docs/concepts/functions/edge-middleware), as well as some basic styles
+
+# ApproVideo Project Structure Documentation
+
+This document provides an overview of the ApproVideo project structure, explaining the purpose of each directory and key files.
+
+## Project Root
+
+- `generate_structure.py`: Python script used to generate the project structure.
+- `jest.config.js`: Configuration file for Jest testing framework.
+- `next.config.js`: Configuration file for Next.js.
+- `package.json`: Node.js project configuration and dependencies.
+- `README.md`: Project documentation and setup instructions.
+
+## Source Directory (`src/`)
+
+### Components (`src/components/`)
+
+Contains reusable React components, each in its own directory with a component file and a test file.
+
+- **CategoryFilter**: Handles filtering videos by category.
+  - `CategoryFilter.js`
+  - `CategoryFilter.test.js`
+
+- **Layout**: Manages the overall layout of the application.
+  - `Footer.js`: Footer component.
+  - `Header.js`: Header component.
+  - `Layout.js`: Main layout wrapper.
+
+- **SearchBar**: Implements the search functionality.
+  - `SearchBar.js`
+  - `SearchBar.test.js`
+
+- **ThemeToggle**: Manages the light/dark theme toggle.
+  - `ThemeToggle.js`
+  - `ThemeToggle.test.js`
+
+- **VideoCard**: Displays individual video information in a card format.
+  - `VideoCard.js`
+  - `VideoCard.test.js`
+
+- **VideoDetail**: Shows detailed information about a selected video.
+  - `VideoDetail.js`
+  - `VideoDetail.test.js`
+
+### Contexts (`src/contexts/`)
+
+- `ThemeContext.js`: Provides theme context for the application.
+
+### Hooks (`src/hooks/`)
+
+- `useVideos.js`: Custom hook for managing video data and operations.
+
+### Pages (`src/pages/`)
+
+Contains Next.js pages for routing.
+
+- `index.js`: Home page.
+- `[category]/[tag]/[title].js`: Dynamic route for individual video pages.
+
+### Public (`src/public/`)
+
+- `images/`: Directory for storing public images.
+
+### Styles (`src/styles/`)
+
+- `globals.css`: Global styles for the application.
+
+### Tests (`src/tests/`)
+
+- `setup.js`: Setup file for Jest tests.
+
+### Utils (`src/utils/`)
+
+Utility functions and helpers.
+
+- `api.js`: API-related utility functions.
+- `helpers.js`: General helper functions.
+
+## GitHub Workflows
+
+- `.github/workflows/ci.yml`: Continuous Integration workflow configuration.
+
+## Usage
+
+To start development:
+
+1. Install dependencies: `npm install`
+2. Run the development server: `npm run dev`
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+To run tests:
+
+```
+npm test
+```
+
+To build for production:
+
+```
+npm run build
+```
+
+## Contributing
+
+Please refer to the `README.md` file for contribution guidelines and setup instructions.
+
 
 We respect your privacy and are committed to protecting your personal information. We only collect the minimum necessary data to provide and improve our services, which includes information like your IP address and browsing activity. We do not sell or share your personal information with third parties without your explicit consent, except as required by law.  
 
