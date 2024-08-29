@@ -100,6 +100,54 @@
     </style>
 </head>
 <body>
+
+ <button id="theme-toggle" class="theme-toggle text-2xl">
+    <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
+    <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
+  </button>
+
+  <nav class="bg-white dark:bg-gray-800 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="text-xl font-bold">ApproVideo</a>
+
+      <button id="hamburger-btn" class="md:hidden text-gray-500 hover:text-gray-700 focus:outline-none">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+
+      <ul class="hidden md:flex space-x-4">
+        <li><a href="#" class="text-gray-500 hover:text-gray-700">Home</a></li>
+        <li><a href="#about" class="text-gray-500 hover:text-gray-700">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="header">
+    </div>
+
+  <div class="p-4 mt-4">
+    </div>
+
+  <div id="video-detail" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+    <div class="panel-container">
+      <div class="info-panel">
+      </div>
+    </div>
+  </div>
+
+  <section id="about" class="container mx-auto p-4 hidden">
+    <h2 class="text-2xl font-bold mb-4">About ApproVideo</h2>
+    <p>
+      ApproVideo is a platform dedicated to providing appropriate technology videos for the DIY sector. 
+      We curate and create informative videos on various topics like drinking water solutions, 
+      waste management techniques, energy systems, and health-related DIY projects. Our goal is to empower 
+      individuals and communities to adopt sustainable and accessible technologies for a better future.
+    </p>
+  </section>
+
+
+
+
+    
     <button id="theme-toggle" class="theme-toggle text-2xl">
         <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
         <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
@@ -157,7 +205,18 @@
 
     
     <script>
-      
+
+   // Hamburger Menu Functionality
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const navLinks = document.querySelector('nav ul');
+
+    hamburgerBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('hidden');
+    });
+
+
+
+        
 const videoData = [
             {
                 "id": "1",
