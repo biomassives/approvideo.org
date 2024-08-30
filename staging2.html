@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ApproVideo Aug 2024</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        /* ... (previous styles remain unchanged) ... */
+        .panel-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .info-panel {
+            background-color: #f0f4f8;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .info-panel:hover {
+            transform: scale(1.05);
+        }
+        body.dark .info-panel {
+            background-color: #2d3748;
+        }
+        body.dark .info-panel h3 {
+            color: #90cdf4;
+        }
+        body.dark .info-panel p {
+            color: #e2e8f0;
+        }
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .fullscreen-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+        }
+        body.dark .fullscreen-content {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        .close-fullscreen {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: #ffffff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- ... (previous body content remains unchanged) ... -->
+
+    <div id="fullscreen-overlay" class="fullscreen-overlay">
+        <div class="fullscreen-content">
+            <span class="close-fullscreen">&times;</span>
+            <div id="fullscreen-panel-content"></div>
+        </div>
+    </div>
+
+    <script>
+        // ... (previous script content remains unchanged) ...
+
+
+    let videoData = [];
+
+    // Fetch video data from JSON file
+    async function fetchVideoData() {
+        try {
+            const response = await fetch('videos.json');
+            videoData = await response.json();
+            filterAndSortVideos(); // Initial render after fetching data
+        } catch (error) {
+            console.error('Error fetching video data:', error);
+        }
+    }
+      
+
+        function renderVideoDetails(video) {
+
+            try {
+                const response = await fetch('videos.json');
+                detailsHTML = await response.json();
+                filterAndSortVideos(); // Initial render after fetching data
+            } catch (error) {
+                console.error('Error fetching video data:', error);
+            }
+
+
+            if (video.panels) {
+                detailsHTML += `
+                    <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
+                    <div class="panel-container">
+                        ${video.panels.map((panel, index) => `
+                            <div class="info-panel" data-panel-index="${index}">
+                                <h3 class="text-lg font-semibold mb-2">${panel.title}</h3>
+                                <p class="text-sm">${panel.content.substring(0, 100)}...</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            return detailsHTML;
+        }
+
+        function showFullscreenPanel(panelContent) {
+            const overlay = document.getElementById('fullscreen-overlay');
+            const content = document.getElementById('fullscreen-panel-content');
+            content.innerHTML = `
+                <h2 class="text-2xl font-bold mb-4">${panelContent.title}</h2>
+                <p>${panelContent.content}</p>
+            `;
+            overlay.style.display = 'block';
+        }
+
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.info-panel')) {
+                const panelIndex = e.target.closest('.info-panel').dataset.panelIndex;
+                const videoId = document.querySelector('.video-detail-link').dataset.id;
+                const video = videoData.find(v => v.id === videoId);
+                if (video && video.panels) {
+                    showFullscreenPanel(video.panels[panelIndex]);
+                }
+            }
+
+            if (e.target.classList.contains('close-fullscreen')) {
+                document.getElementById('fullscreen-overlay').style.display = 'none';
+            }
+        });
+
+        // ... (rest of the script remains unchanged) ...
+    </script>
+</body>
+</html>
