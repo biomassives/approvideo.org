@@ -556,6 +556,24 @@ const videoData = [
             return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
         }
 
+
+        function setupVideoDetailListeners() {
+            document.querySelectorAll('.video-detail-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const videoId = this.getAttribute('data-id');
+                    const video = videoData.find(v => v.id === videoId);
+                    if (video) {
+                        document.getElementById('video-content').innerHTML = renderVideoDetails(video);
+                        document.getElementById('video-detail').classList.remove('hidden');
+                        setupPanelNavigation(); // Set up navigation after rendering
+                    }
+                });
+            });
+        }
+
+
+        
         function slugify(text) {
             return text.toString().toLowerCase()
                 .replace(/\s+/g, '-')           // Replace spaces with -
@@ -587,205 +605,161 @@ const videoData = [
             `;
         }
 
-        function renderVideoDetails(video) {
-            return `
-                <h1 class="text-3xl font-bold mb-4">${video.title}</h1>
-                <div class="aspect-w-16 aspect-h-9 mb-4">
-                    <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-96"></iframe>
-                </div>
-                <p class="mb-4">${video.description}</p>
-                <div class="mb-4">
-                    ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">${tag}</span>`).join('')}
-                </div>
-                <div class="text-yellow-400 mb-2">${renderStars(video.rating)}</div>
-                <p class="text-sm opacity-75 mb-4">Date: ${video.date}</p>
+function renderVideoDetails(video) {
+    let detailsHTML = `
+        <h1 class="text-3xl font-bold mb-4">${video.title}</h1>
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+            <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-96"></iframe>
+        </div>
+        <p class="mb-4">${video.description}</p>
+        <div class="mb-4">
+            ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">${tag}</span>`).join('')}
+        </div>
+        <div class="text-yellow-400 mb-2">${renderStars(video.rating)}</div>
+        <p class="text-sm opacity-75 mb-4">Date: ${video.date}</p>
+
+        <h2 class="text-2xl font-bold mb-2">Materials Needed:</h2>
+        <ul class="list-disc list-inside mb-4">
+            ${video.materials.map(material => `<li>${material}</li>`).join('')}
+        </ul>
+
+        <h2 class="text-2xl font-bold mb-2">Steps:</h2>
+        <ol class="list-decimal list-inside mb-4">
+            ${video.steps.map(step => `<li>${step}</li>`).join('')}
+        </ol>
+
+        <h2 class="text-2xl font-bold mb-2">Transcript:</h2>
+        <p class="mb-4">${video.transcript}</p>
+    `;
+
+            if (video.panels && video.panels.length > 0) {
+                detailsHTML += `
+                    <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
+                    <div class="panel-container">
+                        ${video.panels.map((panel, index) => `
+                            <div class="info-panel ${index === 0 ? 'active' : ''}" data-panel-index="${index}">
+                                <h3 class="text-lg font-semibold mb-2">${panel.title}</h3>
+                                <p class="text-sm">${panel.content}</p>
+                                <i class="panel-icon fas fa-${getPanelIcon(panel.title)}"></i>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="panel-nav">
+                        <button id="prev-panel" disabled>Previous</button>
+                        <button id="next-panel" ${video.panels.length > 1 ? '' : 'disabled'}>Next</button>
+                    </div>
+                `;
+            }
+        
+            return detailsHTML;
+        }
+        
+        
+        
+
+        
+        // Call this function after rendering the video list
+        setupVideoDetailListeners();
+        
+        
                 
-                <h2 class="text-2xl font-bold mb-2">Materials Needed:</h2>
-                <ul class="list-disc list-inside mb-4">
-                    ${video.materials.map(material => `<li>${material}</li>`).join('')}
-                </ul>
-
-                <h2 class="text-2xl font-bold mb-2">Steps:</h2>
-                <ol class="list-decimal list-inside mb-4">
-                    ${video.steps.map(step => `<li>${step}</li>`).join('')}
-                </ol>
-
-                <h2 class="text-2xl font-bold mb-2">Transcript:</h2>
-                <p class="mb-4">${video.transcript}</p>
-            `;
-
-            
-    if (video.panels && video.panels.length > 0) {
-        detailsHTML += `
-            <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
-            <div class="panel-container">
-                ${video.panels.map((panel, index) => `
-                    <div class="info-panel" data-panel-index="${index}">
-                        <h3 class="text-lg font-semibold mb-2">${panel.title}</h3>
-                        <p class="text-sm">${panel.content}</p>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-    }
-
-
-
-
-
-
-
-
-    if (video.panels && video.panels.length > 0) {
-        detailsHTML += `
-            <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
-            <div class="panel-container">
-                ${video.panels.map((panel, index) => `
-                    <div class="info-panel ${index === 0 ? 'active' : ''}" data-panel-index="${index}">
-                        <h3 class="text-lg font-semibold mb-2">${panel.title}</h3>
-                        <p class="text-sm">${panel.content}</p>
-                        <i class="panel-icon fas fa-${getPanelIcon(panel.title)}"></i>
-                    </div>
-                `).join('')}
-            </div>
-            <div class="panel-nav">
-                <button id="prev-panel" disabled>Previous</button>
-                <button id="next-panel" ${video.panels.length > 1 ? '' : 'disabled'}>Next</button>
-            </div>
-        `;
-    }
-
-    return detailsHTML;
-}
-
-function getPanelIcon(title) {
-    // Map panel titles to appropriate Font Awesome icons
-    const iconMap = {
-        'Temperature Control': 'thermometer-half',
-        'Moisture Management': 'tint',
-        'Pile Location': 'map-marker-alt',
-        'Aeration': 'wind',
-        'Function of a First Flush Diverter': 'filter',
-        'Choosing the Right Size': 'ruler',
-        'Maintenance Tips': 'tools',
-        'Safety Precautions': 'hard-hat'
-    };
-    return iconMap[title] || 'info-circle'; // Default to info-circle if no match
-}
-
-
-function setupPanelNavigation() {
-    const panels = document.querySelectorAll('.info-panel');
-    const prevBtn = document.getElementById('prev-panel');
-    const nextBtn = document.getElementById('next-panel');
-    let currentPanel = 0;
-
-    function updatePanels() {
-        panels.forEach((panel, index) => {
-            panel.classList.toggle('active', index === currentPanel);
-        });
-        prevBtn.disabled = currentPanel === 0;
-        nextBtn.disabled = currentPanel === panels.length - 1;
-    }
-
-    prevBtn.addEventListener('click', () => {
-        if (currentPanel > 0) {
-            currentPanel--;
-            updatePanels();
+        
+        function getPanelIcon(title) {
+            // Map panel titles to appropriate Font Awesome icons
+            const iconMap = {
+                'Temperature Control': 'thermometer-half',
+                'Moisture Management': 'tint',
+                'Pile Location': 'map-marker-alt',
+                'Aeration': 'wind',
+                'Function of a First Flush Diverter': 'filter',
+                'Choosing the Right Size': 'ruler',
+                'Maintenance Tips': 'tools',
+                'Safety Precautions': 'hard-hat'
+            };
+            return iconMap[title] || 'info-circle'; // Default to info-circle if no match
         }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentPanel < panels.length - 1) {
-            currentPanel++;
-            updatePanels();
-        }
-    });
-}
-      
-
-// Update the event listener for video detail links
-document.querySelectorAll('.video-detail-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const videoId = this.getAttribute('data-id');
-        const video = videoData.find(v => v.id === videoId);
-        if (video) {
-            document.getElementById('video-content').innerHTML = renderVideoDetails(video);
-            document.getElementById('video-detail').classList.remove('hidden');
-            setupPanelNavigation(); // Set up navigation after rendering
-        }
-    });
-});
-
-
-
-
-
-                         
-
-          
-
-    return detailsHTML;
-}
-
-document.querySelectorAll('.video-detail-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const videoId = this.getAttribute('data-id');
-        const video = videoData.find(v => v.id === videoId);
-        if (video) {
-            document.getElementById('video-content').innerHTML = renderVideoDetails(video);
-            document.getElementById('video-detail').classList.remove('hidden');
-            setupPanelNavigation(); // Set up navigation after rendering
-        }
-    });
-});
-      
-
-      
-// Update the video detail content
-document.getElementById('video-content').innerHTML = renderVideoDetails(video);
-
-
-      
-    
-
-        function renderCategories(videos) {
-            const categoriesContainer = document.getElementById('categories');
-            categoriesContainer.innerHTML = videos.map(renderVideo).join('');
-
-            // Add event listeners to detail links
-            document.querySelectorAll('.video-detail-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const videoId = this.getAttribute('data-id');
-                    const video = videoData.find(v => v.id === videoId);
-                    if (video) {
-                        document.getElementById('video-content').innerHTML = renderVideoDetails(video);
-                        document.getElementById('video-detail').classList.remove('hidden');
-                    }
+        
+        
+        function setupPanelNavigation() {
+            const panels = document.querySelectorAll('.info-panel');
+            const prevBtn = document.getElementById('prev-panel');
+            const nextBtn = document.getElementById('next-panel');
+            let currentPanel = 0;
+        
+            function updatePanels() {
+                panels.forEach((panel, index) => {
+                    panel.classList.toggle('active', index === currentPanel);
                 });
+                prevBtn.disabled = currentPanel === 0;
+                nextBtn.disabled = currentPanel === panels.length - 1;
+            }
+        
+            prevBtn.addEventListener('click', () => {
+                if (currentPanel > 0) {
+                    currentPanel--;
+                    updatePanels();
+                }
+            });
+        
+            nextBtn.addEventListener('click', () => {
+                if (currentPanel < panels.length - 1) {
+                    currentPanel++;
+                    updatePanels();
+                }
             });
         }
-
-        function filterAndSortVideos() {
-            const searchTerm = document.getElementById('search').value.toLowerCase();
-            const urlParams = new URLSearchParams(window.location.search);
-            const category = urlParams.get('category');
-
-            let filteredVideos = videoData.filter(video => 
-                (category ? video.categories.includes(category) : true) &&
-                (video.title.toLowerCase().includes(searchTerm) ||
-                video.description.toLowerCase().includes(searchTerm) ||
-                video.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
-            );
-
-            filteredVideos.sort((a, b) => b.rating - a.rating);
-
-            renderCategories(filteredVideos);
+              
+        
+        // Update the event listener for video detail links
+        document.querySelectorAll('.video-detail-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const videoId = this.getAttribute('data-id');
+                const video = videoData.find(v => v.id === videoId);
+                if (video) {
+                    document.getElementById('video-content').innerHTML = renderVideoDetails(video);
+                    document.getElementById('video-detail').classList.remove('hidden');
+                    setupPanelNavigation(); // Set up navigation after rendering
+                }
+            });
+        });
+        
+        
         }
+        
 
+        
+function renderCategories(videos) {
+    const categoriesContainer = document.getElementById('categories');
+    categoriesContainer.innerHTML = videos.map(renderVideo).join('');
+    setupVideoDetailListeners(); // Call this function after rendering
+}
+
+function renderCategories(videos) {
+    const categoriesContainer = document.getElementById('categories');
+    categoriesContainer.innerHTML = videos.map(renderVideo).join('');
+    setupVideoDetailListeners(); // Call this function after rendering
+}
+
+        
+function filterAndSortVideos() {
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+
+    let filteredVideos = videoData.filter(video => 
+        (category ? video.categories.includes(category) : true) &&
+        (video.title.toLowerCase().includes(searchTerm) ||
+        video.description.toLowerCase().includes(searchTerm) ||
+        video.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
+    );
+
+    filteredVideos.sort((a, b) => b.rating - a.rating);
+
+    renderCategories(filteredVideos);
+}
+
+        
         document.getElementById('search').addEventListener('input', filterAndSortVideos);
 
         // Category filtering
