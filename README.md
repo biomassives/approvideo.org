@@ -18,6 +18,10 @@ ApproVideo System Documentation
 Overview
 ApproVideo is a web application that showcases appropriate technology videos for the DIY sector. The system allows users to browse, search, and view details of various educational videos categorized by topics such as Drinking Water, Waste Management, Energy Systems, and Health.
 Key Components
+
+# fragments and program structure.
+- using github branches for features, tests, and experiments so they have somewhere to live
+
 1. HTML Structure
 
 The main page includes a header, category navigation, search bar, and a grid for displaying video cards.
