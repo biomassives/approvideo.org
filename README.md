@@ -2,7 +2,7 @@
 name: Approvideo Web Video Gallery Starter
 slug: vide-html-starter-with-analytics
 description: HTML5 template with analytics and advanced routing configuration.
-deployUrl: https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/html&project-name=html
+deployUrl: https://vercel.com/new/clone?repository-url=https://github.com/biomassives/html-starter-approvideo&project-name=html
 relatedTemplates:
   - nextjs-boilerplate
   - biomassives
