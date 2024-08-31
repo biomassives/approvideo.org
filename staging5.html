@@ -31,132 +31,70 @@
             body.dark {
                 background-color: var(--bg-dark);
                 color: var(--text-dark);
-            }
-            body.light .video-card {
-                background-color: var(--card-bg-light);
-                color: var(--card-text-light);
-            }
-            body.light .info-panel {
-                background-color: var(--card-bg-light);
-                color: var(--text-light);
-            }
-            body.dark .video-card {
-                background-color: var(--card-bg-dark);
-                color: var(--card-text-dark);
-            }
-            body.dark .theme-toggle {
-                background-color: rgba(0, 0, 0, 0.5);
-            }
-            body.dark .info-panel {
-                background-color: var(--card-bg-dark);
-                color: var(--text-dark);
-            }
-            body.dark .info-panel h3 {
-                color: #90cdf4;
-            }
-            body.dark .info-panel p {
-                color: #e2e8f0;
-            }
-            .header {
-                background: linear-gradient(45deg, #4CAF50, #2196F3);
-                padding: 20px;
-                text-align: center;
-                color: white;
-                font-size: 2.5rem;
-                font-weight: bold;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            }
-            .subheader {
-                font-size: 1.2rem;
-                margin-top: 10px;
-            }
-            .video-card {
-                background-color: var(--card-bg-light);
-                color: var(--card-text-light);
-                transition: background-color 0.3s, color 0.3s;
-            }
-          /*  #video-detail {
-                color: var(--card-text-light);
-                transition: background-color 0.3s, color 0.3s;
-            } */
-            .theme-toggle {
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                z-index: 1000;
-                background-color: rgba(255, 255, 255, 0.8);
-                border-radius: 50%;
-                padding: 10px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            }
-            .panel-container {
-                position: relative;
-                width: 100%;
-                height: 300px; /* Adjust as needed */
-                overflow: hidden;
-                margin-top: 2rem;
-            }
-            .info-panel {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: #f0f4f8;
-                color: var(--card-text-light);
-                border-radius: 8px;
-                padding: 2rem;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                transition: opacity 0.5s ease-in-out;
-                opacity: 0;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-            .info-panel.active {
-                opacity: 1;
-            }
-            .info-panel h3 {
-                color: #2c5282;
-                margin-bottom: 1rem;
-                font-size: 1.5rem;
-                position: relative;
-                z-index: 2;
-            }
-            .info-panel p {
-                color: #4a5568;
-                font-size: 1rem;
-                line-height: 1.6;
-                position: relative;
-                z-index: 2;
-            }
+            }/* Overlay background */
+#video-detail {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black for both modes */
+}
 
-            .panel-icon {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                font-size: 10rem;
-                opacity: 0.1;
-                z-index: 1;
-            }
-            .panel-nav {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 1rem;
-            }
-            .panel-nav button {
-                background-color: #4CAF50;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-            .panel-nav button:disabled {
-                background-color: #ccc;
-                cursor: not-allowed;
-            }
+/* Overlay content container */
+#video-detail > div {
+    background-color: var(--card-bg-light);
+    color: var(--card-text-light);
+}
+
+/* Dark mode specific styles */
+body.dark #video-detail > div {
+    background-color: var(--card-bg-dark);
+    color: var(--card-text-dark);
+}
+
+/* Ensure text color consistency */
+#video-content h1, 
+#video-content h2, 
+#video-content p, 
+#video-content ul, 
+#video-content ol {
+    color: var(--card-text-light);
+}
+
+body.dark #video-content h1, 
+body.dark #video-content h2, 
+body.dark #video-content p, 
+body.dark #video-content ul, 
+body.dark #video-content ol {
+    color: var(--card-text-dark);
+}
+
+/* Adjust info panel colors */
+.info-panel {
+    background-color: var(--card-bg-light);
+    color: var(--card-text-light);
+}
+
+body.dark .info-panel {
+    background-color: var(--card-bg-dark);
+    color: var(--card-text-dark);
+}
+
+/* Ensure proper contrast for panel navigation buttons */
+.panel-nav button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.panel-nav button:disabled {
+    background-color: #ccc;
+    color: #666;
+}
+
+body.dark .panel-nav button {
+    background-color: #45a049;
+}
+
+body.dark .panel-nav button:disabled {
+    background-color: #333;
+    color: #999;
+}
     </style>
 </head>
 
