@@ -96,6 +96,63 @@ const videoData = [
         "Apply paint or sealant for weather protection"
     ]
 },
+
+{
+  "id": "6",
+  "title": "DIY Biogas Digester for Kitchen Waste",
+  "categories": ["Waste Management", "Energy Systems"],
+  "description": "Create your own biogas digester to convert kitchen waste into usable cooking gas and nutrient-rich fertilizer.",
+  "youtubeId": "KKEo4Wo-QLk",
+  "tags": ["biogas", "waste to energy", "sustainable", "DIY"],
+  "rating": 4.6,
+  "date": "2023-10-18",
+  "transcript": "This is a dummy transcript for the DIY Biogas Digester video...",
+  "materials": ["Large Plastic Drum", "PVC Pipes", "Valves", "Gas Storage Bag", "Slurry Collection Container"],
+  "steps": [
+    "Prepare the main digester drum",
+    "Install inlet and outlet pipes",
+    "Set up the gas collection system",
+    "Create a slurry outlet",
+    "Test for leaks and start the digestion process"
+  ],
+  "panels": [
+    {
+      "title": "Prepare the Digester Drum",
+      "content": "Choose a durable, airtight container for your digester. Clean it thoroughly to prevent contamination."
+    },
+    {
+      "title": "Install Pipes and Valves",
+      "content": "Ensure pipes are securely fitted and valves are functional to control the flow of gas and slurry."
+    },
+    {
+      "title": "Set Up Gas Collection",
+      "content": "Use a gas storage bag or another airtight container to safely collect and store the biogas."
+    },
+    {
+      "title": "Create a Slurry Outlet",
+      "content": "Design the slurry outlet to allow for easy removal of the nutrient-rich liquid fertilizer."
+    },
+    {
+      "title": "Test for Leaks",
+      "content": "Thoroughly check for leaks before adding waste to ensure safe and efficient operation."
+    },
+    {
+      "title": "Start the Digestion Process",
+      "content": "Maintain the right mix of food waste and water (slurry) for optimal biogas production."
+    },
+    {
+      "title": "Use the Biogas",
+      "content": "Use the biogas for cooking or other applications, ensuring proper ventilation and safety measures."
+    },
+    {
+      "title": "Utilize the Slurry",
+      "content": "Dilute the slurry with water and use it as a natural fertilizer for your garden or plants."
+    }
+  ]
+}
+
+
+            
 {
     "id": "6",
     "title": "DIY Biogas Digester for Kitchen Waste",
