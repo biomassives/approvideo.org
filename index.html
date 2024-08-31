@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
             :root {
-            --bg-light: #f0f4f8;
-            --text-light: #2d3748;
-            --card-bg-light: #ffffff;
-            --card-text-light: #4a5568;
-            --bg-dark: #1a202c;
-            --text-dark: #e2e8f0;
-            --card-bg-dark: #2d3748;
-            --card-text-dark: #e2e8f0;
+                --bg-light: #f0f4f8;
+                --text-light: #2d3748;
+                --card-bg-light: #ffffff;
+                --card-text-light: #4a5568;
+                --bg-dark: #1a202c;
+                --text-dark: #e2e8f0;
+                --card-bg-dark: #2d3748;
+                --card-text-dark: #e2e8f0;
             }
             body {
                 transition: background-color 0.3s, color 0.3s;
@@ -31,6 +31,26 @@
             body.dark {
                 background-color: var(--bg-dark);
                 color: var(--text-dark);
+            }
+            body.light .video-card {
+                background-color: var(--card-bg-light);
+                color: var(--card-text-dark);
+            }
+            body.dark .video-card {
+                background-color: var(--card-bg-dark);
+                color: var(--card-text-dark);
+            }
+            body.dark .theme-toggle {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            body.dark .info-panel {
+                background-color: #2d3748;
+            }
+            body.dark .info-panel h3 {
+                color: #90cdf4;
+            }
+            body.dark .info-panel p {
+                color: #e2e8f0;
             }
             .header {
                 background: linear-gradient(45deg, #4CAF50, #2196F3);
@@ -50,10 +70,6 @@
                 color: var(--card-text-light);
                 transition: background-color 0.3s, color 0.3s;
             }
-            body.dark .video-card {
-                background-color: var(--card-bg-dark);
-                color: var(--card-text-dark);
-            }
             .theme-toggle {
                 position: fixed;
                 top: 20px;
@@ -64,9 +80,7 @@
                 padding: 10px;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             }
-            body.dark .theme-toggle {
-                background-color: rgba(0, 0, 0, 0.5);
-            }
+
             .panel-container {
                 position: relative;
                 width: 100%;
@@ -90,59 +104,51 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                }
-                .info-panel.active {
-                    opacity: 1;
-                }
-                .info-panel h3 {
-                    color: #2c5282;
-                    margin-bottom: 1rem;
-                    font-size: 1.5rem;
-                    position: relative;
-                    z-index: 2;
-                }
-                .info-panel p {
-                    color: #4a5568;
-                    font-size: 1rem;
-                    line-height: 1.6;
-                    position: relative;
-                    z-index: 2;
-                }
-                body.dark .info-panel {
-                    background-color: #2d3748;
-                }
-                body.dark .info-panel h3 {
-                    color: #90cdf4;
-                }
-                body.dark .info-panel p {
-                    color: #e2e8f0;
-                }
-                .panel-icon {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    font-size: 10rem;
-                    opacity: 0.1;
-                    z-index: 1;
-                }
-                .panel-nav {
-                    display: flex;
-                    justify-content: space-between;
-                    margin-top: 1rem;
-                }
-                .panel-nav button {
-                    background-color: #4CAF50;
-                    color: white;
-                    border: none;
-                    padding: 10px 20px;
-                    border-radius: 5px;
-                    cursor: pointer;
-                }
-                .panel-nav button:disabled {
-                    background-color: #ccc;
-                    cursor: not-allowed;
-                }
+            }
+            .info-panel.active {
+                opacity: 1;
+            }
+            .info-panel h3 {
+                color: #2c5282;
+                margin-bottom: 1rem;
+                font-size: 1.5rem;
+                position: relative;
+                z-index: 2;
+            }
+            .info-panel p {
+                color: #4a5568;
+                font-size: 1rem;
+                line-height: 1.6;
+                position: relative;
+                z-index: 2;
+            }
+
+            .panel-icon {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 10rem;
+                opacity: 0.1;
+                z-index: 1;
+            }
+            .panel-nav {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 1rem;
+            }
+            .panel-nav button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .panel-nav button:disabled {
+                background-color: #ccc;
+                cursor: not-allowed;
+            }
     </style>
 </head>
 
