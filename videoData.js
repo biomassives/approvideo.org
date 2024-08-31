@@ -235,25 +235,44 @@ const videoData = [
     ]
 },
 {
-    "id": "13",
-    "title": "Building a Downdraft Mass Heater Bench ",
-    "categories": ["Energy Systems", "Health"],
-    "description": "Learn to construct an ultra-efficient rocket mass heater for sustainable home heating using minimal fuel.",
-    "youtubeId": "XZc_mg3V0jw",
-    "tags": ["mass heater", "efficient heating", "sustainable", "DIY"],
-    "rating": 4.8,
-    "date": "2024-02-20",
-    "transcript": "This is aBuilding a Downdraft Mass Heater Bench for the Venturi Mass Heater video...",
-    "materials": ["Fire Bricks", "Metal Barrel", "Stove Pipe", "Cob Mixture", "Sand", "Perlite"],
-    "steps": [
-        "Build the fire feed and combustion chamber",
-        "Construct the heat riser",
-        "Set up the metal barrel as heat exchanger",
-        "Create the horizontal exhaust system",
-        "Build the thermal mass bench",
-        "Test and fine-tune the system"
-    ]
+  "id": "13",
+  "title": "Building a Downdraft Mass Heater Bench ",
+  "categories": ["Energy Systems", "Health"],
+  "description": "Learn to construct an ultra-efficient rocket mass heater for sustainable home heating using minimal fuel.",
+  "youtubeId": "XZc_mg3V0jw",
+  "tags": ["mass heater", "efficient heating", "sustainable", "DIY"],
+  "rating": 4.8,
+  "date": "2024-02-20",
+  "transcript": "This is a Building a Downdraft Mass Heater Bench for the Venturi Mass Heater video...",
+  "materials": ["Fire Bricks", "Metal Barrel", "Stove Pipe", "Cob Mixture", "Sand", "Perlite"],
+  "steps": [
+    "Build the fire feed and combustion chamber",
+    "Construct the heat riser",
+    "Set up the metal barrel as heat exchanger",
+    "Create the horizontal exhaust system",
+    "Build the thermal mass bench",
+    "Test and fine-tune the system"
+  ],
+  "panels": [
+    {
+      "title": "Benefits of a Downdraft Mass Heater Bench",
+      "content": "Highly efficient heat generation using minimal fuel, reducing environmental impact and heating costs. The bench provides comfortable radiant heat for long periods. The design promotes clean combustion, minimizing smoke and emissions."
+    },
+    {
+      "title": "Safety Precautions",
+      "content": "Ensure proper ventilation for adequate airflow. Build with fire-resistant materials and maintain clearance from combustibles. Regularly inspect for cracks or damage. Never leave the heater unattended, especially with children or pets nearby."
+    },
+    {
+      "title": "Maintenance Tips",
+      "content": "Regularly clean the burn chamber and chimney to remove ash buildup. Inspect the system for cracks and seal any leaks. Monitor the flue temperature to ensure proper combustion. Use dry, seasoned wood for optimal efficiency and minimal smoke."
+    },
+    {
+      "title": "Choosing the Right Location",
+      "content": "Place the heater in a central location to distribute heat effectively throughout the house. Consider proximity to fuel sources and ventilation options. Ensure adequate space for the bench and clearance from walls and combustibles."
+    }
+  ]
 },
+
 {
     "id": "14",
     "title": "Hot Composting: Nature's Autoclave",
@@ -293,7 +312,7 @@ const videoData = [
         }
             ]
         },
-        
+
         {
             "id": "15", 
             "title": "DIY First Flush Diverter: Cleaner Rainwater Harvesting", 
@@ -344,7 +363,100 @@ const videoData = [
                     "content": "Wear safety glasses and gloves when cutting and assembling PVC. Follow the manufacturer's instructions for using PVC cement and primer. Ensure the diverter is securely attached to the downspout to prevent it from falling during heavy rain."
                 }
             ]
-        }        
+        },
+        {
+              "id": "16", 
+              "title": "Hot Composting with Chickens",
+              "categories": ["Waste Management", "Health", "Gardening", "Animal Husbandry"],
+              "description": "Discover the synergistic relationship between hot composting and chickens! This video explores how chickens contribute to faster decomposition, improved compost quality, and pest control, while benefiting from the warm compost and nutrient-rich grubs.",
+              "youtubeId": "LxRJb036i_0",
+              "tags": ["hot composting", "chickens", "waste management", "soil health", "organic gardening", "sustainable living", "pest control", "animal husbandry"],
+              "rating": 4.9, 
+              "date": "2023-02-03", 
+              "transcript": "This is a dummy transcript for the Hot Composting with Chickens video...",
+              "materials": [
+                "Green materials (grass clippings, food scraps, chicken manure)", 
+                "Brown materials (leaves, straw, paper)", 
+                "Compost thermometer", 
+                "Pitchfork or compost aerator", 
+                "Water source",
+                "Chickens",
+                "Secure enclosure for the compost pile"
+              ],
+              "steps": [
+                "Choose a shaded location for your compost pile and set up a secure enclosure around it to allow chicken access.",
+                "Layer green and brown materials in a 1:2 ratio, incorporating chicken manure into the mix.",
+                "Ensure the pile is at least 3 feet x 3 feet x 3 feet.",
+                "Allow chickens to access the compost pile. They will naturally turn and aerate the pile while foraging for grubs and other treats.",
+                "Monitor temperature, aiming for 135-160°F (57-71°C) in the center. Supplement chicken turning with manual turning if needed.",
+                "Maintain moisture (should feel like a wrung-out sponge)",
+                "Continue the process for 3-4 weeks until the temperature stops rising and the compost is dark and crumbly."
+              ],
+              "panels": [
+                {
+                  "title": "Benefits of Chickens in Composting",
+                  "content": "Chickens accelerate decomposition by turning and aerating the pile, reducing the need for manual labor. Their manure adds valuable nitrogen to the compost, while their foraging helps control pests like flies and rodents. The warm compost provides a comfortable environment for the chickens, especially in colder months."
+                },
+                {
+                  "title": "Enclosure and Safety",
+                  "content": "Build a secure enclosure around the compost pile to prevent chickens from escaping and predators from accessing them. Ensure adequate ventilation and shade within the enclosure. Monitor the chickens' behavior to ensure they are not over-consuming compost or harming themselves."
+                },
+                {
+                  "title": "Compost Considerations",
+                  "content": "Avoid adding meat, dairy, or oily food scraps to the compost pile as these can attract pests and create unpleasant odors. Do not allow chickens to access fresh manure as it can contain harmful pathogens. Ensure the compost reaches the desired temperature to kill any potential pathogens."
+                }
+              ]
+            },
+            
+            {
+            "id": "17",
+            "title": "DIY Rainwater Filter System",
+            "categories": ["DIY", "Sustainability", "Environment"],
+            "description": "This video shows how to build a simple and effective DIY rainwater filter system using readily available materials.",
+            "youtubeId": "0",
+            "tags": ["rainwater harvesting", "water filtration", "DIY project", "sustainability", "environment"],
+            "rating": 4.8,
+            "date": "2022-07-31",
+            "transcript": "This is a dummy transcript for the DIY Rainwater Filter System video...",
+            "materials": [
+            "Sand",
+            "Charcoal",
+            "Gravel (around 8mm and 15-30mm)",
+            "Pipe",
+            "Mosquito screen",
+            "Silicone"
+            ],
+            "steps": [
+            "Close the two inlets and open the outlet to drain any existing water.",
+            "Fill the filter with gravel (around 8mm) up to 10 centimeters.",
+            "Add a layer of charcoal on top of the gravel.",
+            "Install a mosquito screen on top of the charcoal.",
+            "Add another layer of gravel (8mm) on top of the mosquito screen.",
+            "Add the final layer of gravel (15-30mm) on top of the previous gravel layer.",
+            "Open the inlet that collects rainwater.",
+            "Let the filter run for a few hours to clean the water.",
+            "Close the inlet that collects rainwater.",
+            "Fix any leaks in the system.",
+            "Wait for a few hours and then turn on the outlet to allow clean water to flow through."
+            ],
+            "panels": [
+            {
+            "title": "Benefits of Rainwater Harvesting",
+            "content": "Rainwater harvesting is a sustainable way to collect and use water for irrigation, landscaping, and other non-potable purposes. It can help to reduce reliance on municipal water supplies and conserve freshwater resources."
+            },
+            {
+            "title": "How the Filter Works",
+            "content": "The rainwater filter system works by removing dirt, debris, and other contaminants from rainwater as it passes through the layers of gravel and charcoal. The mosquito screen helps to prevent insects and other small animals from entering the filter."
+            },
+            {
+            "title": "Maintenance",
+            "content": "The filter will need to be cleaned periodically to remove any accumulated dirt or debris. The frequency of cleaning will depend on the quality of the rainwater and the amount of use. It is also recommended to replace the charcoal every year."
+            }
+            ]
+            }
+
+
+            
         ];
 
 export default videoData;
