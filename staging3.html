@@ -4,9 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ApproVideo Aug 2024</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module" src="videoData.js"></script>
+    <script type="module">
+        import videoData from './videoData.js';
+        // You can now use videoData here or attach it to the window object
+        window.videoData = videoData;
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
     <style>
             :root {
             --bg-light: #f0f4f8;
@@ -64,89 +70,86 @@
         body.dark .theme-toggle {
             background-color: rgba(0, 0, 0, 0.5);
         }
-
-
-
-    .panel-container {
-        position: relative;
-        width: 100%;
-        height: 300px; /* Adjust as needed */
-        overflow: hidden;
-        margin-top: 2rem;
-    }
-    .info-panel {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #f0f4f8;
-        border-radius: 8px;
-        padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        transition: opacity 0.5s ease-in-out;
-        opacity: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .info-panel.active {
-        opacity: 1;
-    }
-    .info-panel h3 {
-        color: #2c5282;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-        position: relative;
-        z-index: 2;
-    }
-    .info-panel p {
-        color: #4a5568;
-        font-size: 1rem;
-        line-height: 1.6;
-        position: relative;
-        z-index: 2;
-    }
-    body.dark .info-panel {
-        background-color: #2d3748;
-    }
-    body.dark .info-panel h3 {
-        color: #90cdf4;
-    }
-    body.dark .info-panel p {
-        color: #e2e8f0;
-    }
-    .panel-icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 10rem;
-        opacity: 0.1;
-        z-index: 1;
-    }
-    .panel-nav {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 1rem;
-    }
-    .panel-nav button {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .panel-nav button:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
-    }
+        .panel-container {
+            position: relative;
+            width: 100%;
+            height: 300px; /* Adjust as needed */
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        .info-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f0f4f8;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .info-panel.active {
+            opacity: 1;
+        }
+        .info-panel h3 {
+            color: #2c5282;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        .info-panel p {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+        body.dark .info-panel {
+            background-color: #2d3748;
+        }
+        body.dark .info-panel h3 {
+            color: #90cdf4;
+        }
+        body.dark .info-panel p {
+            color: #e2e8f0;
+        }
+        .panel-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10rem;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        .panel-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        .panel-nav button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .panel-nav button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
 
 
     
-    </style>
-</head>
 <body>
     <button id="theme-toggle" class="theme-toggle text-2xl">
         <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
@@ -160,19 +163,19 @@
 
     <div class="p-4 mt-4">
         <div class="mb-4 flex justify-center space-x-4">
-            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Drinking Water">
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-beige-100 dark:hover:bg-gray-700" data-category="Drinking Water">
                 <i class="fas fa-tint w-6 h-6 text-blue-500"></i>
                 <span class="ml-3">Drinking Water</span>
             </a>
-            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Waste Management">
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gold-100 dark:hover:bg-gray-700" data-category="Waste Management">
                 <i class="fas fa-recycle w-6 h-6 text-green-500"></i>
                 <span class="ml-3">Waste Management</span>
             </a>
-            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Energy Systems">
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-white-100 dark:hover:bg-gray-700" data-category="Energy Systems">
                 <i class="fas fa-solar-panel w-6 h-6 text-yellow-500"></i>
                 <span class="ml-3">Energy Systems</span>
             </a>
-            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Health">
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-tan-100 dark:hover:bg-gray-700" data-category="Health">
                 <i class="fas fa-heartbeat w-6 h-6 text-red-500"></i>
                 <span class="ml-3">Health</span>
             </a>
@@ -198,26 +201,24 @@
     </div>
 
     
-    <script>
     
 
 
-        
-        function renderStars(rating) {
-            const fullStars = Math.floor(rating);
-            const halfStar = rating % 1 >= 0.5 ? 1 : 0;
-            const emptyStars = 5 - fullStars - halfStar;
 
-            return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
-        }
-
+<script>
+function renderStars(rating) {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStar;
+    return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
+}
 
 function setupVideoDetailListeners() {
     document.querySelectorAll('.video-detail-link').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const videoId = this.getAttribute('data-id');
-            const video = videoData.find(v => v.id === videoId);
+            const video = window.videoData.find(v => v.id === videoId);
             if (video) {
                 document.getElementById('video-content').innerHTML = renderVideoDetails(video);
                 document.getElementById('video-detail').classList.remove('hidden');
@@ -254,14 +255,9 @@ function setupPanelNavigation() {
             updatePanels();
         }
     });
+
+    updatePanels();
 }
-
-// Call these functions after the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    filterAndSortVideos();
-    setupEventListeners();
-});
-
 
 function setupEventListeners() {
     document.getElementById('search').addEventListener('input', filterAndSortVideos);
@@ -273,39 +269,36 @@ function setupEventListeners() {
     setupThemeToggle();
 }
 
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+}
 
-
-        
-        function slugify(text) {
-            return text.toString().toLowerCase()
-                .replace(/\s+/g, '-')           // Replace spaces with -
-                .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-                .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-                .replace(/^-+/, '')             // Trim - from start of text
-                .replace(/-+$/, '');            // Trim - from end of text
-        }
-
-        function renderVideo(video) {
-            const mainCategory = video.categories[0];
-            const mainTag = video.tags[0];
-            const detailUrl = `/${slugify(mainCategory)}/${slugify(mainTag)}/${slugify(video.title)}`;
-            
-            return `
-                <div class="video-card rounded-lg shadow-md p-4 mb-4">
-                    <h3 class="text-xl font-semibold mb-2">${video.title}</h3>
-                    <div class="aspect-w-16 aspect-h-9 mb-2">
-                        <img src="https://img.youtube.com/vi/${video.youtubeId}/0.jpg" alt="${video.title}" class="w-full h-64 object-cover">
-                    </div>
-                    <p class="mb-2">${video.description}</p>
-                    <div class="flex flex-wrap mb-2">
-                        ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">${tag}</span>`).join('')}
-                    </div>
-                    <div class="text-yellow-400">${renderStars(video.rating)}</div>
-                    <div class="text-sm opacity-75">Date: ${video.date}</div>
-                    <a href="${detailUrl}" class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 video-detail-link" data-id="${video.id}">View Details</a>
-                </div>
-            `;
-        }
+function renderVideo(video) {
+    const mainCategory = video.categories[0];
+    const mainTag = video.tags[0];
+    const detailUrl = `/${slugify(mainCategory)}/${slugify(mainTag)}/${slugify(video.title)}`;
+    
+    return `
+        <div class="video-card rounded-lg shadow-md p-4 mb-4">
+            <h3 class="text-xl font-semibold mb-2">${video.title}</h3>
+            <div class="aspect-w-16 aspect-h-9 mb-2">
+                <img src="https://img.youtube.com/vi/${video.youtubeId}/0.jpg" alt="${video.title}" class="w-full h-64 object-cover">
+            </div>
+            <p class="mb-2">${video.description}</p>
+            <div class="flex flex-wrap mb-2">
+                ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">${tag}</span>`).join('')}
+            </div>
+            <div class="text-yellow-400">${renderStars(video.rating)}</div>
+            <div class="text-sm opacity-75">Date: ${video.date}</div>
+            <a href="${detailUrl}" class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 video-detail-link" data-id="${video.id}">View Details</a>
+        </div>
+    `;
+}
 
 function renderVideoDetails(video) {
     let detailsHTML = `
@@ -334,106 +327,54 @@ function renderVideoDetails(video) {
         <p class="mb-4">${video.transcript}</p>
     `;
 
-            if (video.panels && video.panels.length > 0) {
-                detailsHTML += `
-                    <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
-                    <div class="panel-container">
-                        ${video.panels.map((panel, index) => `
-                            <div class="info-panel ${index === 0 ? 'active' : ''}" data-panel-index="${index}">
-                                <h3 class="text-lg font-semibold mb-2">${panel.title}</h3>
-                                <p class="text-sm">${panel.content}</p>
-                                <i class="panel-icon fas fa-${getPanelIcon(panel.title)}"></i>
-                            </div>
-                        `).join('')}
+    if (video.panels && video.panels.length > 0) {
+        detailsHTML += `
+            <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
+            <div class="panel-container">
+                ${video.panels.map((panel, index) => `
+                    <div class="info-panel ${index === 0 ? 'active' : ''}" data-panel-index="${index}">
+                        <h3 class="text-lg font-semibold mb-2">${panel.title}</h3>
+                        <p class="text-sm">${panel.content}</p>
+                        <i class="panel-icon fas fa-${getPanelIcon(panel.title)}"></i>
                     </div>
-                    <div class="panel-nav">
-                        <button id="prev-panel" disabled>Previous</button>
-                        <button id="next-panel" ${video.panels.length > 1 ? '' : 'disabled'}>Next</button>
-                    </div>
-                `;
-            }
-        
-            return detailsHTML;
-        }
-            
-        // Call this function after rendering the video list
-        setupVideoDetailListeners();
-             
-        
-        function getPanelIcon(title) {
-            // Map panel titles to appropriate Font Awesome icons
-            const iconMap = {
-                'Temperature Control': 'thermometer-half',
-                'Moisture Management': 'tint',
-                'Pile Location': 'map-marker-alt',
-                'Aeration': 'wind',
-                'Function of a First Flush Diverter': 'filter',
-                'Choosing the Right Size': 'ruler',
-                'Maintenance Tips': 'tools',
-                'Safety Precautions': 'hard-hat'
-            };
-            return iconMap[title] || 'info-circle'; // Default to info-circle if no match
-        }
-        
-        
+                `).join('')}
+            </div>
+            <div class="panel-nav">
+                <button id="prev-panel" disabled>Previous</button>
+                <button id="next-panel" ${video.panels.length > 1 ? '' : 'disabled'}>Next</button>
+            </div>
+        `;
+    }
 
-   function updatePanels() {
-                panels.forEach((panel, index) => {
-                    panel.classList.toggle('active', index === currentPanel);
-                });
-                prevBtn.disabled = currentPanel === 0;
-                nextBtn.disabled = currentPanel === panels.length - 1;
-            }
-        
-            prevBtn.addEventListener('click', () => {
-                if (currentPanel > 0) {
-                    currentPanel--;
-                    updatePanels();
-                }
-            });
-        
-            nextBtn.addEventListener('click', () => {
-                if (currentPanel < panels.length - 1) {
-                    currentPanel++;
-                    updatePanels();
-                }
-            });
-        }
+    return detailsHTML;
+}
 
-        
-        
-        // Update the event listener for video detail links
-        document.querySelectorAll('.video-detail-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const videoId = this.getAttribute('data-id');
-                const video = videoData.find(v => v.id === videoId);
-                if (video) {
-                    document.getElementById('video-content').innerHTML = renderVideoDetails(video);
-                    document.getElementById('video-detail').classList.remove('hidden');
-                    setupPanelNavigation(); // Set up navigation after rendering
-                }
-            });
-        });
-        
-        
-        }
-        
+function getPanelIcon(title) {
+    const iconMap = {
+        'Temperature Control': 'thermometer-half',
+        'Moisture Management': 'tint',
+        'Pile Location': 'map-marker-alt',
+        'Aeration': 'wind',
+        'Function of a First Flush Diverter': 'filter',
+        'Choosing the Right Size': 'ruler',
+        'Maintenance Tips': 'tools',
+        'Safety Precautions': 'hard-hat'
+    };
+    return iconMap[title] || 'info-circle';
+}
 
-        
 function renderCategories(videos) {
     const categoriesContainer = document.getElementById('categories');
     categoriesContainer.innerHTML = videos.map(renderVideo).join('');
-    setupVideoDetailListeners(); // Call this function after rendering
+    setupVideoDetailListeners();
 }
 
-        
 function filterAndSortVideos() {
     const searchTerm = document.getElementById('search').value.toLowerCase();
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
 
-    let filteredVideos = videoData.filter(video => 
+    let filteredVideos = window.videoData.filter(video => 
         (category ? video.categories.includes(category) : true) &&
         (video.title.toLowerCase().includes(searchTerm) ||
         video.description.toLowerCase().includes(searchTerm) ||
@@ -441,56 +382,68 @@ function filterAndSortVideos() {
     );
 
     filteredVideos.sort((a, b) => b.rating - a.rating);
-
     renderCategories(filteredVideos);
 }
 
-        
-        document.getElementById('search').addEventListener('input', filterAndSortVideos);
-
-        // Category filtering
-        document.querySelectorAll('.category-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const category = this.getAttribute('data-category');
-                history.pushState(null, '', `?category=${category}`);
-                filterAndSortVideos();
-            });
-        });
-
-        // Close detail view
-        document.getElementById('close-detail').addEventListener('click', function() {
-            document.getElementById('video-detail').classList.add('hidden');
-        });
-
-
-        // Theme toggle functionality
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-
-        function setTheme(isDark) {
-            document.body.classList.toggle('dark', isDark);
-            document.body.classList.toggle('light', !isDark);
-            themeToggleDarkIcon.classList.toggle('hidden', !isDark);
-            themeToggleLightIcon.classList.toggle('hidden', isDark);
+function handleVideoDetailClick(e) {
+    if (e.target.classList.contains('video-detail-link')) {
+        e.preventDefault();
+        const videoId = e.target.getAttribute('data-id');
+        const video = window.videoData.find(v => v.id === videoId);
+        if (video) {
+            document.getElementById('video-content').innerHTML = renderVideoDetails(video);
+            document.getElementById('video-detail').classList.remove('hidden');
+            setupPanelNavigation();
         }
+    }
+}
 
-        function toggleTheme() {
-            const isDark = document.body.classList.contains('light');
-            setTheme(isDark);
-        }
+function closeVideoDetail() {
+    document.getElementById('video-detail').classList.add('hidden');
+}
 
-        // Detect user preference
-        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-        setTheme(prefersDarkScheme.matches);
+function handleCategoryClick(e) {
+    e.preventDefault();
+    const category = this.getAttribute('data-category');
+    history.pushState(null, '', `?category=${category}`);
+    filterAndSortVideos();
+}
 
-        themeToggleBtn.addEventListener('click', toggleTheme);
-        prefersDarkScheme.addListener((e) => setTheme(e.matches));
-      
+function setupThemeToggle() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-        // Initial render
-        filterAndSortVideos();
-    </script>
+    function setTheme(isDark) {
+        document.body.classList.toggle('dark', isDark);
+        document.body.classList.toggle('light', !isDark);
+        themeToggleDarkIcon.classList.toggle('hidden', !isDark);
+        themeToggleLightIcon.classList.toggle('hidden', isDark);
+    }
+
+    function toggleTheme() {
+        const isDark = document.body.classList.contains('light');
+        setTheme(isDark);
+    }
+
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    setTheme(prefersDarkScheme.matches);
+
+    themeToggleBtn.addEventListener('click', toggleTheme);
+    prefersDarkScheme.addListener((e) => setTheme(e.matches));
+}
+
+// Initial setup
+document.addEventListener('DOMContentLoaded', () => {
+    console.log(window.videoData);
+    filterAndSortVideos();
+    setupEventListeners();
+});
+</script>
+
+
+
+
+    
 </body>
 </html>
