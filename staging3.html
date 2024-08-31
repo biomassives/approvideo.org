@@ -557,22 +557,55 @@ const videoData = [
         }
 
 
-        function setupVideoDetailListeners() {
-            document.querySelectorAll('.video-detail-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const videoId = this.getAttribute('data-id');
-                    const video = videoData.find(v => v.id === videoId);
-                    if (video) {
-                        document.getElementById('video-content').innerHTML = renderVideoDetails(video);
-                        document.getElementById('video-detail').classList.remove('hidden');
-                        setupPanelNavigation(); // Set up navigation after rendering
-                    }
-                });
-            });
+function setupVideoDetailListeners() {
+    document.querySelectorAll('.video-detail-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const videoId = this.getAttribute('data-id');
+            const video = videoData.find(v => v.id === videoId);
+            if (video) {
+                document.getElementById('video-content').innerHTML = renderVideoDetails(video);
+                document.getElementById('video-detail').classList.remove('hidden');
+                setupPanelNavigation();
+            }
+        });
+    });
+}
+
+function setupPanelNavigation() {
+    const panels = document.querySelectorAll('.info-panel');
+    const prevBtn = document.getElementById('prev-panel');
+    const nextBtn = document.getElementById('next-panel');
+    let currentPanel = 0;
+
+    function updatePanels() {
+        panels.forEach((panel, index) => {
+            panel.classList.toggle('active', index === currentPanel);
+        });
+        prevBtn.disabled = currentPanel === 0;
+        nextBtn.disabled = currentPanel === panels.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPanel > 0) {
+            currentPanel--;
+            updatePanels();
         }
+    });
 
+    nextBtn.addEventListener('click', () => {
+        if (currentPanel < panels.length - 1) {
+            currentPanel++;
+            updatePanels();
+        }
+    });
+}
 
+// Call these functions after the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    filterAndSortVideos();
+    setupVideoDetailListeners();
+});
         
         function slugify(text) {
             return text.toString().toLowerCase()
@@ -653,16 +686,10 @@ function renderVideoDetails(video) {
         
             return detailsHTML;
         }
-        
-        
-        
-
-        
+            
         // Call this function after rendering the video list
         setupVideoDetailListeners();
-        
-        
-                
+             
         
         function getPanelIcon(title) {
             // Map panel titles to appropriate Font Awesome icons
@@ -680,13 +707,8 @@ function renderVideoDetails(video) {
         }
         
         
-        function setupPanelNavigation() {
-            const panels = document.querySelectorAll('.info-panel');
-            const prevBtn = document.getElementById('prev-panel');
-            const nextBtn = document.getElementById('next-panel');
-            let currentPanel = 0;
-        
-            function updatePanels() {
+
+   function updatePanels() {
                 panels.forEach((panel, index) => {
                     panel.classList.toggle('active', index === currentPanel);
                 });
@@ -708,7 +730,8 @@ function renderVideoDetails(video) {
                 }
             });
         }
-              
+
+        
         
         // Update the event listener for video detail links
         document.querySelectorAll('.video-detail-link').forEach(link => {
@@ -729,12 +752,6 @@ function renderVideoDetails(video) {
         
 
         
-function renderCategories(videos) {
-    const categoriesContainer = document.getElementById('categories');
-    categoriesContainer.innerHTML = videos.map(renderVideo).join('');
-    setupVideoDetailListeners(); // Call this function after rendering
-}
-
 function renderCategories(videos) {
     const categoriesContainer = document.getElementById('categories');
     categoriesContainer.innerHTML = videos.map(renderVideo).join('');
@@ -801,9 +818,7 @@ function filterAndSortVideos() {
 
         themeToggleBtn.addEventListener('click', toggleTheme);
         prefersDarkScheme.addListener((e) => setTheme(e.matches));
-
-
-        
+      
 
         // Initial render
         filterAndSortVideos();
