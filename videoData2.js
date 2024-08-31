@@ -151,27 +151,7 @@ const videoData = [
               ]
             }
 ,
-
-            
-{
-    "id": "6",
-    "title": "DIY Biogas Digester for Kitchen Waste",
-    "categories": ["Waste Management", "Energy Systems"],
-    "description": "Create your own biogas digester to convert kitchen waste into usable cooking gas and nutrient-rich fertilizer.",
-    "youtubeId": "KKEo4Wo-QLk",
-    "tags": ["biogas", "waste to energy", "sustainable", "DIY"],
-    "rating": 4.6,
-    "date": "2023-10-18",
-    "transcript": "This is a dummy transcript for the DIY Biogas Digester video...",
-    "materials": ["Large Plastic Drum", "PVC Pipes", "Valves", "Gas Storage Bag", "Slurry Collection Container"],
-    "steps": [
-        "Prepare the main digester drum",
-        "Install inlet and outlet pipes",
-        "Set up the gas collection system",
-        "Create a slurry outlet",
-        "Test for leaks and start the digestion process"
-    ]
-},
+    
 {
     "id": "7",
     "title": "Homemade Ceramic Water Filter",
@@ -470,7 +450,7 @@ const videoData = [
             "title": "DIY Rainwater Filter System",
             "categories": ["DIY", "Sustainability", "Environment"],
             "description": "This video shows how to build a simple and effective DIY rainwater filter system using readily available materials.",
-            "youtubeId": "0",
+            "youtubeId": "tgF0o9n_Sn4",
             "tags": ["rainwater harvesting", "water filtration", "DIY project", "sustainability", "environment"],
             "rating": 4.8,
             "date": "2022-07-31",
@@ -511,44 +491,92 @@ const videoData = [
             }
             ]
             }
-            .
            ,
-
-            {
+          {
               "id": "18",
-              "title": "Vertical Wind Turbine for Home beats Off Grid Solar Panel!?",
-              "categories": ["Renewable Energy", "Home Technology"],
-              "description": "A video showcasing a revolutionary vertical wind turbine for home use that can operate even in extreme weather conditions, providing an alternative to solar panels for off-grid energy generation.",
+              "title": "DIY Vertical Wind Turbine with Self-Governing Mechanism",
+              "categories": ["Renewable Energy", "Home Technology", "DIY"],
+              "description": "A comprehensive guide to building a revolutionary vertical wind turbine for home use that can operate even in extreme weather conditions, featuring built-in clutching and self-governing mechanisms for high wind protection.",
               "youtubeId": "",
-              "tags": ["vertical wind turbine", "off-grid energy", "renewable energy", "home technology"],
-              "rating": 0,
-              "date": "2024-03-17",
-              "transcript": "This genius vertical wind turbine for home could revolutionize energy generation off the grid! Because it solves the biggest problem of horizontal wind turbines, which have to be switched off during storms. Otherwise, they would completely destroy themselves, as the rotational mass would literally tear it apart. And no one wants such a projectile placed in the garden or house roof. Now picture this: a brilliant aesthetic vertical wind turbine for a home that can operate even at Category 4 hurricanes! A home wind turbine that consistently delivers power with little to no maintenance for over 20 years! It's designed to resist the harshest weather conditions, such as snow, ice, and sand storms. That's the promise of the Icewind turbine! It enables energy independence and living off the grid. It requires little space, is easy to install, and is a perfect complement to solar panels, especially when less sunlight is available at night and during the dark and cloudy season. But what makes this wind turbine so unique? And is an Investment really worthwhile for home users? Let´s Find out in today's video",
-              "materials": ["Icewind turbine"],
-              "steps": [],
+              "tags": ["vertical wind turbine", "off-grid energy", "renewable energy", "DIY", "self-governing", "high wind protection"],
+              "rating": 4.7,
+              "date": "2024-04-01",
+              "transcript": "This is a placeholder for the video transcript...",
+              "materials": [
+                "PVC pipes",
+                "Lightweight material for blades (corrugated plastic or thin aluminum)",
+                "Ball bearings",
+                "Shaft (steel or aluminum)",
+                "Generator (repurposed DC motor or alternator)",
+                "Springs",
+                "Magnets",
+                "Metal plates",
+                "Wires",
+                "Bolts, nuts, and washers",
+                "Charge controller",
+                "Deep cycle battery",
+                "Inverter (optional)"
+              ],
+              "steps": [
+                "Design and Build the Frame",
+                "Construct the Rotor",
+                "Create the Self-Governing Mechanism",
+                "Build the Magnetic Clutch System",
+                "Assemble the Power Generation System",
+                "Install the Braking Mechanism",
+                "Wire the Electrical System",
+                "Create and Install the Nose Cone and Tail",
+                "Final Assembly and Mounting",
+                "Testing and Calibration",
+                "Establish a Maintenance Schedule"
+              ],
               "panels": [
                 {
-                  "title": "Advantages of Vertical Wind Turbine",
-                  "content": "Operates in extreme weather conditions, including Category 4 hurricanes, snow, ice, and sand storms."
+                  "title": "Frame Construction",
+                  "content": "Create a sturdy base using PVC pipes. Build a vertical central shaft support for stability and to house the generator."
                 },
                 {
-                  "title": "Durability",
-                  "content": "Delivers power consistently with little to no maintenance for over 20 years."
+                  "title": "Rotor Assembly",
+                  "content": "Cut blade material into curved shapes for optimal wind capture. Attach blades to a central hub, ensuring even spacing. Balance the rotor to minimize vibration."
                 },
                 {
-                  "title": "Space Efficiency",
-                  "content": "Requires little space and is easy to install."
+                  "title": "Self-Governing Mechanism",
+                  "content": "Design a spring-loaded tilting mechanism for the blades. As wind speed increases, the blades tilt to reduce surface area, naturally limiting the rotor's speed in high winds."
                 },
                 {
-                  "title": "Complementary to Solar",
-                  "content": "Perfect complement to solar panels, especially during low sunlight periods."
+                  "title": "Magnetic Clutch System",
+                  "content": "Attach magnets to the rotor and install corresponding magnets or metal plates on the generator shaft. This allows slippage in very high winds, preventing damage."
                 },
                 {
-                  "title": "Energy Independence",
-                  "content": "Enables off-grid living and energy independence."
+                  "title": "Power Generation System",
+                  "content": "Mount the generator to the frame, ensuring proper alignment with the rotor shaft. Install a simple gearing system if needed for optimal RPM."
+                },
+                {
+                  "title": "Braking Mechanism",
+                  "content": "Create a centrifugal braking system using weights and springs. As rotor speed increases, weights extend, activating a friction brake for additional overspeed protection."
+                },
+                {
+                  "title": "Electrical System",
+                  "content": "Connect the generator to a charge controller, then wire the charge controller to a deep cycle battery. Add an inverter if AC power is needed."
+                },
+                {
+                  "title": "Aerodynamics",
+                  "content": "Design an aerodynamic nose cone to reduce turbulence. Create a tail vane to keep the turbine oriented into the wind for maximum efficiency."
+                },
+                {
+                  "title": "Final Assembly",
+                  "content": "Assemble all components on the frame. Ensure all moving parts are well-lubricated. Mount the turbine on a sturdy pole or tower, ensuring proper height for wind exposure."
+                },
+                {
+                  "title": "Testing and Maintenance",
+                  "content": "Start with low wind conditions to test basic functionality. Adjust the self-governing mechanism sensitivity. Test in progressively higher winds to ensure safety features activate properly. Establish a regular maintenance schedule for optimal performance and longevity."
+                },
+                {
+                  "title": "Safety Considerations",
+                  "content": "Always prioritize safety in the design and operation. Ensure the turbine is installed securely and can withstand local wind conditions. Implement an emergency shutdown mechanism. Consult local regulations regarding home wind turbine installations."
                 }
               ]
-            }     
+            }    
 ];
 
 export default videoData;
