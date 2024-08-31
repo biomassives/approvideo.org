@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ApproVideo Aug 2024</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+        import videoData from './videoData2.js';
+        window.videoData = videoData;
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+            :root {
+                --bg-light: #f0f4f8;
+                --text-light: #2d3748;
+                --card-bg-light: #ffffff;
+                --card-text-light: #1a202c;
+                --bg-dark: #1a202c;
+                --text-dark: #e2e8f0;
+                --card-bg-dark: #000;
+                --card-text-dark: #e2e8f0;
+            }
+            body {
+                transition: background-color 0.3s, color 0.3s;
+            }
+            body.light {
+                background-color: var(--bg-light);
+                color: var(--text-light);
+            }
+            body.dark {
+                background-color: var(--bg-dark);
+                color: var(--text-dark);
+            }
+            body.light .video-card {
+                background-color: var(--card-bg-light);
+                color: var(--card-text-light);
+            }
+            body.light .info-panel {
+                background-color: var(--card-bg-light);
+                color: var(--text-light);
+            }
+            body.dark .video-card {
+                background-color: var(--card-bg-dark);
+                color: var(--card-text-dark);
+            }
+            body.dark .theme-toggle {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            body.dark .info-panel {
+                background-color: var(--card-bg-dark);
+                color: var(--text-dark);
+            }
+            body.dark .info-panel h3 {
+                color: #90cdf4;
+            }
+            body.dark .info-panel p {
+                color: #e2e8f0;
+            }
+            .header {
+                background: linear-gradient(45deg, #4CAF50, #2196F3);
+                padding: 20px;
+                text-align: center;
+                color: white;
+                font-size: 2.5rem;
+                font-weight: bold;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            }
+            .subheader {
+                font-size: 1.2rem;
+                margin-top: 10px;
+            }
+            .video-card {
+                background-color: var(--card-bg-light);
+                color: var(--card-text-light);
+                transition: background-color 0.3s, color 0.3s;
+            }
+          /*  #video-detail {
+                color: var(--card-text-light);
+                transition: background-color 0.3s, color 0.3s;
+            } */
+            .theme-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: 50%;
+                padding: 10px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+            .panel-container {
+                position: relative;
+                width: 100%;
+                height: 300px; /* Adjust as needed */
+                overflow: hidden;
+                margin-top: 2rem;
+            }
+            .info-panel {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #f0f4f8;
+                color: var(--card-text-light);
+                border-radius: 8px;
+                padding: 2rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                transition: opacity 0.5s ease-in-out;
+                opacity: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .info-panel.active {
+                opacity: 1;
+            }
+            .info-panel h3 {
+                color: #2c5282;
+                margin-bottom: 1rem;
+                font-size: 1.5rem;
+                position: relative;
+                z-index: 2;
+            }
+            .info-panel p {
+                color: #4a5568;
+                font-size: 1rem;
+                line-height: 1.6;
+                position: relative;
+                z-index: 2;
+            }
+
+            .panel-icon {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 10rem;
+                opacity: 0.1;
+                z-index: 1;
+            }
+            .panel-nav {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 1rem;
+            }
+            .panel-nav button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .panel-nav button:disabled {
+                background-color: #ccc;
+                cursor: not-allowed;
+            }
+    </style>
+</head>
+
+
+    
+<body>
+    <button id="theme-toggle" class="theme-toggle text-2xl">
+        <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
+        <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
+    </button>
+
+    <div class="header">
+        ApproVideo
+        <div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
+    </div>
+
+    <div class="p-4 mt-4">
+        <div class="mb-4 flex justify-center space-x-4">
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-beige-100 dark:hover:bg-gray-700" data-category="Drinking Water">
+                <i class="fas fa-tint w-6 h-6 text-blue-500"></i>
+                <span class="ml-3">Drinking Water</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gold-100 dark:hover:bg-gray-700" data-category="Waste Management">
+                <i class="fas fa-recycle w-6 h-6 text-green-500"></i>
+                <span class="ml-3">Waste Management</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-white-100 dark:hover:bg-gray-700" data-category="Energy Systems">
+                <i class="fas fa-solar-panel w-6 h-6 text-yellow-500"></i>
+                <span class="ml-3">Energy Systems</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-tan-100 dark:hover:bg-gray-700" data-category="Health">
+                <i class="fas fa-heartbeat w-6 h-6 text-red-500"></i>
+                <span class="ml-3">Health</span>
+            </a>
+        </div>
+
+        <div class="mb-4">
+            <input type="text" id="search" placeholder="Search videos..." class="w-full p-2 border rounded dark:bg-gray-700 dark:text-white">
+        </div>
+
+        <div id="categories" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </div>
+
+    <div id="video-detail" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+        <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white dark:bg-gray-800">
+            <div id="video-content"></div>
+            <div class="text-center mt-4">
+                <button id="close-detail" class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                    Close
+                </button>
+            </div>
+        </div>
+</div>
+
+    
+
+<script>
+function renderStars(rating) {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStar;
+    return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
+}
+
+function setupVideoDetailListeners() {
+    document.querySelectorAll('.video-detail-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const videoId = this.getAttribute('data-id');
+            const video = window.videoData.find(v => v.id === videoId);
+            if (video) {
+                document.getElementById('video-content').innerHTML = renderVideoDetails(video);
+                document.getElementById('video-detail').classList.remove('hidden');
+                setupPanelNavigation();
+            }
+        });
+    });
+}
+
+function setupPanelNavigation() {
+    const panels = document.querySelectorAll('.info-panel');
+    const prevBtn = document.getElementById('prev-panel');
+    const nextBtn = document.getElementById('next-panel');
+    let currentPanel = 0;
+
+    function updatePanels() {
+        panels.forEach((panel, index) => {
+            panel.classList.toggle('active', index === currentPanel);
+        });
+        prevBtn.disabled = currentPanel === 0;
+        nextBtn.disabled = currentPanel === panels.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPanel > 0) {
+            currentPanel--;
+            updatePanels();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPanel < panels.length - 1) {
+            currentPanel++;
+            updatePanels();
+        }
+    });
+
+    updatePanels();
+}
+
+function setupEventListeners() {
+    document.getElementById('search').addEventListener('input', filterAndSortVideos);
+    document.getElementById('categories').addEventListener('click', handleVideoDetailClick);
+    document.getElementById('close-detail').addEventListener('click', closeVideoDetail);
+    document.querySelectorAll('.category-link').forEach(link => {
+        link.addEventListener('click', handleCategoryClick);
+    });
+    setupThemeToggle();
+}
+
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+}
+
+function renderVideo(video) {
+    const mainCategory = video.categories[0];
+    const mainTag = video.tags[0];
+    const detailUrl = `/${slugify(mainCategory)}/${slugify(mainTag)}/${slugify(video.title)}`;
+    
+    return `
+        <div class="video-card rounded-lg shadow-md p-4 mb-4">
+            <h3 class="text-xl font-semibold mb-2">${video.title}</h3>
+            <div class="aspect-w-16 aspect-h-9 mb-2">
+                <img src="https://img.youtube.com/vi/${video.youtubeId}/0.jpg" alt="${video.title}" class="w-full h-64 object-cover">
+            </div>
+            <p class="mb-2">${video.description}</p>
+            <div class="flex flex-wrap mb-2">
+                ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">${tag}</span>`).join('')}
+            </div>
+            <div class="text-yellow-400">${renderStars(video.rating)}</div>
+            <div class="text-sm opacity-75">Date: ${video.date}</div>
+            <a href="${detailUrl}" class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 video-detail-link" data-id="${video.id}">View Details</a>
+        </div>
+    `;
+}
+
+function renderVideoDetails(video) {
+    let detailsHTML = `
+        <h1 class="text-3xl font-bold mb-4">${video.title}</h1>
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+            <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-96"></iframe>
+        </div>
+        <p class="mb-4">${video.description}</p>
+        <div class="mb-4">
+            ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">${tag}</span>`).join('')}
+        </div>
+        <div class="text-yellow-400 mb-2">${renderStars(video.rating)}</div>
+        <p class="text-sm opacity-75 mb-4">Date: ${video.date}</p>
+
+        <h2 class="text-2xl font-bold mb-2">Materials Needed:</h2>
+        <ul class="list-disc list-inside mb-4">
+            ${video.materials.map(material => `<li>${material}</li>`).join('')}
+        </ul>
+
+        <h2 class="text-2xl font-bold mb-2">Steps:</h2>
+        <ol class="list-decimal list-inside mb-4">
+            ${video.steps.map(step => `<li>${step}</li>`).join('')}
+        </ol>
+
+        <h2 class="text-2xl font-bold mb-2">Transcript:</h2>
+        <p class="mb-4">${video.transcript}</p>
+    `;
+
+    if (video.panels && video.panels.length > 0) {
+        detailsHTML += `
+            <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
+            <div class="panel-container">
+                ${video.panels.map((panel, index) => `
+                    <div class="info-panel ${index === 0 ? 'active' : ''}" data-panel-index="${index}">
+                        <h3 class="text-lg font-semibold mb-2">${panel.title}</h3>
+                        <p class="text-sm">${panel.content}</p>
+                        <i class="panel-icon fas fa-${getPanelIcon(panel.title)}"></i>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="panel-nav">
+                <button id="prev-panel" disabled>Previous</button>
+                <button id="next-panel" ${video.panels.length > 1 ? '' : 'disabled'}>Next</button>
+            </div>
+        `;
+    }
+
+    return detailsHTML;
+}
+
+function getPanelIcon(title) {
+    const iconMap = {
+        'Temperature Control': 'thermometer-half',
+        'Moisture Management': 'tint',
+        'Pile Location': 'map-marker-alt',
+        'Aeration': 'wind',
+        'Function of a First Flush Diverter': 'filter',
+        'Choosing the Right Size': 'ruler',
+        'Maintenance Tips': 'tools',
+        'Safety Precautions': 'hard-hat'
+    };
+    return iconMap[title] || 'info-circle';
+}
+
+function renderCategories(videos) {
+    const categoriesContainer = document.getElementById('categories');
+    categoriesContainer.innerHTML = videos.map(renderVideo).join('');
+    setupVideoDetailListeners();
+}
+
+function filterAndSortVideos() {
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+
+    let filteredVideos = window.videoData.filter(video => 
+        (category ? video.categories.includes(category) : true) &&
+        (video.title.toLowerCase().includes(searchTerm) ||
+        video.description.toLowerCase().includes(searchTerm) ||
+        video.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
+    );
+
+    filteredVideos.sort((a, b) => b.rating - a.rating);
+    renderCategories(filteredVideos);
+}
+
+function handleVideoDetailClick(e) {
+    if (e.target.classList.contains('video-detail-link')) {
+        e.preventDefault();
+        const videoId = e.target.getAttribute('data-id');
+        const video = window.videoData.find(v => v.id === videoId);
+        if (video) {
+            document.getElementById('video-content').innerHTML = renderVideoDetails(video);
+            document.getElementById('video-detail').classList.remove('hidden');
+            setupPanelNavigation();
+        }
+    }
+}
+
+function closeVideoDetail() {
+    document.getElementById('video-detail').classList.add('hidden');
+}
+
+function handleCategoryClick(e) {
+    e.preventDefault();
+    const category = this.getAttribute('data-category');
+    history.pushState(null, '', `?category=${category}`);
+    filterAndSortVideos();
+}
+
+function setupThemeToggle() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    function setTheme(isDark) {
+        document.body.classList.toggle('dark', isDark);
+        document.body.classList.toggle('light', !isDark);
+        themeToggleDarkIcon.classList.toggle('hidden', !isDark);
+        themeToggleLightIcon.classList.toggle('hidden', isDark);
+    }
+
+    function toggleTheme() {
+        const isDark = document.body.classList.contains('light');
+        setTheme(isDark);
+    }
+
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    setTheme(prefersDarkScheme.matches);
+
+    themeToggleBtn.addEventListener('click', toggleTheme);
+    prefersDarkScheme.addListener((e) => setTheme(e.matches));
+}
+
+// Initial setup
+document.addEventListener('DOMContentLoaded', () => {
+    console.log(window.videoData);
+    filterAndSortVideos();
+    setupEventListeners();
+});
+</script>
+
+
+
+
+    
+</body>
+</html>
