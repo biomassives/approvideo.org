@@ -406,7 +406,7 @@ const videoData = [
               "title": "Hot Composting with Chickens",
               "categories": ["Waste Management", "Health", "Gardening", "Animal Husbandry"],
               "description": "Discover the synergistic relationship between hot composting and chickens! This video explores how chickens contribute to faster decomposition, improved compost quality, and pest control, while benefiting from the warm compost and nutrient-rich grubs.",
-              "youtubeId": "LxRJb036i_0",
+              "youtubeId": "rrue38s2178",
               "tags": ["hot composting", "chickens", "waste management", "soil health", "organic gardening", "sustainable living", "pest control", "animal husbandry"],
               "rating": 4.9, 
               "date": "2023-02-03", 
