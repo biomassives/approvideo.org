@@ -511,9 +511,44 @@ const videoData = [
             }
             ]
             }
+            .
+           ,
 
-
-            
-        ];
+            {
+              "id": "18",
+              "title": "Vertical Wind Turbine for Home beats Off Grid Solar Panel!?",
+              "categories": ["Renewable Energy", "Home Technology"],
+              "description": "A video showcasing a revolutionary vertical wind turbine for home use that can operate even in extreme weather conditions, providing an alternative to solar panels for off-grid energy generation.",
+              "youtubeId": "",
+              "tags": ["vertical wind turbine", "off-grid energy", "renewable energy", "home technology"],
+              "rating": 0,
+              "date": "2024-03-17",
+              "transcript": "This genius vertical wind turbine for home could revolutionize energy generation off the grid! Because it solves the biggest problem of horizontal wind turbines, which have to be switched off during storms. Otherwise, they would completely destroy themselves, as the rotational mass would literally tear it apart. And no one wants such a projectile placed in the garden or house roof. Now picture this: a brilliant aesthetic vertical wind turbine for a home that can operate even at Category 4 hurricanes! A home wind turbine that consistently delivers power with little to no maintenance for over 20 years! It's designed to resist the harshest weather conditions, such as snow, ice, and sand storms. That's the promise of the Icewind turbine! It enables energy independence and living off the grid. It requires little space, is easy to install, and is a perfect complement to solar panels, especially when less sunlight is available at night and during the dark and cloudy season. But what makes this wind turbine so unique? And is an Investment really worthwhile for home users? Let´s Find out in today's video",
+              "materials": ["Icewind turbine"],
+              "steps": [],
+              "panels": [
+                {
+                  "title": "Advantages of Vertical Wind Turbine",
+                  "content": "Operates in extreme weather conditions, including Category 4 hurricanes, snow, ice, and sand storms."
+                },
+                {
+                  "title": "Durability",
+                  "content": "Delivers power consistently with little to no maintenance for over 20 years."
+                },
+                {
+                  "title": "Space Efficiency",
+                  "content": "Requires little space and is easy to install."
+                },
+                {
+                  "title": "Complementary to Solar",
+                  "content": "Perfect complement to solar panels, especially during low sunlight periods."
+                },
+                {
+                  "title": "Energy Independence",
+                  "content": "Enables off-grid living and energy independence."
+                }
+              ]
+            }     
+];
 
 export default videoData;
