@@ -65,6 +65,7 @@
             
             #video-detail .relative {
                 background-color: rgba(255, 255, 255, 0.8);
+                 color: #333; /* Set text color directly on the container */
                 border-radius: 20px;
                 overflow: hidden;
                 position: relative;
@@ -327,6 +328,111 @@
                 cursor: not-allowed;
             }
 
+#video-detail {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+#video-detail .relative {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#video-detail .relative::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(76, 175, 80, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(33, 150, 243, 0.2) 0%, transparent 50%);
+    z-index: -1;
+}
+
+#video-content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    color: #333;
+}
+
+/* Dark mode styles */
+body.dark #video-detail {
+    background: rgba(23, 32, 42, 0.95);
+}
+
+body.dark #video-detail .relative {
+    background-color: rgba(44, 62, 80, 0.8);
+}
+
+body.dark #video-detail .relative::before {
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(52, 152, 219, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(46, 204, 113, 0.2) 0%, transparent 50%);
+}
+
+body.dark #video-content {
+    color: #ecf0f1;
+}
+
+/* High contrast text styles */
+#video-content h1 {
+    color: #2c3e50;
+}
+
+#video-content h2 {
+    color: #34495e;
+}
+
+#video-content p, #video-content li {
+    color: #2c3e50;
+}
+
+body.dark #video-content h1 {
+    color: #ecf0f1;
+}
+
+body.dark #video-content h2 {
+    color: #3498db;
+}
+
+body.dark #video-content p, body.dark #video-content li {
+    color: #bdc3c7;
+}
+
+/* Curved lines */
+.curved-line {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+body.dark .curved-line {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Close button */
+#close-detail {
+    background-color: #3498db;
+    color: white;
+}
+
+body.dark #close-detail {
+    background-color: #2980b9;
+    color: #ecf0f1;
+}
+
+#close-detail:hover {
+    background-color: #2980b9;
+}
+
+body.dark #close-detail:hover {
+    background-color: #3498db;
+}
         
     </style>
 </head>  
@@ -675,6 +781,17 @@ function setupThemeToggle() {
         document.body.classList.toggle('light', !isDark);
         themeToggleDarkIcon.classList.toggle('hidden', !isDark);
         themeToggleLightIcon.classList.toggle('hidden', isDark);
+
+        // Force a repaint of the video detail overlay if it's open
+        const videoDetail = document.getElementById('video-detail');
+        if (!videoDetail.classList.contains('hidden')) {
+            videoDetail.style.display = 'none';
+            videoDetail.offsetHeight; // Force a repaint
+            videoDetail.style.display = '';
+        }
+
+        // Store the user's preference
+        localStorage.setItem('darkMode', isDark);
     }
 
     function toggleTheme() {
@@ -682,12 +799,20 @@ function setupThemeToggle() {
         setTheme(isDark);
     }
 
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-    setTheme(prefersDarkScheme.matches);
+    // Check for saved user preference
+    const savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode !== null) {
+        setTheme(JSON.parse(savedDarkMode));
+    } else {
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        setTheme(prefersDarkScheme.matches);
+    }
 
     themeToggleBtn.addEventListener('click', toggleTheme);
-    prefersDarkScheme.addListener((e) => setTheme(e.matches));
 }
+
+
+
     
     // Initial setup
     document.addEventListener('DOMContentLoaded', () => {
