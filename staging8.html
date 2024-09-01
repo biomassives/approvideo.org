@@ -794,6 +794,37 @@ function setupEventListeners() {
     document.querySelectorAll('.category-link').forEach(link => {
         link.addEventListener('click', handleCategoryClick);
     });
+
+     // Single event listener on the header for both main categories and dropdown items
+      document.querySelector('header').addEventListener('click', (e) => {
+        const target = e.target.closest('a');
+    
+        if (target) {
+          e.preventDefault();
+    
+          let category, tag;
+          if (target.classList.contains('category-link')) {
+            category = target.getAttribute('data-category');
+          } else if (target.classList.contains('drop-up-item')) {
+            category = target.getAttribute('data-category');
+            tag = target.getAttribute('data-tag');
+          }
+    
+          // Update URL and filter videos
+          const urlParams = new URLSearchParams(window.location.search);
+          urlParams.set('category', category);
+          if (tag) {
+            urlParams.set('tag', tag);
+          } else {
+            urlParams.delete('tag'); 
+          }
+          history.pushState(null, '', `?${urlParams.toString()}`);
+          filterAndSortVideos();
+        }
+      });
+
+
+    
     setupThemeToggle();
 
     // Handle initial page load with URL parameters
@@ -995,50 +1026,22 @@ function setupThemeToggle() {
 
 
 
-    
-    // Initial setup
-    document.addEventListener('DOMContentLoaded', () => {
-    
+// Initial setup
+document.addEventListener('DOMContentLoaded', () => {
+  // ... other initialization code ...
+
         console.log('DOM fully loaded');
         console.log(window.videoData);
-        filterAndSortVideos();
-        setupEventListeners();
-        console.log('Calling setupFloatingIcons');
-        setupFloatingIcons();
-        console.log('setupFloatingIcons called');
-
-  // Single event listener on the header for both main categories and dropdown items
-  document.querySelector('header').addEventListener('click', (e) => {
-    const target = e.target.closest('a');
-
-    if (target) {
-      e.preventDefault();
-
-      let category, tag;
-      if (target.classList.contains('category-link')) {
-        category = target.getAttribute('data-category');
-      } else if (target.classList.contains('drop-up-item')) {
-        category = target.getAttribute('data-category');
-        tag = target.getAttribute('data-tag');
-      }
-
-      // Update URL and filter videos
-      const urlParams = new URLSearchParams(window.location.search);
-      urlParams.set('category', category);
-      if (tag) {
-        urlParams.set('tag', tag);
-      } else {
-        urlParams.delete('tag'); 
-      }
-      history.pushState(null, '', `?${urlParams.toString()}`);
-      filterAndSortVideos();
-    }
-  });
-
-
+  filterAndSortVideos();
+  setupEventListeners();
+  setupFloatingIcons();
+});
+    
 
     
-});
+
+
+
 </script>
 
 </body>
