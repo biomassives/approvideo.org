@@ -555,29 +555,29 @@ function renderVideoDetails(video) {
 
 
     let detailsHTML = `
-        <h1 class="text-3xl font-bold mb-4 text-orange-800">${video.title}</h1>
+         <h1 class="text-3xl font-bold mb-4 text-orange-800 dark:text-blue-300">${video.title}</h1>
         <div class="aspect-w-16 aspect-h-9 mb-4">
             <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-96"></iframe>
         </div>
-        <p class="mb-4 text-gray-700">${video.description}</p>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">${video.description}</p>
         <div class="mb-4">
-            ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-orange-100 text-orange-800">${tag}</span>`).join('')}
+            ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-orange-100 text-orange-800 dark:bg-gray-700 dark:text-blue-300">${tag}</span>`).join('')}
         </div>
-        <div class="text-yellow-600 mb-2">${renderStars(video.rating)}</div>
-        <p class="text-sm opacity-75 mb-4 text-gray-600">Date: ${video.date}</p>
+        <div class="text-yellow-600 dark:text-yellow-400 mb-2">${renderStars(video.rating)}</div>
+        <p class="text-sm opacity-75 mb-4 text-gray-600 dark:text-gray-400">Date: ${video.date}</p>
 
-        <h2 class="text-2xl font-bold mb-2 text-orange-700">Materials Needed:</h2>
-        <ul class="list-disc list-inside mb-4 text-gray-700">
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Materials Needed:</h2>
+        <ul class="list-disc list-inside mb-4 text-gray-700 dark:text-gray-300">
             ${video.materials.map(material => `<li>${material}</li>`).join('')}
         </ul>
 
-        <h2 class="text-2xl font-bold mb-2 text-orange-700">Steps:</h2>
-        <ol class="list-decimal list-inside mb-4 text-gray-700">
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Steps:</h2>
+        <ol class="list-decimal list-inside mb-4 text-gray-700 dark:text-gray-300">
             ${video.steps.map(step => `<li>${step}</li>`).join('')}
         </ol>
 
-        <h2 class="text-2xl font-bold mb-2 text-orange-700">Transcript:</h2>
-        <p class="mb-4 text-gray-700">${video.transcript}</p>
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Transcript:</h2>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">${video.transcript}</p>
     `;
 
     
