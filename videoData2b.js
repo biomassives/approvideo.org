@@ -96,62 +96,65 @@ const videoData = [
                     "Apply paint or sealant for weather protection"
                 ]
             },
-            
-            {
-              "id": "6",
-              "title": "DIY Biogas Digester for Kitchen Waste",
-              "categories": ["Waste Management", "Energy Systems"],
-              "description": "Create your own biogas digester to convert kitchen waste into usable cooking gas and nutrient-rich fertilizer.",
-              "youtubeId": "KKEo4Wo-QLk",
-              "tags": ["biogas", "waste to energy", "sustainable", "DIY"],
-              "rating": 4.6,
-              "date": "2023-10-18",
-              "transcript": "This is a dummy transcript for the DIY Biogas Digester video...",
-              "materials": ["Large Plastic Drum", "PVC Pipes", "Valves", "Gas Storage Bag", "Slurry Collection Container"],
-              "steps": [
-                "Prepare the main digester drum",
-                "Install inlet and outlet pipes",
-                "Set up the gas collection system",
-                "Create a slurry outlet",
-                "Test for leaks and start the digestion process"
-              ],
-              "panels": [
-                {
-                  "title": "Prepare the Digester Drum",
-                  "content": "Choose a durable, airtight container for your digester. Clean it thoroughly to prevent contamination."
-                },
-                {
-                  "title": "Install Pipes and Valves",
-                  "content": "Ensure pipes are securely fitted and valves are functional to control the flow of gas and slurry."
-                },
-                {
-                  "title": "Set Up Gas Collection",
-                  "content": "Use a gas storage bag or another airtight container to safely collect and store the biogas."
-                },
-                {
-                  "title": "Create a Slurry Outlet",
-                  "content": "Design the slurry outlet to allow for easy removal of the nutrient-rich liquid fertilizer."
-                },
-                {
-                  "title": "Test for Leaks",
-                  "content": "Thoroughly check for leaks before adding waste to ensure safe and efficient operation."
-                },
-                {
-                  "title": "Start the Digestion Process",
-                  "content": "Maintain the right mix of food waste and water (slurry) for optimal biogas production."
-                },
-                {
-                  "title": "Use the Biogas",
-                  "content": "Use the biogas for cooking or other applications, ensuring proper ventilation and safety measures."
-                },
-                {
-                  "title": "Utilize the Slurry",
-                  "content": "Dilute the slurry with water and use it as a natural fertilizer for your garden or plants."
-                }
-              ]
-            }
+
+
+{
+  "id": "6",
+  "title": "Heather's Small Scale Biodigester",
+  "categories": ["Waste Management", "Energy Systems", "Gardening"],
+  "description": "This video is about a small scale anaerobic biodigester that can be used to produce methane gas for cooking and powering a backup electric generator. The biodigester also produces an effluent that can be used as fertilizer for an organic garden. The video shows how to set up and use the biodigester.",
+  "youtubeId": "yaxN4T6VSp8", 
+  "tags": ["biodigester", "methane", "renewable energy", "organic fertilizer", "small-scale"],
+  "rating": 4.5, // Placeholder, adjust as needed
+  "date": "2015-07-29",
+  "transcript": "This is a placeholder for the video transcript...", 
+  "materials": [
+    "Manure",
+    "Water",
+    "Kitchen waste (vegetable and fruit scraps)",
+    "Airtight container/drum",
+    "Tubing for gas collection",
+    "Inner tube for gas storage",
+    "Water filtration system (optional)",
+    "Overflow safety pipe"
+  ],
+  "steps": [
+    "Prepare a manure and water base in the biodigester.",
+    "Wait for 4 weeks for the bacteria to establish.",
+    "Add kitchen waste once a week to the biodigester.",
+    "Seal the biodigester after adding waste.",
+    "Collect methane gas produced through the tubing.",
+    "Store the gas in the inner tube.",
+    "Optionally, filter the gas through the water filtration system.",
+    "Use the purified methane for cooking or powering a generator.",
+    "Open the pipe to collect the effluent for organic gardening."
+  ],
+  "panels": [
+    {
+      "title": "Purpose of a Biodigester",
+      "content": "A biodigester breaks down organic matter in an anaerobic environment to produce biogas (primarily methane) which can be used as fuel, and a nutrient-rich liquid byproduct (effluent) that can be used as fertilizer."
+    },
+    {
+      "title": "Setting Up the Biodigester",
+      "content": "Start by creating a manure and water base to cultivate the necessary bacteria. After a few weeks, you can begin adding kitchen waste regularly."
+    },
+    {
+      "title": "Gas Collection and Utilization",
+      "content": "The biogas produced is collected through tubing and stored. It can be further purified using a water filtration system before being used for cooking or generating electricity."
+    },
+    {
+      "title": "Effluent Collection and Use",
+      "content": "The liquid effluent is rich in nutrients and can be collected and used as a natural fertilizer for your garden."
+    },
+    {
+      "title": "Safety and Maintenance",
+      "content": "Ensure the biodigester is airtight to prevent gas leaks. Include an overflow pipe for safety. Regularly monitor the gas production and effluent levels. Periodically remove and replace the digested material."
+    }
+  ]
+}
+
 ,
-    
+             
 {
     "id": "7",
     "title": "Homemade Ceramic Water Filter",
