@@ -989,20 +989,26 @@ function setupThemeToggle() {
         setupFloatingIcons();
         console.log('setupFloatingIcons called');
 
-
-
-        // Event delegation for header links
-        document.querySelector('nav .container').addEventListener('click', (e) => {
-            if (e.target.classList.contains('category-link')) {
+        // Event delegation for header links (more specific selector)
+        document.querySelector('nav').addEventListener('click', (e) => {
+            const target = e.target.closest('a'); // Find the closest ancestor <a> tag
+        
+            if (target && target.classList.contains('category-link')) {
+    
                 e.preventDefault();
-                const category = e.target.getAttribute('data-category');
+                const category = target.getAttribute('data-category');
                 history.pushState(null, '', `?category=${category}`);
+                filterAndSortVideos();
+   
+            } else if (target && target.classList.contains('drop-up-item')) {
+                e.preventDefault();
+                const category = target.getAttribute('data-category');
+                const tag = target.getAttribute('data-tag');
+                history.pushState(null, '', `?category=${category}&tag=${tag}`); 
                 filterAndSortVideos();
             }
         });
-
-
-        
+    
 });
 </script>
 
