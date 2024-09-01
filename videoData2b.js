@@ -623,4 +623,12 @@ const videoData = [
   
 ];
 
+
+
+// Remove extra whitespace and line breaks
+const cleanedVideoDataString = videoDataString.replace(/\r\n/g, '\n').replace(/\s+/g, ' ');
+
+// Parse the cleaned JSON string
+const videoData = JSON.parse(cleanedVideoDataString);
+
 export default videoData;
