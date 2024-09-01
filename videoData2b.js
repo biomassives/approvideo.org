@@ -806,72 +806,116 @@ const videoData = [
             }
 ,
             {
-  "id": "23",
-  "title": "DIY Wind Generator using Car Alternator",
-  "categories": ["Renewable Energy", "DIY", "Engineering"],
-  "description": "This video demonstrates how to build a DIY wind generator using a car alternator. The project involves modifying the alternator, constructing a frame, creating blades, and assembling the wind turbine. Despite challenges, the video provides insights into wind energy generation and potential improvements for future iterations.",
-  "youtubeId": "placeholder_id",
-  "tags": ["wind generator", "car alternator", "renewable energy", "DIY project", "sustainable power"],
-  "rating": 4.0,
-  "date": "2024-09-01",
-  "transcript": "This is a placeholder for the full video transcript...",
-  "materials": [
-    "Car alternator (24V)",
-    "PVC pipe (6 inch diameter, 44 inch length)",
-    "Metal for frame construction",
-    "Bearings",
-    "12V lithium polymer battery",
-    "Wires and connectors",
-    "Tools (impact wrench, screwdrivers, etc.)"
-  ],
-  "steps": [
-    "Disassemble the car alternator and remove unnecessary parts",
-    "Modify the alternator by bypassing the voltage regulator",
-    "Construct a frame to hold the alternator and other components",
-    "Create a furling tail mechanism for wind direction alignment",
-    "Cut and shape PVC pipe into turbine blades",
-    "Assemble all components into a complete wind generator",
-    "Install the wind generator on a suitable elevated location"
-  ],
-  "panels": [
-    {
-      "title": "Intro",
-      "content": "Introduction to the DIY wind generator project using a car alternator."
-    },
-    {
-      "title": "Removing Alternator",
-      "content": "Process of removing unnecessary parts from the car alternator."
-    },
-    {
-      "title": "Disassembly",
-      "content": "Detailed disassembly of the alternator and explanation of its components."
-    },
-    {
-      "title": "Frame",
-      "content": "Construction of the frame to hold the alternator and other parts."
-    },
-    {
-      "title": "Tail",
-      "content": "Creation of a furling tail mechanism for wind direction alignment."
-    },
-    {
-      "title": "Dry Parts",
-      "content": "Allowing constructed parts to dry and set properly."
-    },
-    {
-      "title": "Blades",
-      "content": "Process of creating turbine blades from PVC pipes."
-    },
-    {
-      "title": "Roof",
-      "content": "Installation of the wind generator on the roof."
-    },
-    {
-      "title": "Conclusion",
-      "content": "Final thoughts, challenges faced, and potential improvements for the project."
-    }
-  ]
-}
+              "id": "23",
+              "title": "DIY Wind Generator using Car Alternator",
+              "categories": ["Renewable Energy", "DIY", "Engineering"],
+              "description": "This video demonstrates how to build a DIY wind generator using a car alternator. The project involves modifying the alternator, constructing a frame, creating blades, and assembling the wind turbine. Despite challenges, the video provides insights into wind energy generation and potential improvements for future iterations.",
+              "youtubeId": "placeholder_id",
+              "tags": ["wind generator", "car alternator", "renewable energy", "DIY project", "sustainable power"],
+              "rating": 4.0,
+              "date": "2024-09-01",
+              "transcript": "This is a placeholder for the full video transcript...",
+              "materials": [
+                "Car alternator (24V)",
+                "PVC pipe (6 inch diameter, 44 inch length)",
+                "Metal for frame construction",
+                "Bearings",
+                "12V lithium polymer battery",
+                "Wires and connectors",
+                "Tools (impact wrench, screwdrivers, etc.)"
+              ],
+              "steps": [
+                "Disassemble the car alternator and remove unnecessary parts",
+                "Modify the alternator by bypassing the voltage regulator",
+                "Construct a frame to hold the alternator and other components",
+                "Create a furling tail mechanism for wind direction alignment",
+                "Cut and shape PVC pipe into turbine blades",
+                "Assemble all components into a complete wind generator",
+                "Install the wind generator on a suitable elevated location"
+              ],
+              "panels": [
+                {
+                  "title": "Intro",
+                  "content": "Introduction to the DIY wind generator project using a car alternator."
+                },
+                {
+                  "title": "Removing Alternator",
+                  "content": "Process of removing unnecessary parts from the car alternator."
+                },
+                {
+                  "title": "Disassembly",
+                  "content": "Detailed disassembly of the alternator and explanation of its components."
+                },
+                {
+                  "title": "Frame",
+                  "content": "Construction of the frame to hold the alternator and other parts."
+                },
+                {
+                  "title": "Tail",
+                  "content": "Creation of a furling tail mechanism for wind direction alignment."
+                },
+                {
+                  "title": "Dry Parts",
+                  "content": "Allowing constructed parts to dry and set properly."
+                },
+                {
+                  "title": "Blades",
+                  "content": "Process of creating turbine blades from PVC pipes."
+                },
+                {
+                  "title": "Roof",
+                  "content": "Installation of the wind generator on the roof."
+                },
+                {
+                  "title": "Conclusion",
+                  "content": "Final thoughts, challenges faced, and potential improvements for the project."
+                }
+              ]
+            },
+                        
+            {
+                "id": "24",
+                "title": "Innovative Fog Harvesting: Clean Water Solution for Arid Regions",
+                "categories": ["Water Conservation", "Sustainability", "Technology"],
+                "description": "Discover how fog harvesting is becoming a clean and effective way to collect water in water-scarce locations like Peru, Bolivia, and Morocco. Learn about the latest innovations in fog water collection and purification systems.",
+                "youtubeId": "exampleID123",
+                "tags": ["fog harvesting", "water conservation", "sustainable technology", "arid regions", "water purification"],
+                "rating": 4.7,
+                "date": "2023-09-19",
+                "transcript": "In some countries like Peru, Bolivia and Morocco, rainfall and spring water are scarce, making fog a vital water source. That's right, fog. Residents in these regions set up nets to capture droplets for daily use. This method yields significant water, collecting hundreds of litres daily from small net areas. But fog water contains atmospheric pollution, and requires treatment before use. That's the problem researchers are tackling. They've developed a fog water collection system that broke down 94% of added compounds in lab tests. The innovation involves metal wire structures coated with specialized polymers and titanium dioxide. As water trickles down the structure into a container, it's collected and cleaned simultaneously. The device is remarkably low maintenance after installation, needing only regular UV exposure. Just half an hour of sunlight can sustain the cleansing function for a full 24 hours. Researchers hope this invention will become a widely used tool to alleviate water scarcity.",
+                "materials": [
+                    "Metal wire structures",
+                    "Specialized polymers",
+                    "Titanium dioxide coating",
+                    "Collection container",
+                    "UV light source (e.g., sunlight)"
+                ],
+                "steps": [
+                    "Set up metal wire structures in fog-prone areas",
+                    "Apply specialized polymer and titanium dioxide coating to the structures",
+                    "Position collection containers beneath the structures",
+                    "Allow fog to condense on the structures and trickle down into containers",
+                    "Ensure regular UV exposure (e.g., 30 minutes of sunlight daily) for continuous purification"
+                ],
+                "panels": [
+                    {
+                        "title": "Fog Harvesting Basics",
+                        "content": "Fog harvesting involves setting up nets or structures to capture water droplets from fog in areas where traditional water sources are scarce. This method can collect hundreds of liters of water daily from relatively small collection areas."
+                    },
+                    {
+                        "title": "Innovative Purification System",
+                        "content": "Researchers have developed a fog water collection system that not only gathers water but also purifies it. The system uses metal wire structures coated with specialized polymers and titanium dioxide, breaking down 94% of added compounds in lab tests."
+                    },
+                    {
+                        "title": "Low Maintenance Operation",
+                        "content": "Once installed, the fog harvesting system requires minimal maintenance. It only needs regular UV exposure, which can be provided by natural sunlight. Just 30 minutes of sunlight exposure can maintain the purification function for 24 hours."
+                    },
+                    {
+                        "title": "Potential Impact",
+                        "content": "This innovative fog harvesting technology has the potential to become a widely used tool in addressing water scarcity in arid regions. It offers a sustainable and efficient method of collecting and purifying water in areas where traditional water sources are limited."
+                    }
+                ]
+            }
 
   
 ];
