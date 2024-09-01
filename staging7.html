@@ -286,7 +286,6 @@ function slugify(text) {
         .replace(/^-+/, '')
         .replace(/-+$/, '');
 }
-
 function renderVideo(video) {
     const mainCategory = video.categories[0];
     const mainTag = video.tags[0];
@@ -300,7 +299,7 @@ function renderVideo(video) {
             </div>
             <p class="mb-2">${video.description}</p>
             <div class="flex flex-wrap mb-2">
-                ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">${tag}</span>`).join('')}
+                ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300" onclick="filterByTag('${tag}')">${tag}</span>`).join('')}
             </div>
             <div class="text-yellow-400">${renderStars(video.rating)}</div>
             <div class="text-sm opacity-75">Date: ${video.date}</div>
@@ -309,6 +308,14 @@ function renderVideo(video) {
     `;
 }
 
+function filterByTag(tag) {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('tag', tag);
+    history.pushState(null, '', `?${urlParams.toString()}`);
+    filterAndSortVideos();
+}
+    
+    
 function renderVideoDetails(video) {
     let detailsHTML = `
         <h1 class="text-3xl font-bold mb-4">${video.title}</h1>
@@ -382,12 +389,14 @@ function filterAndSortVideos() {
     const searchTerm = document.getElementById('search').value.toLowerCase();
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
+    const tag = urlParams.get('tag');
 
     let filteredVideos = window.videoData.filter(video => 
         (category ? video.categories.includes(category) : true) &&
+        (tag ? video.tags.includes(tag) : true) &&
         (video.title.toLowerCase().includes(searchTerm) ||
         video.description.toLowerCase().includes(searchTerm) ||
-        video.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
+        video.tags.some(t => t.toLowerCase().includes(searchTerm)))
     );
 
     filteredVideos.sort((a, b) => b.rating - a.rating);
