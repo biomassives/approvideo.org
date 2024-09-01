@@ -70,9 +70,10 @@
                 overflow: hidden;
             }
     .header {
-        min-height: 200px; /* Adjust as needed */
-        position: relative;
-        overflow: visible;
+            background: linear-gradient(45deg, rgba(76, 175, 80, 0.8), rgba(33, 150, 243, 0.8));
+            min-height: 200px; /* Adjust as needed */
+            position: relative;
+            overflow: visible;
     }
 
         
@@ -85,37 +86,20 @@
         pointer-events: none;
     }
 
-.floating-icon {
-    font-size: 2rem;
+ .floating-icon {
+    position: absolute;
+    font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.7);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease-out;
 }
-
-    .floating-icon:nth-child(1) { left: 20%; top: 20%; animation-delay: 0s; }
-    .floating-icon:nth-child(2) { left: 50%; top: 40%; animation-delay: -5s; }
-    .floating-icon:nth-child(3) { left: 70%; top: 30%; animation-delay: -7s; }
-    .floating-icon:nth-child(4) { left: 80%; top: 60%; animation-delay: -3s; }
-
-    @keyframes float {
-        0%, 100% { transform: translateY(0) rotate(0deg); }
-        50% { transform: translateY(-20px) rotate(10deg); }
-    }
 
 @keyframes float {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(10px, -10px) rotate(5deg); }
+    50% { transform: translate(0, -20px) rotate(0deg); }
+    75% { transform: translate(-10px, -10px) rotate(-5deg); }
 }
-
-.floating-icon {
-    animation: float 6s ease-in-out infinite;
-}
-
-.floating-icon:nth-child(1) { animation-delay: 0s; }
-.floating-icon:nth-child(2) { animation-delay: -1.5s; }
-.floating-icon:nth-child(3) { animation-delay: -3s; }
-.floating-icon:nth-child(4) { animation-delay: -4.5s; }
-
         
     .floating-icon {
         transform-style: preserve-3d;
@@ -248,12 +232,26 @@
         <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
     </button>
 
-<div class="header relative overflow-hidden">
     <div class="floating-icons">
         <i class="fas fa-tint fa-3x floating-icon" style="--i:1;"></i>
         <i class="fas fa-recycle fa-3x floating-icon" style="--i:2;"></i>
         <i class="fas fa-solar-panel fa-3x floating-icon" style="--i:3;"></i>
         <i class="fas fa-heartbeat fa-3x floating-icon" style="--i:4;"></i>
+    </div>
+
+    
+<div class="header relative overflow-hidden">
+    <div class="floating-icons">
+ <div class="floating-icons">
+        <i class="fas fa-tint fa-2x floating-icon" style="--i:1;"></i>
+        <i class="fas fa-recycle fa-2x floating-icon" style="--i:2;"></i>
+        <i class="fas fa-solar-panel fa-2x floating-icon" style="--i:3;"></i>
+        <i class="fas fa-heartbeat fa-2x floating-icon" style="--i:4;"></i>
+        <i class="fas fa-leaf fa-2x floating-icon" style="--i:5;"></i>
+        <i class="fas fa-seedling fa-2x floating-icon" style="--i:6;"></i>
+        <i class="fas fa-water fa-2x floating-icon" style="--i:7;"></i>
+        <i class="fas fa-wind fa-2x floating-icon" style="--i:8;"></i>
+    </div>
     </div>
     ApproVideo
     <div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
@@ -313,29 +311,32 @@ function setupFloatingIcons() {
     const header = document.querySelector('.header');
     const icons = document.querySelectorAll('.floating-icon');
     
-    console.log('Setting up floating icons');
-    console.log('Header:', header);
-    console.log('Icons:', icons);
+    icons.forEach((icon, index) => {
+        icon.style.left = `${Math.random() * 100}%`;
+        icon.style.top = `${Math.random() * 100}%`;
+        
+        setTimeout(() => {
+            icon.classList.add('active');
+        }, 1400 + (index * 100)); // Staggered delay starting at 1.4 seconds
+    });
 
     header.addEventListener('mousemove', (e) => {
-        console.log('Mouse move detected');
         const { left, top, width, height } = header.getBoundingClientRect();
         const x = (e.clientX - left) / width - 0.5;
         const y = (e.clientY - top) / height - 0.5;
 
         icons.forEach((icon) => {
-            const speed = parseFloat(icon.style.getPropertyValue('--i')) * 10;
+            const speed = parseFloat(icon.style.getPropertyValue('--i')) * 2;
             const rotateX = y * speed;
             const rotateY = -x * speed;
-            icon.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            console.log('Icon transformed:', icon, icon.style.transform);
+            const translateZ = Math.abs(x * y) * 50;
+            icon.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
         });
     });
 
     header.addEventListener('mouseleave', () => {
-        console.log('Mouse left header');
         icons.forEach((icon) => {
-            icon.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            icon.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
         });
     });
 }
@@ -575,17 +576,17 @@ function setupThemeToggle() {
     themeToggleBtn.addEventListener('click', toggleTheme);
     prefersDarkScheme.addListener((e) => setTheme(e.matches));
 }
-
-// Initial setup
-document.addEventListener('DOMContentLoaded', () => {
-
-    console.log('DOM fully loaded');
-    console.log(window.videoData);
-    filterAndSortVideos();
-    setupEventListeners();
-    console.log('Calling setupFloatingIcons');
-    setupFloatingIcons();
-    console.log('setupFloatingIcons called');
+    
+    // Initial setup
+    document.addEventListener('DOMContentLoaded', () => {
+    
+        console.log('DOM fully loaded');
+        console.log(window.videoData);
+        filterAndSortVideos();
+        setupEventListeners();
+        console.log('Calling setupFloatingIcons');
+        setupFloatingIcons();
+        console.log('setupFloatingIcons called');
  
 });
 </script>
