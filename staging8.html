@@ -1006,7 +1006,38 @@ function setupThemeToggle() {
         console.log('Calling setupFloatingIcons');
         setupFloatingIcons();
         console.log('setupFloatingIcons called');
- 
+
+  // Single event listener on the header for both main categories and dropdown items
+  document.querySelector('header').addEventListener('click', (e) => {
+    const target = e.target.closest('a');
+
+    if (target) {
+      e.preventDefault();
+
+      let category, tag;
+      if (target.classList.contains('category-link')) {
+        category = target.getAttribute('data-category');
+      } else if (target.classList.contains('drop-up-item')) {
+        category = target.getAttribute('data-category');
+        tag = target.getAttribute('data-tag');
+      }
+
+      // Update URL and filter videos
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.set('category', category);
+      if (tag) {
+        urlParams.set('tag', tag);
+      } else {
+        urlParams.delete('tag'); 
+      }
+      history.pushState(null, '', `?${urlParams.toString()}`);
+      filterAndSortVideos();
+    }
+  });
+
+
+
+    
 });
 </script>
 
