@@ -276,6 +276,10 @@ function setupEventListeners() {
         link.addEventListener('click', handleCategoryClick);
     });
     setupThemeToggle();
+
+    // Handle initial page load with URL parameters
+    filterAndSortVideos();
+    
 }
 
 function slugify(text) {
