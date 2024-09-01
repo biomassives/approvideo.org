@@ -209,26 +209,8 @@ const videoData = [
                                 "Assemble the filtration system"
                             ]
                         },
-                        {
-                            "id": "8",
-                            "title": "alternatives to Pedal-Powered Generators..",
-                            "categories": ["Energy Systems", "Health"],
-                            "description": "emergency situations or off-grid living.",
-                            "youtubeId": "fBKlXDx6txo",
-                            "tags": ["pedal power", "human energy", "sustainable", "DIY generator"],
-                            "rating": 4.5,
-                            "date": "2024-01-05",
-                            "transcript": "This is a dummy transcript for the Pedal-Powered Generator video...",
-                            "materials": ["Bicycle", "DC Motor", "Belt Drive", "Voltage Regulator", "Battery", "Inverter"],
-                            "steps": [
-                                "Mount the bicycle on a stable frame",
-                                "Attach the DC motor to the frame",
-                                "Connect the motor to the bicycle wheel with a belt",
-                                "Install the voltage regulator and battery",
-                                "Add an inverter for AC output",
-                                "Test and calibrate the system"
-                            ]
-                        },
+
+            
                         {
                             "id": "9",
                             "title": "Car Alternator Windmill for Off-Grid Power",
