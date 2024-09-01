@@ -78,12 +78,13 @@
         height: 100%;
         pointer-events: none;
     }
-    .floating-icon {
-        position: absolute;
-        display: block;
-        animation: float 15s infinite;
-        opacity: 0.7;
-    }
+
+.floating-icon {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
     .floating-icon:nth-child(1) { left: 20%; top: 20%; animation-delay: 0s; }
     .floating-icon:nth-child(2) { left: 50%; top: 40%; animation-delay: -5s; }
     .floating-icon:nth-child(3) { left: 70%; top: 30%; animation-delay: -7s; }
@@ -287,8 +288,13 @@ function renderStars(rating) {
 function setupFloatingIcons() {
     const header = document.querySelector('.header');
     const icons = document.querySelectorAll('.floating-icon');
+    
+    console.log('Setting up floating icons');
+    console.log('Header:', header);
+    console.log('Icons:', icons);
 
     header.addEventListener('mousemove', (e) => {
+        console.log('Mouse move detected');
         const { left, top, width, height } = header.getBoundingClientRect();
         const x = (e.clientX - left) / width - 0.5;
         const y = (e.clientY - top) / height - 0.5;
@@ -298,10 +304,12 @@ function setupFloatingIcons() {
             const rotateX = y * speed;
             const rotateY = -x * speed;
             icon.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            console.log('Icon transformed:', icon, icon.style.transform);
         });
     });
 
     header.addEventListener('mouseleave', () => {
+        console.log('Mouse left header');
         icons.forEach((icon) => {
             icon.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
         });
@@ -546,10 +554,15 @@ function setupThemeToggle() {
 
 // Initial setup
 document.addEventListener('DOMContentLoaded', () => {
+
+    console.log('DOM fully loaded');
     console.log(window.videoData);
     filterAndSortVideos();
     setupEventListeners();
+    console.log('Calling setupFloatingIcons');
     setupFloatingIcons();
+    console.log('setupFloatingIcons called');
+ 
 });
 </script>
 
