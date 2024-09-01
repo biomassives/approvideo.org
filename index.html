@@ -6,7 +6,7 @@
     <title>ApproVideo Aug 2024</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module">
-        import videoData from './videoData2.js';
+        import videoData from './videoData2b.js';
         window.videoData = videoData;
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -58,7 +58,77 @@
             body.dark .info-panel p {
                 color: #e2e8f0;
             }
-            .header {
+
+            #video-detail {
+                background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            }
+            
+            #video-detail .relative {
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: 20px;
+                overflow: hidden;
+                position: relative;
+            }
+            
+            #video-detail .relative::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: 
+                    radial-gradient(circle at 20% 20%, #ffecd2 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, #fcb69f 0%, transparent 50%);
+                z-index: -1;
+            }
+            
+            #video-content {
+                position: relative;
+                z-index: 1;
+                padding: 2rem;
+                color: #333;
+            }
+            
+            .curved-line {
+                position: absolute;
+                border: none;
+                height: 50px;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+            }
+            
+            .curved-line:nth-child(1) {
+                top: -25px;
+                left: -25px;
+                right: -25px;
+                transform: rotate(5deg);
+            }
+            
+            .curved-line:nth-child(2) {
+                bottom: -25px;
+                left: -25px;
+                right: -25px;
+                transform: rotate(-5deg);
+            }
+            
+            .curved-line:nth-child(3) {
+                top: 30%;
+                left: -50px;
+                width: calc(100% + 100px);
+                transform: rotate(-10deg);
+            }
+            
+            .curved-line:nth-child(4) {
+                top: 60%;
+                right: -50px;
+                width: calc(100% + 100px);
+                transform: rotate(10deg);
+            }
+
+
+        
+            .notheader {
                 background: linear-gradient(45deg, #4CAF50, #2196F3);
                 padding: 20px;
                 text-align: center;
@@ -66,20 +136,118 @@
                 font-size: 2.5rem;
                 font-weight: bold;
                 text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+                position: relative;
+                overflow: hidden;
             }
+            .header {
+                background: linear-gradient(45deg, rgba(76, 175, 80, 0.8), rgba(33, 150, 243, 0.8));
+                min-height: 200px;
+                position: relative;
+                overflow: hidden;
+                padding: 20px;
+                text-align: center;
+                color: white;
+                font-size: 2.5rem;
+                font-weight: bold;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            }
+            
+            .header::before {
+                content: '\f043 \f1b8 \f5d7 \f21e \f1e6 \f06c \f773 \f72e';
+                font-family: 'Font Awesome 5 Free';
+                font-weight: 900;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                font-size: 4rem;
+                opacity: 0.1;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items: center;
+                pointer-events: none;
+            }
+            
             .subheader {
                 font-size: 1.2rem;
                 margin-top: 10px;
             }
+
+
+            .floating-icons {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 10;
+            }
+            
+            .floating-icon {
+                position: absolute;
+                font-size: 1.5rem;
+                color: rgba(255, 255, 255, 0.7);
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+                transition: transform 0.3s ease-out;
+                transform-style: preserve-3d;
+                opacity: 0;
+            }
+            
+            .floating-icon.active {
+                opacity: 1;
+                animation: float 10s infinite ease-in-out;
+            }
+            
+            .floating-icon:nth-child(even) {
+                animation-duration: 12s;
+            }
+            
+            .floating-icon:nth-child(3n) {
+                animation-duration: 15s;
+            }
+            
+            @keyframes float {
+                0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                25% { transform: translate(10px, -10px) rotate(5deg); }
+                50% { transform: translate(0, -20px) rotate(0deg); }
+                75% { transform: translate(-10px, -10px) rotate(-5deg); }
+            }
+            
+            .floating-icon::before,
+            .floating-icon::after {
+                content: '';
+                position: absolute;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            
+            .floating-icon::before {
+                width: 100%;
+                height: 100%;
+                transform: translateZ(-10px);
+            }
+            
+            .floating-icon::after {
+                width: 10px;
+                height: 100%;
+                left: 100%;
+                transform: rotateY(90deg);
+                transform-origin: left;
+            }
+
+
+
+
+    
             .video-card {
                 background-color: var(--card-bg-light);
                 color: var(--card-text-light);
                 transition: background-color 0.3s, color 0.3s;
             }
-          /*  #video-detail {
-                color: var(--card-text-light);
-                transition: background-color 0.3s, color 0.3s;
-            } */
+       
             .theme-toggle {
                 position: fixed;
                 top: 20px;
@@ -158,18 +326,38 @@
                 background-color: #ccc;
                 cursor: not-allowed;
             }
+
+        
     </style>
-</head>
-
-
-    
+</head>  
 <body>
+    <div class="embossed-background"></div>
+
     <button id="theme-toggle" class="theme-toggle text-2xl">
         <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
         <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
     </button>
 
-    <div class="header">
+    <div class="floating-icons">
+        <i class="fas fa-tint fa-3x floating-icon" style="--i:1;"></i>
+        <i class="fas fa-recycle fa-3x floating-icon" style="--i:2;"></i>
+        <i class="fas fa-solar-panel fa-3x floating-icon" style="--i:3;"></i>
+        <i class="fas fa-heartbeat fa-3x floating-icon" style="--i:4;"></i>
+    </div>
+        
+    <div class="header relative overflow-hidden">
+        <div class="floating-icons">
+     <div class="floating-icons">
+            <i class="fas fa-tint fa-2x floating-icon" style="--i:1;"></i>
+            <i class="fas fa-recycle fa-2x floating-icon" style="--i:2;"></i>
+            <i class="fas fa-solar-panel fa-2x floating-icon" style="--i:3;"></i>
+            <i class="fas fa-heartbeat fa-2x floating-icon" style="--i:4;"></i>
+            <i class="fas fa-leaf fa-2x floating-icon" style="--i:5;"></i>
+            <i class="fas fa-seedling fa-2x floating-icon" style="--i:6;"></i>
+            <i class="fas fa-water fa-2x floating-icon" style="--i:7;"></i>
+            <i class="fas fa-wind fa-2x floating-icon" style="--i:8;"></i>
+        </div>
+        </div>
         ApproVideo
         <div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
     </div>
@@ -201,16 +389,21 @@
         <div id="categories" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </div>
 
-    <div id="video-detail" class="fixed inset-0 bg-opacity-50 overflow-y-auto h-full w-full hidden">
-        <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md light:text-black bg-black dark:bg-white-800">
-            <div id="video-content"></div>
-            <div class="text-center mt-4">
-                <button id="close-detail" class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
-                    Close
-                </button>
-            </div>
+   <div id="video-detail" class="fixed inset-0 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+    <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md">
+        <div class="curved-line"></div>
+        <div class="curved-line"></div>
+        <div class="curved-line"></div>
+        <div class="curved-line"></div>
+        <div id="video-content"></div>
+        <div class="text-center mt-4">
+            <button id="close-detail" class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                Close
+            </button>
         </div>
+    </div>
 </div>
+
 
     
 
@@ -222,6 +415,44 @@ function renderStars(rating) {
     return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
 }
 
+
+function setupFloatingIcons() {
+    const header = document.querySelector('.header');
+    const icons = document.querySelectorAll('.floating-icon');
+    
+    icons.forEach((icon, index) => {
+        icon.style.left = `${Math.random() * 100}%`;
+        icon.style.top = `${Math.random() * 100}%`;
+        
+        setTimeout(() => {
+            icon.classList.add('active');
+        }, 1400 + (index * 100)); // Staggered delay starting at 1.4 seconds
+    });
+
+    header.addEventListener('mousemove', (e) => {
+        const { left, top, width, height } = header.getBoundingClientRect();
+        const x = (e.clientX - left) / width - 0.5;
+        const y = (e.clientY - top) / height - 0.5;
+
+        icons.forEach((icon) => {
+            const speed = parseFloat(icon.style.getPropertyValue('--i')) * 2;
+            const rotateX = y * speed;
+            const rotateY = -x * speed;
+            const translateZ = Math.abs(x * y) * 50;
+            icon.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+        });
+    });
+
+    header.addEventListener('mouseleave', () => {
+        icons.forEach((icon) => {
+            icon.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+        });
+    });
+}
+
+
+
+  
 function setupVideoDetailListeners() {
     document.querySelectorAll('.video-detail-link').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -276,6 +507,10 @@ function setupEventListeners() {
         link.addEventListener('click', handleCategoryClick);
     });
     setupThemeToggle();
+
+    // Handle initial page load with URL parameters
+    filterAndSortVideos();
+    
 }
 
 function slugify(text) {
@@ -286,7 +521,6 @@ function slugify(text) {
         .replace(/^-+/, '')
         .replace(/-+$/, '');
 }
-
 function renderVideo(video) {
     const mainCategory = video.categories[0];
     const mainTag = video.tags[0];
@@ -300,7 +534,7 @@ function renderVideo(video) {
             </div>
             <p class="mb-2">${video.description}</p>
             <div class="flex flex-wrap mb-2">
-                ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">${tag}</span>`).join('')}
+                ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300" onclick="filterByTag('${tag}')">${tag}</span>`).join('')}
             </div>
             <div class="text-yellow-400">${renderStars(video.rating)}</div>
             <div class="text-sm opacity-75">Date: ${video.date}</div>
@@ -309,32 +543,43 @@ function renderVideo(video) {
     `;
 }
 
+function filterByTag(tag) {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('tag', tag);
+    history.pushState(null, '', `?${urlParams.toString()}`);
+    filterAndSortVideos();
+}
+    
+    
 function renderVideoDetails(video) {
+
+
     let detailsHTML = `
-        <h1 class="text-3xl font-bold mb-4">${video.title}</h1>
+         <h1 class="text-3xl font-bold mb-4 text-orange-800 dark:text-blue-300">${video.title}</h1>
         <div class="aspect-w-16 aspect-h-9 mb-4">
             <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-96"></iframe>
         </div>
-        <p class="mb-4">${video.description}</p>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">${video.description}</p>
         <div class="mb-4">
-            ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">${tag}</span>`).join('')}
+            ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-orange-100 text-orange-800 dark:bg-gray-700 dark:text-blue-300">${tag}</span>`).join('')}
         </div>
-        <div class="text-yellow-400 mb-2">${renderStars(video.rating)}</div>
-        <p class="text-sm opacity-75 mb-4">Date: ${video.date}</p>
+        <div class="text-yellow-600 dark:text-yellow-400 mb-2">${renderStars(video.rating)}</div>
+        <p class="text-sm opacity-75 mb-4 text-gray-600 dark:text-gray-400">Date: ${video.date}</p>
 
-        <h2 class="text-2xl font-bold mb-2">Materials Needed:</h2>
-        <ul class="list-disc list-inside mb-4">
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Materials Needed:</h2>
+        <ul class="list-disc list-inside mb-4 text-gray-700 dark:text-gray-300">
             ${video.materials.map(material => `<li>${material}</li>`).join('')}
         </ul>
 
-        <h2 class="text-2xl font-bold mb-2">Steps:</h2>
-        <ol class="list-decimal list-inside mb-4">
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Steps:</h2>
+        <ol class="list-decimal list-inside mb-4 text-gray-700 dark:text-gray-300">
             ${video.steps.map(step => `<li>${step}</li>`).join('')}
         </ol>
 
-        <h2 class="text-2xl font-bold mb-2">Transcript:</h2>
-        <p class="mb-4">${video.transcript}</p>
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Transcript:</h2>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">${video.transcript}</p>
     `;
+
 
     if (video.panels && video.panels.length > 0) {
         detailsHTML += `
@@ -382,12 +627,14 @@ function filterAndSortVideos() {
     const searchTerm = document.getElementById('search').value.toLowerCase();
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
+    const tag = urlParams.get('tag');
 
     let filteredVideos = window.videoData.filter(video => 
         (category ? video.categories.includes(category) : true) &&
+        (tag ? video.tags.includes(tag) : true) &&
         (video.title.toLowerCase().includes(searchTerm) ||
         video.description.toLowerCase().includes(searchTerm) ||
-        video.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
+        video.tags.some(t => t.toLowerCase().includes(searchTerm)))
     );
 
     filteredVideos.sort((a, b) => b.rating - a.rating);
@@ -441,16 +688,20 @@ function setupThemeToggle() {
     themeToggleBtn.addEventListener('click', toggleTheme);
     prefersDarkScheme.addListener((e) => setTheme(e.matches));
 }
-
-// Initial setup
-document.addEventListener('DOMContentLoaded', () => {
-    console.log(window.videoData);
-    filterAndSortVideos();
-    setupEventListeners();
+    
+    // Initial setup
+    document.addEventListener('DOMContentLoaded', () => {
+    
+        console.log('DOM fully loaded');
+        console.log(window.videoData);
+        filterAndSortVideos();
+        setupEventListeners();
+        console.log('Calling setupFloatingIcons');
+        setupFloatingIcons();
+        console.log('setupFloatingIcons called');
+ 
 });
 </script>
 
-
-    
 </body>
 </html>
