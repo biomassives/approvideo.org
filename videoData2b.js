@@ -634,7 +634,56 @@ const videoData = [
         }
     ]
 }        
-            
+      ,
+{
+  "id": "20",
+  "title": "Converting a Car Alternator for Wind Power",
+  "categories": ["Energy Systems", "DIY"],
+  "description": "This video demonstrates how to modify a car alternator to generate electricity from wind power. It dispels the myth that car alternators are unsuitable for wind turbines, explaining the similarities to large-scale wind turbines and highlighting the importance of understanding alternator regulation for successful conversion.",
+  "youtubeId": "SpjdZvAqJLA",
+  "tags": ["car alternator wind turbine", "car alternator wind generator", "how to build and modify", "free energy"],
+  "rating": 4.5, // Placeholder rating, adjust as needed
+  "date": "2024-09-01", // Assuming today's date
+  "transcript": "This is a placeholder for the video transcript...", 
+  "materials": [
+    "Car Alternator",
+    "Tools for modification (wrenches, screwdrivers, etc.)",
+    "Materials for wind turbine construction (blades, tower, etc.)"
+  ],
+  "steps": [
+    "Assess the car alternator and identify its regulation type.",
+    "Modify the alternator as needed to make it suitable for wind power generation.",
+    "Construct the wind turbine structure, including blades and tower.",
+    "Connect the modified alternator to the wind turbine.",
+    "Test the system and make adjustments as necessary."
+  ],
+  "panels": [
+    {
+      "title": "Understanding Car Alternators",
+      "content": "Explains the basic working principle of car alternators and how they generate electricity using electromagnets."
+    },
+    {
+      "title": "Dispelling the Myth",
+      "content": "Addresses the misconception that car alternators can't be used for wind power, drawing parallels to large wind turbines."
+    },
+    {
+      "title": "Alternator Regulation",
+      "content": "Highlights the importance of understanding alternator regulation and how it affects wind power conversion."
+    },
+    {
+      "title": "Modification Process",
+      "content": "Provides step-by-step instructions on how to modify a car alternator for wind power use."
+    },
+    {
+      "title": "Wind Turbine Construction",
+      "content": "Offers guidance on building the wind turbine structure, including blades and tower, to harness wind energy effectively."
+    },
+    {
+      "title": "Connecting and Testing",
+      "content": "Demonstrates how to connect the modified alternator to the wind turbine and test the entire system."
+    }
+  ]
+}
 
 
 
