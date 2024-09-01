@@ -761,6 +761,117 @@ const videoData = [
                                     }
                                     ]
                                     }
+            ,
+                        {
+              "id": "22",
+              "title": "Brown live Gold - The Black Soldier Fly agripreneur",
+              "categories": ["Waste Management", "Animal Husbandry", "Sustainable Agriculture"],
+              "description": "This video showcases Roseanne Mwangi, a serial agri-preneur, and her innovative venture using Black Soldier Fly (BSF) to create a sustainable and circular economy. The video details how she utilizes potato peelings from the hotel industry to feed BSF larvae. The protein-rich larvae are then used as feed for pigs, poultry, and fish. The waste from the larvae further transforms into organic manure for farms, completing the circular system. The end products of this cycle - pork, fish, and poultry - ultimately reach the consumer's table, exemplifying a truly sustainable model.",
+              "youtubeId": "yaxN4T6VSp8", // Replace with the actual YouTube ID
+              "tags": ["Black Soldier Fly", "agripreneur", "circular economy", "sustainable agriculture", "organic manure", "animal feed"],
+              "rating": 4.5, // Placeholder rating, adjust as needed
+              "date": "2020-04-24",
+              "transcript": "This is a placeholder for the video transcript...",
+              "materials": [
+                "Potato peelings (from hotel industry)",
+                "Black Soldier Fly larvae",
+                "Pigs",
+                "Poultry (optional)",
+                "Fish (optional)"
+              ],
+              "steps": [
+                "Collect potato peelings from the hotel industry.",
+                "Use the peelings to feed Black Soldier Fly larvae.",
+                "Feed the protein-rich larvae to pigs, poultry, and fish.",
+                "Utilize the larvae waste as organic manure for farms."
+              ],
+              "panels": [
+                {
+                  "title": "Introduction",
+                  "content": "Meet Roseanne Mwangi and her Black Soldier Fly venture aimed at creating a sustainable and circular economy."
+                },
+                {
+                  "title": "The Process",
+                  "content": "Details the steps involved in the circular system: potato peelings feed BSF larvae, larvae feed animals, larvae waste becomes manure."
+                },
+                {
+                  "title": "Benefits",
+                  "content": "Highlights the advantages of this model, including waste reduction, sustainable animal feed production, and organic manure generation."
+                },
+                {
+                  "title": "Circular Economy",
+                  "content": "Emphasizes how the system exemplifies a circular economy where waste is minimized and resources are reused."
+                }
+              ]
+            }
+,
+            {
+  "id": "23",
+  "title": "DIY Wind Generator using Car Alternator",
+  "categories": ["Renewable Energy", "DIY", "Engineering"],
+  "description": "This video demonstrates how to build a DIY wind generator using a car alternator. The project involves modifying the alternator, constructing a frame, creating blades, and assembling the wind turbine. Despite challenges, the video provides insights into wind energy generation and potential improvements for future iterations.",
+  "youtubeId": "placeholder_id",
+  "tags": ["wind generator", "car alternator", "renewable energy", "DIY project", "sustainable power"],
+  "rating": 4.0,
+  "date": "2024-09-01",
+  "transcript": "This is a placeholder for the full video transcript...",
+  "materials": [
+    "Car alternator (24V)",
+    "PVC pipe (6 inch diameter, 44 inch length)",
+    "Metal for frame construction",
+    "Bearings",
+    "12V lithium polymer battery",
+    "Wires and connectors",
+    "Tools (impact wrench, screwdrivers, etc.)"
+  ],
+  "steps": [
+    "Disassemble the car alternator and remove unnecessary parts",
+    "Modify the alternator by bypassing the voltage regulator",
+    "Construct a frame to hold the alternator and other components",
+    "Create a furling tail mechanism for wind direction alignment",
+    "Cut and shape PVC pipe into turbine blades",
+    "Assemble all components into a complete wind generator",
+    "Install the wind generator on a suitable elevated location"
+  ],
+  "panels": [
+    {
+      "title": "Intro",
+      "content": "Introduction to the DIY wind generator project using a car alternator."
+    },
+    {
+      "title": "Removing Alternator",
+      "content": "Process of removing unnecessary parts from the car alternator."
+    },
+    {
+      "title": "Disassembly",
+      "content": "Detailed disassembly of the alternator and explanation of its components."
+    },
+    {
+      "title": "Frame",
+      "content": "Construction of the frame to hold the alternator and other parts."
+    },
+    {
+      "title": "Tail",
+      "content": "Creation of a furling tail mechanism for wind direction alignment."
+    },
+    {
+      "title": "Dry Parts",
+      "content": "Allowing constructed parts to dry and set properly."
+    },
+    {
+      "title": "Blades",
+      "content": "Process of creating turbine blades from PVC pipes."
+    },
+    {
+      "title": "Roof",
+      "content": "Installation of the wind generator on the roof."
+    },
+    {
+      "title": "Conclusion",
+      "content": "Final thoughts, challenges faced, and potential improvements for the project."
+    }
+  ]
+}
 
   
 ];
