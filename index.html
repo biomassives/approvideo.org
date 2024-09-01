@@ -487,11 +487,121 @@ body.dark #close-detail:hover {
     .footer-link:hover::after {
         width: 100%;
     }
- 
+
+    .drop-up-menu {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 80vw;
+        max-width: 1000px;
+        box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .group:hover .drop-up-menu {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .drop-up-item {
+        color: #4a5568;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        transition: background-color 0.2s;
+        white-space: nowrap;
+    }
+
+    .drop-up-item:hover {
+        background-color: rgba(66, 153, 225, 0.2);
+    }
+
+    /* Ensure the header has enough height for the drop-up menu */
+    header {
+        min-height: 200px;
+    }
+
+    /* Adjust the navigation position */
+    nav {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
         
     </style>
 </head>  
 <body>
+
+        <header class="bg-gradient-to-r from-green-500 to-blue-500 text-white py-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold">ApproVideo</h1>
+            <p class="text-xl mt-2">Appropriate Technology Videos for the DIY Sector</p>
+        </div>
+        <nav class="mt-4 relative">
+            <div class="container mx-auto flex justify-center space-x-8">
+                <div class="group">
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white">
+                        <i class="fas fa-tint mr-2"></i>
+                        Drinking Water
+                    </a>
+                    <div class="drop-up-menu">
+                        <a href="#" class="drop-up-item">Filtration</a>
+                        <a href="#" class="drop-up-item">Purification</a>
+                        <a href="#" class="drop-up-item">Storage</a>
+                        <a href="#" class="drop-up-item">Distribution</a>
+                    </div>
+                </div>
+                <div class="group">
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white">
+                        <i class="fas fa-recycle mr-2"></i>
+                        Waste Management
+                    </a>
+                    <div class="drop-up-menu">
+                        <a href="#" class="drop-up-item">Composting</a>
+                        <a href="#" class="drop-up-item">Recycling</a>
+                        <a href="#" class="drop-up-item">Upcycling</a>
+                        <a href="#" class="drop-up-item">Zero Waste</a>
+                    </div>
+                </div>
+                <div class="group">
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white">
+                        <i class="fas fa-solar-panel mr-2"></i>
+                        Energy Systems
+                    </a>
+                    <div class="drop-up-menu">
+                        <a href="#" class="drop-up-item">Solar</a>
+                        <a href="#" class="drop-up-item">Wind</a>
+                        <a href="#" class="drop-up-item">Hydropower</a>
+                        <a href="#" class="drop-up-item">Biogas</a>
+                    </div>
+                </div>
+                <div class="group">
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white">
+                        <i class="fas fa-heartbeat mr-2"></i>
+                        Appropriate Tech
+                    </a>
+                    <div class="drop-up-menu">
+                        <a href="#" class="drop-up-item">Agriculture</a>
+                        <a href="#" class="drop-up-item">Construction</a>
+                        <a href="#" class="drop-up-item">Healthcare</a>
+                        <a href="#" class="drop-up-item">Education</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        </header>
+
+
+    
     <div class="embossed-background"></div>
 
     <button id="theme-toggle" class="theme-toggle text-2xl">
