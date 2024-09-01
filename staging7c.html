@@ -1008,6 +1008,38 @@ function setupThemeToggle() {
                 filterAndSortVideos();
             }
         });
+
+
+// Event delegation for ALL category links (header and dropdown)
+document.querySelector('header').addEventListener('click', (e) => {
+    const target = e.target.closest('a'); // Find the closest ancestor <a> tag
+
+    if (target && (target.classList.contains('category-link') || target.classList.contains('drop-up-item'))) {
+        e.preventDefault();
+
+        let category, tag;
+        if (target.classList.contains('category-link')) {
+            category = target.getAttribute('data-category');
+            tag = null; // No tag for main category links
+        } else { // drop-up-item
+            category = target.getAttribute('data-category');
+            tag = target.getAttribute('data-tag');
+        }
+
+        // Update URL and filter videos
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('category', category);
+        if (tag) {
+            urlParams.set('tag', tag);
+        } else {
+            urlParams.delete('tag'); // Clear tag if clicking main category
+        }
+        history.pushState(null, '', `?${urlParams.toString()}`);
+        filterAndSortVideos();
+    }
+});
+
+        
     
 });
 </script>
