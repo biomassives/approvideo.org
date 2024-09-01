@@ -555,7 +555,7 @@
 
    <div class="container mx-auto flex justify-center space-x-8">
                 <div class="group">
-                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white">
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Drinking Water">
                         <i class="fas fa-tint mr-2"></i>
                        
                     </a>
@@ -567,7 +567,7 @@
                     </div>
                 </div>
                 <div class="group">
-                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white">
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Waste Management">
                         <i class="fas fa-recycle mr-2"></i>
                        
                     </a>
@@ -579,7 +579,7 @@
                     </div>
                 </div>
                 <div class="group">
-                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white">
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Energy">
                         <i class="fas fa-solar-panel mr-2"></i>
                         
                     </a>
@@ -591,7 +591,7 @@
                     </div>
                 </div>
                 <div class="group">
-                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white">
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Appropriate Tech.">
                         <i class="fas fa-heartbeat mr-2"></i>
                        
                     </a>
@@ -696,6 +696,19 @@
     
 
 <script>
+
+function toggleSublinks(category) {
+  const dropUpMenus = document.querySelectorAll('.drop-up-menu');
+  dropUpMenus.forEach(menu => {
+    if (menu.previousElementSibling.getAttribute('data-category') === category) {
+      menu.classList.toggle('hidden'); 
+    } else {
+      menu.classList.add('hidden'); // Hide other menus
+    }
+  });
+}
+
+    
 function renderStars(rating) {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 >= 0.5 ? 1 : 0;
@@ -801,7 +814,26 @@ function setupEventListeners() {
     
         if (target) {
           e.preventDefault();
+
+        
+        if (target.classList.contains('category-link')) {
+          const category = target.getAttribute('data-category');
+          toggleSublinks(category); // Toggle sublinks
+        } else if (target.classList.contains('drop-up-item')) {
+          const category = target.getAttribute('data-category');
+          const tag = target.getAttribute('data-tag');
     
+          // Update URL and filter videos
+          const urlParams = new URLSearchParams(window.location.search);
+          urlParams.set('category', category);
+          urlParams.set('tag', tag);
+          history.pushState(null, '', `?${urlParams.toString()}`);
+          filterAndSortVideos();
+    
+          // Hide the dropdown after clicking a sublink
+          target.closest('.drop-up-menu').classList.add('hidden'); 
+        }
+        
           let category, tag;
           if (target.classList.contains('category-link')) {
             category = target.getAttribute('data-category');
