@@ -1,4 +1,4 @@
-const videoDataString = [
+const videoData = [
             {
                 "id": "1",
                 "title": "DIY Gravity-Based Water Filter",
@@ -642,10 +642,5 @@ const videoDataString = [
 ];
 
 
-// Remove extra whitespace and line breaks
-const cleanedVideoDataString = videoDataString.replace(/\r\n/g, '\n').replace(/\s+/g, ' ');
-
-// Parse the cleaned JSON string
-const videoData = JSON.parse(cleanedVideoDataString);
 
 export default videoData;
