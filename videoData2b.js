@@ -577,48 +577,66 @@ const videoData = [
                 }
               ]
               },
-              {
-              "id": "19",
-              "title": "Biosand Filtration",
-              "categories": ["Environmental Engineering", "Water Treatment"],
-              "description": "This video provides an overview of BioSand filters (BSFs), their functionality, construction process, and sustainability.
-              
-              Functionality
-              
-                  BSFs utilize a biological layer (schmutzdecke) containing microorganisms that attack pathogens, and a sand layer that traps remaining contaminants.
-                  Water is poured in, passes through the diffuser plate, rests on the schmutzdecke, filters through the sand, and exits the system.
-                  Schmutzdecke formation takes 1-30 days, and its development is not easily visible, requiring water testing equipment for verification.
-                  The sand layer is typically 20-30 inches thick, with grain size having a minor impact on filtration.
-              
-              Construction
-              
-                  BSFs are usually built in plastic drums or concrete columns.
-                  Local sand and gravel are obtained, ideally from a quarry, and purified through sifting and flushing.
-                  Plumbing is installed to enable water flow, ensuring the spout is above the standing water level to keep the schmutzdecke hydrated.
-                  A diffusion plate is created at the top, and the system is placed in an accessible location.
-              
-              Sustainability
-              
-                  Monitoring the biological layer is crucial to maintain a water level of about 5 cm, preventing bacteria death from dehydration or lack of oxygen.
-                  Maintenance involves a 'swirl and dump' every 4-6 months to dislodge dirt without harming the schmutzdecke, and a full sand and gravel replacement every 10 years.
-                  Adding water at least every two days and scrubbing the system components help maintain flow rate.
-                  Community approval is essential before implementation, potentially through surveys and discussions.
-                  Integration involves building BSFs in areas with limited access to clean water, educating families on usage and maintenance, and assigning responsible individuals.
-              
-              Case Study and Next Steps
-              
-                  A case study in Bonao, Dominican Republic, showed 90% BSF usage after one year, 84-88% reduction in fecal indicator bacteria, and significantly lower odds of diarrheal disease.
-                  The plan includes building a BSF at Harvard for testing, then one in Multani with usage tracking, potentially scaling the model further if successful.
-              
-              Key Takeaways
-              
-                  BSFs are cheap, effective, and can benefit communities with limited clean water access.
-                  The schmutzdecke is the most challenging component to maintain.
-                  BSFs offer advantages over other methods due to the biological layer.
-                  Clean water access improves health and education metrics, making BSF implementation crucial in needy communities.", "youtubeId": "http://www.youtube.com/watch?v=XcFeXcac9Lk", "tags": ["biosand filter", "water treatment", "water filtration", "clean water", "developing countries", "sustainability"], "rating": 4.7, "date": "2018-05-13", "creator": "Harvard SEAS EWB-USA", "transcript": "This video is a great introduction to BioSand filters, which are a low-cost and effective way to provide clean water to communities in need. The video covers the basics of how BioSand filters work, how they are constructed, and how they are maintained. It also includes a case study from the Dominican Republic that shows the positive impact that BioSand filters can have on public health. Overall, this is a valuable resource for anyone who is interested in learning more about BioSand filters.", "materials": [ "Plastic drum or concrete column", "Sand and gravel", "Diffuser plate", "Plumbing", "Water testing equipment" ], "steps": [ "Obtain local sand and gravel.", "Purify the sand and gravel through sifting and flushing.", "Build the BSF using a plastic drum or concrete column.", "Install the diffuser plate and plumbing.", "Add the sand and gravel to the BSF.", "Allow the schmutzdecke to form for 1-30 days.", "Monitor the water level and add water as needed.", "Perform a 'swirl and dump' every 4-6 months.", "Replace the sand and gravel every 10 years." ], "panels": [ 
-                    { "title": "Introduction", "content": "This video provides an overview of BioSand filters (BSFs), their functionality, construction process, and sustainability." }, { "title": "Functionality", "content": "* BSFs utilize a biological layer (schmutzdecke) containing microorganisms that attack pathogens, and a sand layer that traps remaining contaminants. * Water is poured in, passes through the diffuser plate, rests on the schmutzdecke, filters through the sand, and exits the system. * Schmutzdecke formation takes 1-30 days, and its development is not easily visible, requiring water testing equipment for verification. * The sand layer is typically 20-30 inches thick, with grain size having a minor impact on filtration." }, { "title": "Construction", "content": "* BSFs are usually built in plastic drums or concrete columns. * Local sand and gravel are obtained, ideally from a quarry, and purified through sifting and flushing. * Plumbing is installed to enable water flow, ensuring the spout is above the standing water level to keep the schmutzdecke hydrated. * A diffusion plate is created at the top, and the system is placed in an accessible location." }, { "title": "Sustainability", "content": "* Monitoring the biological layer is crucial to maintain a water level of about 5 cm, preventing bacteria death from dehydration or lack of oxygen. * Maintenance involves a 'swirl and dump' every 4-6 months to dislodge dirt without harming the schmutzdecke, and a full sand and gravel replacement every 10 years. * Adding water at least every two days and scrubbing the system components help maintain flow rate. * Community approval is essential before implementation, potentially through surveys and discussions. * Integration involves building BSFs in areas with limited access to clean water, educating families on usage and maintenance, and assigning responsible individuals." }, { "title": "Case Study and Next Steps", "content": "* A case study in Bonao, Dominican Republic, showed 90% BSF usage after one year, 84-88% reduction in fecal indicator bacteria, and significantly lower odds of diarrheal disease. * The plan includes building a BSF at Harvard for testing, then one in Multani with usage tracking, potentially scaling the model further if successful." }, { "title": "Conclusion", "content": "* BSFs are cheap, effective, and can benefit communities with limited clean water access. * The schmutzdecke is the most challenging component to maintain. * BSFs offer advantages over other methods due to the biological layer. * Clean water access improves health and education metrics, making BSF implementation crucial in needy communities." }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ] }
+
+    {
+    "id": "19",
+    "title": "Biosand Filtration",
+    "categories": ["Environmental Engineering", "Water Treatment"],
+    "description": "This video provides an overview of BioSand filters (BSFs), their functionality, construction process, and sustainability.",
+    "youtubeId": "XcFeXcac9Lk",
+    "tags": ["biosand filter", "water treatment", "water filtration", "clean water", "developing countries", "sustainability"],
+    "rating": 4.7,
+    "date": "2018-05-13",
+    "creator": "Harvard SEAS EWB-USA",
+    "transcript": "This video is a great introduction to BioSand filters, which are a low-cost and effective way to provide clean water to communities in need. The video covers the basics of how BioSand filters work, how they are constructed, and how they are maintained. It also includes a case study from the Dominican Republic that shows the positive impact that BioSand filters can have on public health. Overall, this is a valuable resource for anyone who is interested in learning more about BioSand filters.",
+    "materials": [
+        "Plastic drum or concrete column",
+        "Sand and gravel",
+        "Diffuser plate",
+        "Plumbing",
+        "Water testing equipment"
+    ],
+    "steps": [
+        "Obtain local sand and gravel.",
+        "Purify the sand and gravel through sifting and flushing.",
+        "Build the BSF using a plastic drum or concrete column.",
+        "Install the diffuser plate and plumbing.",
+        "Add the sand and gravel to the BSF.",
+        "Allow the schmutzdecke to form for 1-30 days.",
+        "Monitor the water level and add water as needed.",
+        "Perform a 'swirl and dump' every 4-6 months.",
+        "Replace the sand and gravel every 10 years."
+    ],
+    "panels": [ 
+        { 
+            "title": "Introduction", 
+            "content": "This video provides an overview of BioSand filters (BSFs), their functionality, construction process, and sustainability." 
+        }, 
+        { 
+            "title": "Functionality", 
+            "content": "BSFs utilize a biological layer (schmutzdecke) containing microorganisms that attack pathogens, and a sand layer that traps remaining contaminants. Water is poured in, passes through the diffuser plate, rests on the schmutzdecke, filters through the sand, and exits the system. Schmutzdecke formation takes 1-30 days, and its development is not easily visible, requiring water testing equipment for verification. The sand layer is typically 20-30 inches thick, with grain size having a minor impact on filtration." 
+        }, 
+        { 
+            "title": "Construction", 
+            "content": "BSFs are usually built in plastic drums or concrete columns. Local sand and gravel are obtained, ideally from a quarry, and purified through sifting and flushing. Plumbing is installed to enable water flow, ensuring the spout is above the standing water level to keep the schmutzdecke hydrated. A diffusion plate is created at the top, and the system is placed in an accessible location." 
+        }, 
+        { 
+            "title": "Sustainability", 
+            "content": "Monitoring the biological layer is crucial to maintain a water level of about 5 cm, preventing bacteria death from dehydration or lack of oxygen. Maintenance involves a 'swirl and dump' every 4-6 months to dislodge dirt without harming the schmutzdecke, and a full sand and gravel replacement every 10 years. Adding water at least every two days and scrubbing the system components help maintain flow rate. Community approval is essential before implementation, potentially through surveys and discussions. Integration involves building BSFs in areas with limited access to clean water, educating families on usage and maintenance, and assigning responsible individuals." 
+        }, 
+        { 
+            "title": "Case Study and Next Steps", 
+            "content": "A case study in Bonao, Dominican Republic, showed 90% BSF usage after one year, 84-88% reduction in fecal indicator bacteria, and significantly lower odds of diarrheal disease. The plan includes building a BSF at Harvard for testing, then one in Multani with usage tracking, potentially scaling the model further if successful." 
+        }, 
+        { 
+            "title": "Conclusion", 
+            "content": "BSFs are cheap, effective, and can benefit communities with limited clean water access. The schmutzdecke is the most challenging component to maintain. BSFs offer advantages over other methods due to the biological layer. Clean water access improves health and education metrics, making BSF implementation crucial in needy communities." 
+        }
+    ]
+}        
+            
+
+
 
   
 ];
