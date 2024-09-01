@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ApproVideo Aug 2024</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+        import videoData from './videoData2b.js';
+        window.videoData = videoData;
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+            :root {
+                --bg-light: #f0f4f8;
+                --text-light: #2d3748;
+                --card-bg-light: #ffffff;
+                --card-text-light: #1a202c;
+                --bg-dark: #1a202c;
+                --bg-black: #fff;
+                --text-dark: #e2e8f0;
+                --card-bg-dark: #000;
+                --card-text-dark: #e2e8f0;
+            }
+            body {
+                transition: background-color 0.3s, color 0.3s;
+            }
+            body.light {
+                background-color: var(--bg-light);
+                color: var(--text-light);
+            }
+            body.dark {
+                background-color: var(--bg-dark);
+                color: var(--text-dark);
+            }
+            body.light .video-card {
+                background-color: var(--card-bg-light);
+                color: var(--card-text-light);
+            }
+            body.light .info-panel {
+                background-color: var(--card-bg-light);
+                color: var(--text-light);
+            }
+            body.dark .video-card {
+                background-color: var(--card-bg-dark);
+                color: var(--card-text-dark);
+            }
+            body.dark .theme-toggle {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            body.dark .info-panel {
+                background-color: var(--card-bg-dark);
+                color: var(--text-dark);
+            }
+            body.dark .info-panel h3 {
+                color: #90cdf4;
+            }
+            body.dark .info-panel p {
+                color: #e2e8f0;
+            }
+
+            #video-detail {
+                background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            }
+            
+            #video-detail .relative {
+                background-color: rgba(255, 255, 255, 0.8);
+                 color: #333; /* Set text color directly on the container */
+                border-radius: 20px;
+                overflow: hidden;
+                position: relative;
+            }
+            
+            #video-detail .relative::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: 
+                    radial-gradient(circle at 20% 20%, #ffecd2 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, #fcb69f 0%, transparent 50%);
+                z-index: -1;
+            }
+            
+            #video-content {
+                position: relative;
+                z-index: 1;
+                padding: 2rem;
+                color: #333;
+            }
+            
+            .curved-line {
+                position: absolute;
+                border: none;
+                height: 50px;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+            }
+            
+            .curved-line:nth-child(1) {
+                top: -25px;
+                left: -25px;
+                right: -25px;
+                transform: rotate(5deg);
+            }
+            
+            .curved-line:nth-child(2) {
+                bottom: -25px;
+                left: -25px;
+                right: -25px;
+                transform: rotate(-5deg);
+            }
+            
+            .curved-line:nth-child(3) {
+                top: 30%;
+                left: -50px;
+                width: calc(100% + 100px);
+                transform: rotate(-10deg);
+            }
+            
+            .curved-line:nth-child(4) {
+                top: 60%;
+                right: -50px;
+                width: calc(100% + 100px);
+                transform: rotate(10deg);
+            }
+
+
+        
+            .notheader {
+                background: linear-gradient(45deg, #4CAF50, #2196F3);
+                padding: 20px;
+                text-align: center;
+                color: white;
+                font-size: 2.5rem;
+                font-weight: bold;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+                position: relative;
+                overflow: hidden;
+            }
+            .header {
+                background: linear-gradient(45deg, rgba(76, 175, 80, 0.8), rgba(33, 150, 243, 0.8));
+                min-height: 200px;
+                position: relative;
+                overflow: hidden;
+                padding: 20px;
+                text-align: center;
+                color: white;
+                font-size: 2.5rem;
+                font-weight: bold;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            }
+            
+            .header::before {
+                content: '\f043 \f1b8 \f5d7 \f21e \f1e6 \f06c \f773 \f72e';
+                font-family: 'Font Awesome 5 Free';
+                font-weight: 900;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                font-size: 4rem;
+                opacity: 0.1;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items: center;
+                pointer-events: none;
+            }
+            
+            .subheader {
+                font-size: 1.2rem;
+                margin-top: 10px;
+            }
+
+
+            .floating-icons {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 10;
+            }
+            
+            .floating-icon {
+                position: absolute;
+                font-size: 1.5rem;
+                color: rgba(255, 255, 255, 0.7);
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+                transition: transform 0.3s ease-out;
+                transform-style: preserve-3d;
+                opacity: 0;
+            }
+            
+            .floating-icon.active {
+                opacity: 1;
+                animation: float 10s infinite ease-in-out;
+            }
+            
+            .floating-icon:nth-child(even) {
+                animation-duration: 12s;
+            }
+            
+            .floating-icon:nth-child(3n) {
+                animation-duration: 15s;
+            }
+            
+            @keyframes float {
+                0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                25% { transform: translate(10px, -10px) rotate(5deg); }
+                50% { transform: translate(0, -20px) rotate(0deg); }
+                75% { transform: translate(-10px, -10px) rotate(-5deg); }
+            }
+            
+            .floating-icon::before,
+            .floating-icon::after {
+                content: '';
+                position: absolute;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            
+            .floating-icon::before {
+                width: 100%;
+                height: 100%;
+                transform: translateZ(-10px);
+            }
+            
+            .floating-icon::after {
+                width: 10px;
+                height: 100%;
+                left: 100%;
+                transform: rotateY(90deg);
+                transform-origin: left;
+            }
+
+
+
+
+    
+            .video-card {
+                background-color: var(--card-bg-light);
+                color: var(--card-text-light);
+                transition: background-color 0.3s, color 0.3s;
+            }
+       
+            .theme-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: 50%;
+                padding: 10px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+            .panel-container {
+                position: relative;
+                width: 100%;
+                height: 300px; /* Adjust as needed */
+                overflow: hidden;
+                margin-top: 2rem;
+            }
+            .info-panel {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #f0f4f8;
+                color: var(--card-text-light);
+                border-radius: 8px;
+                padding: 2rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                transition: opacity 0.5s ease-in-out;
+                opacity: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .info-panel.active {
+                opacity: 1;
+            }
+            .info-panel h3 {
+                color: #2c5282;
+                margin-bottom: 1rem;
+                font-size: 1.5rem;
+                position: relative;
+                z-index: 2;
+            }
+            .info-panel p {
+                color: #4a5568;
+                font-size: 1rem;
+                line-height: 1.6;
+                position: relative;
+                z-index: 2;
+            }
+
+            .panel-icon {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 10rem;
+                opacity: 0.1;
+                z-index: 1;
+            }
+            .panel-nav {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 1rem;
+            }
+            .panel-nav button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .panel-nav button:disabled {
+                background-color: #ccc;
+                cursor: not-allowed;
+            }
+
+#video-detail {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+#video-detail .relative {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#video-detail .relative::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(76, 175, 80, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(33, 150, 243, 0.2) 0%, transparent 50%);
+    z-index: -1;
+}
+
+#video-content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    color: #333;
+}
+
+/* Dark mode styles */
+body.dark #video-detail {
+    background: rgba(23, 32, 42, 0.95);
+}
+
+body.dark #video-detail .relative {
+    background-color: rgba(44, 62, 80, 0.8);
+}
+
+body.dark #video-detail .relative::before {
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(52, 152, 219, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(46, 204, 113, 0.2) 0%, transparent 50%);
+}
+
+body.dark #video-content {
+    color: #ecf0f1;
+}
+
+/* High contrast text styles */
+#video-content h1 {
+    color: #2c3e50;
+}
+
+#video-content h2 {
+    color: #34495e;
+}
+
+#video-content p, #video-content li {
+    color: #2c3e50;
+}
+
+body.dark #video-content h1 {
+    color: #ecf0f1;
+}
+
+body.dark #video-content h2 {
+    color: #3498db;
+}
+
+body.dark #video-content p, body.dark #video-content li {
+    color: #bdc3c7;
+}
+
+/* Curved lines */
+.curved-line {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+body.dark .curved-line {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Close button */
+#close-detail {
+    background-color: #3498db;
+    color: white;
+}
+
+body.dark #close-detail {
+    background-color: #2980b9;
+    color: #ecf0f1;
+}
+
+#close-detail:hover {
+    background-color: #2980b9;
+}
+
+body.dark #close-detail:hover {
+    background-color: #3498db;
+}
+    .footer-gradient {
+        background: linear-gradient(135deg, #1a202c, #2d3748);
+    }
+    .footer-gradient-light {
+        background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+    }
+    .footer-title {
+        font-size: 2.5rem;
+        background: linear-gradient(45deg, #4CAF50, #2196F3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+    .footer-subtitle {
+        font-size: 1.2rem;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+    .footer-subtitle:hover {
+        opacity: 1;
+    }
+    @keyframes glow {
+        from {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.5), 0 0 10px rgba(33, 150, 243, 0.5);
+        }
+        to {
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.8), 0 0 20px rgba(33, 150, 243, 0.8);
+        }
+    }
+    .share-button {
+        background: linear-gradient(45deg, #4CAF50, #2196F3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .share-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .footer-link {
+        position: relative;
+        overflow: hidden;
+    }
+    .footer-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(45deg, #4CAF50, #2196F3);
+        transition: width 0.3s ease;
+    }
+    .footer-link:hover::after {
+        width: 100%;
+    }
+
+    .drop-up-menu {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 80vw;
+        max-width: 1000px;
+        box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .group:hover .drop-up-menu {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .drop-up-item {
+        color: #4a5568;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        transition: background-color 0.2s;
+        white-space: nowrap;
+    }
+
+    .drop-up-item:hover {
+        background-color: rgba(66, 153, 225, 0.2);
+    }
+
+    /* Ensure the header has enough height for the drop-up menu */
+    header {
+        min-height: 200px;
+    }
+
+    /* Adjust the navigation position */
+    nav {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+        
+    </style>
+</head>  
+<body>
+
+<div class="header relative overflow-hidden">
+    <div class="container mx-auto flex justify-center space-x-8">
+        <div class="group relative">
+            <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Drinking Water">
+                <i class="fas fa-tint mr-2"></i>
+                Drinking Water
+            </a>
+            <div class="drop-up-menu absolute bottom-full left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 hidden">
+                <a href="#" class="drop-up-item block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Drinking Water" data-tag="Filtration">Filtration</a>
+                <a href="#" class="drop-up-item block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Drinking Water" data-tag="Purification">Purification</a>
+                <a href="#" class="drop-up-item block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Drinking Water" data-tag="Storage">Storage</a>
+                <a href="#" class="drop-up-item block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Drinking Water" data-tag="Distribution">Distribution</a>
+            </div>
+        </div>
+        <!-- Repeat this structure for other categories -->
+        <div class="group relative">
+            <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Waste Management">
+                <i class="fas fa-recycle mr-2"></i>
+                Waste Management
+            </a>
+            <div class="drop-up-menu absolute bottom-full left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 hidden">
+                <a href="#" class="drop-up-item block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Waste Management" data-tag="Composting">Composting</a>
+                <a href="#" class="drop-up-item block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Waste Management" data-tag="Recycling">Recycling</a>
+                <a href="#" class="drop-up-item block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Waste Management" data-tag="Upcycling">Upcycling</a>
+                <a href="#" class="drop-up-item block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" data-category="Waste Management" data-tag="Zero Waste">Zero Waste</a>
+            </div>
+        </div>
+        <!-- Add similar structures for Energy Systems and Appropriate Tech -->
+    </div>
+    ApproVideo
+    <div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
+</div>
+
+
+    
+    <div class="embossed-background"></div>
+
+    <button id="theme-toggle" class="theme-toggle text-2xl">
+        <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
+        <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
+    </button>
+
+    <div class="floating-icons">
+        <i class="fas fa-tint fa-3x floating-icon" style="--i:1;"></i>
+        <i class="fas fa-recycle fa-3x floating-icon" style="--i:2;"></i>
+        <i class="fas fa-solar-panel fa-3x floating-icon" style="--i:3;"></i>
+        <i class="fas fa-heartbeat fa-3x floating-icon" style="--i:4;"></i>
+    </div>
+        
+    <div class="header relative overflow-hidden">
+        <div class="floating-icons">
+     <div class="floating-icons">
+            <i class="fas fa-tint fa-2x floating-icon" style="--i:1;"></i>
+            <i class="fas fa-recycle fa-2x floating-icon" style="--i:2;"></i>
+            <i class="fas fa-solar-panel fa-2x floating-icon" style="--i:3;"></i>
+            <i class="fas fa-heartbeat fa-2x floating-icon" style="--i:4;"></i>
+            <i class="fas fa-leaf fa-2x floating-icon" style="--i:5;"></i>
+            <i class="fas fa-seedling fa-2x floating-icon" style="--i:6;"></i>
+            <i class="fas fa-water fa-2x floating-icon" style="--i:7;"></i>
+            <i class="fas fa-wind fa-2x floating-icon" style="--i:8;"></i>
+        </div>
+        </div>
+        ApproVideo
+        <div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
+    </div>
+
+    <div class="p-4 mt-4">
+        <div class="mb-4 flex justify-center space-x-4">
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-beige-100  hover:text-white dark:hover:bg-gray-700" data-category="Drinking Water">
+                <i class="fas fa-tint w-6 h-6 text-blue-500"></i>
+                <span class="ml-3">Drinking Water</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gold-100 hover:text-white dark:hover:bg-gray-700" data-category="Waste Management">
+                <i class="fas fa-recycle w-6 h-6 text-green-500"></i>
+                <span class="ml-3">Waste Management</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-white-100 hover:text-white dark:hover:bg-gray-700" data-category="Energy Systems">
+                <i class="fas fa-solar-panel w-6 h-6 text-yellow-500"></i>
+                <span class="ml-3">Energy Systems</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-tan-100 hover:text-white dark:hover:bg-gray-700" data-category="Health">
+                <i class="fas fa-heartbeat w-6 h-6 text-red-500"></i>
+                <span class="ml-3">Appropriate Tech</span>
+            </a>
+        </div>
+
+        <div class="mb-4">
+            <input type="text" id="search" placeholder="Search videos..." class="w-full p-2 border rounded dark:bg-gray-700 dark:text-white">
+        </div>
+
+        <div id="categories" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </div>
+
+   <div id="video-detail" class="fixed inset-0 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+    <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md">
+        <div class="curved-line"></div>
+        <div class="curved-line"></div>
+        <div class="curved-line"></div>
+        <div class="curved-line"></div>
+        <div id="video-content"></div>
+        <div class="text-center mt-4">
+            <button id="close-detail" class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+
+<footer class="footer-gradient dark:footer-gradient-light text-gray-300 dark:text-gray-700 py-12 mt-12 transition-colors duration-300">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap justify-between items-center">
+            <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                <h3 class="footer-title mb-2">ApproVideo</h3>
+                <p class="footer-subtitle">Appropriate Technology Videos for the DIY Sector</p>
+            </div>
+            <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="https://github.com/yourusername/approtech" class="footer-link hover:text-blue-400 transition duration-300">GitHub Repository</a></li>
+                    <li><a href="https://www.gnu.org/licenses/gpl-3.0.en.html" class="footer-link hover:text-blue-400 transition duration-300">GPL v3 License</a></li>
+                    <li><a href="https://scdhub.org" class="footer-link hover:text-blue-400 transition duration-300">SCD Hub Website</a></li>
+                </ul>
+            </div>
+            <div class="w-full md:w-1/3 flex flex-col items-center md:items-end">
+                <a href="https://scdhub.org/donate" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 mb-4">
+                    Donate to SCD Hub
+                </a>
+                <button class="share-button text-white font-bold py-3 px-6 rounded-full">
+                    Share a Video
+                </button>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-gray-700 dark:border-gray-300 text-center text-sm">
+            <p>&copy; 2024 ApproVideo. All rights reserved. | <a href="#" class="footer-link hover:text-blue-400 transition duration-300">Privacy Policy</a> | <a href="#" class="footer-link hover:text-blue-400 transition duration-300">Terms of Service</a></p>
+            <p class="mt-2">A project of SCD Hub 501(c)(3)</p>
+        </div>
+    </div>
+</footer>
+    
+
+<script>
+function renderStars(rating) {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStar;
+    return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
+}
+
+
+function setupFloatingIcons() {
+    const header = document.querySelector('.header');
+    const icons = document.querySelectorAll('.floating-icon');
+    
+    icons.forEach((icon, index) => {
+        icon.style.left = `${Math.random() * 100}%`;
+        icon.style.top = `${Math.random() * 100}%`;
+        
+        setTimeout(() => {
+            icon.classList.add('active');
+        }, 1400 + (index * 100)); // Staggered delay starting at 1.4 seconds
+    });
+
+    header.addEventListener('mousemove', (e) => {
+        const { left, top, width, height } = header.getBoundingClientRect();
+        const x = (e.clientX - left) / width - 0.5;
+        const y = (e.clientY - top) / height - 0.5;
+
+        icons.forEach((icon) => {
+            const speed = parseFloat(icon.style.getPropertyValue('--i')) * 2;
+            const rotateX = y * speed;
+            const rotateY = -x * speed;
+            const translateZ = Math.abs(x * y) * 50;
+            icon.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+        });
+    });
+
+    header.addEventListener('mouseleave', () => {
+        icons.forEach((icon) => {
+            icon.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+        });
+    });
+}
+
+
+
+  
+function setupVideoDetailListeners() {
+    document.querySelectorAll('.video-detail-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const videoId = this.getAttribute('data-id');
+            const video = window.videoData.find(v => v.id === videoId);
+            if (video) {
+                document.getElementById('video-content').innerHTML = renderVideoDetails(video);
+                document.getElementById('video-detail').classList.remove('hidden');
+                setupPanelNavigation();
+            }
+        });
+    });
+}
+
+function setupPanelNavigation() {
+    const panels = document.querySelectorAll('.info-panel');
+    const prevBtn = document.getElementById('prev-panel');
+    const nextBtn = document.getElementById('next-panel');
+    let currentPanel = 0;
+
+    function updatePanels() {
+        panels.forEach((panel, index) => {
+            panel.classList.toggle('active', index === currentPanel);
+        });
+        prevBtn.disabled = currentPanel === 0;
+        nextBtn.disabled = currentPanel === panels.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPanel > 0) {
+            currentPanel--;
+            updatePanels();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPanel < panels.length - 1) {
+            currentPanel++;
+            updatePanels();
+        }
+    });
+
+    updatePanels();
+}
+function setupEventListeners() {
+    document.getElementById('search').addEventListener('input', filterAndSortVideos);
+    document.getElementById('categories').addEventListener('click', handleVideoDetailClick);
+    document.getElementById('close-detail').addEventListener('click', closeVideoDetail);
+    
+    // Add event listeners for category icons and drop-up items
+    document.querySelectorAll('.header .group > a').forEach(link => {
+        link.addEventListener('click', toggleSubmenu);
+    });
+    
+    document.querySelectorAll('.drop-up-item').forEach(item => {
+        item.addEventListener('click', handleDropUpItemClick);
+    });
+
+    setupThemeToggle();
+
+    // Handle initial page load with URL parameters
+    filterAndSortVideos();
+}
+
+function toggleSubmenu(e) {
+    e.preventDefault();
+    const submenu = this.nextElementSibling;
+    const allSubmenus = document.querySelectorAll('.drop-up-menu');
+    
+    allSubmenus.forEach(menu => {
+        if (menu !== submenu) {
+            menu.classList.add('hidden');
+        }
+    });
+    
+    submenu.classList.toggle('hidden');
+}
+
+function handleDropUpItemClick(e) {
+    e.preventDefault();
+    const category = this.getAttribute('data-category');
+    const tag = this.getAttribute('data-tag');
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('category', category);
+    urlParams.set('tag', tag);
+    history.pushState(null, '', `?${urlParams.toString()}`);
+    
+    // Hide all submenus
+    document.querySelectorAll('.drop-up-menu').forEach(menu => {
+        menu.classList.add('hidden');
+    });
+    
+    filterAndSortVideos();
+}
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+}
+function renderVideo(video) {
+    const mainCategory = video.categories[0];
+    const mainTag = video.tags[0];
+    const detailUrl = `/${slugify(mainCategory)}/${slugify(mainTag)}/${slugify(video.title)}`;
+    
+    return `
+        <div class="video-card rounded-lg shadow-md p-4 mb-4">
+            <h3 class="text-xl font-semibold mb-2">${video.title}</h3>
+            <div class="aspect-w-16 aspect-h-9 mb-2">
+                <img src="https://img.youtube.com/vi/${video.youtubeId}/0.jpg" alt="${video.title}" class="w-full h-64 object-cover">
+            </div>
+            <p class="mb-2">${video.description}</p>
+            <div class="flex flex-wrap mb-2">
+                ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300" onclick="filterByTag('${tag}')">${tag}</span>`).join('')}
+            </div>
+            <div class="text-yellow-400">${renderStars(video.rating)}</div>
+            <div class="text-sm opacity-75">Date: ${video.date}</div>
+            <a href="${detailUrl}" class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 video-detail-link" data-id="${video.id}">View Details</a>
+        </div>
+    `;
+}
+
+function filterByTag(tag) {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('tag', tag);
+    history.pushState(null, '', `?${urlParams.toString()}`);
+    filterAndSortVideos();
+}
+    
+    
+function renderVideoDetails(video) {
+
+
+    let detailsHTML = `
+         <h1 class="text-3xl font-bold mb-4 text-orange-800 dark:text-blue-300">${video.title}</h1>
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+            <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-96"></iframe>
+        </div>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">${video.description}</p>
+        <div class="mb-4">
+            ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-orange-100 text-orange-800 dark:bg-gray-700 dark:text-blue-300">${tag}</span>`).join('')}
+        </div>
+        <div class="text-yellow-600 dark:text-yellow-400 mb-2">${renderStars(video.rating)}</div>
+        <p class="text-sm opacity-75 mb-4 text-gray-600 dark:text-gray-400">Date: ${video.date}</p>
+
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Materials Needed:</h2>
+        <ul class="list-disc list-inside mb-4 text-gray-700 dark:text-gray-300">
+            ${video.materials.map(material => `<li>${material}</li>`).join('')}
+        </ul>
+
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Steps:</h2>
+        <ol class="list-decimal list-inside mb-4 text-gray-700 dark:text-gray-300">
+            ${video.steps.map(step => `<li>${step}</li>`).join('')}
+        </ol>
+
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Transcript:</h2>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">${video.transcript}</p>
+    `;
+
+
+    if (video.panels && video.panels.length > 0) {
+        detailsHTML += `
+            <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
+            <div class="panel-container">
+                ${video.panels.map((panel, index) => `
+                    <div class="info-panel ${index === 0 ? 'active' : ''}" data-panel-index="${index}">
+                        <h3 class="text-lg font-semibold mb-2">${panel.title}</h3>
+                        <p class="text-sm">${panel.content}</p>
+                        <i class="panel-icon fas fa-${getPanelIcon(panel.title)}"></i>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="panel-nav">
+                <button id="prev-panel" disabled>Previous</button>
+                <button id="next-panel" ${video.panels.length > 1 ? '' : 'disabled'}>Next</button>
+            </div>
+        `;
+    }
+
+    return detailsHTML;
+}
+
+function getPanelIcon(title) {
+    const iconMap = {
+        'Temperature Control': 'thermometer-half',
+        'Moisture Management': 'tint',
+        'Pile Location': 'map-marker-alt',
+        'Aeration': 'wind',
+        'Function of a First Flush Diverter': 'filter',
+        'Choosing the Right Size': 'ruler',
+        'Maintenance Tips': 'tools',
+        'Safety Precautions': 'hard-hat'
+    };
+    return iconMap[title] || 'info-circle';
+}
+
+function renderCategories(videos) {
+    const categoriesContainer = document.getElementById('categories');
+    categoriesContainer.innerHTML = videos.map(renderVideo).join('');
+    setupVideoDetailListeners();
+}
+
+function filterAndSortVideos() {
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+    const tag = urlParams.get('tag');
+
+    let filteredVideos = window.videoData.filter(video => 
+        (category ? video.categories.includes(category) : true) &&
+        (tag ? video.tags.includes(tag) : true) &&
+        (video.title.toLowerCase().includes(searchTerm) ||
+        video.description.toLowerCase().includes(searchTerm) ||
+        video.tags.some(t => t.toLowerCase().includes(searchTerm)))
+    );
+
+    filteredVideos.sort((a, b) => b.rating - a.rating);
+    renderCategories(filteredVideos);
+}
+
+function handleVideoDetailClick(e) {
+    if (e.target.classList.contains('video-detail-link')) {
+        e.preventDefault();
+        const videoId = e.target.getAttribute('data-id');
+        const video = window.videoData.find(v => v.id === videoId);
+        if (video) {
+            document.getElementById('video-content').innerHTML = renderVideoDetails(video);
+            document.getElementById('video-detail').classList.remove('hidden');
+            setupPanelNavigation();
+        }
+    }
+}
+
+function closeVideoDetail() {
+    document.getElementById('video-detail').classList.add('hidden');
+}
+
+function handleCategoryClick(e) {
+    e.preventDefault();
+    const category = this.getAttribute('data-category');
+    history.pushState(null, '', `?category=${category}`);
+    filterAndSortVideos();
+}
+
+function setupThemeToggle() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    function setTheme(isDark) {
+        document.body.classList.toggle('dark', isDark);
+        document.body.classList.toggle('light', !isDark);
+        themeToggleDarkIcon.classList.toggle('hidden', !isDark);
+        themeToggleLightIcon.classList.toggle('hidden', isDark);
+
+        // Force a repaint of the video detail overlay if it's open
+        const videoDetail = document.getElementById('video-detail');
+        if (!videoDetail.classList.contains('hidden')) {
+            videoDetail.style.display = 'none';
+            videoDetail.offsetHeight; // Force a repaint
+            videoDetail.style.display = '';
+        }
+
+        // Store the user's preference
+        localStorage.setItem('darkMode', isDark);
+    }
+
+    function toggleTheme() {
+        const isDark = document.body.classList.contains('light');
+        setTheme(isDark);
+    }
+
+    // Check for saved user preference
+    const savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode !== null) {
+        setTheme(JSON.parse(savedDarkMode));
+    } else {
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        setTheme(prefersDarkScheme.matches);
+    }
+
+    themeToggleBtn.addEventListener('click', toggleTheme);
+}
+
+
+
+    
+    // Initial setup
+    document.addEventListener('DOMContentLoaded', () => {
+    
+        console.log('DOM fully loaded');
+        console.log(window.videoData);
+        filterAndSortVideos();
+        setupEventListeners();
+        console.log('Calling setupFloatingIcons');
+        setupFloatingIcons();
+        console.log('setupFloatingIcons called');
+ 
+});
+</script>
+
+</body>
+</html>
