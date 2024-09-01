@@ -1,4 +1,4 @@
-const videoData = [
+const videoDataString = [
             {
                 "id": "1",
                 "title": "DIY Gravity-Based Water Filter",
@@ -640,7 +640,6 @@ const videoData = [
 
   
 ];
-
 
 
 // Remove extra whitespace and line breaks
