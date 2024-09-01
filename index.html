@@ -433,6 +433,61 @@ body.dark #close-detail {
 body.dark #close-detail:hover {
     background-color: #3498db;
 }
+    .footer-gradient {
+        background: linear-gradient(135deg, #1a202c, #2d3748);
+    }
+    .footer-gradient-light {
+        background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+    }
+    .footer-title {
+        font-size: 2.5rem;
+        background: linear-gradient(45deg, #4CAF50, #2196F3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+    .footer-subtitle {
+        font-size: 1.2rem;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+    .footer-subtitle:hover {
+        opacity: 1;
+    }
+    @keyframes glow {
+        from {
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.5), 0 0 10px rgba(33, 150, 243, 0.5);
+        }
+        to {
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.8), 0 0 20px rgba(33, 150, 243, 0.8);
+        }
+    }
+    .share-button {
+        background: linear-gradient(45deg, #4CAF50, #2196F3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .share-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .footer-link {
+        position: relative;
+        overflow: hidden;
+    }
+    .footer-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(45deg, #4CAF50, #2196F3);
+        transition: width 0.3s ease;
+    }
+    .footer-link:hover::after {
+        width: 100%;
+    }
+ 
         
     </style>
 </head>  
@@ -510,7 +565,36 @@ body.dark #close-detail:hover {
     </div>
 </div>
 
-
+<footer class="footer-gradient dark:footer-gradient-light text-gray-300 dark:text-gray-700 py-12 mt-12 transition-colors duration-300">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap justify-between items-center">
+            <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                <h3 class="footer-title mb-2">ApproVideo</h3>
+                <p class="footer-subtitle">Appropriate Technology Videos for the DIY Sector</p>
+            </div>
+            <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="https://github.com/yourusername/approtech" class="footer-link hover:text-blue-400 transition duration-300">GitHub Repository</a></li>
+                    <li><a href="https://www.gnu.org/licenses/gpl-3.0.en.html" class="footer-link hover:text-blue-400 transition duration-300">GPL v3 License</a></li>
+                    <li><a href="https://scdhub.org" class="footer-link hover:text-blue-400 transition duration-300">SCD Hub Website</a></li>
+                </ul>
+            </div>
+            <div class="w-full md:w-1/3 flex flex-col items-center md:items-end">
+                <a href="https://scdhub.org/donate" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 mb-4">
+                    Donate to SCD Hub
+                </a>
+                <button class="share-button text-white font-bold py-3 px-6 rounded-full">
+                    Share a Video
+                </button>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-gray-700 dark:border-gray-300 text-center text-sm">
+            <p>&copy; 2024 ApproVideo. All rights reserved. | <a href="#" class="footer-link hover:text-blue-400 transition duration-300">Privacy Policy</a> | <a href="#" class="footer-link hover:text-blue-400 transition duration-300">Terms of Service</a></p>
+            <p class="mt-2">A project of SCD Hub 501(c)(3)</p>
+        </div>
+    </div>
+</footer>
     
 
 <script>
