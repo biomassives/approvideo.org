@@ -722,8 +722,6 @@ function setupFloatingIcons() {
     });
 }
 
-
-
   
 function setupVideoDetailListeners() {
     document.querySelectorAll('.video-detail-link').forEach(link => {
@@ -976,6 +974,10 @@ function setupThemeToggle() {
     themeToggleBtn.addEventListener('click', toggleTheme);
 }
 
+
+
+
+    
     // Initial setup
     document.addEventListener('DOMContentLoaded', () => {
     
@@ -986,7 +988,21 @@ function setupThemeToggle() {
         console.log('Calling setupFloatingIcons');
         setupFloatingIcons();
         console.log('setupFloatingIcons called');
- 
+
+
+
+        // Event delegation for header links
+        document.querySelector('nav .container').addEventListener('click', (e) => {
+            if (e.target.classList.contains('category-link')) {
+                e.preventDefault();
+                const category = e.target.getAttribute('data-category');
+                history.pushState(null, '', `?category=${category}`);
+                filterAndSortVideos();
+            }
+        });
+
+
+        
 });
 </script>
 
