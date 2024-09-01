@@ -995,8 +995,8 @@ function setupThemeToggle() {
     const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
     function setTheme(isDark) {
-        document.body.classList.toggle('dark', isDark);
-        document.body.classList.toggle('light', !isDark);
+        document.body.classList.remove(isDark ? 'light' : 'dark');
+        document.body.classList.add(isDark ? 'dark' : 'light');
         themeToggleDarkIcon.classList.toggle('hidden', !isDark);
         themeToggleLightIcon.classList.toggle('hidden', isDark);
 
@@ -1013,8 +1013,8 @@ function setupThemeToggle() {
     }
 
     function toggleTheme() {
-        const isDark = document.body.classList.contains('light');
-        setTheme(isDark);
+        const isDark = document.body.classList.contains('dark');
+        setTheme(!isDark);
     }
 
     // Check for saved user preference
@@ -1028,8 +1028,7 @@ function setupThemeToggle() {
 
     themeToggleBtn.addEventListener('click', toggleTheme);
 }
-
-
+'
 
     
     // Initial setup
