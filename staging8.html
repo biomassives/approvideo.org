@@ -558,6 +558,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const missionReveal = document.getElementById('mission-reveal');
     const missionText = missionReveal.querySelector('.mission-text');
 
+    document.body.addEventListener('click', (e) => {
+        const target = e.target.closest('a');
+        if (!target) return;
+
+        e.preventDefault();
+
+        let category, tag;
+
+        if (target.closest('.header')) {
+            // Header links
+            if (target.classList.contains('drop-up-item')) {
+                category = target.closest('.group').querySelector('a').getAttribute('data-category');
+                tag = target.textContent.trim();
+            } else {
+                category = target.getAttribute('data-category');
+                toggleSublinks(category);
+                return; // Exit early for main category toggles
+            }
+        } else if (target.classList.contains('category-link')) {
+            // Bottom category links
+            category = target.getAttribute('data-category');
+        }
+
+        if (category) {
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('category', category);
+            if (tag) {
+                urlParams.set('tag', tag);
+            } else {
+                urlParams.delete('tag');
+            }
+            history.pushState(null, '', `?${urlParams.toString()}`);
+            filterAndSortVideos();
+
+            // Hide all dropdowns
+            document.querySelectorAll('.drop-up-menu').forEach(menu => menu.classList.add('hidden'));
+        }
+    });
+
+    
     missionReveal.addEventListener('click', () => {
         missionText.classList.toggle('hidden');
         missionText.classList.toggle('active');
