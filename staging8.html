@@ -241,8 +241,6 @@ function setupFloatingIcons() {
 }
 
 
-
-  
 function setupVideoDetailListeners() {
     document.querySelectorAll('.video-detail-link').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -252,11 +250,16 @@ function setupVideoDetailListeners() {
             if (video) {
                 document.getElementById('video-content').innerHTML = renderVideoDetails(video);
                 document.getElementById('video-detail').classList.remove('hidden');
+                // Load a new background image each time the modal is opened
+                document.getElementById('video-detail').style.backgroundImage = `url('https://source.unsplash.com/1600x900/?sky,night,stars&random=${new Date().getTime()}')`;
                 setupPanelNavigation();
             }
         });
     });
 }
+
+  
+
 
 function setupPanelNavigation() {
     const panels = document.querySelectorAll('.info-panel');
