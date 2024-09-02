@@ -45,7 +45,7 @@
             body.dark .info-panel p {
                 color: #e2e8f0;
             }
-
+            
             #video-detail {
                 background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
             }
@@ -113,9 +113,9 @@
                 width: calc(100% + 100px);
                 transform: rotate(10deg);
             }
-
-
-        
+            
+            
+            
             .notheader {
                 background: linear-gradient(45deg, #4CAF50, #2196F3);
                 padding: 20px;
@@ -162,8 +162,8 @@
                 font-size: 1.2rem;
                 margin-top: 10px;
             }
-
-
+            
+            
             .floating-icons {
                 position: absolute;
                 top: 0;
@@ -225,13 +225,13 @@
                 transform: rotateY(90deg);
                 transform-origin: left;
             }
-    
+            
             .video-card {
                 background-color: var(--card-bg-light);
                 color: var(--card-text-light);
                 transition: background-color 0.3s, color 0.3s;
             }
-       
+            
             .theme-toggle {
                 position: fixed;
                 top: 20px;
@@ -283,7 +283,7 @@
                 position: relative;
                 z-index: 2;
             }
-
+            
             .panel-icon {
                 position: absolute;
                 top: 50%;
@@ -417,12 +417,12 @@
                 background-color: #3498db;
             }
             .footer-gradient {
-                background: linear-gradient(135deg, #1a202c, #2d3748);
+                background: linear-gradient(135deg, #0e5517, #2d3748);
             }
             .footer-gradient-light {
-                background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+                background: linear-gradient(135deg, #4e4c22, #4a3304);
             }
-
+            
             .footer-subtitle {
                 font-size: 1.2rem;
                 opacity: 0.8;
