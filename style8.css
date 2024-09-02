@@ -20,6 +20,65 @@
                 background-color: var(--bg-dark);
                 color: var(--text-dark);
             }
+
+
+ 
+
+
+
+
+#video-detail {
+    background-image: url('https://source.unsplash.com/1600x900/?sky,night,stars');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+
+}
+
+#video-detail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+#video-detail .relative {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+
+
+
+
+#video-content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    color: #333;
+}
+
+/* Dark mode styles */
+body.dark #video-detail .relative {
+    background-color: rgba(44, 62, 80, 0.9);
+}
+
+body.dark #video-content {
+    color: #ecf0f1;
+}
+
+
+
             body.light .video-card {
                 background-color: var(--card-bg-light);
                 color: var(--card-text-light);
@@ -45,18 +104,7 @@
             body.dark .info-panel p {
                 color: #e2e8f0;
             }
-            
-            #video-detail {
-                background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-            }
-            
-            #video-detail .relative {
-                background-color: rgba(255, 255, 255, 0.8);
-                 color: #333; /* Set text color directly on the container */
-                border-radius: 20px;
-                overflow: hidden;
-                position: relative;
-            }
+           
             
             #video-detail .relative::before {
                 content: '';
