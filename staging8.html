@@ -11,8 +11,51 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="style8.css">
-</head>  
-<body>
+
+    <style>
+    
+    footer {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .landscape {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 200%; 
+      animation: landscapeScroll 15s linear infinite; /* Adjust duration as needed */
+    }
+    
+    @keyframes landscapeScroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%); 
+      }
+    }
+    
+    /* Optional: Add some "jumpiness" to the animation */
+    .landscape img {
+      image-rendering: pixelated; /* Ensure the image stays pixelated even when scaled */
+      animation: jump 0.5s steps(1) infinite; /* Adjust timing as needed */
+    }
+    
+    @keyframes jump {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-2px); /* Adjust the jump height as needed */
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+        </style>
+    </head>  
+    <body>
     
     <div class="embossed-background"></div>
 
@@ -177,6 +220,9 @@
         </div>
     </div>
 </footer>
+    <div class="landscape">
+    <img src="gyyy5r.webp" alt="Approvideo Sept 2024 - blocky landscape 0">
+  </div>
     
 
 <script>
