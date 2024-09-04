@@ -63,7 +63,7 @@ body.dark .theme-toggle {
 /* Header styles */
 .header {
   background: linear-gradient(45deg, rgba(76, 175, 80, 0.8), rgba(33, 150, 243, 0.8));
-  min-height: 200px;
+  min-height: 135px;
   position: relative;
   overflow: hidden;
   padding: 20px;
