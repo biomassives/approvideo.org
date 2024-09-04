@@ -49,7 +49,7 @@ body.dark .info-panel h3 {
 }
 
 body.dark .info-panel p {
-  color: #e2e8f0;
+  color: #031022;
 }
 
 /* Video Detail Styles */
@@ -242,6 +242,12 @@ body.dark .info-panel p {
   color: var(--card-text-light);
   transition: background-color 0.3s, color 0.3s;
 }
+
+
+.video-car.dark .theme-toggle {
+  background-color: rgba(238, 71, 0, 0.5);
+}
+
 
 /* Theme Toggle */
 .theme-toggle {
