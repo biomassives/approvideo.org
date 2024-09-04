@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ApproVideo - Appropriate Technology Videos for the DIY Sector - September 2024</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+        import videoData from './videoData2b.js';
+        window.videoData = videoData;
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="style8.css">
+
+    <style>
+    
+    footer {
+      position: relative;
+      top: 250px;
+      overflow: display;
+      bottom: 100px;
+    }
+    
+    .landscape {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 200%; 
+      background-image: url("gyyy5r.webp"); /* Or PNG, GIF, etc. */
+      animation: landscapeScroll 15s linear infinite; /* Adjust duration as needed */
+    }
+    
+    @keyframes landscapeScroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%); 
+      }
+    }
+    
+    /* Optional: Add some "jumpiness" to the animation */
+    .landscape img {
+      image-rendering: pixelated; /* Ensure the image stays pixelated even when scaled */
+      animation: jump 0.5s steps(1) infinite; /* Adjust timing as needed */
+    }
+    
+    @keyframes jump {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-2px); /* Adjust the jump height as needed */
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+        </style>
+    </head>  
+    <body>
+    
+    <div class="embossed-background"></div>
+
+
+    <button id="theme-toggle" class="theme-toggle text-2xl">
+        <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
+        <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
+    </button>
+
+    <div class="floating-icons">
+        <i class="fas fa-tint fa-3x floating-icon" style="--i:1;"></i>
+        <i class="fas fa-recycle fa-3x floating-icon" style="--i:2;"></i>
+        <i class="fas fa-solar-panel fa-3x floating-icon" style="--i:3;"></i>
+        <i class="fas fa-heartbeat fa-3x floating-icon" style="--i:4;"></i>
+    </div>
+        
+    <div class="header relative overflow-hidden">
+
+
+        
+        <div class="floating-icons">
+     <div class="floating-icons">
+            <i class="fas fa-tint fa-2x floating-icon" style="--i:1;"></i>
+            <i class="fas fa-recycle fa-2x floating-icon" style="--i:2;"></i>
+            <i class="fas fa-solar-panel fa-2x floating-icon" style="--i:3;"></i>
+            <i class="fas fa-heartbeat fa-2x floating-icon" style="--i:4;"></i>
+            <i class="fas fa-leaf fa-2x floating-icon" style="--i:5;"></i>
+            <i class="fas fa-seedling fa-2x floating-icon" style="--i:6;"></i>
+            <i class="fas fa-water fa-2x floating-icon" style="--i:7;"></i>
+            <i class="fas fa-wind fa-2x floating-icon" style="--i:8;"></i>
+        </div>
+        </div>
+        ApproVideo
+        <div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
+    </div>
+
+    <div class="p-4 mt-4">
+        <div class="mb-4 flex justify-center space-x-4">
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-beige-100  hover:text-white dark:hover:bg-gray-700" data-category="Drinking Water">
+                <i class="fas fa-tint w-6 h-6 text-blue-500"></i>
+                <span class="ml-3">Drinking Water</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-gold-100 hover:text-white dark:hover:bg-gray-700" data-category="Waste Management">
+                <i class="fas fa-recycle w-6 h-6 text-green-500"></i>
+                <span class="ml-3">Waste Management</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-white-100 hover:text-white dark:hover:bg-gray-700" data-category="Energy Systems">
+                <i class="fas fa-solar-panel w-6 h-6 text-yellow-500"></i>
+                <span class="ml-3">Energy Systems</span>
+            </a>
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-tan-100 hover:text-white dark:hover:bg-gray-700" data-category="Health">
+                <i class="fas fa-heartbeat w-6 h-6 text-red-500"></i>
+                <span class="ml-3">Appropriate Tech</span>
+            </a>
+        </div>
+
+        <div class="mb-4">
+            <input type="text" id="search" placeholder="Search videos..." class="w-full p-2 border rounded dark:bg-gray-700 dark:text-white">
+        </div>
+
+        <div id="categories" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </div>
+
+   <div id="video-detail" class="fixed inset-0 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+    <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md">
+        <div class="curved-line"></div>
+        <div class="curved-line"></div>
+        <div class="curved-line"></div>
+        <div class="curved-line"></div>
+        <div id="video-content"></div>
+        <div class="text-center mt-4">
+            <button id="close-detail" class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+
+<footer class="footer-gradient dark:footer-gradient-light text-gray-800 dark:text-gray-200 py-12 mt-12 transition-colors duration-300">
+    <div  class="landscape">
+        <img src="gyyy5r.webp" alt="Approvideo Sept 2024 - blocky landscape 0">
+    </div>
+    
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap justify-between items-start">
+            <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                <h3 class="footer-title mb-2 text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500">ApproVideo</h3>
+                <p class="footer-subtitle text-lg">Appropriate Technology Videos for the DIY Sector</p>
+                <div class="mt-4 relative overflow-hidden cursor-pointer" id="mission-reveal">
+                    <p class="text-sm font-semibold">Our Mission (Click to reveal)</p>
+                    <div class="mission-text hidden mt-2 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg transform transition-all duration-500 ease-in-out">
+                        <p>To empower individuals and communities with accessible, sustainable technology solutions through educational videos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                <h4 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="https://github.com/yourusername/approtech" class="footer-link hover:text-green-500 transition duration-300 flex items-center"><i class="fab fa-github mr-2"></i>GitHub Repository</a></li>
+                    <li><a href="https://www.gnu.org/licenses/gpl-3.0.en.html" class="footer-link hover:text-green-500 transition duration-300 flex items-center"><i class="fas fa-balance-scale mr-2"></i>GPL v3 License</a></li>
+                    <li><a href="https://scdhub.org" class="footer-link hover:text-green-500 transition duration-300 flex items-center"><i class="fas fa-globe mr-2"></i>SCD Hub Website</a></li>
+                </ul>
+            </div>
+            <div class="w-full md:w-1/3 flex flex-col items-center md:items-end">
+                <a href="https://scdhub.org/donate" class="bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 mb-4 transform hover:scale-105">
+                    Donate to SCD Hub
+                </a>
+                <button class="share-button bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-105 transition duration-300">
+                    Share a Video
+                </button>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-gray-700 dark:border-gray-300 text-center text-sm">
+            <p>&copy; 2024 ApproVideo. All rights reserved. | <a href="#" class="footer-link hover:text-blue-400 transition duration-300">Privacy Policy</a> | <a href="#" class="footer-link hover:text-blue-400 transition duration-300">Terms of Service</a></p>
+            <p class="mt-2">A project of SCD Hub 501(c)(3)</p>
+        </div>
+    </div>
+
+  <p></p>
+
+  
+   <div class="container mx-auto flex justify-center space-x-8">
+                <div class="group">
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Drinking Water">
+                        <i class="fas fa-tint mr-2"></i>
+                       
+                    </a>
+                    <div class="drop-up-menu">
+                        <a href="#" class="drop-up-item" data-category="Drinking Water Filtration">Filtration</a>
+                        <a href="#" class="drop-up-item" data-category="Drinking Water Purification">Purification</a>
+                        <a href="#" class="drop-up-item" data-category="Drinking Water Storrage">Storage</a>
+                        <a href="#" class="drop-up-item" data-category="Drinking Water Distribution">Distribution</a>
+                    </div>
+                </div>
+                <div class="group">
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Waste Management">
+                        <i class="fas fa-recycle mr-2"></i>
+                       
+                    </a>
+                    <div class="drop-up-menu">
+                        <a href="#" class="drop-up-item" data-category="Composting">Composting</a>
+                        <a href="#" class="drop-up-item" data-category="Recycling">Recycling</a>
+                        <a href="#" class="drop-up-item" data-category="Upcycling">Upcycling</a>
+                        <a href="#" class="drop-up-item" data-category="Zero Waste">Zero Waste</a>
+                    </div>
+                </div>
+                <div class="group">
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Energy">
+                        <i class="fas fa-solar-panel mr-2"></i>
+                        
+                    </a>
+                    <div class="drop-up-menu">u
+                        <a href="#" class="drop-up-item" data-category="Solar">Solar</a>
+                        <a href="#" class="drop-up-item" data-category="Wind">Wind</a>
+                        <a href="#" class="drop-up-item" data-category="Hydropower">Hydropower</a>
+                        <a href="#" class="drop-up-item" data-category="Biogas">Biogas</a>
+                    </div>
+                </div>
+                <div class="group">
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Appropriate Tech.">
+                        <i class="fas fa-heartbeat mr-2"></i>
+                       
+                    </a>
+                    <div class="drop-up-menu">
+                        <a href="#" class="drop-up-item" data-category="Agriculture">Agriculture</a>
+                        <a href="#" class="drop-up-item" data-category="Construction">Construction</a>
+                        <a href="#" class="drop-up-item" data-category="Healthcare">Healthcare</a>
+                        <a href="#" class="drop-up-item" data-category="Education">Education</a>
+                    </div>
+                </div>
+            </div>
+  
+    </footer>
+
+<script>
+
+
+
+function toggleSublinks(category) {
+  const dropUpMenus = document.querySelectorAll('.drop-up-menu');
+  dropUpMenus.forEach(menu => {
+    const parentCategory = menu.closest('.group').querySelector('a').getAttribute('data-category');
+    if (parentCategory === category) {
+      menu.classList.toggle('hidden');
+    } else {
+      menu.classList.add('hidden'); // Hide other menus
+    }
+  });
+}
+
+
+    
+    
+function renderStars(rating) {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStar;
+    return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
+}
+
+
+function setupFloatingIcons() {
+    const header = document.querySelector('.header');
+    const icons = document.querySelectorAll('.floating-icon');
+    
+    icons.forEach((icon, index) => {
+        icon.style.left = `${Math.random() * 100}%`;
+        icon.style.top = `${Math.random() * 100}%`;
+        
+        setTimeout(() => {
+            icon.classList.add('active');
+        }, 1400 + (index * 100)); // Staggered delay starting at 1.4 seconds
+    });
+
+    header.addEventListener('mousemove', (e) => {
+        const { left, top, width, height } = header.getBoundingClientRect();
+        const x = (e.clientX - left) / width - 0.5;
+        const y = (e.clientY - top) / height - 0.5;
+
+        icons.forEach((icon) => {
+            const speed = parseFloat(icon.style.getPropertyValue('--i')) * 2;
+            const rotateX = y * speed;
+            const rotateY = -x * speed;
+            const translateZ = Math.abs(x * y) * 50;
+            icon.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+        });
+    });
+
+    header.addEventListener('mouseleave', () => {
+        icons.forEach((icon) => {
+            icon.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+        });
+    });
+}
+
+
+function setupVideoDetailListeners() {
+    document.querySelectorAll('.video-detail-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const videoId = this.getAttribute('data-id');
+            const video = window.videoData.find(v => v.id === videoId);
+            if (video) {
+                document.getElementById('video-content').innerHTML = renderVideoDetails(video);
+                document.getElementById('video-detail').classList.remove('hidden');
+                // Load a new background image each time the modal is opened
+                document.getElementById('video-detail').style.backgroundImage = `url('https://source.unsplash.com/1600x900/?sky,night,stars&random=${new Date().getTime()}')`;
+                setupPanelNavigation();
+            }
+        });
+    });
+}
+
+  
+
+
+function setupPanelNavigation() {
+    const panels = document.querySelectorAll('.info-panel');
+    const prevBtn = document.getElementById('prev-panel');
+    const nextBtn = document.getElementById('next-panel');
+    let currentPanel = 0;
+
+    function updatePanels() {
+        panels.forEach((panel, index) => {
+            panel.classList.toggle('active', index === currentPanel);
+        });
+        prevBtn.disabled = currentPanel === 0;
+        nextBtn.disabled = currentPanel === panels.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPanel > 0) {
+            currentPanel--;
+            updatePanels();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPanel < panels.length - 1) {
+            currentPanel++;
+            updatePanels();
+        }
+    });
+
+    updatePanels();
+}
+
+function setupEventListeners() {
+    document.getElementById('search').addEventListener('input', filterAndSortVideos);
+    document.getElementById('categories').addEventListener('click', handleVideoDetailClick);
+    document.getElementById('close-detail').addEventListener('click', closeVideoDetail);
+    document.querySelectorAll('.category-link').forEach(link => {
+        link.addEventListener('click', handleCategoryClick);
+    });
+
+     // Single event listener on the header for both main categories and dropdown items
+      document.querySelector('.header').addEventListener('click', (e) => {
+        const target = e.target.closest('a');
+    
+        if (target) {
+          e.preventDefault();
+
+        
+        if (target.classList.contains('category-link')) {
+          const category = target.getAttribute('data-category');
+          toggleSublinks(category); // Toggle sublinks
+        } else if (target.classList.contains('drop-up-item')) {
+          const category = target.getAttribute('data-category');
+          const tag = target.getAttribute('data-tag');
+    
+          // Update URL and filter videos
+          const urlParams = new URLSearchParams(window.location.search);
+          urlParams.set('category', category);
+          urlParams.set('tag', tag);
+          history.pushState(null, '', `?${urlParams.toString()}`);
+          filterAndSortVideos();
+    
+          // Hide the dropdown after clicking a sublink
+          target.closest('.drop-up-menu').classList.add('hidden'); 
+        }
+        
+          let category, tag;
+          if (target.classList.contains('category-link')) {
+            category = target.getAttribute('data-category');
+          } else if (target.classList.contains('drop-up-item')) {
+            category = target.getAttribute('data-category');
+            tag = target.getAttribute('data-tag');
+          }
+    
+          // Update URL and filter videos
+          const urlParams = new URLSearchParams(window.location.search);
+          urlParams.set('category', category);
+          if (tag) {
+            urlParams.set('tag', tag);
+          } else {
+            urlParams.delete('tag'); 
+          }
+          history.pushState(null, '', `?${urlParams.toString()}`);
+          filterAndSortVideos();
+        }
+      });
+
+
+    
+    setupThemeToggle();
+
+    // Handle initial page load with URL parameters
+    filterAndSortVideos();
+    
+}
+
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+}
+function renderVideo(video) {
+    const mainCategory = video.categories[0];
+    const mainTag = video.tags[0];
+    const detailUrl = `/${slugify(mainCategory)}/${slugify(mainTag)}/${slugify(video.title)}`;
+    
+    return `
+        <div class="video-card rounded-lg shadow-md p-4 mb-4">
+            <h3 class="text-xl font-semibold mb-2">${video.title}</h3>
+            <div class="aspect-w-16 aspect-h-9 mb-2">
+                <img src="https://img.youtube.com/vi/${video.youtubeId}/0.jpg" alt="${video.title}" class="w-full h-64 object-cover">
+            </div>
+            <p class="mb-2">${video.description}</p>
+            <div class="flex flex-wrap mb-2">
+                ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300" onclick="filterByTag('${tag}')">${tag}</span>`).join('')}
+            </div>
+            <div class="text-yellow-400">${renderStars(video.rating)}</div>
+            <div class="text-sm opacity-75">Date: ${video.date}</div>
+            <a href="${detailUrl}" class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 video-detail-link" data-id="${video.id}">View Details</a>
+        </div>
+    `;
+}
+
+function filterByTag(tag) {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('tag', tag);
+    history.pushState(null, '', `?${urlParams.toString()}`);
+    filterAndSortVideos();
+}
+    
+    
+function renderVideoDetails(video) {
+
+
+    let detailsHTML = `
+         <h1 class="text-3xl font-bold mb-4 text-orange-700 dark:text-blue-400">${video.title}</h1>
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+            <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-96"></iframe>
+        </div>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">${video.description}</p>
+        <div class="mb-4">
+            ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-orange-100 text-orange-800 dark:bg-gray-700 dark:text-blue-300">${tag}</span>`).join('')}
+        </div>
+        <div class="text-yellow-600 dark:text-yellow-400 mb-2">${renderStars(video.rating)}</div>
+        <p class="text-sm opacity-75 mb-4 text-gray-600 dark:text-gray-400">Date: ${video.date}</p>
+
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Materials Needed:</h2>
+        <ul class="list-disc list-inside mb-4 text-gray-700 dark:text-gray-300">
+            ${video.materials.map(material => `<li>${material}</li>`).join('')}
+        </ul>
+
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Steps:</h2>
+        <ol class="list-decimal list-inside mb-4 text-gray-700 dark:text-gray-300">
+            ${video.steps.map(step => `<li>${step}</li>`).join('')}
+        </ol>
+
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Transcript:</h2>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">${video.transcript}</p>
+    `;
+
+
+    if (video.panels && video.panels.length > 0) {
+        detailsHTML += `
+            <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
+            <div class="panel-container">
+                ${video.panels.map((panel, index) => `
+                    <div class="info-panel ${index === 0 ? 'active' : ''}" data-panel-index="${index}">
+                        <h3 class="text-lg font-semibold mb-2">${panel.title}</h3>
+                        <p class="text-sm">${panel.content}</p>
+                        <i class="panel-icon fas fa-${getPanelIcon(panel.title)}"></i>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="panel-nav">
+                <button id="prev-panel" disabled>Previous</button>
+                <button id="next-panel" ${video.panels.length > 1 ? '' : 'disabled'}>Next</button>
+            </div>
+        `;
+    }
+
+    return detailsHTML;
+}
+
+function getPanelIcon(title) {
+    const iconMap = {
+        'Temperature Control': 'thermometer-half',
+        'Moisture Management': 'tint',
+        'Pile Location': 'map-marker-alt',
+        'Aeration': 'wind',
+        'Function of a First Flush Diverter': 'filter',
+        'Choosing the Right Size': 'ruler',
+        'Maintenance Tips': 'tools',
+        'Safety Precautions': 'hard-hat'
+    };
+    return iconMap[title] || 'info-circle';
+}
+
+function renderCategories(videos) {
+    const categoriesContainer = document.getElementById('categories');
+    categoriesContainer.innerHTML = videos.map(renderVideo).join('');
+    setupVideoDetailListeners();
+}
+
+function filterAndSortVideos() {
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+    const tag = urlParams.get('tag');
+
+    let filteredVideos = window.videoData.filter(video => 
+        (category ? video.categories.includes(category) : true) &&
+        (tag ? video.tags.includes(tag) : true) &&
+        (video.title.toLowerCase().includes(searchTerm) ||
+        video.description.toLowerCase().includes(searchTerm) ||
+        video.tags.some(t => t.toLowerCase().includes(searchTerm)))
+    );
+
+    filteredVideos.sort((a, b) => b.rating - a.rating);
+    renderCategories(filteredVideos);
+}
+
+function handleVideoDetailClick(e) {
+    if (e.target.classList.contains('video-detail-link')) {
+        e.preventDefault();
+        const videoId = e.target.getAttribute('data-id');
+        const video = window.videoData.find(v => v.id === videoId);
+        if (video) {
+            document.getElementById('video-content').innerHTML = renderVideoDetails(video);
+            document.getElementById('video-detail').classList.remove('hidden');
+            setupPanelNavigation();
+        }
+    }
+}
+
+function closeVideoDetail() {
+    document.getElementById('video-detail').classList.add('hidden');
+}
+
+function handleCategoryClick(e) {
+    e.preventDefault();
+    const category = this.getAttribute('data-category');
+    history.pushState(null, '', `?category=${category}`);
+    filterAndSortVideos();
+}
+
+function setupThemeToggle() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    function setTheme(isDark) {
+        document.body.classList.remove(isDark ? 'light' : 'dark');
+        document.body.classList.add(isDark ? 'dark' : 'light');
+        themeToggleDarkIcon.classList.toggle('hidden', !isDark);
+        themeToggleLightIcon.classList.toggle('hidden', isDark);
+
+        // Force a repaint of the video detail overlay if it's open
+        const videoDetail = document.getElementById('video-detail');
+        if (!videoDetail.classList.contains('hidden')) {
+            videoDetail.style.display = 'none';
+            videoDetail.offsetHeight; // Force a repaint
+            videoDetail.style.display = '';
+        }
+
+        // Store the user's preference
+        localStorage.setItem('darkMode', isDark);
+    }
+
+    function toggleTheme() {
+        const isDark = document.body.classList.contains('dark');
+        setTheme(!isDark);
+    }
+
+    // Check for saved user preference
+    const savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode !== null) {
+        setTheme(JSON.parse(savedDarkMode));
+    } else {
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        setTheme(prefersDarkScheme.matches);
+    }
+
+    themeToggleBtn.addEventListener('click', toggleTheme);
+}
+
+
+
+
+
+
+// Initial setup
+document.addEventListener('DOMContentLoaded', () => {
+    const missionReveal = document.getElementById('mission-reveal');
+    const missionText = missionReveal.querySelector('.mission-text');
+
+    document.body.addEventListener('click', (e) => {
+        const target = e.target.closest('a');
+        if (!target) return;
+
+        e.preventDefault();
+
+        let category, tag;
+
+        if (target.closest('.header')) {
+            // Header links
+            if (target.classList.contains('drop-up-item')) {
+                category = target.closest('.group').querySelector('a').getAttribute('data-category');
+                tag = target.textContent.trim();
+            } else {
+                category = target.getAttribute('data-category');
+                toggleSublinks(category);
+                return; // Exit early for main category toggles
+            }
+        } else if (target.classList.contains('category-link')) {
+            // Bottom category links
+            category = target.getAttribute('data-category');
+        }
+
+        if (category) {
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('category', category);
+            if (tag) {
+                urlParams.set('tag', tag);
+            } else {
+                urlParams.delete('tag');
+            }
+            history.pushState(null, '', `?${urlParams.toString()}`);
+            filterAndSortVideos();
+
+            // Hide all dropdowns
+            document.querySelectorAll('.drop-up-menu').forEach(menu => menu.classList.add('hidden'));
+        }
+    });
+
+    
+    missionReveal.addEventListener('click', () => {
+        missionText.classList.toggle('hidden');
+        missionText.classList.toggle('active');
+    });
+
+    // Hover effect for links
+    const links = document.querySelectorAll('.footer-link');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            link.style.transform = 'translateX(5px)';
+        });
+        link.addEventListener('mouseleave', () => {
+            link.style.transform = 'translateX(0)';
+        });
+    });
+
+        console.log('DOM fully loaded');
+        console.log(window.videoData);
+  filterAndSortVideos();
+  setupEventListeners();
+  setupFloatingIcons();
+});
+    
+
+    
+
+
+
+</script>
+
+</body>
+</html>
