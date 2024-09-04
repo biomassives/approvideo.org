@@ -473,6 +473,52 @@ nav {
     transform 0.5s ease-out;
 }
 
+
+
+    
+    footer {
+      position: relative;
+      top: 250px;
+      overflow: display;
+      bottom: 100px;
+    }
+    
+    .landscape {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 200%; 
+      background-image: url("gyyy5r.webp"); /* Or PNG, GIF, etc. */
+      animation: landscapeScroll 15s linear infinite; /* Adjust duration as needed */
+    }
+    
+    @keyframes landscapeScroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%); 
+      }
+    }
+    
+    /* Optional: Add some "jumpiness" to the animation */
+    .landscape img {
+      image-rendering: pixelated; /* Ensure the image stays pixelated even when scaled */
+      animation: jump 0.5s steps(1) infinite; /* Adjust timing as needed */
+    }
+    
+    @keyframes jump {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-2px); /* Adjust the jump height as needed */
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
 .mission-text.active {
   max-height: 200px; /* Or whatever height is suitable */
   opacity: 1;
