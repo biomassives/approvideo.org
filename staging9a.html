@@ -51,6 +51,7 @@
             background-color: var(--card-bg-dark);
             color: var(--card-text-dark);
         }
+        
     </style>
 </head>
 <body>
@@ -226,6 +227,11 @@
     </footer>
     <script>
 
+        function renderCategories(videos) {
+    const categoriesContainer = document.getElementById('categories');
+    categoriesContainer.innerHTML = videos.map(renderVideo).join('');
+    setupVideoDetailListeners(); // Call this here
+}
 
 function toggleSublinks(category) {
   const dropUpMenus = document.querySelectorAll('.drop-up-menu');
@@ -239,7 +245,36 @@ function toggleSublinks(category) {
   });
 }
 
+function setupPanelNavigation() {
+  const panels = document.querySelectorAll('.info-panel');
+  const prevBtn = document.getElementById('prev-panel');
+  const nextBtn = document.getElementById('next-panel');
+  let currentPanel = 0;
 
+  function updatePanels() {
+    panels.forEach((panel, index) => {
+      panel.style.display = index === currentPanel ? 'block' : 'none';
+    });
+    prevBtn.disabled = currentPanel === 0;
+    nextBtn.disabled = currentPanel === panels.length - 1;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (currentPanel > 0) {
+      currentPanel--;
+      updatePanels();
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentPanel < panels.length - 1) {
+      currentPanel++;
+      updatePanels();
+    }
+  });
+
+  updatePanels();
+}
     
     
 function renderStars(rating) {
@@ -296,7 +331,7 @@ function setupVideoDetailListeners() {
                 document.getElementById('video-detail').classList.remove('hidden');
                 // Load a new background image each time the modal is opened
                 document.getElementById('video-detail').style.backgroundImage = `url('https://source.unsplash.com/1600x900/?sky,night,stars&random=${new Date().getTime()}')`;
-                setupPanelNavigation();
+                setupPanelNavigation(); // Call setupPanelNavigation here
             }
         });
     });
