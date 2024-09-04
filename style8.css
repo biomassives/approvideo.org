@@ -468,7 +468,7 @@ body.dark #video-content h2 {
 body.dark #video-content p,
 body.dark #video-content ul,
 body.dark #video-content ol {
-  color: #e6e6e6 !important; /* Light gray for dark theme */
+  color: #374151 !important; /* Light gray for dark theme */
 }
 
 /* Ensure buttons are visible */
