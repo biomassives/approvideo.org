@@ -478,3 +478,84 @@ nav {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+
+
+
+    #video-detail {
+        background-color: rgba(0, 0, 0, 0.8) !important; /* semi-transparent black background */
+    }
+
+    #video-detail .relative {
+        background-color: var(--bg-light) !important;
+        color: var(--text-dark) !important;
+    }
+
+    body.dark #video-detail .relative {
+        background-color: var(--bg-dark) !important;
+        color: var(--text-light) !important;
+    }
+
+    /* Ensure text color changes with theme */
+    body.light #video-content,
+    body.light #video-content h1,
+    body.light #video-content h2 {
+        color: var(--text-dark) !important;
+    }
+
+    body.dark #video-content,
+    body.dark #video-content h1,
+    body.dark #video-content h2 {
+        color: var(--text-light) !important;
+    }
+
+    /* Adjust the info panel styles */
+    .info-panel {
+        background-color: var(--card-bg-light) !important;
+        color: var(--card-text-light) !important;
+    }
+
+    body.dark .info-panel {
+        background-color: var(--card-bg-dark) !important;
+        color: var(--card-text-dark) !important;
+    }
+
+    /* Additional styles to ensure text visibility */
+    #video-content h1 {
+        color: #ff6600 !important; /* Orange color for light theme */
+    }
+
+    body.dark #video-content h1 {
+        color: #4db8ff !important; /* Light blue color for dark theme */
+    }
+
+    #video-content h2 {
+        color: #cc5200 !important; /* Darker orange for light theme */
+    }
+
+    body.dark #video-content h2 {
+        color: #66ccff !important; /* Lighter blue for dark theme */
+    }
+
+    #video-content p,
+    #video-content ul,
+    #video-content ol {
+        color: #333333 !important; /* Dark gray for light theme */
+    }
+
+    body.dark #video-content p,
+    body.dark #video-content ul,
+    body.dark #video-content ol {
+        color: #e6e6e6 !important; /* Light gray for dark theme */
+    }
+
+    /* Ensure buttons are visible */
+    #video-detail button {
+        background-color: #4a5568 !important;
+        color: white !important;
+    }
+
+    #video-detail button:hover {
+        background-color: #2d3748 !important;
+    }
