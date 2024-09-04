@@ -173,6 +173,7 @@ body.dark .info-panel p {
   height: 100%;
   pointer-events: none;
   z-index: 10;
+  background-color: #293238;
 }
 
 .floating-icon {
@@ -311,6 +312,15 @@ body.dark .theme-toggle {
   position: relative;
   z-index: 2;
 }
+
+.info-panel.dark p {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
 
 .panel-icon {
   position: absolute;
