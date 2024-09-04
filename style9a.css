@@ -126,13 +126,13 @@ body.dark #search {
 /* Video card styles */
 .video-card {
   background-color: var(--card-bg-light);
-  color: var(--card-text-light);
+  color: var(--card-text-dark);
   transition: background-color 0.3s, color 0.3s;
 }
 
 body.dark .video-card {
   background-color: var(--card-bg-dark);
-  color: var(--card-text-dark);
+  color: var(--card-text-light);
 }
 
 .video-card img {
