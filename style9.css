@@ -243,11 +243,9 @@ body.dark .info-panel p {
   transition: background-color 0.3s, color 0.3s;
 }
 
-
-.video-car.dark .theme-toggle {
+.video-card.dark .theme-toggle {
   background-color: rgba(238, 71, 0, 0.5);
 }
-
 
 /* Theme Toggle */
 .theme-toggle {
@@ -255,6 +253,7 @@ body.dark .info-panel p {
   top: 20px;
   right: 20px;
   z-index: 1000;
+  color: rgba(0, 0, 0, 1.0);
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   padding: 10px;
@@ -263,6 +262,7 @@ body.dark .info-panel p {
 
 body.dark .theme-toggle {
   background-color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Info Panel Styles */
@@ -305,7 +305,7 @@ body.dark .theme-toggle {
 }
 
 .info-panel p {
-  color: #4a5568;
+  color: #e8c608;
   font-size: 1rem;
   line-height: 1.6;
   position: relative;
