@@ -448,7 +448,7 @@ body.dark #video-content h2 {
 }
 
 body.dark #video-content h1 {
-  color: #4db8ff !important; /* Light blue color for dark theme */
+  color: #02263e !important; /* Light blue color for dark theme */
 }
 
 #video-content h2 {
@@ -456,7 +456,7 @@ body.dark #video-content h1 {
 }
 
 body.dark #video-content h2 {
-  color: #66ccff !important; /* Lighter blue for dark theme */
+  color: #031e2b !important; /* Lighter blue for dark theme */
 }
 
 #video-content p,
