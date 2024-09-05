@@ -16,11 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
       link.className = `p-4 m-2 text-center flex items-center justify-center transition-all duration-300 ease-in-out
                         ${getRandomColor()} ${getRandomSize()}`;
       link.style.minWidth = '100px';
-      link.setAttribute('data-category', subcategory.getAttribute('textContent'));
+      link.setAttribute('data-category', category.getAttribute('data-category'));
       
       subcategoryLinks.appendChild(link);
     });
-
     mondrianBox.classList.remove('hidden');
   }
 
@@ -63,8 +62,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target.tagName === 'A') {
       e.preventDefault();
       const category = e.target.getAttribute('data-category');
-      // Here you can implement the logic to show content for the selected subcategory
-      console.log(`Selected subcategory: ${category}`);
+      const searchTerm = e.target.textContent.trim();
+      
+      // Update the search input with the selected subcategory
+      const searchInput = document.getElementById('search');
+      if (searchInput) {
+        searchInput.value = searchTerm;
+      }
+
+      // Trigger the search
+      if (typeof filterAndSortVideos === 'function') {
+        filterAndSortVideos();
+      } else {
+        console.error('filterAndSortVideos function not found');
+      }
+
+      // Update the URL to reflect the search
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.set('category', category);
+      urlParams.set('search', searchTerm);
+      history.pushState(null, '', `?${urlParams.toString()}`);
+
+      // Close the Mondrian box after selection
+      mondrianBox.classList.add('hidden');
+      currentCategory = null;
+
+      console.log(`Searching for subcategory: ${searchTerm} in category: ${category}`);
     }
   });
 });
