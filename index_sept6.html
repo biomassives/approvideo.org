@@ -75,20 +75,35 @@
         transform: scale(1.1);
     }
 
+    #edit-detail, #add-content {
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    #edit-detail:hover, #add-content:hover {
+        transform: scale(1.1);
+    }
+    
+    .header .absolute {
+        z-index: 10; /* Ensure buttons are above other header content */
+    }
 
         
     </style>
-    </head>  
-    <body>
-    
+  
     <div class="embossed-background"></div>
 
 
-    <button id="theme-toggle" class="theme-toggle text-2xl">
-        <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
-        <i class="fas fa-moon hidden text-white" id="theme-toggle-dark-icon"></i>
-    </button>
 
+    <div class="absolute top-2 right-2 flex items-center space-x-2">
+        <button id="add-content" class="text-2xl text-white hover:text-gray-200 transition-colors duration-200">
+            <i class="fas fa-plus-circle"></i>
+        </button>
+        <button id="theme-toggle" class="theme-toggle text-2xl">
+            <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
+            <i class="fas fa-moon hidden text-white" id="theme-toggle-dark-icon"></i>
+        </button>
+    </div>
+    
     <div class="floating-icons">
         <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Drinking Water"><i class="fas fa-tint fa-3x floating-icon" style="--i:1;"></i></a>
         <i class="fas fa-recycle fa-3x floating-icon" style="--i:2;"></i>
@@ -219,13 +234,19 @@
 
    <div id="video-detail" class="fixed inset-0 bg-opacity-50 overflow-y-auto h-full w-full hidden">
     <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md">
+        <div class="curved-line">
+            
+            <button id="close-detail-x" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
 
-        <button id="close-detail-x" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-        
+            <button id="edit-detail" class="absolute top-2 left-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200">
+                <i class="fas fa-edit h-6 w-6"></i>
+            </button>
+            
+        </div>
         <div class="curved-line"></div>
         <div class="curved-line"></div>
         <div class="curved-line"></div>
@@ -659,13 +680,30 @@ function setupThemeToggle() {
 
 
 
+    document.getElementById('edit-detail').addEventListener('click', function() {
+        const videoId = this.closest('#video-detail').getAttribute('data-video-id');
+        console.log('Edit video with ID:', videoId);
+        // Implement your edit functionality here
+    });
 
+    // Add content button
+    document.getElementById('add-content').addEventListener('click', function() {
+        console.log('Add new content');
+        // Implement your add content functionality here
+    });
+
+
+
+    
 
 // Initial setup
 document.addEventListener('DOMContentLoaded', () => {
     const missionReveal = document.getElementById('mission-reveal');
     const missionText = missionReveal.querySelector('.mission-text');
 
+
+
+                            
 
     function closeVideoDetail() {
         document.getElementById('video-detail').classList.add('hidden');
