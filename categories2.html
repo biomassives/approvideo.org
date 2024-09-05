@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Visualization of Appropriate Technology Solutions</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; }
+        #info {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+            display: block;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="info">Appropriate Technology Solutions<br>
+        <span style="font-size: 14px;">X: Cost/Effort vs. Benefit, Y: DIY-ability, Z: Scalability & Adaptability</span>
+    </div>
+    <script>
+        function loadScript(url, callback) {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = url;
+            script.onload = callback;
+            document.head.appendChild(script);
+        }
+
+        loadScript('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js', function() {
+            loadScript('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js', initApp);
+        });
+
+        function initApp() {
+                  // Our data
+            const subjectsRankingMatrix = [
+              { id: "1", name: "Water Filtration and Purification", "C/E:B": 8, DIY: 7, "S&A": 8 },
+              { id: "2", name: "Sustainable Energy Solutions", "C/E:B": 7, DIY: 5, "S&A": 7 },
+              { id: "3", name: "Composting Systems", "C/E:B": 9, DIY: 9, "S&A": 9 },
+              { id: "4", name: "Rainwater Harvesting", "C/E:B": 8, DIY: 8, "S&A": 8 },
+              { id: "5", name: "Natural Building Techniques", "C/E:B": 7, DIY: 6, "S&A": 6 },
+              { id: "6", name: "Greywater Systems", "C/E:B": 7, DIY: 6, "S&A": 7 },
+              { id: "7", name: "Small-scale Aquaponics", "C/E:B": 6, DIY: 5, "S&A": 6 },
+              { id: "8", name: "Biogas Digesters", "C/E:B": 6, DIY: 4, "S&A": 5 },
+              { id: "9", name: "Solar Cookers", "C/E:B": 9, DIY: 9, "S&A": 8 },
+              { id: "10", name: "Micro-hydro Power", "C/E:B": 5, DIY: 3, "S&A": 4 },
+              { id: "11", name: "Improved Cookstoves", "C/E:B": 8, DIY: 7, "S&A": 9 },
+              { id: "12", name: "Passive Solar Design", "C/E:B": 8, DIY: 6, "S&A": 7 },
+              { id: "13", name: "Bamboo Construction", "C/E:B": 7, DIY: 6, "S&A": 6 },
+              { id: "14", name: "Pedal-powered Machines", "C/E:B": 7, DIY: 5, "S&A": 6 },
+              { id: "15", name: "Plastic Bottle Construction", "C/E:B": 8, DIY: 9, "S&A": 7 },
+              { id: "16", name: "Solar-Powered Water Purification", "C/E:B": 7, DIY: 4, "S&A": 6 },
+              { id: "17", name: "Biogas-Powered Cooking and Lighting", "C/E:B": 6, DIY: 3, "S&A": 5 },
+              { id: "18", name: "Aquaponics with Solar Power", "C/E:B": 5, DIY: 4, "S&A": 5 },
+              { id: "19", name: "Rainwater Harvesting for Hydroponics", "C/E:B": 7, DIY: 6, "S&A": 7 },
+              { id: "20", name: "Waste-to-Energy Composting Toilets", "C/E:B": 7, DIY: 5, "S&A": 6 },
+              { id: "21", name: "Bamboo Rainwater Harvesting Structures", "C/E:B": 8, DIY: 7, "S&A": 7 },
+              { id: "22", name: "Pedal-Powered Water Filtration", "C/E:B": 8, DIY: 6, "S&A": 7 },
+              { id: "23", name: "Solar Food Dehydrators", "C/E:B": 9, DIY: 8, "S&A": 8 },
+              { id: "24", name: "Upcycled Plastic Bottle Greenhouse", "C/E:B": 8, DIY: 9, "S&A": 7 },
+              { id: "25", name: "Biomass-Powered Water Pumps", "C/E:B": 6, DIY: 4, "S&A": 5 },
+              { id: "26", name: "Vertical Hydroponic Gardens with Greywater Recycling", "C/E:B": 6, DIY: 5, "S&A": 6 },
+              { id: "27", name: "Wind-Powered Desalination Units", "C/E:B": 5, DIY: 2, "S&A": 4 },
+              { id: "28", name: "Biochar Production from Agricultural Waste", "C/E:B": 7, DIY: 6, "S&A": 7 },
+              { id: "29", name: "Solar-Powered Vaccine Refrigerators", "C/E:B": 8, DIY: 3, "S&A": 7 },
+              { id: "30", name: "Micro-hydro and Fish Ladder Combinations", "C/E:B": 5, DIY: 2, "S&A": 3 },
+              { id: "31", name: "Mycelium-Based Building Insulation", "C/E:B": 7, DIY: 5, "S&A": 6 },
+              { id: "32", name: "Pedal-Powered Washing Machines", "C/E:B": 8, DIY: 7, "S&A": 8 },
+              { id: "33", name: "Solar Balloon Water Heaters", "C/E:B": 9, DIY: 8, "S&A": 7 },
+              { id: "34", name: "Algae-Powered Streetlights", "C/E:B": 5, DIY: 2, "S&A": 4 },
+              { id: "35", name: "Waste Plastic Road Construction", "C/E:B": 6, DIY: 3, "S&A": 5 },
+              { id: "36", name: "Solar-Powered Atmospheric Water Generators", "C/E:B": 6, DIY: 3, "S&A": 5 },
+              { id: "37", name: "Bamboo Bicycle Frames with Water Storage", "C/E:B": 7, DIY: 5, "S&A": 6 },
+              { id: "38", name: "Floating Photovoltaic and Aquaculture Systems", "C/E:B": 5, DIY: 2, "S&A": 4 },
+              { id: "39", name: "Passive Cooling Earth Tubes", "C/E:B": 8, DIY: 6, "S&A": 7 },
+              { id: "40", name: "Piezoelectric Energy Harvesting Floors", "C/E:B": 4, DIY: 2, "S&A": 5 }
+            ];
+
+            let scene, camera, renderer, controls;
+            let raycaster, INTERSECTED;
+            const dataPoints = [];
+
+            init();
+            createDataPoints();
+            animate();
+
+            function init() {
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                renderer = new THREE.WebGLRenderer();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                document.body.appendChild(renderer.domElement);
+
+                controls = new THREE.OrbitControls(camera, renderer.domElement);
+                controls.enableDamping = true;
+                controls.dampingFactor = 0.25;
+                controls.screenSpacePanning = false;
+                controls.maxDistance = 500;
+                controls.minDistance = 10;
+
+                camera.position.set(15, 15, 15);
+                camera.lookAt(5, 5, 5);
+
+                raycaster = new THREE.Raycaster();
+
+                // Add lights
+                const ambientLight = new THREE.AmbientLight(0x404040);
+                scene.add(ambientLight);
+                const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+                directionalLight.position.set(1, 1, 1);
+                scene.add(directionalLight);
+
+                // Create axes
+                const axesHelper = new THREE.AxesHelper(10);
+                scene.add(axesHelper);
+
+                window.addEventListener('resize', onWindowResize, false);
+                document.addEventListener('mousemove', onMouseMove, false);
+            }
+
+            function createDataPoints() {
+                const geometry = new THREE.SphereGeometry(0.1, 32, 32);
+                
+                subjectsRankingMatrix.forEach(subject => {
+                    const material = new THREE.MeshPhongMaterial({ color: Math.random() * 0xffffff });
+                    const mesh = new THREE.Mesh(geometry, material);
+                    mesh.position.set(subject['C/E:B'], subject.DIY, subject['S&A']);
+                    mesh.userData = { name: subject.name };
+                    scene.add(mesh);
+                    dataPoints.push(mesh);
+                });
+            }
+
+            function onMouseMove(event) {
+                event.preventDefault();
+                const mouse = new THREE.Vector2(
+                    (event.clientX / window.innerWidth) * 2 - 1,
+                    -(event.clientY / window.innerHeight) * 2 + 1
+                );
+
+                raycaster.setFromCamera(mouse, camera);
+                const intersects = raycaster.intersectObjects(dataPoints);
+
+                if (intersects.length > 0) {
+                    if (INTERSECTED != intersects[0].object) {
+                        if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+                        INTERSECTED = intersects[0].object;
+                        INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+                        INTERSECTED.material.emissive.setHex(0xff0000);
+                        document.getElementById('info').innerHTML = `
+                            Appropriate Technology Solutions<br>
+                            <span style="font-size: 14px;">X: Cost/Effort vs. Benefit, Y: DIY-ability, Z: Scalability & Adaptability</span><br>
+                            <span style="font-size: 16px; color: yellow;">${INTERSECTED.userData.name}</span>
+                        `;
+                    }
+                } else {
+                    if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+                    INTERSECTED = null;
+                    document.getElementById('info').innerHTML = `
+                        Appropriate Technology Solutions<br>
+                        <span style="font-size: 14px;">X: Cost/Effort vs. Benefit, Y: DIY-ability, Z: Scalability & Adaptability</span>
+                    `;
+                }
+            }
+
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            }
+        }
+    </script>
+</body>
+</html>
