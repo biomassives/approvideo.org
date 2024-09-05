@@ -67,6 +67,16 @@
       box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
     }
 
+    #close-detail-x {
+        transition: transform 0.3s ease;
+    }
+    
+    #close-detail-x:hover {
+        transform: scale(1.1);
+    }
+
+
+        
     </style>
     </head>  
     <body>
@@ -156,9 +166,35 @@
         <div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
     </div>
 
+
+<div class="flex justify-center space-x-4 mb-6">
+  <button class="category-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:scale-105 flex items-center">
+    <i class="fas fa-tint mr-2 text-xl"></i>
+    <span>Drinking Water</span>
+  </button>
+  
+  <button class="category-btn bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:scale-105 flex items-center">
+    <i class="fas fa-recycle mr-2 text-xl"></i>
+    <span>Waste Management</span>
+  </button>
+  
+  <button class="category-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:scale-105 flex items-center">
+    <i class="fas fa-solar-panel mr-2 text-xl"></i>
+    <span>Energy Systems</span>
+  </button>
+  
+  <button class="category-btn bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:scale-105 flex items-center">
+    <i class="fas fa-heartbeat mr-2 text-xl"></i>
+    <span>Appropriate Tech</span>
+  </button>
+</div>
+
+
+
+        
     <div class="p-4 mt-4">
         <div class="mb-4 flex justify-center space-x-4">
-            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-beige-100  hover:text-white dark:bg-gray-200 dark:hover:bg-gray-700" data-category="Drinking Water">
+            <a href="#" class="category-link flex items-center p-2 text-base font-normal rounded-lg hover:bg-beige-100 hover:text-white dark:bg-gray-200 dark:hover:bg-gray-700" data-category="Drinking Water">
                 <i class="fas fa-tint w-6 h-6 text-blue-500"></i>
                 <span class="ml-3">Drinking Water</span>
             </a>
@@ -185,6 +221,13 @@
 
    <div id="video-detail" class="fixed inset-0 bg-opacity-50 overflow-y-auto h-full w-full hidden">
     <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md">
+
+        <button id="close-detail-x" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        
         <div class="curved-line"></div>
         <div class="curved-line"></div>
         <div class="curved-line"></div>
@@ -625,6 +668,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const missionReveal = document.getElementById('mission-reveal');
     const missionText = missionReveal.querySelector('.mission-text');
 
+
+    function closeVideoDetail() {
+        document.getElementById('video-detail').classList.add('hidden');
+    }
+
+    // Existing close button
+    document.getElementById('close-detail').addEventListener('click', closeVideoDetail);
+
+    // New close button (X)
+    document.getElementById('close-detail-x').addEventListener('click', closeVideoDetail);
+
+    
     document.body.addEventListener('click', (e) => {
         const target = e.target.closest('a');
         if (!target) return;
