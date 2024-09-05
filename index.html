@@ -51,6 +51,23 @@
         transform: translateY(0);
       }
     }
+    #mondrian-box {
+      transition: all 0.3s ease-in-out;
+      max-height: 50vh;
+      overflow-y: auto;
+    }
+    
+    #subcategory-links a {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+    
+    #subcategory-links a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+        
     </style>
     </head>  
     <body>
@@ -181,6 +198,13 @@
         </div>
     </div>
 </div>
+
+
+<div id="mondrian-box" class="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 p-4 hidden">
+  <div id="subcategory-links" class="flex flex-wrap justify-center"></div>
+</div>
+
+        
 
 <footer class="footer-gradient dark:footer-gradient-light text-gray-800 dark:text-gray-200 py-12 mt-12 transition-colors duration-300">
     <div  class="landscape">
@@ -659,20 +683,20 @@ document.addEventListener('DOMContentLoaded', () => {
             link.style.transform = 'translateX(0)';
         });
     });
-
-        console.log('DOM fully loaded');
-        console.log(window.videoData);
-  filterAndSortVideos();
-  setupEventListeners();
-  setupFloatingIcons();
-});
     
+      console.log('DOM fully loaded');
+      console.log(window.videoData);
+      filterAndSortVideos();
+      setupEventListeners();
+      setupFloatingIcons();
 
     
-
-
+ });
 
 </script>
+<script src="navigation.js"></script>
+
+        
 
 </body>
 </html>
