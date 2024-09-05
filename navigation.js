@@ -79,8 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Update the URL to reflect the search
       const urlParams = new URLSearchParams(window.location.search);
-      urlParams.set('category', category);
-      urlParams.set('search', searchTerm);
+      urlParams.set('category', searchTerm);
       history.pushState(null, '', `?${urlParams.toString()}`);
 
       // Close the Mondrian box after selection
