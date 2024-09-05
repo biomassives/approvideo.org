@@ -115,7 +115,7 @@ body.dark .theme-toggle {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease-out;
   transform-style: preserve-3d;
-  opacity: 0;
+  opacity: 0.25;
 }
 
 .floating-icon.active {
