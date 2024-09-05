@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.className = `p-4 m-2 text-center flex items-center justify-center transition-all duration-300 ease-in-out
                         ${getRandomColor()} ${getRandomSize()}`;
       link.style.minWidth = '100px';
-      link.setAttribute('data-category', subcategory.getAttribute('data-category'));
+      link.setAttribute('data-category', subcategory.getAttribute('textContent'));
       
       subcategoryLinks.appendChild(link);
     });
