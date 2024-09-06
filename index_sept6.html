@@ -546,7 +546,6 @@ function setupEventListeners() {
             
           // Update URL and filter videos
           const urlParams = new URLSearchParams(window.location.search);
-          urlParams.set('category', category);
           if (tag) {
             urlParams.set('tag', tag);
           } else {
