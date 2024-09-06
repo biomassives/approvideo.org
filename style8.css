@@ -481,8 +481,21 @@ body.dark #video-content ol {
   background-color: #2d3748 !important;
 }
 
+.category-link {
+  /* Default styles for light mode */
+  @apply text-black border-blue;
+}
 
-body.dark .category-link  {
-  color: #374151 !important; /* Light gray for dark theme */
-  border-color: #374151 !important; /* Light gray for dark theme */
+.dark .category-link {
+  /* Styles for dark mode */
+  @apply text-white border-white bg-opacity-30 hover:bg-opacity-40;
+}
+
+.dark .category-link:hover {
+  @apply bg-yellow-400 bg-opacity-40;
+}
+
+/* Adjust icon color for dark mode */
+.dark .category-link i {
+  @apply text-yellow-300;
 }
