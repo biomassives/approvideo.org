@@ -38,12 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateURLAndFilter(category, tag) {
-    const urlParams = new URLSearchParams();
+    const urlParams = new URLSearchParams(window.location.search);
     if (category) {
       urlParams.set('category', encodeURIComponent(category));
+    } else {
+      urlParams.delete('category');
     }
     if (tag) {
       urlParams.set('tag', encodeURIComponent(tag));
+    } else {
+      urlParams.delete('tag');
     }
     const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
     history.pushState(null, '', newUrl);
