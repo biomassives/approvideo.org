@@ -486,12 +486,12 @@ body.dark #video-content ol {
   @apply text-black border-blue;
 }
 
-.dark .category-link {
+body.dark .category-link {
   /* Styles for dark mode */
   @apply text-white border-white bg-opacity-30 hover:bg-opacity-40;
 }
 
-.dark .category-link:hover {
+body.dark .category-link:hover {
   @apply bg-yellow-400 bg-opacity-40;
 }
 
