@@ -684,6 +684,19 @@ function filterAndSortVideos() {
     const category = urlParams.get('category');
     const tag = urlParams.get('tag');
 
+    if (tag) {      
+          const searchInput = document.getElementById('search');
+          if (searchInput) {
+            searchInput.value = tag;
+          }
+    }
+    if (category) {     
+          const searchInput = document.getElementById('search');
+          if (searchInput) {
+            searchInput.value = category;
+          }
+    }
+    
     let filteredVideos = window.videoData.filter(video => 
         (category ? video.categories.includes(category) : true) &&
         (tag ? video.tags.includes(tag) : true) &&
