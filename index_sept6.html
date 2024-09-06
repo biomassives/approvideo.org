@@ -684,31 +684,37 @@ function filterAndSortVideos() {
     const category = urlParams.get('category');
     const tag = urlParams.get('tag');
 
-    if (tag) {      
-          const searchInput = document.getElementById('search');
-          if (searchInput) {
-            searchInput.value = tag;
-          }
-    }
-    if (category) {     
-          const searchInput = document.getElementById('search');
-          if (searchInput) {
-            searchInput.value = category;
-          }
-    }
-    
-    let filteredVideos = window.videoData.filter(video => 
-        (category ? video.categories.includes(category) : true) &&
-        (tag ? video.tags.includes(tag) : true) &&
-        (video.title.toLowerCase().includes(searchTerm) ||
-        video.description.toLowerCase().includes(searchTerm) ||
-        video.tags.some(t => t.toLowerCase().includes(searchTerm)))
-    );
+    let filteredVideos = window.videoData.filter(video => {
+        // Check if video matches the category or tag (if specified)
+        const categoryMatch = !category || video.categories.some(cat => cat.toLowerCase().includes(category.toLowerCase()));
+        const tagMatch = !tag || video.tags.some(t => t.toLowerCase().includes(tag.toLowerCase()));
 
+        // Check if video matches the search term
+        const searchMatch = 
+            video.title.toLowerCase().includes(searchTerm) ||
+            video.description.toLowerCase().includes(searchTerm) ||
+            video.categories.some(cat => cat.toLowerCase().includes(searchTerm)) ||
+            video.tags.some(t => t.toLowerCase().includes(searchTerm));
+
+        // Return true if the video matches the search term AND (matches category OR tag OR neither are specified)
+        return searchMatch && (categoryMatch || tagMatch || (!category && !tag));
+    });
+
+    // Sort videos by rating (assuming higher rating is better)
     filteredVideos.sort((a, b) => b.rating - a.rating);
+
     renderCategories(filteredVideos);
 }
 
+function renderCategories(videos) {
+    const categoriesContainer = document.getElementById('categories');
+    if (videos.length === 0) {
+        categoriesContainer.innerHTML = '<p class="text-center text-gray-500">No videos found. Try adjusting your search.</p>';
+    } else {
+        categoriesContainer.innerHTML = videos.map(renderVideo).join('');
+    }
+    setupVideoDetailListeners();
+}
 function handleVideoDetailClick(e) {
     if (e.target.classList.contains('video-detail-link')) {
         e.preventDefault();
@@ -906,6 +912,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('DOM fully loaded');
       console.log(window.videoData);
       filterAndSortVideos();
+        document.getElementById('search').addEventListener('input', filterAndSortVideos);
       setupEventListeners();
       setupFloatingIcons();
 
