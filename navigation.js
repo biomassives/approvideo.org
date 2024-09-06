@@ -38,14 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateURLAndFilter(category, tag) {
-    const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set('category', category);
-    if (tag) {
-      urlParams.set('tag', tag);
-    } else {
-      urlParams.delete('tag');
+    const urlParams = new URLSearchParams();
+    if (category) {
+      urlParams.set('category', encodeURIComponent(category));
     }
-    history.pushState(null, '', `?${urlParams.toString()}`);
+    if (tag) {
+      urlParams.set('tag', encodeURIComponent(tag));
+    }
+    const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
+    history.pushState(null, '', newUrl);
     
     if (typeof filterAndSortVideos === 'function') {
       filterAndSortVideos();
@@ -54,25 +55,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function clearSearchAndFilter(category, tag) {
+    if (searchInput) {
+      if (category && tag) {
+        searchInput.value = `${category}: ${tag}`;
+      } else if (category) {
+        searchInput.value = category;
+      } else {
+        searchInput.value = '';
+      }
+    }
+    updateURLAndFilter(category, tag);
+  }
+
   mainCategories.forEach(category => {
     category.addEventListener('click', (e) => {
       e.preventDefault();
       const categoryValue = category.getAttribute('data-category');
 
-      // Clear the search input when a main category is clicked
-      if (searchInput) {
-        searchInput.value = '';
-      }
-
       if (currentCategory === category) {
         mondrianBox.classList.add('hidden');
         currentCategory = null;
+        clearSearchAndFilter(); // Clear URL when closing category
       } else {
         showSubcategories(category);
         currentCategory = category;
+        clearSearchAndFilter(categoryValue);
       }
-      
-      updateURLAndFilter(categoryValue);
     });
   });
 
@@ -89,19 +98,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target.tagName === 'A') {
       e.preventDefault();
       const category = e.target.getAttribute('data-category');
-      const searchTerm = e.target.textContent.trim();
+      const tag = e.target.textContent.trim();
       
-      // Update the search input with the selected subcategory
-      if (searchInput) {
-        searchInput.value = searchTerm;
-      }
+      clearSearchAndFilter(category, tag);
 
-      updateURLAndFilter(category, searchTerm);
-
-      // Close the Mondrian box after selection
       mondrianBox.classList.add('hidden');
       currentCategory = null;
-      console.log(`Searching for subcategory: ${searchTerm} in category: ${category}`);
+      console.log(`Searching for subcategory: ${tag} in category: ${category}`);
     }
   });
 
@@ -110,13 +113,20 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const category = link.getAttribute('data-category');
-      
-      // Clear the search input when a category link is clicked
-      if (searchInput) {
-        searchInput.value = '';
-      }
-
-      updateURLAndFilter(category);
+      clearSearchAndFilter(category);
     });
+  });
+
+  // Initial load: check URL parameters and set search/filter accordingly
+  window.addEventListener('load', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+    const tag = urlParams.get('tag');
+
+    if (category) {
+      const decodedCategory = decodeURIComponent(category);
+      const decodedTag = tag ? decodeURIComponent(tag) : null;
+      clearSearchAndFilter(decodedCategory, decodedTag);
+    }
   });
 });
