@@ -77,34 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('filterAndSortVideos function not found');
       }
 
-
-
-
       // Update the URL to reflect the search
-const urlParams = new URLSearchParams(window.location.search);
-
-if (category && category.trim() !== '') {
-  urlParams.set('category', category);
-} else {
-  urlParams.delete('category');
-}
-
-if (tag && tag.trim() !== '') {
-  urlParams.set('tag', tag);
-} else {
-  urlParams.delete('tag');
-}
-
-// Only update the URL if there are parameters
-if (urlParams.toString()) {
-  history.pushState(null, '', `?${urlParams.toString()}`);
-} else {
-  history.pushState(null, '', window.location.pathname);
-}
-
-filterAndSortVideos();
-
-
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.set('tag', searchTerm);
+      history.pushState(null, '', `?${urlParams.toString()}`);
 
       // Close the Mondrian box after selection
       mondrianBox.classList.add('hidden');
