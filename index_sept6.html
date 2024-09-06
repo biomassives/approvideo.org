@@ -106,6 +106,30 @@
         border-color: #4299e1;
         box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
     }
+
+        
+/* New video button styles */
+.new-video-btn {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: #4CAF50; /* Green color for the plus icon */
+}
+
+body.dark .new-video-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #81C784; /* Lighter green for dark mode */
+}
+
+.new-video-btn i {
+  font-size: 20px;
+}
             
     </style>
   
@@ -113,10 +137,16 @@
 
 
 
-    <div class="absolute top-2 right-2 flex items-center space-x-2">
-        <button id="add-content" class="new-icon text-3xl text-white ">
-            <i class="fas fa-plus-circle"></i>
-        </button>
+
+
+    
+
+    <div class="absolute header-buttons top-2 right-2 flex items-center space-x-2">
+
+          <button id="new-video-btn" class="new-video-btn">
+            <i class="fas fa-plus"></i>
+          </button>
+    
         <button id="theme-toggle" class="theme-toggle text-2xl">
             <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
             <i class="fas fa-moon hidden text-white" id="theme-toggle-dark-icon"></i>
