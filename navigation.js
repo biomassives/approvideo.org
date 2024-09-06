@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function clearSearchAndFilter(category, tag) {
     if (searchInput) {
       if (category && tag) {
-        searchInput.value = `${category}: ${tag}`;
+        searchInput.value = `${tag}`;
       } else if (category) {
         searchInput.value = category;
       } else {
