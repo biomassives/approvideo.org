@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const mainCategories = document.querySelectorAll('.group > a');
   const mondrianBox = document.getElementById('mondrian-box');
   const subcategoryLinks = document.getElementById('subcategory-links');
+  const searchInput = document.getElementById('search');
   let currentCategory = null;
 
   function showSubcategories(category) {
@@ -46,6 +47,24 @@ document.addEventListener('DOMContentLoaded', () => {
         showSubcategories(category);
         currentCategory = category;
       }
+      
+      // Clear the search input when a category is clicked
+      if (searchInput) {
+        searchInput.value = '';
+      }
+      
+      // Update the URL to reflect the category selection
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.set('category', category.getAttribute('data-category'));
+      urlParams.delete('tag'); // Remove any existing tag parameter
+      history.pushState(null, '', `?${urlParams.toString()}`);
+      
+      // Trigger the search
+      if (typeof filterAndSortVideos === 'function') {
+        filterAndSortVideos();
+      } else {
+        console.error('filterAndSortVideos function not found');
+      }
     });
   });
 
@@ -65,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const searchTerm = e.target.textContent.trim();
       
       // Update the search input with the selected subcategory
-      const searchInput = document.getElementById('search');
       if (searchInput) {
         searchInput.value = searchTerm;
       }
