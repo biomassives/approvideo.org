@@ -45,6 +45,13 @@ body.dark .info-panel {
 }
 
 /* Theme toggle styles */
+.new-icon {
+  position: fixed;
+  top: 20px;
+  right: 40px;
+}
+
+/* Theme toggle styles */
 .theme-toggle {
   position: fixed;
   top: 20px;
