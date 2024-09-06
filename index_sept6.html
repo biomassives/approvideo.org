@@ -535,7 +535,15 @@ function setupEventListeners() {
             category = target.getAttribute('data-category');
             tag = target.getAttribute('data-tag');
           }
-    
+
+            if (category) {
+              // Clear the search field
+              const searchInput = document.getElementById('search');
+              if (searchInput) {
+                searchInput.value = '';
+              }
+
+            
           // Update URL and filter videos
           const urlParams = new URLSearchParams(window.location.search);
           urlParams.set('category', category);
