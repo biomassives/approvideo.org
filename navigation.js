@@ -37,9 +37,33 @@ document.addEventListener('DOMContentLoaded', () => {
     return sizes[Math.floor(Math.random() * sizes.length)];
   }
 
+  function updateURLAndFilter(category, tag) {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('category', category);
+    if (tag) {
+      urlParams.set('tag', tag);
+    } else {
+      urlParams.delete('tag');
+    }
+    history.pushState(null, '', `?${urlParams.toString()}`);
+    
+    if (typeof filterAndSortVideos === 'function') {
+      filterAndSortVideos();
+    } else {
+      console.error('filterAndSortVideos function not found');
+    }
+  }
+
   mainCategories.forEach(category => {
     category.addEventListener('click', (e) => {
       e.preventDefault();
+      const categoryValue = category.getAttribute('data-category');
+
+      // Clear the search input when a main category is clicked
+      if (searchInput) {
+        searchInput.value = '';
+      }
+
       if (currentCategory === category) {
         mondrianBox.classList.add('hidden');
         currentCategory = null;
@@ -48,23 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentCategory = category;
       }
       
-      // Clear the search input when a category is clicked
-      if (searchInput) {
-        searchInput.value = '';
-      }
-      
-      // Update the URL to reflect the category selection
-      const urlParams = new URLSearchParams(window.location.search);
-      urlParams.set('category', category.getAttribute('data-category'));
-      urlParams.delete('tag'); // Remove any existing tag parameter
-      history.pushState(null, '', `?${urlParams.toString()}`);
-      
-      // Trigger the search
-      if (typeof filterAndSortVideos === 'function') {
-        filterAndSortVideos();
-      } else {
-        console.error('filterAndSortVideos function not found');
-      }
+      updateURLAndFilter(categoryValue);
     });
   });
 
@@ -88,24 +96,27 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.value = searchTerm;
       }
 
-      // Trigger the search
-      if (typeof filterAndSortVideos === 'function') {
-        filterAndSortVideos();
-      } else {
-        console.error('filterAndSortVideos function not found');
-      }
-
-      // Update the URL to reflect the search
-      const urlParams = new URLSearchParams(window.location.search);
-      urlParams.set('tag', searchTerm);
-      urlParams.set('category', '');
-      history.pushState(null, '', `?${urlParams.toString()}`);
+      updateURLAndFilter(category, searchTerm);
 
       // Close the Mondrian box after selection
       mondrianBox.classList.add('hidden');
       currentCategory = null;
-
       console.log(`Searching for subcategory: ${searchTerm} in category: ${category}`);
     }
+  });
+
+  // Handle clicks on category links outside the header
+  document.querySelectorAll('.category-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const category = link.getAttribute('data-category');
+      
+      // Clear the search input when a category link is clicked
+      if (searchInput) {
+        searchInput.value = '';
+      }
+
+      updateURLAndFilter(category);
+    });
   });
 });
