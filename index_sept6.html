@@ -87,7 +87,26 @@
         z-index: 10; /* Ensure buttons are above other header content */
     }
 
-        
+    #add-content-modal {
+        transition: opacity 0.3s ease-in-out;
+    }
+    
+    #add-content-modal.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    #add-content-modal:not(.hidden) {
+        opacity: 1;
+    }
+    
+    #add-content-form input:focus,
+    #add-content-form textarea:focus,
+    #add-content-form select:focus {
+        border-color: #4299e1;
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+    }
+            
     </style>
   
     <div class="embossed-background"></div>
@@ -265,6 +284,57 @@
   <div id="subcategory-links" class="flex flex-wrap justify-center"></div>
 </div>
 
+<div id="add-content-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+    <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
+        <div class="mt-3 text-center">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Add New Content</h3>
+            <form id="add-content-form" class="mt-2 text-left">
+                <div class="mb-4">
+                    <label for="content-type" class="block text-gray-700 text-sm font-bold mb-2">Content Type</label>
+                    <select id="content-type" name="content-type" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="video">Video</option>
+                        <option value="suggestion">Suggestion</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                    <input type="text" id="title" name="title" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                </div>
+                <div class="mb-4">
+                    <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Description</label>
+                    <textarea id="description" name="description" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="3" required></textarea>
+                </div>
+                <div id="video-fields" class="mb-4">
+                    <label for="video-url" class="block text-gray-700 text-sm font-bold mb-2">Video URL</label>
+                    <input type="url" id="video-url" name="video-url" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="category" class="block text-gray-700 text-sm font-bold mb-2">Category</label>
+                    <select id="category" name="category" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <option value="">Select a category</option>
+                        <option value="Drinking Water">Drinking Water</option>
+                        <option value="Waste Management">Waste Management</option>
+                        <option value="Energy Systems">Energy Systems</option>
+                        <option value="Appropriate Tech">Appropriate Tech</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="tags" class="block text-gray-700 text-sm font-bold mb-2">Tags (comma-separated)</label>
+                    <input type="text" id="tags" name="tags" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="flex items-center justify-between mt-4">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Submit
+                    </button>
+                    <button type="button" id="close-modal" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    
         
 
 <footer class="footer-gradient dark:footer-gradient-light text-gray-800 dark:text-gray-200 py-12 mt-12 transition-colors duration-300">
@@ -700,8 +770,43 @@ function setupThemeToggle() {
 document.addEventListener('DOMContentLoaded', () => {
     const missionReveal = document.getElementById('mission-reveal');
     const missionText = missionReveal.querySelector('.mission-text');
+    const addContentButton = document.getElementById('add-content');
+    const addContentModal = document.getElementById('add-content-modal');
+    const closeModalButton = document.getElementById('close-modal');
+    const addContentForm = document.getElementById('add-content-form');
+    const contentTypeSelect = document.getElementById('content-type');
+    const videoFields = document.getElementById('video-fields');
 
+    addContentButton.addEventListener('click', () => {
+        addContentModal.classList.remove('hidden');
+    });
 
+    closeModalButton.addEventListener('click', () => {
+        addContentModal.classList.add('hidden');
+    });
+
+    contentTypeSelect.addEventListener('change', () => {
+        if (contentTypeSelect.value === 'video') {
+            videoFields.style.display = 'block';
+        } else {
+            videoFields.style.display = 'none';
+        }
+    });
+
+    addContentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(addContentForm);
+        const data = Object.fromEntries(formData.entries());
+        
+        // Here you would typically send this data to your server or Supabase
+        console.log('Form data:', data);
+        
+        // For demonstration, we'll just log it and close the modal
+        alert('Content submitted successfully!');
+        addContentModal.classList.add('hidden');
+        addContentForm.reset();
+    });
+    
 
                             
 
