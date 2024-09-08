@@ -1,71 +1,71 @@
 const videoData = [
-            {
-                "id": "1",
-                "title": "DIY Gravity-Based Water Filter",
-                "categories": ["Drinking Water", "Health"],
-                "description": "A simple gravity water filter using easily sourced materials like sand, gravel, and activated charcoal.",
-                "youtubeId": "v6O6jFs5DrQ",
-                "tags": ["water", "filter", "DIY", "purification"],
-                "rating": 4.5,
-                "date": "2023-05-15",
-                "transcript": "This is a dummy transcript for the DIY Gravity-Based Water Filter video...",
-                "materials": ["Sand", "Gravel", "Activated Charcoal", "Large Plastic Containers", "PVC Pipe"],
-                "steps": [
-                    "Prepare the containers",
-                    "Layer the filtering materials",
-                    "Set up the water flow system",
-                    "Test the filter",
-                    "Maintain and clean regularly"
-                ]
+             {
+                            "id": "1",
+                            "title": "DIY Gravity-Based Water Filter",
+                            "categories": ["Drinking Water", "Health"],
+                            "description": "A simple gravity water filter using easily sourced materials like sand, gravel, and activated charcoal.",
+                            "youtubeId": "v6O6jFs5DrQ",
+                            "tags": ["water", "filter", "DIY", "purification"],
+                            "rating": 4.5,
+                            "date": "2023-05-15",
+                            "transcript": "This is a dummy transcript for the DIY Gravity-Based Water Filter video...",
+                            "materials": ["Sand", "Gravel", "Activated Charcoal", "Large Plastic Containers", "PVC Pipe"],
+                            "steps": [
+                                "Prepare the containers",
+                                "Layer the filtering materials",
+                                "Set up the water flow system",
+                                "Test the filter",
+                                "Maintain and clean regularly"
+                            ]
             },
             {
-              "id": "2",
-              "title": "Collect AND store | DIY Rainwater harvesting system",
-              "categories": ["Agriculture", "DIY", "Sustainability"],
-              "description": "This video demonstrates how to build a rainwater harvesting system for livestock using a barn's metal roof. It provides detailed instructions on assembling a first flush system and plumbing three 275-gallon IBC totes. The tutorial covers the entire process, from parts selection to installation.",
-              "youtubeId": "J2t_ZZGmBoo",
-              "tags": ["rainwater harvesting", "DIY", "livestock", "water collection", "sustainability", "farm"],
-              "rating": 4.8,
-              "date": "2023-02-26",
-              "transcript": "This is a placeholder for the video transcript...",
-              "materials": [
-                "Metal roof",
-                "IBC totes (3x 275 gallon)",
-                "First flush assembly components",
-                "Plumbing pipes and fittings",
-                "Tools (not specified in the description)"
-              ],
-              "steps": [
-                "Set up the first flush assembly",
-                "Install plumbing for the IBC totes",
-                "Connect the system to the barn's metal roof",
-                "Test the rainwater collection system"
-              ],
-              "panels": [
-                {
-                  "title": "Introduction to Rainwater Harvesting",
-                  "content": "Explains the concept of rainwater harvesting and its benefits for livestock and sustainable farming practices."
-                },
-                {
-                  "title": "First Flush System Assembly",
-                  "content": "Provides detailed instructions on assembling the first flush system, which helps to filter out initial contaminants."
-                },
-                {
-                  "title": "IBC Tote Plumbing",
-                  "content": "Guides viewers through the process of installing plumbing for the three 275-gallon IBC totes."
-                },
-                {
-                  "title": "Connecting to the Barn Roof",
-                  "content": "Demonstrates how to connect the rainwater harvesting system to the barn's metal roof for optimal water collection."
-                },
-                {
-                  "title": "System Testing and Maintenance",
-                  "content": "Offers tips on testing the completed system and maintaining it for long-term use."
-                },
-                {
-                  "title": "Benefits and Applications",
-                  "content": "Discusses the advantages of using harvested rainwater for livestock and potential applications in sustainable farming."
-                }
+                          "id": "2",
+                          "title": "Collect AND store | DIY Rainwater harvesting system",
+                          "categories": ["Agriculture", "DIY", "Sustainability"],
+                          "description": "This video demonstrates how to build a rainwater harvesting system for livestock using a barn's metal roof. It provides detailed instructions on assembling a first flush system and plumbing three 275-gallon IBC totes. The tutorial covers the entire process, from parts selection to installation.",
+                          "youtubeId": "J2t_ZZGmBoo",
+                          "tags": ["rainwater harvesting", "DIY", "livestock", "water collection", "sustainability", "farm"],
+                          "rating": 4.8,
+                          "date": "2023-02-26",
+                          "transcript": "This is a placeholder for the video transcript...",
+                          "materials": [
+                            "Metal roof",
+                            "IBC totes (3x 275 gallon)",
+                            "First flush assembly components",
+                            "Plumbing pipes and fittings",
+                            "Tools (not specified in the description)"
+                          ],
+                          "steps": [
+                            "Set up the first flush assembly",
+                            "Install plumbing for the IBC totes",
+                            "Connect the system to the barn's metal roof",
+                            "Test the rainwater collection system"
+                          ],
+                          "panels": [
+                            {
+                              "title": "Introduction to Rainwater Harvesting",
+                              "content": "Explains the concept of rainwater harvesting and its benefits for livestock and sustainable farming practices."
+                            },
+                            {
+                              "title": "First Flush System Assembly",
+                              "content": "Provides detailed instructions on assembling the first flush system, which helps to filter out initial contaminants."
+                            },
+                            {
+                              "title": "IBC Tote Plumbing",
+                              "content": "Guides viewers through the process of installing plumbing for the three 275-gallon IBC totes."
+                            },
+                            {
+                              "title": "Connecting to the Barn Roof",
+                              "content": "Demonstrates how to connect the rainwater harvesting system to the barn's metal roof for optimal water collection."
+                            },
+                            {
+                              "title": "System Testing and Maintenance",
+                              "content": "Offers tips on testing the completed system and maintaining it for long-term use."
+                            },
+                            {
+                              "title": "Benefits and Applications",
+                              "content": "Discusses the advantages of using harvested rainwater for livestock and potential applications in sustainable farming."
+                            }
               ]
             },
             {
@@ -954,7 +954,69 @@ const videoData = [
                     }
                 ]
             }
+,
 
+            {
+              "id": "25",
+              "title": "Building a DIY Wind Turbine from Washing Machine Parts",
+              "categories": ["Renewable Energy", "DIY", "Upcycling"],
+              "description": "In this video, Dustin demonstrates how to build a DIY wind turbine using parts salvaged from a washing machine. He covers the entire process from dismantling the washing machine to assembling the turbine, including creating custom blades and setting up the electrical components. The video also includes reflections on challenges faced and improvements made during the project.",
+              "youtubeId": "23K-moBp5tY",
+              "tags": ["wind turbine", "DIY", "washing machine", "renewable energy", "upcycling", "woodworking", "electrical engineering"],
+              "rating": 4.8,
+              "date": "YYYY-MM-DD",
+              "transcript": "This is a placeholder for the video transcript...",
+              "materials": [
+                "Washing machine parts (rotor, stator, spider bracket)",
+                "Wood for blades",
+                "Fiberglass (for upgraded blades)",
+                "Lathe and CNC machine (for Hub)",
+                "Wiring and electrical components",
+                "Yaw bearing",
+                "Materials for furling tail and brake system"
+              ],
+              "steps": [
+                "Disassemble washing machine to salvage necessary parts",
+                "Machine the Hub using a lathe and CNC machine",
+                "Cut and shape wooden blades manually",
+                "Configure and connect the coil wiring",
+                "Assemble the yaw bearing, furling tail, and brake system",
+                "Install the initial wooden blades",
+                "Test the wind turbine and assess performance",
+                "Replace wooden blades with fiberglass blades for improved efficiency",
+                "Upgrade the controller and magnets for better performance"
+              ],
+              "panels": [
+                {
+                  "title": "Salvaging Washing Machine Parts",
+                  "content": "Describes the process of dismantling a washing machine to obtain the rotor, stator, and spider bracket for the wind turbine project."
+                },
+                {
+                  "title": "Machining the Hub",
+                  "content": "Explains the use of a lathe and CNC machine to create a custom Hub for the wind turbine."
+                },
+                {
+                  "title": "Blade Construction",
+                  "content": "Details the initial process of manually cutting and shaping wooden blades, and the later upgrade to more efficient fiberglass blades."
+                },
+                {
+                  "title": "Electrical Configuration",
+                  "content": "Demonstrates the wiring configuration for the coils and explains how they were connected to generate electricity."
+                },
+                {
+                  "title": "Turbine Components",
+                  "content": "Discusses the purpose and installation of key components such as the yaw bearing, furling tail, and brake system."
+                },
+                {
+                  "title": "Performance Improvements",
+                  "content": "Covers the upgrades made to improve efficiency, including replacing wooden blades with fiberglass and upgrading the controller and magnets."
+                },
+                {
+                  "title": "Lessons Learned",
+                  "content": "Shares insights gained throughout the project, highlighting challenges faced and solutions found during the build process."
+                }
+              ]
+            }
   
 ];
 
