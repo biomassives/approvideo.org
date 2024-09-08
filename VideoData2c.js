@@ -89,82 +89,89 @@ const videoData = [
                 ]
             },
             {
-                                    "id": "4",
-                                    "title": "Building a Wind Generator using a Car Alternator",
-                                    "categories": ["Energy Systems", "DIY"],
-                                    "description": "This video demonstrates how to build a wind generator using a car alternator. It explains the concept of converting wind energy into electricity using a modified car alternator and homemade blades. The video also details the materials required and the steps involved in the construction process.",
-                                    "youtubeId": "http://www.youtube.com/watch?v=iUMbdmYBJ3I",
-                                    "tags": ["wind generator", "car alternator", "renewable energy", "DIY", "homemade"],
-                                    "rating": 4.7, // Placeholder, adjust as needed
-                                    "date": "2021-08-28",
-                                    "transcript": "This is a placeholder for the video transcript...",
-                                    "materials": [
-                                    "Car alternator",
-                                    "PVC pipes",
-                                    "Metal rods",
-                                    "Bearings",
-                                    "Battery",
-                                    "Voltage regulator",
-                                    "Electrical wires",
-                                    "Tools (drill, saw, etc.)"
-                                    ],
-                                    "steps": [
-                                    "Modify the car alternator to make it suitable for wind power generation.",
-                                    "Construct the wind turbine blades using PVC pipes and metal rods.",
-                                    "Assemble the wind turbine structure, including the blades, shaft, and tower.",
-                                    "Connect the wind turbine to the car alternator.",
-                                    "Connect the car alternator to the battery and voltage regulator.",
-                                    "Test the wind generator and make adjustments as necessary."
-                                    ],
-                                    "panels": [
-                                    {
-                                    "title": "Introduction to Wind Power",
-                                    "content": "Explains the basic principles of wind energy and how it can be converted into electricity using wind turbines."
-                                    },
-                                    {
-                                    "title": "Converting a Car Alternator",
-                                    "content": "Provides instructions on how to modify a car alternator to function as a wind generator."
-                                    },
-                                    {
-                                    "title": "Building the Wind Turbine Blades",
-                                    "content": "Details the process of constructing the wind turbine blades using PVC pipes and metal rods."
-                                    },
-                                    {
-                                    "title": "Assembling the Wind Turbine",
-                                    "content": "Guides the viewer through the assembly of the wind turbine structure, including the blades, shaft, and tower."
-                                    },
-                                    {
-                                    "title": "Connecting the Electrical Components",
-                                    "content": "Explains how to connect the wind turbine, car alternator, battery, and voltage regulator to form a functional system."
-                                    },
-                                    {
-                                    "title": "Testing and Troubleshooting",
-                                    "content": "Offers tips on testing the wind generator and troubleshooting any issues that may arise."
-                                    }
-                        ]
-                              },
-                              {
-                            "id": "5",
-                            "title": "Compost Bin from Recycled Materials",
-                            "categories": ["Waste Management", "Health"],
-                            "description": "A tutorial for building a compost bin from pallets and other recycled materials, perfect for waste management in gardens.",
-                            "youtubeId": "W5WTckKAV2k",
-                            "tags": ["compost", "recycling", "garden", "waste reduction"],
-                            "rating": 4.7,
-                            "date": "2023-07-10",
-                            "transcript": "This is a dummy transcript for the Compost Bin from Recycled Materials video...",
-                            "materials": ["Wooden Pallets", "Screws", "Hinges", "Wire Mesh", "Paint or Wood Sealant"],
-                            "steps": [
-                                "Disassemble and clean the pallets",
-                                "Construct the bin frame",
-                                "Attach the wire mesh for aeration",
-                                "Install a hinged lid",
-                                "Apply paint or sealant for weather protection"
-                            ]
-                        },
-                        
-                        
-                        {
+                          "id": "4",
+                          "title": "Building a Wind Generator using a Car Alternator",
+                          "categories": ["Energy Systems", "DIY", "Renewable Energy"],
+                          "description": "This DIY project video demonstrates the process of building a wind generator using a car alternator. The tutorial covers disassembling and modifying a car alternator, constructing a frame and furling tail mechanism, creating blades from PVC pipes, and installing the windmill. However, the project concludes with challenges in generating sufficient electricity and suggestions for future improvements.",
+                          "youtubeId": "iUMbdmYBJ3I",
+                          "tags": ["wind generator", "car alternator", "renewable energy", "DIY", "homemade", "PVC blades", "windmill"],
+                          "rating": 4.5,
+                          "date": "2021-08-28",
+                          "transcript": "This is a placeholder for the video transcript...",
+                          "materials": [
+                            "Car alternator",
+                            "PVC pipes",
+                            "External battery pack",
+                            "Frame materials (not specified)",
+                            "Bearing",
+                            "Wires",
+                            "Tools for disassembly and construction"
+                          ],
+                          "steps": [
+                            "Disassemble the car alternator and remove unnecessary parts",
+                            "Modify the alternator by bypassing the voltage regulator",
+                            "Connect the rotor coil to an external battery pack",
+                            "Reassemble the modified alternator",
+                            "Build a frame to hold the windmill components",
+                            "Construct a bearing holder for wind direction alignment",
+                            "Create a furling tail mechanism to prevent overspeeding",
+                            "Assemble windmill blades using PVC pipes",
+                            "Install the completed windmill on the roof",
+                            "Test the wind generator and evaluate its performance"
+                          ],
+                          "panels": [
+                            {
+                              "title": "Alternator Modification",
+                              "content": "Explains the process of disassembling a car alternator, removing unnecessary parts, and modifying it to generate electricity from wind power."
+                            },
+                            {
+                              "title": "Electrical Modifications",
+                              "content": "Details how to bypass the voltage regulator and connect the rotor coil to an external battery pack to activate the alternator for wind power generation."
+                            },
+                            {
+                              "title": "Frame Construction",
+                              "content": "Guides viewers through building a frame to hold the windmill components, including the modified alternator and bearing holder for wind alignment."
+                            },
+                            {
+                              "title": "Safety Mechanisms",
+                              "content": "Demonstrates the construction of a furling tail mechanism to prevent the windmill from overspeeding in high winds."
+                            },
+                            {
+                              "title": "Blade Assembly",
+                              "content": "Shows the process of creating and assembling windmill blades using PVC pipes, discussing design considerations for optimal wind capture."
+                            },
+                            {
+                              "title": "Installation and Testing",
+                              "content": "Covers the installation of the completed windmill on a roof and the subsequent testing process to evaluate its performance."
+                            },
+                            {
+                              "title": "Results and Future Improvements",
+                              "content": "Discusses the challenges faced, including insufficient electricity generation, and proposes future improvements such as using a permanent magnet rotor and increasing rotary speed."
+                            }
+                          ]
+                  },
+                  {
+                "id": "5",
+                "title": "Compost Bin from Recycled Materials",
+                "categories": ["Waste Management", "Health"],
+                "description": "A tutorial for building a compost bin from pallets and other recycled materials, perfect for waste management in gardens.",
+                "youtubeId": "W5WTckKAV2k",
+                "tags": ["compost", "recycling", "garden", "waste reduction"],
+                "rating": 4.7,
+                "date": "2023-07-10",
+                "transcript": "This is a dummy transcript for the Compost Bin from Recycled Materials video...",
+                "materials": ["Wooden Pallets", "Screws", "Hinges", "Wire Mesh", "Paint or Wood Sealant"],
+                "steps": [
+                    "Disassemble and clean the pallets",
+                    "Construct the bin frame",
+                    "Attach the wire mesh for aeration",
+                    "Install a hinged lid",
+                    "Apply paint or sealant for weather protection"
+                ]
+            },
+            
+            
+            {
                           "id": "6",
                           "title": "Heather's Small Scale Biodigester",
                           "categories": ["Waste Management", "Energy Systems", "Gardening"],
@@ -216,12 +223,12 @@ const videoData = [
                               "title": "Safety and Maintenance",
                               "content": "Ensure the biodigester is airtight to prevent gas leaks. Include an overflow pipe for safety. Regularly monitor the gas production and effluent levels. Periodically remove and replace the digested material."
                             }
-                          ]
-                        }
-                        
-                        ,
-                                     
-                        {
+                                      ]
+            }
+            
+            ,
+                         
+            {
                             "id": "7",
                             "title": "Homemade Ceramic Water Filter",
                             "categories": ["Drinking Water", "Health"],
@@ -238,16 +245,16 @@ const videoData = [
                                 "Fire the filter in a kiln or open fire",
                                 "Apply colloidal silver",
                                 "Assemble the filtration system"
-                            ]
-                        },
+                ]
+            },
 
-            
-                        {
+
+            {
                             "id": "9",
                             "title": "Car Alternator Windmill for Off-Grid Power",
                             "categories": ["Energy Systems"],
                             "description": "Learn how to repurpose a car alternator to create a robust windmill for generating off-grid electricity.",
-                            "youtubeId": "X8hE8XYOQN4",
+                            "youtubeId": "iUMbdmYBJ3I",
                             "tags": ["windmill", "alternator", "off-grid", "DIY power"],
                             "rating": 4.6,
                             "date": "2024-02-10",
