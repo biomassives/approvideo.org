@@ -35,16 +35,34 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('video-container').innerHTML = '';
     }
 
-    function loadPlaylist() {
-        document.getElementById('video-container').innerHTML = `
-            <iframe width="560" height="315" 
-                src="https://www.youtube.com/embed/videoseries?list=${playlistId}" 
-                frameborder="0" 
-                allow="autoplay; encrypted-media" 
-                allowfullscreen>
-            </iframe>
-        `;
-    }
+function loadPlaylist() {
+    const container = document.getElementById('video-container');
+    container.innerHTML = '<div id="loading">Loading playlist...</div>';
+    
+    const iframe = document.createElement('iframe');
+    iframe.width = '560';
+    iframe.height = '315';
+    iframe.src = `https://www.youtube.com/embed/videoseries?list=${playlistId}`;
+    iframe.frameBorder = '0';
+    iframe.allow = 'autoplay; encrypted-media';
+    iframe.allowFullscreen = true;
+    
+    iframe.onload = () => {
+        container.innerHTML = '';
+        container.appendChild(iframe);
+    };
+    
+    iframe.onerror = () => {
+        container.innerHTML = 'Error loading playlist. Please try again later.';
+    };
+    
+    // Set a timeout in case the iframe fails to load or trigger any event
+    setTimeout(() => {
+        if (container.innerHTML.includes('Loading playlist')) {
+            container.innerHTML = 'Error loading playlist. Please check your internet connection and try again.';
+        }
+    }, 10000); // 10 seconds timeout
+}
 
     videoPlayerBtn.addEventListener('click', () => {
         if (videoPlayerPopup.style.display === 'none') {
