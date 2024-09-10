@@ -46,6 +46,8 @@ function createVideoPlayerPopup() {
     document.getElementById('prev-video').addEventListener('click', playPreviousVideo);
     document.getElementById('next-video').addEventListener('click', playNextVideo);
     
+
+
     videoPlayerPopup.style.display = 'none';
 
     // Add styles
@@ -92,7 +94,7 @@ function openVideoPlayerPopup() {
 
 function closeVideoPlayerPopup() {
     videoPlayerPopup.style.display = 'none';
-    if (player && typeof player.destroy === 'function') {
+    if (player) {
         player.destroy();
     }
 }
@@ -107,7 +109,7 @@ function playVideo(index) {
     const videoContainer = document.getElementById('video-container');
     videoContainer.innerHTML = ''; // Clear previous video
 
-    if (player && typeof player.destroy === 'function') {
+    if (player) {
         player.destroy();
     }
 
@@ -115,8 +117,13 @@ function playVideo(index) {
         height: '315',
         width: '560',
         videoId: video.youtubeId,
+        playerVars: {
+            'origin': 'https://www.approvideo.org',
+            'enablejsapi': 1
+        },
         events: {
-            'onReady': onPlayerReady
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
         }
     });
 
@@ -127,6 +134,10 @@ function playVideo(index) {
 
 function onPlayerReady(event) {
     event.target.playVideo();
+}
+
+function onPlayerStateChange(event) {
+    // You can handle player state changes here if needed
 }
 
 function playNextVideo() {
