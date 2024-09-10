@@ -1,91 +1,24 @@
-document.addEventListener('DOMContentLoaded', () => {
+let player;
+let videoPlayerPopup;
+let currentVideoIndex = 0;
+
+function onYouTubeIframeAPIReady() {
+    console.log("YouTube API Ready");
+    initializeVideoPlayer();
+}
+
+function initializeVideoPlayer() {
     const videoPlayerBtn = document.getElementById('video-player-btn');
     if (!videoPlayerBtn) {
         console.error('Video player button not found');
         return;
     }
 
-    const videoPlayerPopup = document.createElement('div');
+    videoPlayerPopup = document.createElement('div');
     videoPlayerPopup.id = 'video-player-popup';
     document.body.appendChild(videoPlayerPopup);
-    let currentVideoIndex = 0;
-    let player;
 
-    function createVideoPlayerPopup() {
-        videoPlayerPopup.innerHTML = `
-            <div class="video-player-content">
-                <button id="close-video-player">&times;</button>
-                <div id="video-container"></div>
-                <div class="video-controls">
-                    <button id="prev-video">Previous</button>
-                    <button id="next-video">Next</button>
-                </div>
-                <div id="video-title"></div>
-            </div>
-        `;
-        
-        document.getElementById('close-video-player').addEventListener('click', closeVideoPlayerPopup);
-        document.getElementById('prev-video').addEventListener('click', playPreviousVideo);
-        document.getElementById('next-video').addEventListener('click', playNextVideo);
-        
-        videoPlayerPopup.style.display = 'none';
-    }
-
-    function openVideoPlayerPopup() {
-        videoPlayerPopup.style.display = 'block';
-        playVideo(currentVideoIndex);
-    }
-
-    function closeVideoPlayerPopup() {
-        videoPlayerPopup.style.display = 'none';
-        if (player && typeof player.destroy === 'function') {
-            player.destroy();
-        }
-    }
-
-    function playVideo(index) {
-        const video = window.videoData[index];
-        const videoContainer = document.getElementById('video-container');
-        videoContainer.innerHTML = ''; // Clear previous video
-
-        if (player && typeof player.destroy === 'function') {
-            player.destroy();
-        }
-
-        player = new YT.Player('video-container', {
-            height: '315',
-            width: '560',
-            videoId: video.youtubeId,
-            events: {
-                'onReady': onPlayerReady
-            }
-        });
-
-        document.getElementById('video-title').textContent = video.title;
-        currentVideoIndex = index;
-        updateNavigationButtons();
-    }
-
-    function onPlayerReady(event) {
-        event.target.playVideo();
-    }
-
-    function playNextVideo() {
-        if (currentVideoIndex < window.videoData.length - 1) {
-            playVideo(currentVideoIndex + 1);
-        }
-    }
-
-    function playPreviousVideo() {
-        if (currentVideoIndex > 0) {
-            playVideo(currentVideoIndex - 1);
-        }
-    }
-
-    function updateNavigationButtons() {
-        document.getElementById('prev-video').disabled = currentVideoIndex === 0;
-        document.getElementById('next-video').disabled = currentVideoIndex === window.videoData.length - 1;
-    }
+    createVideoPlayerPopup();
 
     videoPlayerBtn.addEventListener('click', () => {
         if (videoPlayerPopup.style.display === 'none') {
@@ -94,15 +27,26 @@ document.addEventListener('DOMContentLoaded', () => {
             closeVideoPlayerPopup();
         }
     });
+}
 
-    // Load YouTube API
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    // Call this function to set up the popup
-    createVideoPlayerPopup();
+function createVideoPlayerPopup() {
+    videoPlayerPopup.innerHTML = `
+        <div class="video-player-content">
+            <button id="close-video-player">&times;</button>
+            <div id="video-container"></div>
+            <div class="video-controls">
+                <button id="prev-video">Previous</button>
+                <button id="next-video">Next</button>
+            </div>
+            <div id="video-title"></div>
+        </div>
+    `;
+    
+    document.getElementById('close-video-player').addEventListener('click', closeVideoPlayerPopup);
+    document.getElementById('prev-video').addEventListener('click', playPreviousVideo);
+    document.getElementById('next-video').addEventListener('click', playNextVideo);
+    
+    videoPlayerPopup.style.display = 'none';
 
     // Add styles
     const style = document.createElement('style');
@@ -139,4 +83,74 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(style);
-});
+}
+
+function openVideoPlayerPopup() {
+    videoPlayerPopup.style.display = 'block';
+    playVideo(currentVideoIndex);
+}
+
+function closeVideoPlayerPopup() {
+    videoPlayerPopup.style.display = 'none';
+    if (player && typeof player.destroy === 'function') {
+        player.destroy();
+    }
+}
+
+function playVideo(index) {
+    if (!window.videoData || index >= window.videoData.length) {
+        console.error('Invalid video data or index');
+        return;
+    }
+
+    const video = window.videoData[index];
+    const videoContainer = document.getElementById('video-container');
+    videoContainer.innerHTML = ''; // Clear previous video
+
+    if (player && typeof player.destroy === 'function') {
+        player.destroy();
+    }
+
+    player = new YT.Player('video-container', {
+        height: '315',
+        width: '560',
+        videoId: video.youtubeId,
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+
+    document.getElementById('video-title').textContent = video.title;
+    currentVideoIndex = index;
+    updateNavigationButtons();
+}
+
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+function playNextVideo() {
+    if (currentVideoIndex < window.videoData.length - 1) {
+        playVideo(currentVideoIndex + 1);
+    }
+}
+
+function playPreviousVideo() {
+    if (currentVideoIndex > 0) {
+        playVideo(currentVideoIndex - 1);
+    }
+}
+
+function updateNavigationButtons() {
+    document.getElementById('prev-video').disabled = currentVideoIndex === 0;
+    document.getElementById('next-video').disabled = currentVideoIndex === window.videoData.length - 1;
+}
+
+// Load YouTube API
+const tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+const firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// This function will be called by the YouTube API when it's ready
+window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
