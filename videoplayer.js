@@ -34,8 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         videoPlayerPopup.style.display = 'none';
         document.getElementById('video-container').innerHTML = '';
     }
-
-function loadPlaylist() {
+function loadPlaylist(retryCount = 0) {
     const container = document.getElementById('video-container');
     container.innerHTML = '<div id="loading">Loading playlist...</div>';
     
@@ -53,24 +52,24 @@ function loadPlaylist() {
     };
     
     iframe.onerror = () => {
-        container.innerHTML = 'Error loading playlist. Please try again later.';
+        if (retryCount < 3) {
+            setTimeout(() => loadPlaylist(retryCount + 1), 2000);
+        } else {
+            container.innerHTML = 'Error loading playlist. Please try again later.';
+        }
     };
     
     // Set a timeout in case the iframe fails to load or trigger any event
     setTimeout(() => {
         if (container.innerHTML.includes('Loading playlist')) {
-            container.innerHTML = 'Error loading playlist. Please check your internet connection and try again.';
+            if (retryCount < 3) {
+                loadPlaylist(retryCount + 1);
+            } else {
+                container.innerHTML = 'Error loading playlist. Please check your internet connection and try again.';
+            }
         }
     }, 10000); // 10 seconds timeout
 }
-
-    videoPlayerBtn.addEventListener('click', () => {
-        if (videoPlayerPopup.style.display === 'none') {
-            openVideoPlayerPopup();
-        } else {
-            closeVideoPlayerPopup();
-        }
-    });
 
     // Call this function to set up the popup
     createVideoPlayerPopup();
