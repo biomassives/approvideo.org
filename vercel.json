@@ -1,8 +1,17 @@
 {
-  "functions": {
-    "api/update_video.py": {
-      "memory": 1024,
-      "maxDuration": 10
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "ALLOW-FROM https://www.youtube.com"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self' https://www.youtube.com"
+        }
+      ]
     }
-  }
+  ]
 }
