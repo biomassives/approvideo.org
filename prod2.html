@@ -393,7 +393,48 @@
 
 <script>
 
+const videoGroupings = [
+    {
+        name: "Water Solutions",
+        ids: ["1", "2", "7", "11", "17", "24"]
+    },
+    {
+        name: "Energy Systems",
+        ids: ["3", "4", "9", "10", "20", "23"]
+    },
+    {
+        name: "Waste Management",
+        ids: ["5", "6", "12", "14", "16", "22"]
+    },
+    {
+        name: "Sustainable Agriculture",
+        ids: ["15", "16", "22", "6", "14", "12"]
+    },
+    {
+        name: "DIY Projects",
+        ids: ["1", "3", "4", "7", "15", "17"]
+    },
+    {
+        name: "Environmental Engineering",
+        ids: ["11", "13", "18", "19", "24", "2"]
+    },
+    {
+        name: "Innovative Technologies",
+        ids: ["18", "20", "21", "23", "24", "10"]
+    }
+];
 
+
+
+    
+
+function getFeaturedVideoIds() {
+    const today = new Date();
+    const dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
+    return videoGroupings[dayOfWeek].ids;
+}
+
+    
 
 function toggleSublinks(category) {
   const dropUpMenus = document.querySelectorAll('.drop-up-menu');
