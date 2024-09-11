@@ -685,6 +685,8 @@ function setupEventListeners() {
     
 }
 
+
+
 function slugify(text) {
     return text.toString().toLowerCase()
         .replace(/\s+/g, '-')
@@ -956,6 +958,8 @@ function setupThemeToggle() {
 
 // Initial setup
 document.addEventListener('DOMContentLoaded', () => {
+        initializeDailyFocusAndModal(); // Add this line
+    
     const missionReveal = document.getElementById('mission-reveal');
     const missionText = missionReveal.querySelector('.mission-text');
     const addContentButton = document.getElementById('add-content');
