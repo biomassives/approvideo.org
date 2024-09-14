@@ -56,17 +56,268 @@ body.dark .info-panel {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Theme toggle styles */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+
+
+/* Modal styles */
+.modal {
+    transition: opacity 0.3s ease-in-out;
 }
+
+.modal-content {
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Thematic backgrounds for modals */
+#sponsor-modal .modal-content {
+    background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+}
+
+#editor-modal .modal-content {
+    background: linear-gradient(135deg, #da22ff 0%, #9733ee 100%);
+}
+
+/* Button hover effects */
+.footer-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.6s;
+}
+
+.footer-button:hover::before {
+    left: 100%;
+}
+
+/* Modal content styles */
+.modal h3 {
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.modal p {
+    color: #f0f0f0;
+}
+
+.modal button {
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.modal button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Updated styles for theme toggle and add content buttons */
+.theme-toggle,
+.theme-toggle2 {
+    position: fixed;
+    top: 20px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle {
+    right: 20px;
+}
+
+.theme-toggle2 {
+    right: 70px;
+}
+
+body.dark .theme-toggle,
+body.dark .theme-toggle2 {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.theme-toggle i,
+.theme-toggle2 i {
+    font-size: 1.5rem;
+    transition: opacity 0.3s ease;
+}
+
+.theme-toggle i.hidden,
+.theme-toggle2 i.hidden {
+    display: none;
+}
+
+/* Ensure icons are visible in both light and dark modes */
+body.light .theme-toggle i,
+body.light .theme-toggle2 i {
+    color: #1a202c;
+}
+
+body.dark .theme-toggle i,
+body.dark .theme-toggle2 i {
+    color: #ffffff;
+}
+
+/* Hover effects */
+.theme-toggle:hover,
+.theme-toggle2:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+ footer {
+      position: relative;
+      top: 250px;
+      overflow: display;
+      bottom: 100px;
+    }
+    .landscape {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 200%; 
+      background-image: url("gyyy5r.webp"); /* Or PNG, GIF, etc. */
+      animation: landscapeScroll 15s linear infinite; /* Adjust duration as needed */
+    }
+    @keyframes landscapeScroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%); 
+      }
+    }
+    /* Optional: Add some "jumpiness" to the animation */
+    .landscape img {
+      image-rendering: pixelated; /* Ensure the image stays pixelated even when scaled */
+      animation: jump 0.5s steps(1) infinite; /* Adjust timing as needed */
+    }
+    
+    @keyframes jump {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-2px); /* Adjust the jump height as needed */
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    #mondrian-box {
+      transition: all 0.3s ease-in-out;
+      max-height: 50vh;
+      overflow-y: auto;
+    }
+    
+    #subcategory-links a {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+    
+    #subcategory-links a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    #close-detail-x {
+        transition: transform 0.3s ease;
+    }
+    
+    #close-detail-x:hover {
+        transform: scale(1.1);
+    }
+
+    #edit-detail, #add-content {
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    #edit-detail:hover {
+        transform: scale(1.1);
+    }
+    
+    .header .absolute {
+        z-index: 10; /* Ensure buttons are above other header content */
+    }
+
+    #add-content-modal {
+        transition: opacity 0.3s ease-in-out;
+        z-index:10000;
+    }
+    
+    #add-content-modal.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    #add-content-modal:not(.hidden) {
+        opacity: 1;
+    } 
+
+    body.dark #add-content {
+        text: #fff !important;
+    }
+        
+    #add-content {
+        text: #000;
+        position: abslolute;
+        right:65px;
+    }
+    
+    #add-content-form input:focus,
+    #add-content-form textarea:focus,
+    #add-content-form select:focus {
+        border-color: #4299e1;
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+    }
+     
+    #video-player-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #fff;
+            transition: color 0.3s ease;
+            position: relative;
+            right: 108px;
+        }
+        
+        body.dark #video-player-btn {
+            color: #fff;
+
+        }
+        
+        #video-player-btn:hover {
+            color: #3B82F6; /* Tailwind's blue-500 */
+        }  
+    
+
+
+
+
+
 
 body.dark .theme-toggle {
   background-color: rgba(0, 0, 0, 0.5);
