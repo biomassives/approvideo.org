@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Management App</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+  <h1>Welcome to the Video Management App</h1>
+
+  <h2>Add a New Video</h2>
+  <form id="videoForm">
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" id="title" required>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" required></textarea>
+    </div>
+    <div>
+      <label for="categories">Categories (comma-separated):</label>
+      <input type="text" id="categories" required>
+    </div>
+    <div>
+      <label for="tags">Tags (comma-separated):</label>
+      <input type="text" id="tags" required>
+    </div>
+    <div>
+      <label for="materials">Materials (comma-separated):</label>
+      <input type="text" id="materials" required>
+    </div>
+    <div>
+      <label for="steps">Steps (comma-separated):</label>
+      <input type="text" id="steps" required>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const supabaseUrl = 'https://your-supabase-url.supabase.co';
+    const supabaseKey = 'your-supabase-key';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    const videoForm = document.getElementById('videoForm');
+
+    videoForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const title = document.getElementById('title').value;
+      const description = document.getElementById('description').value;
+      const categories = document.getElementById('categories').value.split(',').map(c => c.trim());
+      const tags = document.getElementById('tags').value.split(',').map(t => t.trim());
+      const materials = document.getElementById('materials').value.split(',').map(m => m.trim());
+      const steps = document.getElementById('steps').value.split(',').map(s => s.trim());
+
+      const newVideo = {
+        title,
+        description,
+        categories,
+        tags,
+        materials,
+        steps
+      };
+
+      try {
+        const { data, error } = await supabase.from('videos').insert([newVideo]);
+        if (error) {
+          throw error;
+        }
+        console.log('New video created:', data[0]);
+
+        // Reset the form fields
+        document.getElementById('title').value = '';
+        document.getElementById('description').value = '';
+        document.getElementById('categories').value = '';
+        document.getElementById('tags').value = '';
+        document.getElementById('materials').value = '';
+        document.getElementById('steps').value = '';
+      } catch (error) {
+        console.error('Error creating video:', error);
+      }
+    });
+  </script>
+</body>
+</html>
