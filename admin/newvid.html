@@ -7,6 +7,62 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
+  <!
+
+  This HTML and JavaScript code provides a simple interface for creating a new video in a video management application. Here's how it works:
+
+HTML Structure:
+
+The HTML document has a basic structure with a <head> and <body> section.
+The <head> section includes a <script> tag that loads the Supabase JavaScript library.
+The <body> section contains a heading and a form with several input fields for the video details 
+  (title, description, categories, tags, materials, and steps).
+The form has an id of videoForm, which is used to reference it in the JavaScript code.
+
+
+Supabase Initialization:
+
+In the <script> section, the code initializes a Supabase client using the provided supabaseUrl and supabaseKey.
+Supabase is a cloud-hosted database and backend-as-a-service platform that provides an easy way to interact with a database.
+
+
+Form Submission:
+
+The code attaches an event listener to the videoForm element, which listens for the submit event.
+When the form is submitted, the event listener function is triggered.
+
+
+Data Extraction and Preparation:
+
+The function extracts the values from the form fields (title, description, categories, tags, materials, and steps).
+The categories and tags are converted from comma-separated strings to arrays.
+A newVideo object is created, containing the extracted data.
+
+
+Supabase Insert Operation:
+
+The code uses the Supabase client to insert the newVideo data into the videos table in the database.
+The supabase.from('videos').insert([newVideo]) method is used to perform the insert operation.
+
+
+Error Handling:
+
+If any errors occur during the insert operation, the code catches the error and logs it to the console.
+
+
+Form Reset:
+
+If the video is successfully created, the code resets the values of the form fields to empty strings.
+
+
+
+In summary, this code sets up a simple web page with a form for creating a new video. When the form is submitted, the 
+  code extracts the data from the form, creates a new video object, and uses the Supabase client to insert the video 
+    data into a database. The code also handles any errors that may occur during the insertion process and resets the 
+      form fields after a successful submission.
+
+
+  >
   <h1>Welcome to the Video Management App</h1>
 
   <h2>Add a New Video</h2>
@@ -42,7 +98,7 @@
     const supabaseUrl = 'https://your-supabase-url.supabase.co';
     const supabaseKey = 'your-supabase-key';
     const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-
+    
     const videoForm = document.getElementById('videoForm');
 
     videoForm.addEventListener('submit', async (e) => {
