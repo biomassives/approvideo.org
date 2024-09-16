@@ -13,5 +13,35 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/videos",
+      "destination": "/api/inputvideo"
+    },
+    {
+      "source": "/api/videos/:id",
+      "destination": "/api/update_video"
+    },
+    {
+      "source": "/api/video-categories",
+      "destination": "/api/video-categories"
+    },
+    {
+      "source": "/api/video-tags",
+      "destination": "/api/video-tags"
+    },
+    {
+      "source": "/api/new-video-item-by-transcript-or-description",
+      "destination": "/api/new-video-item-by-transcript-or-description"
+    },
+    {
+      "source": "/videos",
+      "destination": "/pages/videos/index"
+    },
+    {
+      "source": "/videos/:id",
+      "destination": "/pages/videos/[id]"
+    }
   ]
 }
