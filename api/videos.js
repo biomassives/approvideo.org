@@ -1,7 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY)
-
 export default async function handler(req, res) {
   // Get the user's token from the request headers
   const token = req.headers.authorization?.split(' ')[1]
@@ -11,11 +9,15 @@ export default async function handler(req, res) {
   }
 
   // Initialize Supabase client with the user's token
-  const supabaseClient = supabase.auth.setAuth(token)
+  const supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_ANON_KEY,
+    { global: { headers: { Authorization: `Bearer ${token}` } } }
+  )
 
   if (req.method === 'GET') {
     try {
-      const { data, error } = await supabaseClient
+      const { data, error } = await supabase
         .from('videos')
         .select(`
           *,
@@ -31,7 +33,7 @@ export default async function handler(req, res) {
       const { panels, ...videoData } = req.body
 
       // Insert the video data
-      const { data: video, error: videoError } = await supabaseClient
+      const { data: video, error: videoError } = await supabase
         .from('videos')
         .insert([videoData])
         .single()
@@ -45,7 +47,7 @@ export default async function handler(req, res) {
           video_id: video.id
         }))
 
-        const { error: panelsError } = await supabaseClient
+        const { error: panelsError } = await supabase
           .from('panels')
           .insert(panelsWithVideoId)
 
