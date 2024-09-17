@@ -1,44 +1,65 @@
-import videoData from '../data/videoData';
+// services/videoService.js
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
 
 export async function getAllVideos() {
-  return videoData;
+  const { data, error } = await supabase
+    .from('videos')
+    .select('*')
+  if (error) throw error
+  return data
 }
 
 export async function getVideoById(id) {
-  const video = videoData.find((v) => v.id === id);
-  if (!video) {
-    throw new Error(`Video with ID ${id} not found`);
-  }
-  return video;
+  const { data, error } = await supabase
+    .from('videos')
+    .select(`
+      *,
+      video_categories (category),
+      video_tags (tag),
+      panels (*)
+    `)
+    .eq('id', id)
+    .single()
+  if (error) throw error
+  return data
 }
 
 export async function createVideo(videoData) {
-  // Implement logic to create a new video
-  const newVideo = { id: generateUniqueId(), ...videoData };
-  videoData.push(newVideo);
-  return newVideo;
+  const { title, description, categories, tags, panels, materials, steps } = videoData
+
+  // Start a Supabase transaction
+  const { data, error } = await supabase.rpc('create_video_with_relations', {
+    video_title: title,
+    video_description: description,
+    video_categories: categories,
+    video_tags: tags,
+    video_panels: panels,
+    video_materials: materials,
+    video_steps: steps
+  })
+
+  if (error) throw error
+  return data
 }
 
 export async function updateVideo(id, updatedVideoData) {
-  const videoIndex = videoData.findIndex((v) => v.id === id);
-  if (videoIndex === -1) {
-    throw new Error(`Video with ID ${id} not found`);
-  }
-  const updatedVideo = { ...videoData[videoIndex], ...updatedVideoData };
-  videoData[videoIndex] = updatedVideo;
-  return updatedVideo;
+  const { data, error } = await supabase
+    .from('videos')
+    .update(updatedVideoData)
+    .eq('id', id)
+    .single()
+  if (error) throw error
+  return data
 }
 
 export async function deleteVideo(id) {
-  const videoIndex = videoData.findIndex((v) => v.id === id);
-  if (videoIndex === -1) {
-    throw new Error(`Video with ID ${id} not found`);
-  }
-  const deletedVideo = videoData.splice(videoIndex, 1)[0];
-  return deletedVideo;
-}
-
-function generateUniqueId() {
-  // Implement a function to generate a unique ID for a new video
-  return `new-video-${Date.now()}`;
+  const { data, error } = await supabase
+    .from('videos')
+    .delete()
+    .eq('id', id)
+    .single()
+  if (error) throw error
+  return data
 }
