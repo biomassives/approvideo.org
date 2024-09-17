@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Management App</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <style>
+    .panel {
+      background-color: #f1f1f1;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    
+    .panel h3 {
+      color: #333;
+    }
+    
+    .panel p {
+      color: #666;
+    }
+    
+    .panel-icons {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 10px;
+    }
+    
+    .panel-icons i {
+      font-size: 24px;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Video Management App</h1>
+  <h2>Add a New Video</h2>
+  <form id="videoForm">
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" id="title" required>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" required></textarea>
+    </div>
+    <div>
+      <label for="categories">Categories (comma-separated):</label>
+      <input type="text" id="categories" required>
+    </div>
+    <div>
+      <label for="tags">Tags (comma-separated):</label>
+      <input type="text" id="tags" required>
+    </div>
+    <div>
+      <label for="materials">Materials (comma-separated):</label>
+      <input type="text" id="materials" required>
+    </div>
+    <div>
+      <label for="steps">Steps (comma-separated):</label>
+      <input type="text" id="steps" required>
+    </div>
+    <div>
+      <label for="panels">Panels (comma-separated titles):</label>
+      <input type="text" id="panels" required>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+
+    const supabaseUrl = 'https://vlvbodwrtblttvwnxkjx.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsdmJvZHdydGJsdHR2d254a2p4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY3NDk2NzIsImV4cCI6MjAwMjMyNTY3Mn0.TRT1HeX85vP1zDxnU7qBz5GqNPgYZUj-BOdek4qmtEg';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+    
+    const videoForm = document.getElementById('videoForm');
+    videoForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const title = document.getElementById('title').value;
+      const description = document.getElementById('description').value;
+      const categories = document.getElementById('categories').value.split(',').map(c => c.trim());
+      const tags = document.getElementById('tags').value.split(',').map(t => t.trim());
+      const materials = document.getElementById('materials').value.split(',').map(m => m.trim());
+      const steps = document.getElementById('steps').value.split(',').map(s => s.trim());
+      const panelTitles = document.getElementById('panels').value.split(',').map(p => p.trim());
+      const panels = panelTitles.map(title => ({
+        title,
+        icons: ['fas fa-check', 'fas fa-star', 'fas fa-thumbs-up'],
+        content: {
+          text: 'This is sample panel content.',
+          type: 'text'
+        }
+      }));
+      const newVideo = {
+        title,
+        description,
+        categories,
+        tags,
+        materials,
+        steps,
+        panels
+      };
+      try {
+        const { data, error } = await supabase.from('videos').insert([newVideo]);
+        if (error) {
+          throw error;
+        }
+        const videoId = data[0].id;
+        
+        // Insert panel data
+        const panelPromises = panels.map(async (panel) => {
+          const { error: panelError } = await supabase.from('panels').insert([
+            {
+              video_id: videoId,
+              title: panel.title,
+              icons: panel.icons,
+              content: JSON.stringify(panel.content)
+            }
+          ]);
+          if (panelError) {
+            throw panelError;
+          }
+        });
+        await Promise.all(panelPromises);
+
+        console.log('New video created:', data[0]);
+        // Reset the form fields
+        document.getElementById('title').value = '';
+        document.getElementById('description').value = '';
+        document.getElementById('categories').value = '';
+        document.getElementById('tags').value = '';
+        document.getElementById('materials').value = '';
+        document.getElementById('steps').value = '';
+        document.getElementById('panels').value = '';
+      } catch (error) {
+        console.error('Error creating video:', error);
+      }
+    });
+  </script>
+</body>
+</html>
