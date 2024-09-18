@@ -916,7 +916,309 @@ const videoData = [
                     }
                 ]
             }
-
+        ,
+            {
+              "id": "25",
+              "title": "Building a Permanent Magnet Generator from a Car Alternator",
+              "categories": ["Energy Systems", "DIY", "Electronics"],
+              "description": "This video by Electronoobs demonstrates how to modify a car alternator to build a permanent magnet generator. The purpose is to debunk a previous free energy video and achieve higher power output with AC voltage instead of DC. The process involves disassembling the alternator, designing a new rotor with 3D printed parts and permanent magnets, and reassembling the generator.",
+              "youtubeId": "7IsWKyoIz1Q",
+              "tags": ["permanent magnet generator", "car alternator", "DIY", "Electronoobs", "AC voltage", "3D printing"],
+              "rating": 4.5, // Placeholder, adjust as needed
+              "date": "2023-01-01", // Placeholder, adjust as needed
+              "transcript": "This is a placeholder for the video transcript...",
+              "materials": [
+                "Car alternator",
+                "3D printed parts",
+                "Permanent magnets",
+                "Multimeter",
+                "Tools for disassembly and assembly"
+              ],
+              "steps": [
+                "Disassemble the car alternator and remove the rectifier",
+                "Design a new rotor with 3D printed parts and permanent magnets",
+                "Assemble the new rotor with the car alternator",
+                "Connect the three phases of the generator in a delta configuration",
+                "Test the generator's output and measure peak current",
+                "Attempt to power an induction motor with the generator"
+              ],
+              "panels": [
+                {
+                  "title": "Introduction and Purpose",
+                  "content": "Explains the goal of building a permanent magnet generator to debunk a previous free energy video and achieve higher power output."
+                },
+                {
+                  "title": "Modifying the Car Alternator",
+                  "content": "Details the process of disassembling the alternator and removing the rectifier to allow for AC voltage output."
+                },
+                {
+                  "title": "Designing the New Rotor",
+                  "content": "Describes the creation of a new rotor using 3D printed parts and permanent magnets to replace the original electromagnet."
+                },
+                {
+                  "title": "Assembly and Configuration",
+                  "content": "Guides through the reassembly of the generator and the delta configuration of the three phases."
+                },
+                {
+                  "title": "Testing and Measurements",
+                  "content": "Discusses the limitations of measuring average current and reports the peak current and power output of the generator."
+                },
+                {
+                  "title": "Practical Application Attempt",
+                  "content": "Explains the attempt to power an induction motor and why it was unsuccessful due to insufficient starting voltage."
+                }
+              ]
+        }
+        ,
+   
+        {
+          "id": "26",
+          "title": "Building a Barrel Vertical Axis Wind Power Generator",
+          "categories": ["Energy Systems", "DIY", "Renewable Energy"],
+          "description": "This video demonstrates the process of constructing a vertical axis wind power generator using repurposed barrels. The project showcases an innovative approach to sustainable energy production using readily available materials.",
+          "youtubeId": "kO0h-2S0j4U",
+          "tags": ["wind power", "vertical axis turbine", "DIY energy", "barrel repurposing", "sustainable energy"],
+          "rating": 4.8,
+          "date": "2024-09-18",
+          "transcript": "This is a placeholder for the video transcript...",
+          "materials": [
+            "Large barrels",
+            "Metal frame",
+            "Generator",
+            "Electrical wiring",
+            "Cutting tools",
+            "Assembly tools"
+          ],
+          "steps": [
+            "Gather materials including barrels, metal frame, generator, and wiring",
+            "Cut and shape barrels to create aerodynamic blades",
+            "Assemble the metal frame for a stable base",
+            "Mount the shaped barrel blades onto the vertical axis",
+            "Install the generator at the base of the turbine",
+            "Connect electrical wiring from the generator to the power output system",
+            "Test the turbine and make necessary adjustments",
+            "Begin power generation for practical applications"
+          ],
+          "panels": [
+            {
+              "title": "Materials",
+              "icon": "Barrel, Blades, Metal Frame, Generator, Wires",
+              "content": "Gathering the essentials.",
+              "description": "The construction begins with sourcing the main components: Several large barrels to form the turbine's blades, a sturdy metal frame to support the structure, a generator to convert wind energy into electricity, and electrical wiring for connections."
+            },
+            {
+              "title": "Blade Preparation",
+              "icon": "Barrel being cut and shaped",
+              "content": "Shaping the wind catchers",
+              "description": "The barrels are carefully cut and shaped to create aerodynamic blades that will efficiently capture wind energy."
+            },
+            {
+              "title": "Frame Assembly",
+              "icon": "Metal frame being constructed",
+              "content": "Building a strong foundation",
+              "description": "The metal frame is assembled to provide a stable base for the turbine. It needs to be sturdy enough to withstand wind forces."
+            },
+            {
+              "title": "Blade Mounting",
+              "icon": "Blades being attached to the frame",
+              "content": "Attaching the blades",
+              "description": "The shaped barrels are securely mounted onto the vertical axis of the frame, ensuring they can rotate freely."
+            },
+            {
+              "title": "Generator Installation",
+              "icon": "Generator being connected",
+              "content": "Harnessing the power",
+              "description": "The generator is installed at the base of the turbine and connected to the rotating axis. As the blades spin, they turn the generator's shaft."
+            },
+            {
+              "title": "Electrical Wiring",
+              "icon": "Wires being connected",
+              "content": "Making the connection",
+              "description": "Electrical wiring is carefully run from the generator to the desired power output or storage system."
+            },
+            {
+              "title": "Testing and Fine-tuning",
+              "icon": "Turbine spinning in the wind",
+              "content": "Catching the wind",
+              "description": "The completed turbine is tested in the wind. Adjustments may be made to optimize its performance."
+            },
+            {
+              "title": "Power Generation",
+              "icon": "Lightbulb or house being powered",
+              "content": "Generating clean energy",
+              "description": "The wind turbine harnesses the power of the wind to generate electricity for various applications, contributing to a cleaner and more sustainable future."
+            }
+          ],
+          "additionalTips": [
+            "Use clear and engaging photos or illustrations of each step to enhance understanding.",
+            "Keep the text on each panel brief and to the point.",
+            "Use simple language that is easy for a general audience to understand.",
+            "Consider incorporating interactive elements, such as animations or quizzes, to make the learning experience more engaging."
+          ]
+        }
+        ,
+        {
+          "id": "27",
+          "title": "CorPower Ocean: Harnessing the Untapped Potential of Wave Energy",
+          "categories": ["Energy Systems", "Renewable Energy", "Marine Technology", "Biomimicry"],
+          "description": "CorPower Ocean, a Swedish energy startup, is revolutionizing the renewable energy sector with their innovative wave energy converters. These bio-inspired buoys efficiently capture ocean wave power, offering a promising sustainable alternative to traditional energy sources.",
+          "youtubeId": "https://www.youtube.com/watch?v=3X2PqKKPb48",
+          "tags": ["wave energy", "CorPower Ocean", "composite buoy", "renewable energy", "biomimicry", "ocean power", "sustainable energy"],
+          "rating": 4.8,
+          "date": "2024-09-18",
+          "transcript": "This is a placeholder for the video transcript...",
+          "materials": [
+            "Lightweight composite materials",
+            "Power Take-Off (PTO) system",
+            "Subsea cables",
+            "Bio-inspired engineering components",
+            "Advanced control systems"
+          ],
+          "steps": [
+            "Design and construct lightweight composite buoys",
+            "Implement bio-inspired oscillation mechanism",
+            "Install sophisticated Power Take-Off (PTO) system",
+            "Deploy buoys in strategic ocean locations",
+            "Connect buoys to subsea power transmission cables",
+            "Monitor and optimize performance in various wave conditions"
+          ],
+          "panels": [
+            {
+              "title": "Introduction to CorPower Ocean",
+              "icon": "Company logo",
+              "content": "Pioneering wave energy technology",
+              "description": "CorPower Ocean, a Swedish startup, is developing innovative wave energy converters that could revolutionize renewable energy production."
+            },
+            {
+              "title": "Core Technology: Composite Buoy",
+              "icon": "Buoy schematic",
+              "content": "Lightweight and durable design",
+              "description": "The heart of the system is a lightweight, durable composite buoy that oscillates in response to wave motion, efficiently capturing wave energy."
+            },
+            {
+              "title": "Biomimicry in Action",
+              "icon": "Heart and spine diagram",
+              "content": "Inspired by nature",
+              "description": "The buoy's design mimics the natural motion of a pumping heart or a flexing spine, allowing it to resonate with incoming waves and amplify energy capture."
+            },
+            {
+              "title": "Power Take-Off (PTO) System",
+              "icon": "Generator diagram",
+              "content": "Converting motion to electricity",
+              "description": "A sophisticated PTO system converts the buoy's mechanical energy into electricity, which is then transmitted to shore via subsea cables."
+            },
+            {
+              "title": "High Energy Capture",
+              "icon": "Energy comparison chart",
+              "content": "Tripling conventional efficiency",
+              "description": "CorPower claims its technology can capture up to three times more energy than conventional wave energy devices, significantly improving efficiency."
+            },
+            {
+              "title": "Cost Efficiency",
+              "icon": "Cost graph",
+              "content": "Competitive with wind and solar",
+              "description": "The company aims to reduce the cost of wave energy to levels competitive with wind and solar power, making it a viable alternative in the renewable energy mix."
+            },
+            {
+              "title": "Environmental Sustainability",
+              "icon": "Eco-friendly symbol",
+              "content": "Clean and low-impact",
+              "description": "Wave energy is a clean, renewable resource with minimal environmental impact, contributing to a more sustainable energy future."
+            },
+            {
+              "title": "Future Outlook",
+              "icon": "Wave energy farm",
+              "content": "Scaling up for global impact",
+              "description": "CorPower is currently testing and refining its technology through pilot projects, with ambitious plans to deploy commercial wave energy farms in the near future."
+            }
+          ],
+          "additionalInfo": [
+            "CorPower's technology could play a significant role in decarbonizing the global energy grid.",
+            "Wave energy has the potential to provide power to remote coastal communities, reducing reliance on fossil fuels.",
+            "The development and deployment of wave energy technology could create jobs and stimulate economic growth in coastal regions.",
+            "The system is designed to withstand harsh ocean conditions and operate continuously, ensuring reliability.",
+            "This information is based on the provided video and may not include the latest developments. Readers are encouraged to check CorPower's official website for the most up-to-date information."
+          ]
+        }
+        ,
+        {
+          "id": "28",
+          "title": "SOLAR CHIMNEY || passive heating and cooling system || how it works",
+          "categories": ["Energy Systems", "Sustainable Architecture", "Passive Climate Control"],
+          "description": "This video explains the concept, functionality, and benefits of solar chimneys as a passive heating and cooling system for buildings. It covers the science behind solar chimneys, their advantages, design considerations, and real-world applications.",
+          "youtubeId": "placeholder_youtube_id",
+          "tags": ["solar chimney", "passive heating", "passive cooling", "sustainable architecture", "natural ventilation"],
+          "rating": 4.6,
+          "date": "2024-09-18",
+          "transcript": "This is a placeholder for the video transcript...",
+          "panels": [
+            {
+              "title": "Introduction to Solar Chimneys",
+              "visuals": "Diagram or animation of a basic solar chimney integrated into a building",
+              "content": "Solar Chimneys: Natural Ventilation",
+              "description": "Harnessing the sun's power for passive heating and cooling.",
+              "dataCollection": "Viewer engagement (views, likes, shares) in the first 10 seconds"
+            },
+            {
+              "title": "How Solar Chimneys Work",
+              "visuals": "Animated diagram showing the airflow within a solar chimney during both heating and cooling modes",
+              "content": "The Science Behind It",
+              "keyPoints": [
+                "Sunlight heats the air inside the chimney",
+                "Warm air rises, creating natural airflow",
+                "Airflow draws in cool air, ventilating the building"
+              ],
+              "dataCollection": "Watch time percentage for this segment"
+            },
+            {
+              "title": "Benefits of Solar Chimneys",
+              "visuals": "Images or icons representing improved air quality, reduced energy costs, and environmental sustainability",
+              "content": "Advantages of Solar Chimneys",
+              "keyPoints": [
+                "Improves indoor air quality",
+                "Reduces reliance on mechanical ventilation",
+                "Lowers energy consumption and costs",
+                "Environmentally friendly"
+              ],
+              "dataCollection": "Click-through rate (CTR) on any interactive elements (e.g., links to learn more)"
+            },
+            {
+              "title": "Designing and Building a Solar Chimney",
+              "visuals": "Simple diagrams or illustrations showcasing key design considerations",
+              "content": "Build Your Own",
+              "keyPoints": [
+                "Basic design principles",
+                "Material choices",
+                "Potential for combining with other passive systems"
+              ],
+              "dataCollection": "Viewer comments and questions regarding DIY construction"
+            },
+            {
+              "title": "Real-World Examples",
+              "visuals": "Images or videos showcasing solar chimneys in various building types and climates",
+              "content": "Solar Chimneys in Action",
+              "description": "Examples of successful implementations.",
+              "dataCollection": "Viewer feedback on the effectiveness of the showcased examples"
+            },
+            {
+              "title": "Conclusion and Call to Action",
+              "visuals": "A visually appealing summary image or animation",
+              "content": "Embrace Sustainable Living",
+              "keyPoints": [
+                "Recap of solar chimney benefits",
+                "Encourage viewers to explore further or consider implementation"
+              ],
+              "dataCollection": "CTR on calls to action (e.g., subscribing to the channel, visiting a website)"
+            }
+          ],
+          "additionalDataCollection": [
+            "Overall video metrics: Total views, likes, dislikes, comments, shares",
+            "Audience demographics: Age, location, interests",
+            "Device types: Percentage of viewers on mobile vs. desktop",
+            "Traffic sources: How viewers found the video (e.g., YouTube search, social media)"
+          ],
+          "dataAnalysisNote": "By analyzing this data, you can gain valuable insights into your audience and the effectiveness of your video, enabling you to create even more engaging and informative content in the future."
+        }
   
 ];
 
