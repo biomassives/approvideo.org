@@ -1649,7 +1649,7 @@ const videoData = [
   }
 }
   ,
-            {
+ {
   "id": "36",
   "title": "Residents share what life is like inside Greensboro's pallet homes",
   "creator": "FOX8 WGHP",
@@ -1703,8 +1703,319 @@ const videoData = [
     "organizationWebsite": "https://interactiveresourcecenter.org/"
   }
 }
+    ,
+  {
+  "id": "38",
+  "title": "How This Woman Transformed Desert Into Lush Forest!",
+  "creator": "Leaf of Life",
+  "categories": ["Permaculture", "Sustainable Agriculture", "Environmental Restoration"],
+  "description": "This video showcases how Kitzia Kokopelmana left her banking career to transform an over-grazed desert wasteland into a thriving food forest farm, demonstrating the power of regenerative agriculture.",
+  "youtubeId": "GPJggoGwtu8",
+  "tags": ["food forest", "desert transformation", "regenerative agriculture", "sustainable farming", "permaculture", "health and nutrition"],
+  "rating": 4.9,
+  "date": "2024-03-10",
+  "transcript": "This is a placeholder for the full video transcript...",
+  "views": 873767,
+  "panels": [
+    {
+      "title": "Career Transition",
+      "content": "Kitzia Kokopelmana left her job as a financial advisor to pursue a more fulfilling path in sustainable agriculture.",
+      "description": "Explains the protagonist's motivation for changing careers and starting the project."
+    },
+    {
+      "title": "Health and Nutrition Focus",
+      "content": "Inspired by her family's restaurant business, Kitzia recognized the importance of fresh, healthy food for overall well-being.",
+      "description": "Highlights the connection between nutrition and health that drove the project."
+    },
+    {
+      "title": "Desert Transformation",
+      "content": "The project involved transforming an over-grazed desert wasteland into a fertile food forest farm.",
+      "description": "Outlines the main objective and challenge of the project."
+    },
+    {
+      "title": "Regenerative Agriculture",
+      "content": "The food forest uses regenerative practices, creating a system that is more abundant and financially successful than conventional farming.",
+      "description": "Explains the agricultural approach used in the project and its benefits."
+    },
+    {
+      "title": "Environmental Impact",
+      "content": "Unlike modern farming that often requires subsidies and can be environmentally detrimental, this approach pays back over many years and benefits the planet.",
+      "description": "Compares the environmental impact of this project to conventional farming methods."
+    },
+    {
+      "title": "Education and Outreach",
+      "content": "Kitzia now educates people on how to be healthier naturally by growing food landscapes and transforming deserts into food forests.",
+      "description": "Describes how the project has evolved into an educational initiative."
+    }
+  ],
+  "additionalInfo": [
+    "The project is called Buena Fortuna Gardens.",
+    "The video suggests that this type of regenerative system can be more financially secure than conventional farming.",
+    "The project demonstrates the potential for transforming degraded landscapes into productive, sustainable ecosystems.",
+    "The video emphasizes the connection between environmental health and human health."
+  ],
+  "resources": {
+    "projectWebsite": "https://www.buenafortunagardens.com/",
+    "youtubeChannel": "https://www.youtube.com/@KitziaKokopelmana"
+  }
+}          
+ ,
+    {
+  "id": "39",
+  "title": "Guided visualization to calm your mind",
+  "creator": "Khan Academy",
+  "categories": ["Meditation", "Mental Health", "Stress Management", "PTSD"],
+  "description": "This short meditation session introduces a simple visualization technique to help separate yourself from your thoughts and quiet your mind, potentially beneficial for those dealing with stress or PTSD.",
+  "youtubeId": "ZEYuSRHgmCg",
+  "tags": ["guided meditation", "visualization technique", "mind calmness", "stress relief", "PTSD management", "mental health"],
+  "rating": 4.8,
+  "date": "2020-02-28",
+  "transcript": "This is a placeholder for the full video transcript...",
+  "views": "Not specified in the provided information",
+  "panels": [
+    {
+      "title": "Introduction",
+      "content": "The instructor welcomes viewers and encourages them to prepare for an inward journey.",
+      "description": "Sets the tone for the meditation session."
+    },
+    {
+      "title": "Posture and Breathing",
+      "content": "Guidance on sitting upright, planting feet on the ground, and focusing on deeper, slower breaths.",
+      "description": "Prepares the body and mind for meditation."
+    },
+    {
+      "title": "Meditation Concept",
+      "content": "Explanation of meditation as a way to ease mental chatter and still thoughts.",
+      "description": "Provides context for the practice."
+    },
+    {
+      "title": "Handling Distractions",
+      "content": "Advice on approaching distractions with a spirit of fun and curiosity, without self-judgment.",
+      "description": "Addresses common concerns in meditation practice."
+    },
+    {
+      "title": "Ocean Visualization",
+      "content": "Introduces a framework of imagining thoughts as an ocean, with consciousness as the surface.",
+      "description": "Presents the main visualization technique."
+    },
+    {
+      "title": "Elevating Awareness",
+      "content": "Guides the viewer to imagine rising above the choppy surface of thoughts.",
+      "description": "Core practice of the meditation technique."
+    },
+    {
+      "title": "Self-Reflection",
+      "content": "Encourages realization that one is more than their thoughts, body, or social identity.",
+      "description": "Deepens the meditation experience."
+    }
+  ],
+  "additionalInfo": [
+    "The meditation is led by Sal Khan, founder of Khan Academy.",
+    "The video emphasizes a non-judgmental approach to meditation.",
+    "It suggests maintaining a slight smile during practice to keep it enjoyable.",
+    "The technique could be particularly helpful for those dealing with PTSD or high stress levels."
+  ],
+  "resources": {
+    "website": "https://www.khanacademy.org/",
+    "youtubeChannel": "https://www.youtube.com/user/khanacademy"
+  }
+}        
+    ,
+        {
+  "id": "40",
+  "title": "Waterfall flowing over rocks in forest 4k. Relaxing flowing water, White Noise for Sleep, Meditation",
+  "creator": "Nature Zilla",
+  "categories": ["Relaxation", "Sleep Aid", "Meditation", "Nature Sounds"],
+  "description": "This video features 10 hours of a 4k ultra HD waterfall stream flowing over rocks in a forest, providing soothing white noise for relaxation, sleep, and meditation.",
+  "youtubeId": "sa2JCQ1Dils",
+  "tags": ["white noise", "nature sounds", "waterfall", "forest stream", "sleep aid", "meditation", "relaxation", "4k nature video"],
+  "rating": 4.9,
+  "date": "2021-12-02",
+  "transcript": "This video does not contain spoken words. It features the natural sound of water flowing over rocks.",
+  "views": 1911416,
+  "panels": [
+    {
+      "title": "Visual Content",
+      "content": "4k ultra HD footage of a waterfall flowing over rocks in a forest setting.",
+      "description": "Describes the high-quality visual aspect of the video."
+    },
+    {
+      "title": "Audio Content",
+      "content": "Natural sound of flowing water, creating white noise. No music or bird sounds are included.",
+      "description": "Explains the audio component of the video."
+    },
+    {
+      "title": "Duration",
+      "content": "10 hours of continuous waterfall sounds and visuals.",
+      "description": "Specifies the length of the video, suitable for extended listening."
+    },
+    {
+      "title": "Intended Uses",
+      "content": "Designed for sleep aid, meditation, stress relief, relaxation, and improving focus during study or work.",
+      "description": "Lists the various purposes for which viewers might use this video."
+    }
+  ],
+  "additionalInfo": [
+    "The video is shot in 4k ultra HD quality for a clear, immersive visual experience.",
+    "It provides pure nature sounds without any added music or other audio elements.",
+    "The creator suggests it can help with instant sleep, stress relief, and anxiety reduction.",
+    "The long duration makes it suitable for all-night play or extended meditation sessions."
+  ],
+  "resources": {
+    "youtubeChannel": "https://www.youtube.com/channel/UC0mZYzkKFmzaKwFAYBEzx7g"
+  }
+},    
+{
+  "id": "41",
+  "title": "Cross Connection and Backflow Safety",
+  "creator": "Missouri American Water",
+  "categories": ["Water Safety", "Public Health", "Home Maintenance"],
+  "description": "This video explains the concepts of cross connection and backflow in water distribution systems, using an example scenario to illustrate the potential risks and prevention methods.",
+  "youtubeId": "qn5ka4HG-WU",
+  "tags": ["cross connection", "backflow", "water safety", "home maintenance", "public health", "water distribution"],
+  "rating": 4.7,
+  "date": "2020-05-04",
+  "transcript": "This is a placeholder for the full video transcript...",
+  "views": 1164,
+  "panels": [
+    {
+      "title": "Backflow Scenario",
+      "content": "Illustrates a scenario where a broken water main causes dirty water to be pulled back into the drinking water system through a garden hose.",
+      "description": "Introduces the concept of backflow through a relatable example."
+    },
+    {
+      "title": "Definitions",
+      "content": "Explains backflow as non-drinking water being pulled into the drinking water supply, and cross connection as any point where backflow could occur.",
+      "description": "Provides clear definitions of key terms."
+    },
+    {
+      "title": "Causes of Backflow",
+      "content": "Describes how negative pressure can pull water from unclean sources back into drinking water pipes.",
+      "description": "Explains the mechanism behind backflow incidents."
+    },
+    {
+      "title": "Prevention Methods",
+      "content": "Suggests best practices like not submerging hoses in dirty water and using a hose bib vacuum breaker.",
+      "description": "Offers practical solutions for preventing backflow at home."
+    },
+    {
+      "title": "Responsibilities",
+      "content": "Emphasizes that both water providers and customers must work together to protect the drinking water supply.",
+      "description": "Highlights the shared responsibility for water safety."
+    },
+    {
+      "title": "Additional Precautions",
+      "content": "Mentions other practices like ensuring drain lines from water softeners or humidifiers are not submerged in sewer drains.",
+      "description": "Provides additional tips for maintaining water safety at home."
+    }
+  ],
+  "additionalInfo": [
+    "The video uses animation to illustrate concepts, making them easier to understand.",
+    "It mentions that some cross connections require specific protection devices that need regular testing.",
+    "The video is part of Missouri American Water's public education efforts.",
+    "It directs viewers to the Missouri American Water website for more information."
+  ],
+  "resources": {
+    "website": "https://www.amwater.com/moaw/",
+    "youtubeChannel": "https://www.youtube.com/channel/UCbqSPG1hcsCQeN9POxs36rg"
+  }
+},
+{
+  "id": "42",
+  "title": "Monty Python - Science Fiction Sketch (Part 1)",
+  "creator": "Caio Badner (uploader)",
+  "originalCreator": "Monty Python",
+  "categories": ["Comedy", "Sketch Comedy", "British Television", "Science Fiction Parody"],
+  "description": "This video is a clip from Monty Python's Flying Circus, featuring their famous Science Fiction Sketch. It's a comedic take on science fiction tropes, showcasing Monty Python's surreal and satirical style.",
+  "youtubeId": "MINLst_9KKE",
+  "tags": ["Monty Python", "Flying Circus", "science fiction", "comedy sketch", "British comedy", "parody"],
+  "rating": 4.9,
+  "date": "2007-02-11",
+  "originalAirDate": "1969-11-30",
+  "transcript": "This is a placeholder for the sketch transcript...",
+  "views": 714580,
+  "panels": [
+    {
+      "title": "Original Context",
+      "content": "From Monty Python's Flying Circus Season 1, Episode 7 'You're No Fun Anymore'",
+      "description": "Provides the original context of the sketch within the Monty Python series."
+    },
+    {
+      "title": "Recording and Air Dates",
+      "content": "Recorded on October 10, 1969, and aired on November 30, 1969",
+      "description": "Gives historical context for the sketch's creation and broadcast."
+    },
+    {
+      "title": "Comedic Style",
+      "content": "Showcases Monty Python's surreal and satirical approach to comedy",
+      "description": "Highlights the distinctive comedic style of Monty Python."
+    },
+    {
+      "title": "Genre Parody",
+      "content": "Parodies common tropes and themes found in science fiction",
+      "description": "Explains the sketch's focus on satirizing science fiction conventions."
+    }
+  ],
+  "additionalInfo": [
+    "This is part of a larger effort by the uploader to share the entire Flying Circus series on YouTube.",
+    "Monty Python's Flying Circus is a landmark British comedy series that has had a lasting impact on comedy and popular culture.",
+    "The sketch's enduring popularity is evidenced by its high view count decades after its original airing.",
+    "Monty Python consists of Graham Chapman, John Cleese, Terry Gilliam, Eric Idle, Terry Jones, and Michael Palin."
+  ],
+  "resources": {
+    "officialWebsite": "https://montypython.com/",
+    "youtubeChannel": "https://www.youtube.com/channel/UCGm3CO6LPcN-Y7HIuyE0Rew"
+  }
+}
+,
+{
+  "id": "43",
+  "title": "Water Animation - Backsiphonage",
+  "creator": "Bryan Toomey",
+  "categories": ["Water Safety", "Educational Animation", "Public Health", "Water Distribution"],
+  "description": "This video provides an animated explanation of backsiphonage, a critical concept in water safety and distribution systems.",
+  "youtubeId": "MINLst_9KKE",
+  "tags": ["backsiphonage", "water safety", "animation", "water distribution", "public health", "educational video"],
+  "rating": 4.7,
+  "date": "2016-04-25",
+  "transcript": "This is a placeholder for the video transcript...",
+  "views": 144375,
+  "panels": [
+    {
+      "title": "Backsiphonage Concept",
+      "content": "Explains the phenomenon of backsiphonage in water distribution systems",
+      "description": "Introduces the main topic of the animation."
+    },
+    {
+      "title": "Visual Representation",
+      "content": "Uses animation to visually demonstrate how backsiphonage occurs",
+      "description": "Describes the visual approach used to explain the concept."
+    },
+    {
+      "title": "Causes and Risks",
+      "content": "Likely covers the conditions that can lead to backsiphonage and associated risks",
+      "description": "Outlines potential content about the causes and dangers of backsiphonage."
+    },
+    {
+      "title": "Prevention Methods",
+      "content": "Possibly includes information on how to prevent backsiphonage in water systems",
+      "description": "Suggests potential content on safety measures and prevention techniques."
+    }
+  ],
+  "additionalInfo": [
+    "The video uses animation to make a complex concept more accessible and understandable.",
+    "Background music: 'Modern Technology-22109-RFR' by Andrew G",
+    "This type of educational content is crucial for professionals in water management and public health.",
+    "The high view count suggests significant interest in this topic, possibly from both professionals and the general public."
+  ],
+  "resources": {
+    "youtubeChannel": "https://www.youtube.com/channel/placeholder_channel_id"
+  }
+}
+
             
-            ,
+
+            
             
 ];
 
