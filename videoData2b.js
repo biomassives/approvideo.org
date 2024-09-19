@@ -1541,7 +1541,58 @@ const videoData = [
   "resources": {
     "projectWebsite": "https://lifenieblas.com/en/"
   }
+}{
+  "id": "34",
+  "title": "TROMBE WALL || HOW ITS WORKS? SOLAR HEATING TECHNIQUE",
+  "creator": "HOME TUBE",
+  "categories": ["Passive Solar Design", "Energy", "Sustainable Architecture"],
+  "description": "This video explains the concept and functioning of a Trombe wall, a passive solar design element that improves building energy efficiency by absorbing and storing heat from the sun during the day and releasing it at night.",
+  "youtubeId": "Bw-CGEzfXg0",
+  "tags": ["trombe wall", "passive solar", "thermal mass", "energy efficiency", "sustainable building", "solar heating"],
+  "rating": 4.7,
+  "date": "2022-01-20",
+  "transcript": "This is a placeholder for the full video transcript...",
+  "views": 50695,
+  "panels": [
+    {
+      "title": "Introduction to Trombe Walls",
+      "content": "A Trombe wall is a passive solar design element that uses sunlight to heat buildings efficiently.",
+      "description": "Introduces the concept of Trombe walls and their purpose in sustainable architecture."
+    },
+    {
+      "title": "Building Orientation",
+      "content": "For maximum efficiency, buildings should be oriented to receive maximum sunlight - south-facing in the Northern Hemisphere, north-facing in the Southern Hemisphere.",
+      "description": "Explains the importance of proper building orientation for Trombe wall effectiveness."
+    },
+    {
+      "title": "Trombe Wall Components",
+      "content": "Consists of a glazing glass, an air channel, and a thermal mass wall made of materials like stone, concrete, or water bags with high heat storage capacity.",
+      "description": "Details the main components of a Trombe wall system."
+    },
+    {
+      "title": "Heat Absorption Process",
+      "content": "The thermal mass wall is coated black on the outside for maximum heat absorption. Sun radiation passes through the glazing and is absorbed by the wall.",
+      "description": "Explains how the Trombe wall absorbs heat from sunlight."
+    },
+    {
+      "title": "Air Circulation",
+      "content": "Cool air enters through a lower opening, is heated in the air channel, and returns to the room through an upper opening, creating a convection current.",
+      "description": "Describes the air circulation process that heats the room during the day."
+    },
+    {
+      "title": "Nighttime Heat Release",
+      "content": "At night, the upper opening is closed to prevent warm air escape, and the thermal mass wall radiates stored heat into the room.",
+      "description": "Explains how the Trombe wall continues to heat the room at night."
+    }
+  ],
+  "additionalInfo": [
+    "The effectiveness of a Trombe wall depends on the heat capacity of the storage material.",
+    "This passive solar technique can be used for both heating and cooling buildings.",
+    "Trombe walls are a sustainable method to reduce reliance on artificial heating systems."
+  ]
 }
+              
+           ,
             
 ];
 
