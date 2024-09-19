@@ -1219,7 +1219,7 @@ const videoData = [
           ],
           "dataAnalysisNote": "By analyzing this data, you can gain valuable insights into your audience and the effectiveness of your video, enabling you to create even more engaging and informative content in the future."
         }
-            ,   
+,   
 
         {
           "id": "29",
@@ -1541,7 +1541,8 @@ const videoData = [
   "resources": {
     "projectWebsite": "https://lifenieblas.com/en/"
   }
-}{
+},
+{
   "id": "34",
   "title": "TROMBE WALL || HOW ITS WORKS? SOLAR HEATING TECHNIQUE",
   "creator": "HOME TUBE",
@@ -1591,8 +1592,119 @@ const videoData = [
     "Trombe walls are a sustainable method to reduce reliance on artificial heating systems."
   ]
 }
-              
-           ,
+ ,
+{
+  "id": "35",
+  "title": "The city rolls out new thermal shelters to keep homeless people warm",
+  "creator": "KelownaNow",
+  "categories": ["Social Welfare", "Urban Planning", "Homelessness"],
+  "description": "This video explores Kelowna's pilot project introducing thermal shelters for the homeless population during extreme cold weather, as part of the city's broader extreme weather response plan.",
+  "youtubeId": "mzh5HbGPbyU",
+  "tags": ["thermal shelters", "homelessness", "Kelowna", "extreme weather response", "urban planning", "social welfare"],
+  "rating": 4.6,
+  "date": "2023-01-25",
+  "transcript": "This is a placeholder for the full video transcript...",
+  "views": 183471,
+  "panels": [
+    {
+      "title": "Introduction to Thermal Shelters",
+      "content": "Kelowna introduces thermal shelters as a safer alternative to keep homeless people warm during extreme cold weather.",
+      "description": "Explains the purpose and context of the thermal shelter project in Kelowna."
+    },
+    {
+      "title": "Design and Functionality",
+      "content": "The shelters are made of thick foam pieces, well-insulated but not heated externally. They can increase internal temperature by 15-18 degrees using body heat.",
+      "description": "Details the design and operational principles of the thermal shelters."
+    },
+    {
+      "title": "Safety Considerations",
+      "content": "These shelters are safer than traditional methods like open fires or candles, reducing the risk of accidents.",
+      "description": "Highlights the safety advantages of the thermal shelters over other warming methods."
+    },
+    {
+      "title": "Community Engagement",
+      "content": "The city has engaged with people who have lived experience of homelessness and plans to conduct a 'show and tell' with community partners.",
+      "description": "Outlines the city's efforts to involve the community in the project."
+    },
+    {
+      "title": "Investment and Support",
+      "content": "The city has purchased 27 units with support from BC Housing, being the only ones available in Canada as part of this pilot project.",
+      "description": "Provides information on the scale and funding of the project."
+    },
+    {
+      "title": "Complementary Measures",
+      "content": "The thermal shelters are part of a broader extreme weather response plan, which includes other measures like a warming bus.",
+      "description": "Explains how the shelters fit into the city's overall strategy for extreme weather."
+    }
+  ],
+  "additionalInfo": [
+    "The shelters are designed in Europe specifically for supporting people in extreme weather conditions.",
+    "The project includes a storage program for users to store their belongings.",
+    "This is a pilot project, indicating the city is testing the effectiveness of these shelters.",
+    "The shelters are part of Kelowna's extreme weather response plan, not a permanent housing solution."
+  ],
+  "resources": {
+    "cityWebsite": "https://www.kelowna.ca/",
+    "bcHousingWebsite": "https://www.bchousing.org/"
+  }
+}
+  ,
+            {
+  "id": "36",
+  "title": "Residents share what life is like inside Greensboro's pallet homes",
+  "creator": "FOX8 WGHP",
+  "categories": ["Social Services", "Homelessness", "Community Development"],
+  "description": "This video explores the new pallet homes in Pomona Park, Greensboro, providing temporary housing for homeless individuals. It features interviews with residents and details about the program run by the Interactive Resource Center.",
+  "youtubeId": "mzh5HbGPbyU",
+  "tags": ["pallet homes", "homelessness", "Greensboro", "temporary housing", "social services", "community support"],
+  "rating": 4.7,
+  "date": "2023-11-28",
+  "transcript": "This is a placeholder for the full video transcript...",
+  "views": 2193214,
+  "panels": [
+    {
+      "title": "Pallet Homes Overview",
+      "content": "56 beds available in pallet homes at Pomona Park, Greensboro, with 42 currently filled.",
+      "description": "Introduces the scale of the pallet homes project in Greensboro."
+    },
+    {
+      "title": "Resident Selection",
+      "content": "The Interactive Resource Center works with community agencies to select residents for the pallet homes.",
+      "description": "Explains how residents are chosen for the program."
+    },
+    {
+      "title": "Resident Profiles",
+      "content": "Residents include men and women over 18, each with unique circumstances leading to homelessness.",
+      "description": "Provides insight into the diverse backgrounds of pallet home residents."
+    },
+    {
+      "title": "Daily Life",
+      "content": "Residents have access to nearby facilities for bathrooms and can use the Interactive Resource Center during the day for additional resources.",
+      "description": "Details the daily routines and available resources for residents."
+    },
+    {
+      "title": "Support Services",
+      "content": "Case managers work with residents to find more permanent housing solutions.",
+      "description": "Highlights the support provided to help residents transition to permanent housing."
+    },
+    {
+      "title": "Future Plans",
+      "content": "The IRC is working on securing funding to expand services, including overnight hours at their main facility.",
+      "description": "Discusses future plans to expand support for the homeless population in Greensboro."
+    }
+  ],
+  "additionalInfo": [
+    "The program started three weeks prior to the video's recording.",
+    "One resident has already transitioned out of the pallet homes to more permanent housing.",
+    "The Interactive Resource Center provides transportation for residents to access additional resources.",
+    "Guilford County Commissioners are set to vote on additional funding for the program on December 7th."
+  ],
+  "resources": {
+    "organizationWebsite": "https://interactiveresourcecenter.org/"
+  }
+}
+            
+            ,
             
 ];
 
