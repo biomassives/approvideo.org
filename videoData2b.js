@@ -2012,10 +2012,74 @@ const videoData = [
     "youtubeChannel": "https://www.youtube.com/channel/placeholder_channel_id"
   }
 }
-
-            
-
-            
+,
+{
+  "id": "44",
+  "title": "Innovative Cover Cropping Series Screening - Q&A with Featured Farmers and Researchers",
+  "creator": "Organic BC",
+  "categories": ["Agriculture", "Sustainable Farming", "Cover Cropping", "Soil Health"],
+  "description": "This comprehensive video series showcases new and diverse cover cropping practices across different regions of British Columbia, followed by Q&A sessions with cover cropping experts, including farmers and researchers.",
+  "youtubeId": "placeholder_youtube_id",
+  "tags": ["cover crops", "sustainable agriculture", "soil health", "British Columbia farming", "organic farming", "climate solutions"],
+  "rating": 4.8,
+  "date": "2024-05-21",
+  "transcript": "This is a placeholder for the full video transcript...",
+  "views": 131,
+  "panels": [
+    {
+      "title": "Peace Region Cover Cropping",
+      "content": "Featuring Jed Franklin of SR Farms and Jolene Noble of Jackknife Creek Land & Cattle Co.",
+      "description": "Discusses cover cropping practices in the Peace Region of British Columbia.",
+      "timestamp": "28:35"
+    },
+    {
+      "title": "Okanagan Region Cover Cropping",
+      "content": "Featuring Karnail Sidhu Singh of Kalala Estate Winery and Dr. Kirsten Hannam of the Summerland Research and Development Centre",
+      "description": "Explores cover cropping techniques in the Okanagan region, including applications in vineyards.",
+      "timestamp": "57:40"
+    },
+    {
+      "title": "Lower Mainland Cover Cropping",
+      "content": "Featuring Alex Schwichtenberg of Holberg Farm",
+      "description": "Examines cover cropping practices in the Lower Mainland region of British Columbia.",
+      "timestamp": "1:26:28"
+    }
+  ],
+  "featuredExperts": [
+    {
+      "name": "Jed Franklin",
+      "affiliation": "SR Farms"
+    },
+    {
+      "name": "Jolene Noble",
+      "affiliation": "Jackknife Creek Land & Cattle Co."
+    },
+    {
+      "name": "Karnail Sidhu Singh",
+      "affiliation": "Kalala Estate Winery"
+    },
+    {
+      "name": "Dr. Kirsten Hannam",
+      "affiliation": "Summerland Research and Development Centre"
+    },
+    {
+      "name": "Alex Schwichtenberg",
+      "affiliation": "Holberg Farm"
+    }
+  ],
+  "additionalInfo": [
+    "The video series covers three main agricultural regions in British Columbia: Peace Region, Okanagan, and Lower Mainland.",
+    "Each regional segment is followed by a Q&A session with local experts and farmers.",
+    "The series aims to educate farmers on innovative cover cropping practices suitable for different regions and crop types.",
+    "This project was funded in part by Agriculture and Agri-Food Canada through the BC Climate Agri-Solutions Fund."
+  ],
+  "resources": {
+    "fundingPartner": "Agriculture and Agri-Food Canada",
+    "deliveryPartner": "Investment Agriculture Foundation of BC",
+    "organizerWebsite": "https://www.organicbc.org"
+  }
+}
+                      
             
 ];
 
