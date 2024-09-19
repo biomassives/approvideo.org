@@ -62,7 +62,7 @@ const videoData = [
                         "title": "Building a Wind Generator using a Car Alternator",
                         "categories": ["Energy Systems", "DIY"],
                         "description": "This video demonstrates how to build a wind generator using a car alternator. It explains the concept of converting wind energy into electricity using a modified car alternator and homemade blades. The video also details the materials required and the steps involved in the construction process.",
-                        "youtubeId": "http://www.youtube.com/watch?v=iUMbdmYBJ3I",
+                        "youtubeId": "iUMbdmYBJ3I",
                         "tags": ["wind generator", "car alternator", "renewable energy", "DIY", "homemade"],
                         "rating": 4.7, // Placeholder, adjust as needed
                         "date": "2021-08-28",
@@ -1062,7 +1062,7 @@ const videoData = [
           "title": "CorPower Ocean: Harnessing the Untapped Potential of Wave Energy",
           "categories": ["Energy Systems", "Renewable Energy", "Marine Technology", "Biomimicry"],
           "description": "CorPower Ocean, a Swedish energy startup, is revolutionizing the renewable energy sector with their innovative wave energy converters. These bio-inspired buoys efficiently capture ocean wave power, offering a promising sustainable alternative to traditional energy sources.",
-          "youtubeId": "https://www.youtube.com/watch?v=3X2PqKKPb48",
+          "youtubeId": "3X2PqKKPb48",
           "tags": ["wave energy", "CorPower Ocean", "composite buoy", "renewable energy", "biomimicry", "ocean power", "sustainable energy"],
           "rating": 4.8,
           "date": "2024-09-18",
@@ -1146,7 +1146,7 @@ const videoData = [
           "title": "SOLAR CHIMNEY || passive heating and cooling system || how it works",
           "categories": ["Energy Systems", "Sustainable Architecture", "Passive Climate Control"],
           "description": "This video explains the concept, functionality, and benefits of solar chimneys as a passive heating and cooling system for buildings. It covers the science behind solar chimneys, their advantages, design considerations, and real-world applications.",
-          "youtubeId": "placeholder_youtube_id",
+          "youtubeId": "mEQjSaXtt9U",
           "tags": ["solar chimney", "passive heating", "passive cooling", "sustainable architecture", "natural ventilation"],
           "rating": 4.6,
           "date": "2024-09-18",
@@ -1219,7 +1219,330 @@ const videoData = [
           ],
           "dataAnalysisNote": "By analyzing this data, you can gain valuable insights into your audience and the effectiveness of your video, enabling you to create even more engaging and informative content in the future."
         }
-  
+            ,   
+
+        {
+          "id": "29",
+          "title": "How to Make an Inexpensive Vertical Wind Turbine - Part 1",
+          "categories": ["Energy Systems", "DIY", "Renewable Energy", "Wind Power"],
+          "description": "This video demonstrates how to build a Savonius-style vertical wind turbine using recycled materials and inexpensive components. The total cost is under $100, making it an accessible DIY project for renewable energy enthusiasts.",
+          "youtubeId": "9UPe6A_UVPc",
+          "tags": ["vertical wind turbine", "Savonius turbine", "DIY energy", "recycled materials", "renewable energy", "wind power"],
+          "rating": 4.7,
+          "date": "2024-09-18",
+          "transcript": "This is a placeholder for the video transcript...",
+          "materials": [
+            "55-gallon plastic drums (recycled, approx. $15 each)",
+            "3-inch diameter PVC pipe (for axle)",
+            "PVC fittings (OT brand)",
+            "5-inch lazy susan bearings (from Lowes, $5-6 each)",
+            "7.5-inch square pieces of wood (for bearing mounts)",
+            "Nuts and bolts",
+            "Sawzall or Stanley miter saw",
+            "Rotozip (or similar tool for cutting holes)",
+            "4.5-inch hole saw",
+            "Mallet"
+          ],
+          "steps": [
+            "Acquire recycled 55-gallon plastic drums",
+            "Cut drums vertically down the center",
+            "Prepare PVC fittings and 3-inch PVC pipe for axle",
+            "Cut 3.5-inch diameter holes in drums for axle passage",
+            "Assemble barrel halves, ensuring correct orientation",
+            "Prepare bearing units using lazy susans and wood mounts",
+            "Join barrel halves together at 90-degree angles",
+            "Mount axle through the assembled turbine",
+            "Install bearings and mount turbine under a suitable structure"
+          ],
+          "panels": [
+            {
+              "title": "Introduction to the Project",
+              "content": "Building a Savonius Wind Turbine",
+              "description": "Overview of the project to build a vertical wind turbine using recycled 55-gallon plastic drums and inexpensive materials, costing less than $100 in total."
+            },
+            {
+              "title": "Materials and Tools",
+              "content": "Gathering the Essentials",
+              "description": "Detailed list of materials including recycled drums, PVC pipes, fittings, and tools required for construction."
+            },
+            {
+              "title": "Drum Preparation",
+              "content": "Cutting and Shaping",
+              "description": "Process of cutting the drums vertically and preparing them for assembly, including tools and techniques used."
+            },
+            {
+              "title": "Axle and Bearing System",
+              "content": "Creating the Rotation Mechanism",
+              "description": "Explanation of the axle system using PVC pipe and the innovative use of lazy susan bearings for smooth rotation."
+            },
+            {
+              "title": "Assembly Process",
+              "content": "Putting It All Together",
+              "description": "Step-by-step guide on assembling the turbine, including joining barrel halves and mounting the axle."
+            },
+            {
+              "title": "Installation and Testing",
+              "content": "Bringing the Turbine to Life",
+              "description": "Final steps of installing the turbine and initial testing, showing its ability to spin in light winds."
+            }
+          ],
+          "additionalInfo": [
+            "Part 2 of the video series will cover power generation and connection to a battery bank.",
+            "The turbine demonstrates good performance even in very light winds.",
+            "The project uses a significant amount of recycled materials, promoting sustainability.",
+            "The creator, Jeff Berezin, offers a kit for sale and maintains a blog with additional information.",
+            "This design is based on the Savonius style of vertical axis wind turbines."
+          ],
+          "creatorInfo": {
+            "name": "Jeff Berezin",
+            "website": "http://berezin.com/jeff",
+            "productLink": "http://www.berezintechnologies.com"
+          }
+  }
+  ,
+  {
+    "id": "30",
+    "title": "Soil Amending Simplified",
+    "creator": "No-Till Growers",
+    "host": "Farmer Jesse",
+    "categories": ["Agriculture", "Soil Management", "Sustainable Farming", "No-Till Farming"],
+    "description": "This video simplifies the concept of soil amending, providing important context that suggests minimal additions may be necessary. It covers topics such as adding nitrogen to gardens, Korean Natural Farming, JADAM, addressing soil compaction, and understanding living soil dynamics.",
+    "youtubeId": "SxJoOh4a0wM",
+    "tags": ["soil amending", "no-till farming", "soil fertility", "sustainable agriculture", "living soil", "soil compaction", "Korean Natural Farming", "JADAM"],
+    "statistics": {
+      "views": 1034993,
+      "likes": null,
+      "uploadDate": "2022-06-12"
+    },
+    "panels": [
+      {
+        "title": "Introduction to Soil Amending",
+        "content": "Simplifying soil amendments",
+        "description": "Overview of the importance of soil health and why traditional amending practices may not always be necessary."
+      },
+      {
+        "title": "Soil Compaction",
+        "content": "Addressing the foundation",
+        "description": "Explanation of how soil compaction affects nutrient availability and root growth, with techniques like broad forking to alleviate it."
+      },
+      {
+        "title": "Photosynthesis and Plant Diversity",
+        "content": "Feeding the soil",
+        "description": "Discussion on the role of diverse plant cover in providing energy to soil microbes and improving overall soil health."
+      },
+      {
+        "title": "Water Management",
+        "content": "The key to nutrient availability",
+        "description": "Importance of proper soil moisture for nutrient transport and microbial activity."
+      },
+      {
+        "title": "Soil Organic Matter",
+        "content": "Nature's nutrient bank",
+        "description": "Explanation of how soil organic matter contributes to water retention and nutrient availability."
+      },
+      {
+        "title": "Soil Testing Methods",
+        "content": "Understanding your soil",
+        "description": "Overview of different soil testing approaches, including the Albrecht Method and Haney Test."
+      },
+      {
+        "title": "Microbial Life in Soil",
+        "content": "Local vs. lab-grown",
+        "description": "Discussion on the preference for locally adapted soil microbes over commercial inoculants."
+      },
+      {
+        "title": "Organic Amendments",
+        "content": "Feeding the soil naturally",
+        "description": "Use of compost, worm castings, and biostimulants like humic acid and kelp for soil improvement."
+      },
+      {
+        "title": "Foliar Sprays",
+        "content": "Quick nutrient fixes",
+        "description": "When and how to use foliar sprays for addressing specific plant nutrient deficiencies."
+      },
+      {
+        "title": "Conclusion and Best Practices",
+        "content": "Putting it all together",
+        "description": "Summary of recommended practices and the importance of continuous learning in soil management."
+      }
+    ],
+    "resources": {
+      "book": "The Living Soil Handbook",
+      "website": "https://www.notillgrowers.com",
+      "recommendedLabs": [
+        "Logan Labs (Albrecht Method Test + water and sap)",
+        "Ward Labs (Haney Test)"
+      ]
+    },
+    "additionalNotes": [
+      "The video emphasizes that addressing basic soil health issues often reduces the need for extensive amendments",
+      "The creator suggests that local soil microbiology often outperforms lab-grown inoculants",
+      "The importance of continuous learning and research in soil management is highlighted",
+      "The video touches on various farming methods like Korean Natural Farming and JADAM, but doesn't go into depth",
+      "The creator emphasizes the evolving nature of soil science and plant nutrition understanding"
+    ]
+  },
+  {
+    "id": "31",
+    "title": "Rotational Grazing on a Diversified Farm",
+    "creator": "Alabama Extension",
+    "categories": ["Sustainable Agriculture", "Livestock Management", "Soil Health"],
+    "description": "This video provides an overview of using rotational grazing from a whole-farm planning perspective. It demonstrates how rotational grazing can be an important part of a sustainable farming system that considers conservation of natural resources, farm economic sustainability, and produce safety.",
+    "youtubeId": "8KK9CLONRhw",
+    "tags": ["rotational grazing", "sustainable farming", "soil health", "livestock management", "produce safety"],
+    "rating": 4.7,
+    "date": "2021-03-04",
+    "transcript": "This is a placeholder for the full video transcript...",
+    "views": 257,
+    "panels": [
+      {
+        "title": "Introduction to Rotational Grazing",
+        "content": "Rotational grazing strategically moves livestock to fresh pastures or partitioned areas to allow vegetation regeneration.",
+        "description": "Explains the basic concept and benefits of rotational grazing for sustainable farming."
+      },
+      {
+        "title": "Benefits of Rotational Grazing",
+        "content": "Reduces chemical fertilizer use, improves soil health, decreases costs, aids in parasite control for goats.",
+        "description": "Outlines the various advantages of implementing a rotational grazing system."
+      },
+      {
+        "title": "Implementing Rotational Grazing",
+        "content": "Requires proper fencing, water access, shade, and management of heavy use areas.",
+        "description": "Discusses the key elements needed to set up a rotational grazing system on a farm."
+      },
+      {
+        "title": "Environmental Impact",
+        "content": "Promotes biodiverse ecosystems, enhances wildlife habitat, and protects water quality.",
+        "description": "Highlights the positive environmental effects of rotational grazing."
+      },
+      {
+        "title": "Food Safety Considerations",
+        "content": "Suggests grazing-to-harvest intervals of 120 days for soil-contact crops and 90 days for others.",
+        "description": "Addresses food safety concerns related to grazing livestock on produce farms."
+      },
+      {
+        "title": "Support and Resources",
+        "content": "USDA NRCS provides financial assistance and technical expertise for implementation.",
+        "description": "Informs about available support for farmers interested in adopting rotational grazing."
+      }
+    ],
+    "additionalInfo": [
+      "The video features Tyron Williams and Williams Enterprises farm.",
+      "This project is a collaboration between Alabama Extension, the Deep South Food Alliance, Alabama A&M University, and the National Farmers Union.",
+      "The work is supported by the Food Safety Outreach Program [grant no. 2019-70020-30349] from the USDA National Institute of Food and Agriculture."
+    ]
+  },
+  {
+    "id": "32",
+    "title": "Designing Abundance: How Biomass Transforms a Barren Landscape",
+    "creator": "Discover Permaculture with Geoff Lawton",
+    "categories": ["Permaculture", "Ecosystem Restoration", "Sustainable Agriculture"],
+    "description": "Geoff Lawton explores the Greening the Desert project, demonstrating how the accumulation of biomass and thoughtful permaculture design can transform barren landscapes into thriving ecosystems, even in harsh, arid environments.",
+    "youtubeId": "NEdo29zwauY",
+    "tags": ["greening the desert", "soil health", "regenerative agriculture", "biomass building", "sustainable landscapes", "ecosystem restoration", "drought resilience", "diverse planting"],
+    "rating": 4.9,
+    "date": "2024-09-14",
+    "transcript": "This is a placeholder for the full video transcript...",
+    "views": 18404,
+    "panels": [
+      {
+        "title": "Building Mass and Diversity",
+        "content": "The project focuses on building mass that feeds the soil, incorporating a diverse range of plants to create a complex ecosystem.",
+        "description": "Explains the importance of creating biomass and plant diversity to support soil health."
+      },
+      {
+        "title": "Layered Vegetation Approach",
+        "content": "Uses a layered approach, starting with ground covers and building up to larger trees like Leucaena, Albizia, and pomegranate.",
+        "description": "Details the strategy of creating multiple vegetation layers for a robust ecosystem."
+      },
+      {
+        "title": "Soil Community Development",
+        "content": "Emphasizes the importance of developing a diverse soil microbial community rather than relying on quick-fix fertilizers.",
+        "description": "Contrasts sustainable soil building with conventional fertilizer use."
+      },
+      {
+        "title": "Infrastructure Integration",
+        "content": "Discusses how infrastructure for education and accommodation has been gradually integrated into the project.",
+        "description": "Highlights the importance of human elements in permaculture projects."
+      },
+      {
+        "title": "Long-term Sustainability",
+        "content": "Focuses on creating a permanent, self-sustaining ecosystem rather than maximizing short-term yields.",
+        "description": "Explains the philosophy of building long-term resilience in the landscape."
+      },
+      {
+        "title": "Global Application",
+        "content": "Mentions similar projects in different climates, suggesting the global applicability of these permaculture principles.",
+        "description": "Discusses how these principles can be adapted to various climatic conditions worldwide."
+      }
+    ],
+    "additionalInfo": [
+      "The project is located in the Dead Sea Valley.",
+      "It demonstrates transformation from barren, rocky soil to a lush, productive landscape.",
+      "The project has been self-funded through educational courses and gradual development.",
+      "It serves as both a demonstration site and an educational facility for permaculture principles."
+    ],
+    "resources": {
+      "website": "https://www.greeningthedesertproject.org",
+      "learnMore": "https://www.discoverpermaculture.com"
+    }
+  }
+,
+            {
+  "id": "33",
+  "title": "How Spain is Making Abundant Water in the Desert",
+  "creator": "Leaf of Life",
+  "categories": ["Water Conservation", "Environmental Restoration", "Sustainable Technology"],
+  "description": "This video explores an innovative project on Gran Canaria, part of Spain's Canary Islands, that aims to harvest fog and dew to combat desertification and restore the island's laurel forests.",
+  "youtubeId": "https://www.youtube.com/watch?v=PLACEHOLDER",
+  "tags": ["water harvesting", "desertification", "Canary Islands", "laurel forests", "fog capture", "environmental restoration", "sustainable water management"],
+  "rating": 4.8,
+  "date": "2022-09-11",
+  "transcript": "This is a placeholder for the full video transcript...",
+  "views": 900979,
+  "panels": [
+    {
+      "title": "Canary Islands Geography",
+      "content": "The Canary Islands, particularly Fuerteventura and Lanzarote, are subtropical deserts close to the African mainland.",
+      "description": "Introduces the geographical context of the Canary Islands and their desert climate."
+    },
+    {
+      "title": "Historical Ecosystem",
+      "content": "The islands were once covered in laurel forests, a prehistoric ecosystem that has largely disappeared due to human impact and climate change.",
+      "description": "Explains the historical ecosystem of the islands and the reasons for its decline."
+    },
+    {
+      "title": "Desertification Process",
+      "content": "44% of the archipelago is affected by severe water erosion, and 38% by wind erosion. 84% of farmland suffers from high soil salinity.",
+      "description": "Details the extent of desertification and its effects on the islands."
+    },
+    {
+      "title": "Innovative Water Harvesting",
+      "content": "A project on Gran Canaria aims to capture 215,000 liters of fog and dew to support the planting of 20,000 laurel trees.",
+      "description": "Introduces the innovative water harvesting technique being implemented."
+    },
+    {
+      "title": "Ecosystem Restoration",
+      "content": "The project aims to restore laurel forests, which are crucial for maintaining humidity and biodiversity on the islands.",
+      "description": "Explains the goal of the project in terms of ecosystem restoration."
+    },
+    {
+      "title": "Combating Desertification",
+      "content": "By harvesting water from fog and dew, the project seeks to stop the advancement of the desert and restore the natural ecosystem.",
+      "description": "Summarizes how the water harvesting technique will help combat desertification."
+    }
+  ],
+  "additionalInfo": [
+    "The Canary Islands receive over 12 million visitors annually.",
+    "Desertification has intensified in the last 50 years, despite earlier deforestation in the 15th and 19th centuries.",
+    "Laurel forests are considered a prehistoric natural treasure, once covering much of Northern Africa and Southern Europe.",
+    "The project is called 'Life Niebles'."
+  ],
+  "resources": {
+    "projectWebsite": "https://lifenieblas.com/en/"
+  }
+}
+            
 ];
 
 
