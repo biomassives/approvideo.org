@@ -1,4 +1,6 @@
-To optimize your database for serving auto-hint tags, categories in forms, and category searches for videos—especially when aiming to produce JSON responses efficiently—you'll need to focus on database schema optimization, indexing strategies, efficient query design, and caching mechanisms. Below are detailed steps and best practices to help you achieve this optimization:
+Optimizing this database for serving auto-hint tags, categories in forms, and category searches for videos—especially when aiming to produce JSON responses efficiently—   database schema optimization, indexing strategies, efficient query design, and caching mechanisms. 
+
+Below are detailed steps and best practices helpful in achieving optimization:
 
 ### 1. **Database Schema Optimization**
 
