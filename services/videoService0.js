@@ -1,8 +1,4 @@
 export async function updateVideo(id, updatedVideoData) {
-
-
-
-  
   const {
     title,
     creator,
@@ -18,31 +14,33 @@ export async function updateVideo(id, updatedVideoData) {
     tags,
     panels,
     materials,
-    steps
+    steps,
   } = updatedVideoData;
 
-  // Start a transaction
-  const { data, error } = await supabase.transaction(async (trx) => {
-    // Update videos table
-    const { data: videoData, error: videoError } = await trx
-      .from('videos')
-      .update({
-        title,
-        creator,
-        description,
-        youtube_id: youtubeId,
-        rating,
-        date,
-        transcript,
-        views,
-        additional_info: additionalInfo,
-        resources
-      })
-      .eq('id', id)
-      .select()
-      .single();
+  // Call the stored procedure
+  const { data, error } = await supabase.rpc('update_video_with_relations', {
+    video_id: id,
+    video_title: title,
+    video_creator: creator,
+    video_description: description,
+    video_youtube_id: youtubeId,
+    video_rating: rating,
+    video_date: date,
+    video_transcript: transcript,
+    video_views: views,
+    video_additional_info: additionalInfo,
+    video_resources: resources,
+    video_categories: categories,
+    video_tags: tags,
+    video_panels: panels,
+    video_materials: materials,
+    video_steps: steps,
+  });
 
-    if (videoError) throw videoError;
+  if (error) throw error;
+  return data;
+}
+
 
     const videoId = id;
 
@@ -140,6 +138,50 @@ export async function updateVideo(id, updatedVideoData) {
   return data;
 }
 
+export async function createVideo(videoData) {
+  const {
+    title,
+    creator,
+    description,
+    youtubeId,
+    rating,
+    date,
+    transcript,
+    views,
+    additionalInfo,
+    resources,
+    categories,
+    tags,
+    panels,
+    materials,
+    steps,
+  } = videoData;
+
+  // Call the stored procedure
+  const { data, error } = await supabase.rpc('create_video_with_relations', {
+    video_title: title,
+    video_creator: creator,
+    video_description: description,
+    video_youtube_id: youtubeId,
+    video_rating: rating,
+    video_date: date,
+    video_transcript: transcript,
+    video_views: views,
+    video_additional_info: additionalInfo,
+    video_resources: resources,
+    video_categories: categories,
+    video_tags: tags,
+    video_panels: panels,
+    video_materials: materials,
+    video_steps: steps,
+  });
+
+  if (error) throw error;
+  return data;
+}
+
+
+
 
 export async function deleteVideo(id) {
   // Deleting the video should automatically delete related entries if ON DELETE CASCADE is set up
@@ -153,6 +195,7 @@ export async function deleteVideo(id) {
   if (error) throw error;
   return data;
 }
+
 
 export async function createVideo(videoData) {
   const {
