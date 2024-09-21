@@ -2078,8 +2078,115 @@ const videoData = [
     "deliveryPartner": "Investment Agriculture Foundation of BC",
     "organizerWebsite": "https://www.organicbc.org"
   }
+},
+
+{
+  "id": "45",
+  "title": "Plantain: The Wonder Herb for Natural Healing",
+  "creator": "Danu's Irish Herb Garden",
+  "categories": ["Herbal Medicine", "Natural Remedies", "Sustainable Healthcare"],
+  "description": "This video explores the numerous medicinal properties and uses of plantain (Plantago lanceolata), a common herb often considered a weed but with powerful healing capabilities for various ailments.",
+  "youtubeId": "https://www.youtube.com/watch?v=PLACEHOLDER",
+  "tags": ["plantain", "herbal medicine", "natural remedies", "wound healing", "respiratory health", "digestive health", "sustainable healthcare"],
+  "rating": 4.9,
+  "date": "2020-07-08",
+  "transcript": "This is a placeholder for the full video transcript...",
+  "views": 293734,
+  "panels": [
+    {
+      "title": "Plantain Overview",
+      "content": "Plantain, called 'slanlus' in Irish (meaning 'herb of healing'), is a versatile herb with multiple medicinal uses for various body systems.",
+      "description": "Introduces plantain and its significance in herbal medicine."
+    },
+    {
+      "title": "Head and Sensory Organs",
+      "content": "Plantain can relieve eye dryness and soreness, aid with earache and glue ear, and help with both dry and wet sinus issues.",
+      "description": "Details plantain's benefits for eyes, ears, and sinuses."
+    },
+    {
+      "title": "Respiratory System",
+      "content": "The herb is beneficial for asthma and bronchitis due to its antispasmodic and demulcent properties.",
+      "description": "Explains plantain's uses for respiratory health."
+    },
+    {
+      "title": "Digestive and Urinary Systems",
+      "content": "Plantain aids in nutrient assimilation, helps with diarrhea, and is beneficial for urinary issues.",
+      "description": "Outlines the herb's benefits for digestive and urinary health."
+    },
+    {
+      "title": "First Aid Applications",
+      "content": "Plantain stops bleeding, draws out foreign bodies and poisons from wounds, and removes insect venom and stings.",
+      "description": "Describes plantain's use in first aid situations."
+    },
+    {
+      "title": "Preparation Methods",
+      "content": "Plantain can be used as food, prepared as tea, tincture, salve, or poultice for various applications.",
+      "description": "Explains different ways to prepare and use plantain."
+    }
+  ],
+  "additionalInfo": [
+    "Plantain is safe for all ages with no known contraindications.",
+    "The herb can be used as food, with young leaves added to salads and seed heads used as a source of fiber.",
+    "Plantain helps cleanse blood and aids with liver problems such as jaundice or hepatitis.",
+    "It can be used to make a digestive tonic when combined with other herbs in brandy."
+  ],
+  "resources": {
+    "bookWebsite": "https://danusirishherbgarden.com/products/the-weed-handbook-volume-1",
+    "herbCourse": "https://www.udemy.com/course/herbal-s..."
+  }
 }
-                      
+      ,
+     Here's a summary of the video content in the requested format:
+
+{
+  "id": "36",
+  "title": "Helicopter Lineman - BareHanding 345,000 volts!",
+  "creator": "Anthony White",
+  "categories": ["Electrical Engineering", "Occupational Safety", "Aerial Work"],
+  "description": "This video showcases a helicopter lineman performing maintenance on high-voltage power lines while the lines are still energized at 345,000 volts, demonstrating a dangerous and highly specialized job in electrical infrastructure maintenance.",
+  "youtubeId": "https://www.youtube.com/watch?v=9mcTHQ6xPik",
+  "tags": ["helicopter lineman", "construction", "power line maintenance", "barehand technique", "electrical engineering", "occupational hazards", "aerial work"],
+  "rating": 4.9,
+  "date": "2016-07-25",
+  "transcript": "This is a placeholder for the full video transcript...",
+  "views": 5704457,
+  "panels": [
+    {
+      "title": "Helicopter Approach",
+      "content": "A helicopter approaches a high-voltage transmission tower, carrying a lineman who will perform maintenance on live power lines.",
+      "description": "Introduces the unique method of accessing high-voltage power lines for maintenance."
+    },
+    {
+      "title": "Barehand Technique",
+      "content": "The lineman uses the 'barehand' technique, where they make direct contact with energized lines while being at the same electrical potential, allowing work on live lines.",
+      "description": "Explains the specialized technique used to work safely on energized power lines."
+    },
+    {
+      "title": "High-Voltage Environment",
+      "content": "The power lines being worked on are energized at 345,000 volts, highlighting the extreme danger and specialized skills required for this job.",
+      "description": "Emphasizes the high-risk nature of the work environment."
+    },
+    {
+      "title": "Aerial Maneuvers",
+      "content": "The helicopter maintains a steady position near the power lines, allowing the lineman to perform intricate work while suspended in mid-air.",
+      "description": "Showcases the precision required in both piloting and linework."
+    }
+  ],
+  "additionalInfo": [
+    "Helicopter linemen undergo extensive training to perform this highly specialized and dangerous work.",
+    "The barehand technique allows for maintenance without interrupting power supply to consumers.",
+    "This method of power line maintenance is used when traditional ground-based approaches are impractical or impossible.",
+    "Safety protocols and equipment are crucial in this line of work to prevent potentially fatal accidents."
+  ],
+  "resources": {
+    "safetyGuidelines": "https://www.osha.gov/electric-power-generation-transmission-distribution",
+    "helicopterOperations": "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/helicopter_flying_handbook/"
+  }
+}
+,
+            
+
+            
             
 ];
 
