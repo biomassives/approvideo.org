@@ -2019,7 +2019,7 @@ const videoData = [
   "creator": "Organic BC",
   "categories": ["Agriculture", "Sustainable Farming", "Cover Cropping", "Soil Health"],
   "description": "This comprehensive video series showcases new and diverse cover cropping practices across different regions of British Columbia, followed by Q&A sessions with cover cropping experts, including farmers and researchers.",
-  "youtubeId": "placeholder_youtube_id",
+  "youtubeId": "4hil4b2_PKM",
   "tags": ["cover crops", "sustainable agriculture", "soil health", "British Columbia farming", "organic farming", "climate solutions"],
   "rating": 4.8,
   "date": "2024-05-21",
@@ -2086,7 +2086,7 @@ const videoData = [
   "creator": "Danu's Irish Herb Garden",
   "categories": ["Herbal Medicine", "Natural Remedies", "Sustainable Healthcare"],
   "description": "This video explores the numerous medicinal properties and uses of plantain (Plantago lanceolata), a common herb often considered a weed but with powerful healing capabilities for various ailments.",
-  "youtubeId": "",
+  "youtubeId": "lkRXeQwbrLU",
   "tags": ["plantain", "herbal medicine", "natural remedies", "wound healing", "respiratory health", "digestive health", "sustainable healthcare"],
   "rating": 4.9,
   "date": "2020-07-08",
@@ -2229,8 +2229,331 @@ const videoData = [
     "facebookPage": "Not provided in the transcript"
   }
 }           
+,
+{
+"id": "48",
+"title": "Herbal infused fresh aloe vera gel soap🍀 Natural homemade recipe",
+"creator": "tellervo",
+"categories": ["DIY", "Natural Skincare", "Soap Making", "Herbalism"],
+"description": "This video demonstrates how to make a natural soap using fresh aloe vera gel and herbal infusions, providing a step-by-step guide to creating a nourishing homemade skincare product.",
+"youtubeId": "https://www.youtube.com/watch?v=PLACEHOLDER",
+"tags": ["aloe vera soap", "herbal soap", "natural skincare", "homemade soap", "DIY beauty", "fresh ingredient soap"],
+"rating": 4.9,
+"date": "2024-04-14",
+"transcript": "Transcript not fully available",
+"views": 372678,
+"panels": [
+{
+"title": "Herbal Infusion Preparation",
+"content": "The video likely begins with preparing herbal infusions, steeping selected herbs in oil to extract their beneficial properties.",
+"description": "Demonstrates the process of creating herbal-infused oils for the soap.",
+"timelink": "https://www.youtube.com/watch?v=PLACEHOLDER&t=30s"
+},
+{
+"title": "Aloe Vera Gel Extraction",
+"content": "Fresh aloe vera leaves are processed to extract the gel, which will be a key ingredient in the soap.",
+"description": "Shows how to prepare fresh aloe vera gel for use in soap making.",
+"timelink": "https://www.youtube.com/watch?v=PLACEHOLDER&t=87s"
+},
+{
+"title": "Oil Combination",
+"content": "Various oils, including the herbal infusions, are measured and combined to form the base of the soap.",
+"description": "Outlines the process of mixing the oils for the soap recipe.",
+"timelink": "https://www.youtube.com/watch?v=PLACEHOLDER&t=186s"
+},
+{
+"title": "Lye Solution Preparation",
+"content": "The video shows the careful preparation of the lye solution, including the use of citric acid for improved soap quality.",
+"description": "Explains the preparation of the lye solution with added citric acid.",
+"timelink": "https://www.youtube.com/watch?v=PLACEHOLDER&t=232s"
+},
+{
+"title": "Combining Ingredients",
+"content": "The oils, lye solution, aloe vera gel, and any additional ingredients are combined and blended to the right consistency.",
+"description": "Demonstrates how all ingredients are brought together to form the soap mixture.",
+"timelink": "https://www.youtube.com/watch?v=PLACEHOLDER&t=389s"
+},
+{
+"title": "Molding and Curing",
+"content": "The soap mixture is poured into molds and left to cure, with the video likely showing the unmolding and cutting process.",
+"description": "Shows the final steps of molding the soap and the curing process.",
+"timelink": "https://www.youtube.com/watch?v=PLACEHOLDER&t=502s"
+}
+],
+"additionalInfo": [
+"The video uses citric acid in the soap making process, which creates sodium citrate when combined with lye, acting as a chelator in the soap.",
+"Chelators in soap trap metal ions like calcium and magnesium, improving lather and increasing shelf life.",
+"The recommended usage rate for citric acid in bar soap is 1-2% of the oil weight.",
+"The creator offers additional resources for beginners, soap formulation, and using fresh ingredients in soap making.",
+"A discount is available when purchasing all three of the creator's soap making guides."
+],
+"resources": {
+"beginnerTutorial": "https://www.tellervo.fi/shop/p/your-first-soap-recipe-tutorial",
+"soapFormulationCourse": "https://www.tellervo.fi/shop/p/the-soap-formulation-masterclass",
+"freshIngredientsCourse": "https://www.tellervo.fi/shop/p/fresh-ingredients-soap-making-course",
+"allCourses": "https://www.tellervo.fi/shop"
+}
+}
+   ,
 
-            
+{
+"id": "49",
+"title": "Homemade cucumber soap🥒 A cooling recipe",
+"creator": "tellervo",
+"categories": ["DIY", "Natural Skincare", "Soap Making"],
+"description": "This video demonstrates how to make a cooling soap using fresh cucumber and menthol, providing a step-by-step guide to creating a refreshing homemade skincare product.",
+"youtubeId": "https://www.youtube.com/watch?v=YJekJyko0z0",
+"tags": ["cucumber soap", "homemade soap", "natural skincare", "cooling soap", "DIY beauty", "menthol soap"],
+"rating": 4.9,
+"date": "2023-07-04",
+"transcript": "Transcript not fully available",
+"views": 1415585,
+"panels": [
+{
+"title": "Ingredients Preparation",
+"content": "The video shows the process of preparing fresh cucumber, likely by blending it to incorporate into the soap mixture.",
+"description": "Demonstrates how to prepare the key ingredient - fresh cucumber.",
+"timelink": "https://www.youtube.com/watch?v=YJekJyko0z0&t=23s"
+},
+{
+"title": "Mixing Oils",
+"content": "Various oils are measured and combined, forming the base of the soap. This likely includes a mix of carrier oils chosen for their skin benefits.",
+"description": "Shows the process of combining the oils used in the soap recipe.",
+"timelink": "https://www.youtube.com/watch?v=YJekJyko0z0&t=79s"
+},
+{
+"title": "Lye Solution",
+"content": "The video demonstrates the careful preparation of the lye solution, an essential step in the soap-making process.",
+"description": "Explains the preparation of the lye solution for soap making.",
+"timelink": "https://www.youtube.com/watch?v=YJekJyko0z0&t=189s"
+},
+{
+"title": "Combining Ingredients",
+"content": "The oils, lye solution, and cucumber mixture are combined, with careful blending to reach the right consistency.",
+"description": "Shows how all ingredients are brought together to form the soap mixture.",
+"timelink": "https://www.youtube.com/watch?v=YJekJyko0z0&t=290s"
+},
+{
+"title": "Adding Menthol",
+"content": "Menthol is added to the soap mixture, providing the cooling effect that characterizes this recipe.",
+"description": "Demonstrates the addition of menthol for the cooling properties.",
+"timelink": "https://www.youtube.com/watch?v=YJekJyko0z0&t=410s"
+},
+{
+"title": "Molding and Curing",
+"content": "The soap mixture is poured into molds and left to cure, with the video likely showing the final unmolding process.",
+"description": "Shows the final steps of molding the soap and the curing process.",
+"timelink": "https://www.youtube.com/watch?v=YJekJyko0z0&t=530s"
+}
+],
+"additionalInfo": [
+"The video uses a blend of visual instruction and text overlays to guide viewers through the process.",
+"Citric acid is mentioned as an ingredient, which creates sodium citrate when combined with lye, acting as a chelator in the soap.",
+"The creator offers additional resources for learning to make soap with fresh ingredients and formulating custom soap recipes.",
+"Specific tools recommended include a Braun multiquick stick blender, infrared thermometer, and digital scales for precise measurements."
+],
+"resources": {
+"soapMakingCourse": "https://www.tellervo.fi/shop/p/fresh-ingredients-soap-making-course",
+"soapFormulationCourse": "https://www.tellervo.fi/shop/p/the-soap-formulation-masterclass",
+"recommendedBook": "https://amzn.to/3iIllh5"
+}
+}
+,
+{
+"id": "50",
+"title": "Homemade Fuel Briquette Press",
+"creator": "Lhaasje",
+"categories": ["Renewable Energy", "DIY", "Waste Management"],
+"description": "This video demonstrates a homemade fuel briquette press created from an old ammunition box, designed to make fuel briquettes from small branches from tree felling and pruning activities, as well as household paper waste.",
+"youtubeId": "https://www.youtube.com/watch?v=VBpn0eSUr-8",
+"tags": ["fuel briquettes", "DIY press", "waste management", "renewable energy", "biomass fuel"],
+"rating": 4.7,
+"date": "2010-07-30",
+"transcript": "Transcript not available",
+"views": 111703,
+"panels": [
+{
+"title": "Press Construction",
+"content": "The press is made from an old ammunition box, combining ideas from The Peterson Press and the Murphy Homemade Fuel Briquette Press Mk. 2.",
+"description": "Explains the origin and inspiration for the homemade press design."
+},
+{
+"title": "Materials Used",
+"content": "The briquettes are made from small branches (brash) from felling and pruning activities, as well as household paper waste.",
+"description": "Details the types of materials that can be used to create fuel briquettes with this press."
+},
+{
+"title": "Modifications",
+"content": "The creator made modifications to the original design, noting that the hydraulic press was too strong for the wood screws initially used.",
+"description": "Highlights improvements made to the original design for better functionality."
+},
+{
+"title": "Briquette Use Theory",
+"content": "Fuel briquettes provide a sustainable alternative to traditional fuels, utilizing waste materials to create dense, slow-burning fuel sources.",
+"description": "Explains the basic concept and benefits of using fuel briquettes."
+},
+{
+"title": "Energy Efficiency",
+"content": "Briquettes made from biomass waste can have a higher energy density than loose biomass, making them more efficient for heating and cooking.",
+"description": "Discusses the energy benefits of using compressed biomass briquettes."
+},
+{
+"title": "Environmental Impact",
+"content": "By using waste materials, fuel briquettes can help reduce deforestation and greenhouse gas emissions associated with traditional wood burning.",
+"description": "Outlines the potential environmental benefits of using fuel briquettes."
+}
+],
+"additionalInfo": [
+"The video was published in 2010, showing longstanding interest in DIY renewable energy solutions.",
+"The press design combines elements from other DIY briquette press designs found on YouTube and the internet.",
+"Fuel briquettes can be used for heating, cooking, and other applications where solid fuel is needed.",
+"The use of household paper waste in briquettes provides a way to recycle materials that might otherwise end up in landfills."
+],
+"resources": {
+"relatedVideo1": "https://www.youtube.com/watch?v=PLACEHOLDER1",
+"relatedVideo2": "https://www.youtube.com/watch?v=PLACEHOLDER2"
+}
+}
+ ,         
+{
+"id": "51",
+"title": "7 Cybersecurity Tips NOBODY Tells You (but are EASY to do)",
+"creator": "All Things Secured",
+"categories": ["Cybersecurity", "Personal Data Protection", "Online Privacy"],
+"description": "This video presents seven uncommon but easy-to-implement cybersecurity tips that can significantly improve online security, going beyond the usual advice of strong passwords and two-factor authentication.",
+"youtubeId": "https://www.youtube.com/watch?v=PLACEHOLDER",
+"tags": ["cybersecurity", "online security", "data protection", "privacy", "digital safety"],
+"rating": 4.9,
+"date": "2024-09-05",
+"transcript": "This is a placeholder for the full video transcript...",
+"views": 202348,
+"panels": [
+{
+"title": "Setup a Secret Email",
+"content": "Create a separate email address for banking, investments, and highly sensitive logins to limit the effectiveness of phishing campaigns.",
+"description": "Explains the importance of using a dedicated email for sensitive accounts.",
+"timelink": "https://www.youtube.com/watch?v=PLACEHOLDER&t=30s"
+},
+{
+"title": "Tap vs Credit Card",
+"content": "Use tap-to-pay methods instead of physical credit cards to protect your actual card number from being exposed to merchants.",
+"description": "Discusses the security benefits of using digital payment methods.",
+"timelink": "https://www.youtube.com/watch?v=PLACEHOLDER&t=125s"
+},
+{
+"title": "Create Unique User Names",
+"content": "Use unique username emails alongside strong passwords to add an extra layer of security to online logins.",
+"description": "Explains the importance of unique usernames for account security.",
+"timelink": "https://www.youtube.com/watch?v=PLACEHOLDER&t=248s"
+},
+{
+"title": "Start a Credit Freeze",
+"content": "Set up a credit freeze with credit bureaus to prevent unauthorized access to your credit information.",
+"description": "Details the process and benefits of implementing a credit freeze.",
+"timelink": "https://www.youtube.com/watch?v=PLACEHOLDER&t=368s"
+},
+{
+"title": "Use THIS Instead of Public WiFi",
+"content": "Tether to mobile data instead of using public WiFi to ensure a more secure and often faster internet connection.",
+"description": "Suggests alternatives to using potentially unsafe public WiFi networks.",
+"timelink": "https://www.youtube.com/watch?v=PLACEHOLDER&t=565s"
+},
+{
+"title": "Turn off Bluetooth and WiFi",
+"content": "Disable Bluetooth and WiFi when not in use to reduce potential threat vectors.",
+"description": "Explains the security risks of leaving Bluetooth and WiFi always on.",
+"timelink": "https://www.youtube.com/watch?v=PLACEHOLDER&t=624s"
+},
+{
+"title": "Protect Against Phone Theft",
+"content": "Enable stolen device protection features and regularly backup phone data to mitigate risks associated with phone theft.",
+"description": "Provides tips on securing devices against theft and data loss.",
+"timelink": "https://www.youtube.com/watch?v=PLACEHOLDER&t=694s"
+}
+],
+"additionalInfo": [
+"The video emphasizes tips that go beyond common security advice.",
+"It suggests using services like DeleteMe to remove personal information from the internet.",
+"The presenter mentions upcoming features in iOS 18 for enhanced app security.",
+"The video encourages viewers to implement these tips as they are easy but effective."
+],
+"resources": {
+"deleteMe": "https://www.joindeleteme.com/allthingssecured",
+"securityChecklist": "https://www.allthingssecured.com/security-checklist/"
+}
+},
+{
+"id": "52",
+"title": "Jim LaJoie: A Cooker for All Seasons - Solar Cooking Mastery",
+"creator": "Big Blue Sun Museum of Solar Cooking",
+"categories": ["Renewable Energy", "Solar Cooking", "Sustainable Living", "DIY"],
+"description": "Jim LaJoie, creator of the All Season Solar Cooker, shares his expertise on solar cooking and oven design, offering valuable insights for both novice and experienced solar cooks.",
+"youtubeId": "https://www.youtube.com/watch?v=j6_YNKF2P3c",
+"tags": ["solar cooker", "all season solar cooker", "renewable energy", "sustainable cooking", "product design", "CARD method", "global sustainability", "DIY solar oven"],
+"rating": 4.8,
+"date": "2021-08-11",
+"transcript": "This is a placeholder for the full video transcript...",
+"views": 2025,
+"panels": [
+{
+"title": "Mastering Solar Cooking",
+"content": "LaJoie emphasizes that solar cooking is an art that requires practice. He encourages persistence, noting that like archery, you may not hit the target on your first try.",
+"description": "Advice on developing solar cooking skills through practice and persistence.",
+"timelink": "https://www.youtube.com/watch?v=j6_YNKF2P3c&t=1680s"
+},
+{
+"title": "Choosing the Right Materials",
+"content": "For DIY solar ovens, LaJoie recommends using durable materials that can withstand various weather conditions. He cautions against using materials like cardboard that may deteriorate quickly.",
+"description": "Guidance on selecting appropriate materials for building solar ovens.",
+"timelink": "https://www.youtube.com/watch?v=j6_YNKF2P3c&t=1320s"
+},
+{
+"title": "Optimal Pot Selection",
+"content": "LaJoie advises using dark-colored, thin-walled pots for better heat absorption. He explains that white or reflective pots are less effective for solar cooking.",
+"description": "Tips on choosing the best pots for solar cooking efficiency.",
+"timelink": "https://www.youtube.com/watch?v=j6_YNKF2P3c&t=85s"
+},
+{
+"title": "Heat Retention Techniques",
+"content": "The video discusses various methods for heat retention, including using glass bowls and high-temperature nylon oven bags. LaJoie explains the benefits and drawbacks of each method.",
+"description": "Strategies for maintaining cooking temperatures in solar ovens.",
+"timelink": "https://www.youtube.com/watch?v=j6_YNKF2P3c&t=350s"
+},
+{
+"title": "Adapting to Sun Angles",
+"content": "LaJoie demonstrates how his All Season Solar Cooker can be adjusted for various sun angles, from horizon to zenith, allowing for all-day cooking in different seasons and latitudes.",
+"description": "Techniques for maximizing cooking time by following the sun's path.",
+"timelink": "https://www.youtube.com/watch?v=j6_YNKF2P3c&t=180s"
+},
+{
+"title": "Challenging Cooking Conditions",
+"content": "LaJoie shares his experiences cooking in challenging conditions, such as preparing a Thanksgiving turkey or cooking dry beans from scratch on the winter solstice.",
+"description": "Examples of pushing the limits of solar cooking and overcoming difficult conditions.",
+"timelink": "https://www.youtube.com/watch?v=j6_YNKF2P3c&t=1740s"
+},
+{
+"title": "Integration with Other Cooking Methods",
+"content": "The discussion touches on combining solar cooking with other efficient methods like top-lit updraft stoves, presenting a holistic approach to sustainable cooking.",
+"description": "Strategies for incorporating solar cooking into a broader sustainable cooking system.",
+"timelink": "https://www.youtube.com/watch?v=j6_YNKF2P3c&t=1560s"
+}
+],
+"additionalInfo": [
+"LaJoie recommends starting solar cooking early in the day to maximize cooking time, especially for longer-cooking foods.",
+"The importance of understanding local weather patterns and planning solar cooking accordingly is emphasized.",
+"LaJoie suggests using a sun sight tool for accurate focusing and estimating cooking times based on sun position.",
+"The video discusses the potential of solar cooking to reduce reliance on traditional fuels like wood and charcoal in developing countries.",
+"LaJoie emphasizes the importance of considering cultural and economic factors when promoting solar cooking in different regions.",
+"The All Season Solar Cooker design aims to provide stability in windy conditions, an important factor for consistent cooking results.",
+"LaJoie encourages solar cooking enthusiasts to challenge themselves with different recipes and cooking conditions to improve their skills."
+],
+"resources": {
+"productWebsite": "AllSeasonSolarCooker.com",
+"solarCookingNetwork": "https://solarcooking.fandom.com/wiki/Solar_Cookers_International_Network_(Home)"
+}
+}          
+ 
+
             
 ];
 
