@@ -2086,7 +2086,7 @@ const videoData = [
   "creator": "Danu's Irish Herb Garden",
   "categories": ["Herbal Medicine", "Natural Remedies", "Sustainable Healthcare"],
   "description": "This video explores the numerous medicinal properties and uses of plantain (Plantago lanceolata), a common herb often considered a weed but with powerful healing capabilities for various ailments.",
-  "youtubeId": "https://www.youtube.com/watch?v=PLACEHOLDER",
+  "youtubeId": "",
   "tags": ["plantain", "herbal medicine", "natural remedies", "wound healing", "respiratory health", "digestive health", "sustainable healthcare"],
   "rating": 4.9,
   "date": "2020-07-08",
@@ -2136,10 +2136,9 @@ const videoData = [
   }
 }
       ,
-     Here's a summary of the video content in the requested format:
-
+,
 {
-  "id": "36",
+  "id": "46",
   "title": "Helicopter Lineman - BareHanding 345,000 volts!",
   "creator": "Anthony White",
   "categories": ["Electrical Engineering", "Occupational Safety", "Aerial Work"],
@@ -2184,7 +2183,52 @@ const videoData = [
   }
 }
 ,
-            
+
+{
+  "id": "47",
+  "title": "SOLAR OVENS: THE TRUTH ABOUT SOLAR OVENS!!! TIRED OF THE OTHER INFOMERCIALS???",
+  "creator": "Simply Starry Sustainable Living With God",
+  "categories": ["Renewable Energy", "Off-Grid Living", "Sustainable Cooking"],
+  "description": "This video provides practical, real-life advice about solar ovens, discussing different types, their practicality for family cooking, and whether investing in a solar cooker is worthwhile for homesteading and off-grid living.",
+  "youtubeId": "gXgLHTLgnhE",
+  "tags": ["solar oven", "solar cooking", "off-grid living", "homesteading", "energy", "alternative cooking methods", "emergency preparedness"],
+  "rating": 4.8,
+  "date": "2017-04-27",
+  "transcript": "This is a placeholder for the full video transcript...",
+  "views": 288120,
+  "panels": [
+    {
+      "title": "Solar Oven Types",
+      "content": "There are three main types of solar cookers: solar box ovens (250-300°F), panel cookers (reflective designs), and parabolic cookers (400-600°F). The video also mentions tubular designs like Go Sun cookers.",
+      "description": "Explains the different types of solar ovens available and their temperature ranges."
+    },
+    {
+      "title": "All Seasons Solar Cooker",
+      "content": "The presenter recommends the All Seasons Solar Cooker, which combines features of box and panel cookers. It can cook up to three meals per day and works from dawn to dusk due to its design.",
+      "description": "Highlights a specific solar oven model that the presenter finds effective for homesteading."
+    },
+    {
+      "title": "Solar Cooker Construction",
+      "content": "The durability of solar cookers varies. The All Seasons Solar Cooker is praised for withstanding various weather conditions, emphasizing the importance of sturdy construction for long-term use.",
+      "description": "Discusses the importance of durable construction in solar ovens for outdoor use."
+    },
+    {
+      "title": "Solar Cooker Size",
+      "content": "The size of the cooking surface is crucial. The presenter's recommended model can fit a 15x10 inch roasting pan, suitable for cooking family-sized meals.",
+      "description": "Emphasizes the importance of cooking capacity in solar ovens for practical family use."
+    }
+  ],
+  "additionalInfo": [
+    "Solar ovens can be used for more than cooking, such as dehydrating food and making yogurt.",
+    "The video offers a giveaway of an All Seasons Solar Cooker to promote sustainable living practices.",
+    "The presenter has personally tested the durability of the recommended solar oven in various weather conditions.",
+    "Solar cooking is presented as both an emergency preparedness tool and a way to reduce everyday energy consumption."
+  ],
+  "resources": {
+    "motherEarthNews": "http://www.motherearthnews.com/homesteading",
+    "facebookPage": "Not provided in the transcript"
+  }
+}           
 
             
             
