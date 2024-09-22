@@ -2183,7 +2183,6 @@ const videoData = [
   }
 }
 ,
-
 {
   "id": "47",
   "title": "SOLAR OVENS: THE TRUTH ABOUT SOLAR OVENS!!! TIRED OF THE OTHER INFOMERCIALS???",
@@ -2552,8 +2551,180 @@ const videoData = [
 "solarCookingNetwork": "https://solarcooking.fandom.com/wiki/Solar_Cookers_International_Network_(Home)"
 }
 }          
- 
-
+,
+{
+"id": "53",
+"title": "Cactus Leaf: Benefits & Uses (Nopales)",
+"creator": "Ryan Taylor (Natural Remedies)",
+"categories": ["Natural Health", "Nutrition", "Traditional Medicine"],
+"description": "This video explores the health benefits and uses of cactus leaves, also known as Opuntia, prickly pear cactus, or Nopal. It covers the nutritional value and potential health impacts of consuming cactus leaves or juice.",
+"youtubeId": "https://www.youtube.com/watch?v=ayQyCUyKk-U",
+"tags": ["cactus plant benefits", "cactus juice benefits", "paddle cactus", "nopales", "natural remedies", "traditional medicine", "nutrition"],
+"rating": 4.8,
+"date": "2018-11-02",
+"transcript": "Transcript not available",
+"views": 64655,
+"panels": [
+{
+"title": "Introduction to Cactus Leaves",
+"content": "The video introduces cactus leaves, known as Opuntia, prickly pear cactus, or Nopal, and their historical use as a food source and health booster.",
+"description": "Provides background on cactus leaves and their traditional uses."
+},
+{
+"title": "Nutritional Content",
+"content": "Cactus leaves contain many amino acids and nutrients beneficial for the body. The video likely details these nutritional components.",
+"description": "Explains the nutritional value of cactus leaves."
+},
+{
+"title": "Growing Conditions",
+"content": "The prickly pear cactus grows easily in sand and warm climates, often found growing alongside aloe vera.",
+"description": "Discusses the natural habitat and growing conditions of the cactus."
+},
+{
+"title": "Consumption Methods",
+"content": "The video discusses eating cactus leaves or juicing them to gain health benefits. It may also mention combining cactus with aloe vera for a special juice.",
+"description": "Outlines different ways to consume cactus leaves for health benefits."
+},
+{
+"title": "Health Benefits",
+"content": "While specific benefits are not detailed in the description, the video likely covers various health advantages of consuming cactus leaves or juice.",
+"description": "Explores the potential health impacts of cactus leaf consumption."
+},
+{
+"title": "Precautions and Disclaimer",
+"content": "The creator emphasizes that the information is for educational purposes only and not a substitute for medical advice.",
+"description": "Provides important disclaimers about using the information presented."
+}
+],
+"additionalInfo": [
+"The video is part of a series on natural remedies and healthy foods.",
+"The creator encourages viewers to suggest topics for future research.",
+"A full article on the topic is available, likely providing more detailed information.",
+"The video includes subtitles for accessibility."
+],
+"resources": {
+"creatorChannel": "https://www.youtube.com/channel/UCvTUft1Uh9HpjcKXuIkHFug",
+"fullArticle": "Not provided in the description"
+}
+}         
+,    
+{
+"id": "54",
+"title": "Cactus Leaf: Benefits & Uses (Nopales)",
+"creator": "Ryan Taylor (Natural Remedies)",
+"categories": ["Natural Health", "Nutrition", "Traditional Medicine"],
+"description": "This video explores the health benefits and uses of cactus leaves, also known as Opuntia, prickly pear cactus, or Nopal. It covers the nutritional value and potential health impacts of consuming cactus leaves or juice.",
+"youtubeId": "https://www.youtube.com/watch?v=ayQyCUyKk-U",
+"tags": ["cactus plant benefits", "cactus juice benefits", "paddle cactus", "nopales", "natural remedies", "traditional medicine", "nutrition"],
+"rating": 4.8,
+"date": "2018-11-02",
+"transcript": "Transcript not available",
+"views": 64655,
+"panels": [
+{
+"title": "Introduction to Cactus Leaves",
+"content": "The video introduces cactus leaves, known as Opuntia, prickly pear cactus, or Nopal, and their historical use as a food source and health booster.",
+"description": "Provides background on cactus leaves and their traditional uses."
+},
+{
+"title": "Nutritional Content",
+"content": "Cactus leaves contain many amino acids and nutrients beneficial for the body. The video likely details these nutritional components.",
+"description": "Explains the nutritional value of cactus leaves."
+},
+{
+"title": "Growing Conditions",
+"content": "The prickly pear cactus grows easily in sand and warm climates, often found growing alongside aloe vera.",
+"description": "Discusses the natural habitat and growing conditions of the cactus."
+},
+{
+"title": "Consumption Methods",
+"content": "The video discusses eating cactus leaves or juicing them to gain health benefits. It may also mention combining cactus with aloe vera for a special juice.",
+"description": "Outlines different ways to consume cactus leaves for health benefits."
+},
+{
+"title": "Health Benefits",
+"content": "While specific benefits are not detailed in the description, the video likely covers various health advantages of consuming cactus leaves or juice.",
+"description": "Explores the potential health impacts of cactus leaf consumption."
+},
+{
+"title": "Precautions and Disclaimer",
+"content": "The creator emphasizes that the information is for educational purposes only and not a substitute for medical advice.",
+"description": "Provides important disclaimers about using the information presented."
+}
+],
+"additionalInfo": [
+"The video is part of a series on natural remedies and healthy foods.",
+"The creator encourages viewers to suggest topics for future research.",
+"A full article on the topic is available, likely providing more detailed information.",
+"The video includes subtitles for accessibility."
+],
+"resources": {
+"creatorChannel": "https://www.youtube.com/channel/UCvTUft1Uh9HpjcKXuIkHFug",
+"fullArticle": "Not provided in the description"
+}
+}
+,
+            {
+"id": "45",
+"title": "EMERGENCY water filter DIY . Lead farmer 73's "MURKY WATER FILTER"",
+"creator": "Lead Farmer 73",
+"categories": ["Survival Skills", "DIY", "Water Purification"],
+"description": "This video demonstrates how to create an emergency water filter using readily available materials, capable of purifying murky water into a drinkable state.",
+"youtubeId": "szZv3wElOPA",
+"tags": ["DIY water filter", "emergency preparedness", "survival skills", "water purification", "off-grid living"],
+"rating": 4.9,
+"date": "2021-07-19",
+"transcript": "Transcript not fully available",
+"views": 137231,
+"panels": [
+{
+"title": "Materials Needed",
+"content": "The video lists required materials including food-grade buckets, lids, hardwood charcoal, pea gravel, clean play sand, and old cotton fabrics.",
+"description": "Outlines the materials needed to construct the DIY water filter.",
+"timelink": "https://www.youtube.com/watch?v=szZv3wElOPA&t=45s"
+},
+{
+"title": "Preparing Filter Media",
+"content": "Demonstrates how to prepare charcoal, clean gravel and sand for use in the filter.",
+"description": "Shows the process of preparing the filtering materials.",
+"timelink": "https://www.youtube.com/watch?v=szZv3wElOPA&t=180s"
+},
+{
+"title": "Assembling the Filter",
+"content": "Details the process of assembling the filter system using buckets, adding a spigot, and layering the filter media.",
+"description": "Guides viewers through the assembly of the water filter.",
+"timelink": "https://www.youtube.com/watch?v=szZv3wElOPA&t=345s"
+},
+{
+"title": "Testing the Filter",
+"content": "Shows the filtration process in action, comparing the filtered water to both murky water and commercially filtered water.",
+"description": "Demonstrates the effectiveness of the DIY filter through multiple tests.",
+"timelink": "https://www.youtube.com/watch?v=szZv3wElOPA&t=735s"
+},
+{
+"title": "Multiple Filtration Runs",
+"content": "Illustrates how multiple runs through the filter progressively improve water clarity and quality.",
+"description": "Explains the importance of repeated filtration for best results.",
+"timelink": "https://www.youtube.com/watch?v=szZv3wElOPA&t=900s"
+},
+{
+"title": "Extreme Test",
+"content": "Demonstrates the filter's capability by testing it with extremely muddy water.",
+"description": "Shows the filter's effectiveness even with highly contaminated water.",
+"timelink": "https://www.youtube.com/watch?v=szZv3wElOPA&t=1200s"
+}
+],
+"additionalInfo": [
+"The video emphasizes that this is a life-saving skill for emergency situations.",
+"The creator compares the DIY filter's performance to a commercial Berkey water filter.",
+"Multiple filtration runs are shown to progressively improve water quality.",
+"The video encourages viewers to try the method themselves to verify its effectiveness.",
+"While the filter significantly improves water clarity, additional treatment may be necessary for full purification."
+],
+"resources": {
+"creatorChannel": "https://www.youtube.com/channel/UCGbSaWXfTHWPOOX-72YZa8A"
+}
+}
             
 ];
 
