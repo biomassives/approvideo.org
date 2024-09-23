@@ -2665,7 +2665,7 @@ const videoData = [
 }
 ,
             {
-"id": "45",
+"id": "55",
 "title": "EMERGENCY water filter DIY . Lead farmer 73's "MURKY WATER FILTER"",
 "creator": "Lead Farmer 73",
 "categories": ["Survival Skills", "DIY", "Water Purification"],
@@ -2725,7 +2725,69 @@ const videoData = [
 "creatorChannel": "https://www.youtube.com/channel/UCGbSaWXfTHWPOOX-72YZa8A"
 }
 }
-            
+,
+{
+"id": "56",
+"title": "EMERGENCY water filter DIY . Lead farmer 73's "MURKY WATER FILTER"",
+"creator": "Lead Farmer 73",
+"categories": ["Survival Skills", "DIY", "Water Purification"],
+"description": "This video demonstrates how to create an emergency water filter using readily available materials, capable of purifying murky water into a drinkable state.",
+"youtubeId": "szZv3wElOPA",
+"tags": ["DIY water filter", "emergency preparedness", "survival skills", "water purification", "off-grid living"],
+"rating": 4.9,
+"date": "2021-07-19",
+"transcript": "Transcript not fully available",
+"views": 137231,
+"panels": [
+{
+"title": "Materials Needed",
+"content": "The video lists required materials including food-grade buckets, lids, hardwood charcoal, pea gravel, clean play sand, and old cotton fabrics.",
+"description": "Outlines the materials needed to construct the DIY water filter.",
+"timelink": "https://www.youtube.com/watch?v=szZv3wElOPA&t=45s"
+},
+{
+"title": "Preparing Filter Media",
+"content": "Demonstrates how to prepare charcoal, clean gravel and sand for use in the filter.",
+"description": "Shows the process of preparing the filtering materials.",
+"timelink": "https://www.youtube.com/watch?v=szZv3wElOPA&t=180s"
+},
+{
+"title": "Assembling the Filter",
+"content": "Details the process of assembling the filter system using buckets, adding a spigot, and layering the filter media.",
+"description": "Guides viewers through the assembly of the water filter.",
+"timelink": "https://www.youtube.com/watch?v=szZv3wElOPA&t=345s"
+},
+{
+"title": "Testing the Filter",
+"content": "Shows the filtration process in action, comparing the filtered water to both murky water and commercially filtered water.",
+"description": "Demonstrates the effectiveness of the DIY filter through multiple tests.",
+"timelink": "https://www.youtube.com/watch?v=szZv3wElOPA&t=735s"
+},
+{
+"title": "Multiple Filtration Runs",
+"content": "Illustrates how multiple runs through the filter progressively improve water clarity and quality.",
+"description": "Explains the importance of repeated filtration for best results.",
+"timelink": "https://www.youtube.com/watch?v=szZv3wElOPA&t=900s"
+},
+{
+"title": "Extreme Test",
+"content": "Demonstrates the filter's capability by testing it with extremely muddy water.",
+"description": "Shows the filter's effectiveness even with highly contaminated water.",
+"timelink": "https://www.youtube.com/watch?v=szZv3wElOPA&t=1200s"
+}
+],
+"additionalInfo": [
+"The video emphasizes that this is a life-saving skill for emergency situations.",
+"The creator compares the DIY filter's performance to a commercial Berkey water filter.",
+"Multiple filtration runs are shown to progressively improve water quality.",
+"The video encourages viewers to try the method themselves to verify its effectiveness.",
+"While the filter significantly improves water clarity, additional treatment may be necessary for full purification."
+],
+"resources": {
+"creatorChannel": "https://www.youtube.com/channel/UCGbSaWXfTHWPOOX-72YZa8A"
+}
+}
+              
 ];
 
 
