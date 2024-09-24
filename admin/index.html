@@ -52,25 +52,28 @@
 }
     </style>
 </head>
-<body class="bg-gray-900  
- text-white">
+<body class="bg-gray-900 text-white"> 
 
   <div class="container mx-auto p-8">
 
-    <h1 class="text-4xl font-extrabold mb-6 text-green-400 glitch">Eco Ops Admin</h1>
-
-    <div class="bg-gray-800 shadow-lg rounded-lg p-6 mb-6">
-      <h2 class="text-2xl font-semibold mb-4 text-blue-400">Pending Video Submissions</h2>
-      <div id="pending-videos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        </div>
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-4xl font-extrabold text-green-400 glitch">Eco Ops Admin</h1>
+      <button id="add-video-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+        </svg>
+        Add Video
+      </button>
     </div>
 
-    <div class="bg-gray-800 shadow-lg rounded-lg p-6">
-      <h2 class="text-2xl font-semibold mb-4 text-yellow-400">User Management</h2>
-      <div id="user-list">
-        </div>
     </div>
 
+  <div id="add-video-overlay" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
+    <div class="bg-gray-700 p-6 rounded-lg w-full max-w-md">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-400">Add New Video</h2>
+      <form id="add-video-form">
+        </form>
+    </div>
   </div>
 
   <script src="admin-script.js"></script>
