@@ -48,6 +48,46 @@ function displayPendingVideos() {
 }
 
 
+
+function toggleOverlay() {
+  const overlay = document.getElementById('add-video-overlay');
+  overlay.classList.toggle('hidden');
+}
+
+// Add event listener to the "+" button
+document.getElementById('add-video-btn').addEventListener('click', toggleOverlay);
+
+
+// Add event listener to close the overlay
+document.getElementById('close-overlay-btn').addEventListener('click', toggleOverlay);
+
+
+// Auto-hint functionality (implementation will depend on your data and backend)
+// Example using `datalist` for basic auto-completion
+function addAutoHints() {
+  const tagInput = document.getElementById('tag-input');
+  const categoryInput = document.getElementById('category-input');
+
+  // Fetch unique tags and categories from your data or backend
+  const uniqueTags = [...new Set(pendingVideos.flatMap(video => video.tags))]; 
+  const uniqueCategories = [...new Set(pendingVideos.flatMap(video => video.categories))]; 
+
+  // Create datalists and add options
+  const tagDataList = document.createElement('datalist');
+  tagDataList.id = 'tag-suggestions';
+  uniqueTags.forEach(tag => {
+    const option = document.createElement('option');
+    option.value = tag;
+    tagDataList.appendChild(option);
+  });
+  tagInput.parentNode.appendChild(tagDataList);
+  tagInput.setAttribute('list', 'tag-suggestions');
+
+ 
+}
+
+
+
 // Function to display users
 function displayUsers() {
   const userListContainer = document.getElementById('user-list');
