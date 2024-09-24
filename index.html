@@ -700,7 +700,7 @@ function renderVideoDetails(video) {
 
         <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Materials Needed:</h2>
         <ul class="list-disc list-inside mb-4 text-gray-700 dark:text-gray-300">
-            ${video.materials.map(material => `<li>${material}</li>`).join('')}
+            ${video.materials.map(material => `<li>${material}</li>`).join('') ?? 'No materials data' }    
         </ul>
 
         <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Steps:</h2>
