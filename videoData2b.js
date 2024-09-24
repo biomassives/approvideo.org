@@ -2726,6 +2726,81 @@ const videoData = [
 "creatorChannel": "https://www.youtube.com/channel/UCGbSaWXfTHWPOOX-72YZa8A"
 }
 }
+,
+{
+"id": "56",
+"title": "Growing Food in the Desert: An Oasis in Mexico's Dry Climate",
+"creator": "Leaf of Life",
+"categories": ["Agriculture", "Sustainable Farming", "Eco-Tourism", "Desert Agriculture", "Organic Food"],
+"description": "In this video, we explore how an ordinary couple transformed a sandy desert in one of the hottest places on Earth into a thriving, million-dollar business. By pioneering regenerative agriculture techniques and diversifying their farm's offerings, they've created an internationally renowned eco-tourism destination that not only produces an abundance of fresh, organic food but also gives back to the local community and environment.",
+"youtubeId": "4hil4b2_PKM",
+"tags": ["regenerative agriculture", "eco-tourism", "sustainable farming", "desert agriculture", "organic food", "food security", "climate adaptation", "green economy", "local community", "biodiversity"],
+"rating": 4.7,
+"date": "2024-05-29",
+"transcript": "This is a placeholder for the full video transcript...",
+"views": 211535,
+"panels": [
+{
+"title": "Soil Regeneration Techniques",
+"content": "Leopoldo, the supervisor, explains the regenerative agriculture practices used on the farm, including the use of mulch to retain soil moisture and moderate temperatures.",
+"description": "Explores the innovative farming techniques that have transformed the desert landscape.",
+"timestamp": "https://youtu.be/4hil4b2_PKM?t=193"
+},
+{
+"title": "Companion Planting and Shade",
+"content": "The use of companion planting and shade-providing sunflowers to protect delicate crops from the intense desert sun.",
+"description": "Demonstrates how the farm leverages natural synergies between plants to thrive in the harsh environment.",
+"timestamp": "https://youtu.be/4hil4b2_PKM?t=472"
+},
+{
+"title": "Compost and Nursery Operations",
+"content": "The farm's large-scale composting operation and nursery, which are crucial to supplying the restaurant with a diverse array of fresh produce.",
+"description": "Highlights the farm's closed-loop approach to resource management and plant cultivation.",
+"timestamp": "https://youtu.be/4hil4b2_PKM?t=710"
+},
+{
+"title": "Community Engagement and Sustainability",
+"content": "The farm's efforts to rescue and foster bees, as well as donate surplus produce to local charities.",
+"description": "Showcases how the farm's sustainable practices extend beyond just food production.",
+"timestamp": "https://youtu.be/4hil4b2_PKM?t=795"
+},
+{
+"title": "Agroforestry: Diversified Crop Production",
+"content": "The farm's agroforestry system, which integrates a variety of fruit trees, arable crops, and native vegetation to create a resilient and productive ecosystem.",
+"description": "Highlights how the farm's diversified approach to agriculture has helped it thrive in the desert environment.",
+"timestamp": "https://youtu.be/4hil4b2_PKM?t=643"
+},
+{
+"title": "Bee Rescue and Sanctuary",
+"content": "The farm's initiative to rescue and provide a sanctuary for bees, helping to support local pollinator populations.",
+"description": "Demonstrates the farm's commitment to environmental stewardship and biodiversity conservation.",
+"timestamp": "https://youtu.be/4hil4b2_PKM?t=815"
+},
+{
+"title": "Adapting to Desert Conditions",
+"content": "The farm innovative techniques for cultivating a diverse array of crops in the arid desert climate, including the use of shade structures and soil management practices.",
+"description": "Showcases the farm ability to overcome the challenges of desert agriculture through sustainable and regenerative methods.",
+"timestamp": "https://youtu.be/4hil4b2_PKM?t=384"
+}
+],
+"featuredExperts": [
+{
+"name": "Leopoldo",
+"affiliation": "Supervisor, Flora Farms"
+}
+],
+"additionalInfo": [
+"This video is part of a series exploring regenerative solutions around the world.",
+"The farm's approach to diversifying its income streams and creating an eco-tourism destination serves as a model for struggling farmers.",
+"The use of regenerative agriculture techniques, such as companion planting and soil cover, has allowed the farm to thrive in the arid desert climate.",
+"farm commitment to sustainability extends beyond food production, with efforts to support local wildlife and communities."
+],
+"resources": {
+"fundingPartner": "Ground News",
+"deliveryPartner": "Leaf of Life",
+"organizerWebsite": "https://www.flora-farms.com/"
+}
+}            
               
 ];
 
