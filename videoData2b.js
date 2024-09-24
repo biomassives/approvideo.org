@@ -1,4 +1,5 @@
-const videoData = [
+window.videoData = [
+            
             {
                 "id": "1",
                 "title": "DIY Gravity-Based Water Filter",
@@ -2293,7 +2294,7 @@ const videoData = [
 "allCourses": "https://www.tellervo.fi/shop"
 }
 }
-   ,
+,
 
 {
 "id": "49",
@@ -2664,7 +2665,7 @@ const videoData = [
 }
 }
 ,
-            {
+{
 "id": "55",
 "title": "EMERGENCY water filter DIY . Lead farmer 73's "MURKY WATER FILTER"",
 "creator": "Lead Farmer 73",
