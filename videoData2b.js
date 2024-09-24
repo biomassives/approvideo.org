@@ -2801,7 +2801,131 @@ const videoData = [
 "organizerWebsite": "https://www.flora-farms.com/"
 }
 }            
-              
+  ,
+            {
+"id": "57",
+"title": "Avoid These 5 Mistakes When Rainwater Harvesting | Things The Books Won't Tell You",
+"creator": "Our Self-Reliant Life",
+"categories": ["Sustainable Living", "Rainwater Harvesting", "DIY", "Off-Grid Living"],
+"description": "These are some issues we've run into when setting up a rainwater harvesting system. They might be easily overlooked but important to consider.",
+"youtubeId": "4hil4b2_PKM",
+"tags": ["rainwater harvesting", "water conservation", "self-reliance", "sustainable living", "off-grid", "diy"],
+"rating": 4.5,
+"date": "2021-07-06",
+"transcript": "This is a placeholder for the full video transcript...",
+"views": 179075,
+"panels": [
+{
+"title": "Screens",
+"content": "The importance of properly placing screens on downspouts and vents to prevent debris and insects from entering the system.",
+"description": "Discusses the benefits of placing screens on pipe inlets rather than directly on gutters.",
+"timestamp": "https://youtu.be/4hil4b2_PKM?t=66"
+},
+{
+"title": "Gutter Sealing",
+"content": "Considerations when sealing gutters, including the limitations of silicone caulk and the potential benefits of seamless gutters.",
+"description": "Advises on alternative gutter sealing methods to ensure a reliable rainwater harvesting system.",
+"timestamp": "https://youtu.be/4hil4b2_PKM?t=140"
+},
+{
+"title": "Roof Slope",
+"content": "The importance of designing the system with sufficient slope to ensure efficient water flow and minimize issues like leaks and backups.",
+"description": "Explains how the addition of extra downspouts can help address challenges with limited roof slope.",
+"timestamp": "https://youtu.be/4hil4b2_PKM?t=214"
+},
+{
+"title": "Pipe Angles",
+"content": "The impact of 90-degree angles in the piping system and the benefits of using sweeping 90-degree elbows to improve water flow.",
+"description": "Highlights the importance of minimizing sharp angles in the system design.",
+"timestamp": "https://youtu.be/4hil4b2_PKM?t=294"
+},
+{
+"title": "Keeping it Simple",
+"content": "The value of maintaining a simple and straightforward system design, with water storage located as close to the catchment as possible.",
+"description": "Recommends prioritizing simplicity and efficiency when planning a rainwater harvesting system.",
+"timestamp": "https://youtu.be/4hil4b2_PKM?t=394"
+}
+],
+"featuredExperts": [
+{
+"name": "Jim",
+"affiliation": "Green Dream Project"
+}
+],
+"additionalInfo": [
+"This video shares practical lessons learned from the creators' own experience setting up a rainwater harvesting system in the Arizona desert.",
+"The creators recommend Brad Lancaster's books as a valuable resource for those interested in learning more about rainwater harvesting.",
+"Viewers are encouraged to ask any questions about rainwater harvesting or the creators' setup in the comments section."
+],
+"resources": {
+"fundingPartner": "N/A",
+"deliveryPartner": "Our Self-Reliant Life",
+"organizerWebsite": "http://greendreamproject.org/"
+}
+},
+{
+"id": "58",
+"title": "How He Turned Desert Sand Into Fertile Farm Land In 3 Months!",
+"creator": "Leaf of Life",
+"categories": ["Agriculture", "Sustainable Farming", "Desert Agriculture", "Organic Farming"],
+"description": "John Graham is a specialist in desert farming who has taught hundreds of farmers how to run profitable organic farms. He has 30 years experience creating farms out of arid sand in Mexico's desert region of Baja California, successfully transforming sand into fertile soil to cultivate a large variety of vegetables.",
+"youtubeId": "cc3-3s115mM",
+"tags": ["desert farming", "soil regeneration", "organic agriculture", "sustainable agriculture", "arid climate", "food production"],
+"rating": 4.9,
+"date": "2024-01-01",
+"transcript": "This is a placeholder for the full video transcript...",
+"views": 1393118,
+"panels": [
+{
+"title": "John Graham's Expertise",
+"content": "John Graham's 30 years of experience in desert farming and creating profitable organic farms out of arid sand in Baja California.",
+"description": "Introduces John Graham as a specialist in transforming desert sand into fertile farmland.",
+"timestamp": "https://www.youtube.com/watch?v=cc3-3s115mM&t=0m00s"
+},
+{
+"title": "Founding the Organic Market",
+"content": "John Graham's role in co-founding the long-running organic market in Baja California, and his work as an organic farm inspector.",
+"description": "Provides context on John's involvement in the local organic farming community.",
+"timestamp": "https://www.youtube.com/watch?v=cc3-3s115mM&t=0m46s"
+},
+{
+"title": "John's Accessible Home Garden",
+"content": "How John has adapted his home garden to be accessible despite being in a wheelchair for 25 years, demonstrating his commitment and passion for organic farming.",
+"description": "Highlights John's personal dedication to sustainable agriculture even with physical challenges.",
+"timestamp": "https://www.youtube.com/watch?v=cc3-3s115mM&t=1m12s"
+},
+{
+"title": "Techniques for Transforming Desert Sand",
+"content": "The specific techniques and methods John uses to transform arid desert sand into fertile soil capable of growing a wide variety of organic produce.",
+"description": "Explores the core of John's expertise in regenerating desert landscapes for agriculture.",
+"timestamp": "https://www.youtube.com/watch?v=cc3-3s115mM&t=1m38s"
+},
+{
+"title": "Alternative to Chemical Inputs",
+"content": "John's use of organic and natural methods instead of chemical pesticides, herbicides, and fertilizers in his farming practices.",
+"description": "Demonstrates John's holistic, sustainable approach to desert agriculture.",
+"timestamp": "https://www.youtube.com/watch?v=cc3-3s115mM&t=2m04s"
+}
+],
+"featuredExperts": [
+{
+"name": "John Graham",
+"affiliation": "Organic Farming Specialist"
+}
+],
+"additionalInfo": [
+"This video highlights the remarkable achievements of John Graham, who has dedicated his career to teaching other farmers how to create thriving organic farms in arid desert environments.",
+"John's personal story of overcoming physical challenges to maintain his own highly productive home garden is a testament to his passion and commitment to sustainable agriculture.",
+"The video explores the specific techniques John uses to rapidly transform desert sand into fertile soil, providing valuable insights for farmers and gardeners in similar climates."
+],
+"resources": {
+"fundingPartner": "N/A",
+"deliveryPartner": "Leaf of Life",
+"organizerWebsite": "https://www.leafoflife.world/"
+}
+}
+
+            
 ];
 
 
