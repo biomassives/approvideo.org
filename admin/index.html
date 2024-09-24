@@ -3,30 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eco Ops User Portal</title>
+  <title>Eco Ops Admin Portal</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-900 text-white"> 
 
   <div class="container mx-auto p-8">
 
-    <h1 class="text-3xl font-bold mb-6">Welcome to Eco Ops</h1>
+    <h1 class="text-4xl font-extrabold mb-6 text-green-400 glitch">Eco Ops Admin</h1> 
 
-    <div class="bg-white shadow-md rounded-lg p-6 mb-6">
-      <h2 class="text-xl font-semibold mb-4">My POAPs</h2>
-      <div id="poap-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="bg-gray-800 shadow-lg rounded-lg p-6 mb-6">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-400">Pending Video Submissions</h2>
+      <div id="pending-videos">
         </div>
     </div>
 
-    <div class="bg-white shadow-md rounded-lg p-6">
-      <h2 class="text-xl font-semibold mb-4">Wallet Actions</h2>
-      <button id="export-poaps-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Export POAPs
-      </button>
+    <div class="bg-gray-800 shadow-lg rounded-lg p-6">
+      <h2 class="text-2xl font-semibold mb-4 text-yellow-400">User Management</h2>
+      <div id="user-list">
+        </div>
     </div>
 
   </div>
 
-  <script src="adminscript.js"></script>
+  <script src="admin-script.js"></script>
 </body>
 </html>
