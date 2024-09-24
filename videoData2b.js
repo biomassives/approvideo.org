@@ -1,4 +1,4 @@
-window.videoData = [
+const videoData = [
             
             {
                 "id": "1",
@@ -2730,4 +2730,4 @@ window.videoData = [
 ];
 
 
-export default videoData;
+window.videoData = videoData;
