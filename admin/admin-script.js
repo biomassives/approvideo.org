@@ -65,6 +65,9 @@ document.getElementById('close-overlay-btn').addEventListener('click', toggleOve
 // Auto-hint functionality (implementation will depend on your data and backend)
 // Example using `datalist` for basic auto-completion
 function addAutoHints() {
+
+
+  
   const tagInput = document.getElementById('tag-input');
   const categoryInput = document.getElementById('category-input');
 
@@ -91,6 +94,11 @@ function addAutoHints() {
 // Function to display users
 function displayUsers() {
   const userListContainer = document.getElementById('user-list');
+  if (!userListContainer) {
+    console.error("Element with ID 'user-list' not found.");
+    return;
+  }
+  
   userListContainer.innerHTML = ''; 
 
   users.forEach(user => {
