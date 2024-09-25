@@ -58,25 +58,160 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eco Ops Admin Portal</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-900 text-white"> 
+</head><body class="bg-gray-900 text-white"> 
 
   <div class="container mx-auto p-8">
+    <h1 class="text-3xl font-bold mb-6 glitch">Pending Videos</h1> 
+    <div id="pending-videos"> </div> 
 
-    </div>
+    <h1 class="text-3xl font-bold my-6 glitch">User Management</h1>
+    <div id="user-list"> </div>
+  </div>
 
   <div id="add-video-overlay" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
-    <div class="bg-gray-700 p-6 rounded-lg w-full max-w-md relative"> <button id="close-overlay-btn" class="absolute top-2 right-2 text-gray-400 hover:text-gray-200">
+    <div class="bg-gray-700 p-6 rounded-lg w-full max-w-md relative"> 
+      <button id="close-overlay-btn" class="absolute top-2 right-2 text-gray-400 hover:text-gray-200">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        </svg>  
+
       </button>
-      <h2 class="text-2xl font-semibold mb-4 text-blue-400">Add New Video</h2>
+      <h2 class="text-2xl font-semibold  
+ mb-4 text-blue-400">Add New Video</h2>
       <form id="add-video-form">
         </form>
     </div>
   </div>
 
-  <script src="admin-script.js"></script>
+  <script>
+
+
+
+// Placeholder video data (replace with actual data fetched from backend)
+const pendingVideos = [
+  { 
+    title: "Solar Power for Beginners", 
+    submitter: "SunnyUser123",
+    thumbnail: "solar-power.jpg", // Add thumbnail URLs
+    description: "A beginner's guide to harnessing solar energy." 
+  },
+  { 
+    title: "Upcycled Fashion Hacks", 
+    submitter: "EcoChic",
+    thumbnail: "upcycled-fashion.jpg",
+    description: "Creative ways to repurpose old clothes."
+  },
+  // ... more videos
+];
+
+const users = [
+  { username: "GreenThumbGuru", email: "guru@ecoops.com", isAdmin: true },
+  { username: "RecycleQueen", email: "queen@ecoops.com", isAdmin: false },
+  // ...
+];
+
+// ... (displayUsers function remains the same)
+
+// Enhanced function to display pending videos with thumbnails and descriptions
+function displayPendingVideos() {
+  const pendingVideosContainer = document.getElementById('pending-videos');
+  pendingVideosContainer.innerHTML = ''; 
+
+  pendingVideos.forEach(video => {
+    const videoItem = `
+      <div class="bg-gray-700 p-4 rounded-lg">
+        <img src="${video.thumbnail}" alt="${video.title}" class="w-full h-40 object-cover mb-2 rounded-md">
+        <h3 class="text-lg font-semibold">${video.title}</h3>
+        <p class="text-sm text-gray-400 mb-2">Submitted by: ${video.submitter}</p>
+        <p class="text-sm text-gray-300">${video.description}</p>
+        <div class="mt-4 flex justify-end">
+          <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">Approve</button>
+          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Reject</button>
+        </div>
+      </div>
+    `;
+    pendingVideosContainer.innerHTML += videoItem;
+  });
+}
+
+
+
+function toggleOverlay() {
+  const overlay = document.getElementById('add-video-overlay');
+  overlay.classList.toggle('hidden');
+}
+
+// Add event listener to the "+" button
+document.getElementById('add-video-btn').addEventListener('click', toggleOverlay);
+
+
+// Add event listener to close the overlay
+document.getElementById('close-overlay-btn').addEventListener('click', toggleOverlay);
+
+
+// Auto-hint functionality (implementation will depend on your data and backend)
+// Example using `datalist` for basic auto-completion
+function addAutoHints() {
+
+
+  
+  const tagInput = document.getElementById('tag-input');
+  const categoryInput = document.getElementById('category-input');
+
+  // Fetch unique tags and categories from your data or backend
+  const uniqueTags = [...new Set(pendingVideos.flatMap(video => video.tags))]; 
+  const uniqueCategories = [...new Set(pendingVideos.flatMap(video => video.categories))]; 
+
+  // Create datalists and add options
+  const tagDataList = document.createElement('datalist');
+  tagDataList.id = 'tag-suggestions';
+  uniqueTags.forEach(tag => {
+    const option = document.createElement('option');
+    option.value = tag;
+    tagDataList.appendChild(option);
+  });
+  tagInput.parentNode.appendChild(tagDataList);
+  tagInput.setAttribute('list', 'tag-suggestions');
+
+ 
+}
+
+
+
+// Function to display users
+function displayUsers() {
+  const userListContainer = document.getElementById('user-list');
+  if (!userListContainer) {
+    console.error("Element with ID 'user-list' not found.");
+    return;
+  }
+  
+  userListContainer.innerHTML = ''; 
+
+  users.forEach(user => {
+    const userItem = `
+      <div class="bg-gray-700 p-4 rounded-lg mb-4 flex justify-between items-center">
+        <div>
+          <h3 class="text-lg font-semibold">${user.username}</h3>
+          <p class="text-sm text-gray-400">${user.email}</p>
+        </div>
+        <div>
+          <span class="px-2 py-1 rounded-full text-xs font-semibold ${user.isAdmin ? 'bg-green-500 text-white' : 'bg-gray-400 text-gray-800'}">${user.isAdmin ? 'Admin' : 'User'}</span>
+        </div>
+      </div>
+    `;
+    userListContainer.innerHTML += userItem;
+  });
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    displayPendingVideos();
+    displayUsers();
+});
+    
+  </script>
 </body>
 </html>
