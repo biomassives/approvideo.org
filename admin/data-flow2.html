@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Ops Admin Portal UI Flow</title>
+    <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script> </head>
+
+
+<body class="bg-gray-100"> 
+    <div class="container mx-auto p-8">
+  
+  <p class="mb-6">
+            **Participate in the Eco Ops Movement:**
+            <ul class="list-disc list-inside ml-4">
+                <li>**Content Creators:** Share your passion for sustainability by submitting inspiring videos. Your content could be featured in curated panels, reaching a wider audience.</li>
+                <li>**Community Curators:** Help shape the narrative by joining our team of moderators. Review submitted videos, ensuring quality and alignment with our mission. </li>
+                <li>**Tech Enthusiasts:** Contribute to the open-source development of our platform. Your skills can enhance the user experience and expand our capabilities.</li>
+            </ul>
+        </p>
+    <h2>1. Overall Information Flow</h2>
+    <div class="mermaid">
+        graph LR
+            subgraph Supabase Database
+                Videos
+                Tags
+                Categories
+                Users
+                Panels
+                Panels_Videos 
+            end
+        
+            subgraph Admin Portal UI
+                PendingVideosList
+                UserList
+                AddVideoForm
+                CreatePanelForm
+            end
+        
+            PendingVideosList --> Supabase Database
+            UserList --> Supabase Database
+            AddVideoForm --> Supabase Database
+            CreatePanelForm --> Supabase Database
+        
+            Supabase Database --> PendingVideosList
+            Supabase Database --> UserList
+            Supabase Database --> CreatePanelForm 
+    </div>
+
+    <h2>2. Panel Creation Flow</h2>
+    <div class="mermaid">
+        graph LR
+            subgraph Admin Portal UI
+                CreatePanelButton
+                CreatePanelForm
+                ApprovedVideosDropdown 
+            end
+        
+            subgraph Supabase Database
+                Videos[Approved Videos]
+                Panels
+                Panels_Videos
+            end
+        
+            CreatePanelButton --> CreatePanelForm
+            ApprovedVideosDropdown --> Supabase Database
+            Supabase Database --> ApprovedVideosDropdown
+            CreatePanelForm --> Supabase Database 
+    </div>
+
+    <h2>3. Add Video Flow</h2>
+    <div class="mermaid">
+        graph LR
+            subgraph Admin Portal UI
+                AddVideoButton
+                AddVideoForm
+                TagsInput 
+                CategoriesInput
+            end
+        
+            subgraph Supabase Database
+                Videos
+                Tags
+                Categories
+            end
+        
+            AddVideoButton --> AddVideoForm
+            TagsInput --> Supabase Database
+            CategoriesInput --> Supabase Database
+            Supabase Database --> TagsInput
+            Supabase Database --> CategoriesInput
+            AddVideoForm --> Supabase Database
+    </div>
+
+
+      
+
+    
+
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</body>
+
+</html>
