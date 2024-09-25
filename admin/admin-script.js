@@ -109,6 +109,10 @@ function displayUsers() {
   });
 }
 
-// Call the display functions on page load
-displayPendingVideos();
-displayUsers();
+
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    displayPendingVideos();
+    displayUsers();
+});
