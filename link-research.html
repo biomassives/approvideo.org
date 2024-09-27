@@ -10,10 +10,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="style8.css">
     <style>
-   
 
     </style>
-  
+<script>
+
+    // Get all the category links
+const categoryLinks = document.querySelectorAll('.category-link');
+
+categoryLinks.forEach(link => {
+  link.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+
+    const category = this.dataset.category; 
+    const searchQuery = encodeURIComponent(category); // Encode for URL
+    const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${searchQuery}`;
+
+    window.open(youtubeSearchUrl, '_blank'); // Open in a new tab
+  });
+});
+    
+</script>
+
+
+
+</head><body>
+
+
+    
     <div class="embossed-background"></div>
 
 
