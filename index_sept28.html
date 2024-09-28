@@ -417,160 +417,6 @@
 <script>
 
 
-      
-      // DOM elements
-      const contentForm = document.getElementById('content-form');
-      const authForm = document.getElementById('auth-form');
-      const messageDiv = document.getElementById('message');
-      
-      // Check authentication status
-      async function checkAuth() {
-          const token = localStorage.getItem('authToken');
-          if (token) {
-              try {
-                  const response = await fetch('/api/auth', {
-                      method: 'GET',
-                      headers: {
-                          'Authorization': `Bearer ${token}`
-                      }
-                  });
-                  if (response.ok) {
-                      contentForm.classList.remove('hidden');
-                      authForm.classList.add('hidden');
-                      return;
-                  }
-              } catch (error) {
-                  console.error('Auth check failed:', error);
-              }
-          }
-          // If we get here, user is not authenticated
-          contentForm.classList.add('hidden');
-          authForm.classList.remove('hidden');
-          localStorage.removeItem('authToken');
-      }
-      
-      // Handle auth form submission
-      authForm.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const email = document.getElementById('email').value;
-      
-          try {
-              const response = await fetch('/api/auth', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ email })
-              });
-              const data = await response.json();
-              if (!response.ok) throw new Error(data.error);
-              showMessage('Check your email for the login link!', 'success');
-          } catch (error) {
-              showMessage(error.message, 'error');
-          }
-      });
-      
-      // Handle content form submission
-      contentForm.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const formData = new FormData(contentForm);
-          const contentData = Object.fromEntries(formData.entries());
-      
-          try {
-              const response = await fetch('/api/videos', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                      'Authorization': `Bearer ${localStorage.getItem('authToken')}`
-                  },
-                  body: JSON.stringify({ contentData })
-              });
-              const data = await response.json();
-              if (!response.ok) throw new Error(data.error);
-              showMessage('Content submitted successfully!', 'success');
-              contentForm.reset();
-          } catch (error) {
-              showMessage(error.message, 'error');
-          }
-      });
-      
-      // Helper function to show messages
-      function showMessage(message, type) {
-          messageDiv.textContent = message;
-          messageDiv.className = type;
-      }
-      
-      // Initial auth check
-      checkAuth();
-      
-      // You might want to add a logout function and button
-      function logout() {
-          localStorage.removeItem('authToken');
-          checkAuth();
-      }
-      
-      // Listen for successful auth redirect
-      window.addEventListener('load', async () => {
-          const hashParams = new URLSearchParams(window.location.hash.slice(1));
-          const accessToken = hashParams.get('access_token');
-          if (accessToken) {
-              localStorage.setItem('authToken', accessToken);
-              await checkAuth();
-              window.history.replaceState(null, '', window.location.pathname);
-          }
-      });
-      
-        
-    
-    
-    document.getElementById('add-content-form').addEventListener('submit', async function(event) {
-    event.preventDefault(); // Prevent the form from submitting the traditional way
-
-    // Gather form data
-    const contentType = document.getElementById('content-type').value;
-    const title = document.getElementById('title').value;
-    const description = document.getElementById('description').value;
-    const videoUrl = document.getElementById('video-url').value;
-    const category = document.getElementById('category').value;
-    const tags = document.getElementById('tags').value;
-
-    // Prepare the request body
-    const formData = {
-      content_type: contentType,
-      title: title,
-      description: description,
-      video_url: contentType === 'video' ? videoUrl : null, // Only include video URL if the content type is video
-      category: category,
-      tags: tags.split(',').map(tag => tag.trim()) // Split tags into an array
-    };
-
-    try {
-      // Send POST request to your API
-      const response = await fetch('/api/videos3.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer YOUR_TOKEN_HERE`, // Replace with actual token
-        },
-        body: JSON.stringify(formData),
-      });
-
-      // Handle the response
-      if (response.ok) {
-        const result = await response.json();
-        alert('Content added successfully!');
-        console.log('Success:', result);
-        // You can reset the form here if needed
-        document.getElementById('add-content-form').reset();
-      } else {
-        const error = await response.json();
-        alert('Failed to add content: ' + error.error);
-        console.log('Error:', error);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred while adding content.');
-    }
-  });
-
 function toggleSublinks(category) {
   const dropUpMenus = document.querySelectorAll('.drop-up-menu');
   dropUpMenus.forEach(menu => {
@@ -1303,6 +1149,166 @@ window.isAuthenticated = isAuthenticated;
     
  });
 
+
+
+
+      
+      // DOM elements
+      const contentForm = document.getElementById('content-form');
+      const authForm = document.getElementById('auth-form');
+      const messageDiv = document.getElementById('message');
+      
+      // Check authentication status
+      async function checkAuth() {
+          const token = localStorage.getItem('authToken');
+          if (token) {
+              try {
+                  const response = await fetch('/api/auth', {
+                      method: 'GET',
+                      headers: {
+                          'Authorization': `Bearer ${token}`
+                      }
+                  });
+                  if (response.ok) {
+                      contentForm.classList.remove('hidden');
+                      authForm.classList.add('hidden');
+                      return;
+                  }
+              } catch (error) {
+                  console.error('Auth check failed:', error);
+              }
+          }
+          // If we get here, user is not authenticated
+          contentForm.classList.add('hidden');
+          authForm.classList.remove('hidden');
+          localStorage.removeItem('authToken');
+      }
+      
+      // Handle auth form submission
+      authForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const email = document.getElementById('email').value;
+      
+          try {
+              const response = await fetch('/api/auth', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ email })
+              });
+              const data = await response.json();
+              if (!response.ok) throw new Error(data.error);
+              showMessage('Check your email for the login link!', 'success');
+          } catch (error) {
+              showMessage(error.message, 'error');
+          }
+      });
+      
+      // Handle content form submission
+      contentForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const formData = new FormData(contentForm);
+          const contentData = Object.fromEntries(formData.entries());
+      
+          try {
+              const response = await fetch('/api/videos', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                  },
+                  body: JSON.stringify({ contentData })
+              });
+              const data = await response.json();
+              if (!response.ok) throw new Error(data.error);
+              showMessage('Content submitted successfully!', 'success');
+              contentForm.reset();
+          } catch (error) {
+              showMessage(error.message, 'error');
+          }
+      });
+      
+      // Helper function to show messages
+      function showMessage(message, type) {
+          messageDiv.textContent = message;
+          messageDiv.className = type;
+      }
+      
+      // Initial auth check
+      checkAuth();
+      
+      // You might want to add a logout function and button
+      function logout() {
+          localStorage.removeItem('authToken');
+          checkAuth();
+      }
+      
+      // Listen for successful auth redirect
+      window.addEventListener('load', async () => {
+          const hashParams = new URLSearchParams(window.location.hash.slice(1));
+          const accessToken = hashParams.get('access_token');
+          if (accessToken) {
+              localStorage.setItem('authToken', accessToken);
+              await checkAuth();
+              window.history.replaceState(null, '', window.location.pathname);
+          }
+      });
+      
+        
+    
+    
+    document.getElementById('add-content-form').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the form from submitting the traditional way
+
+    // Gather form data
+    const contentType = document.getElementById('content-type').value;
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    const videoUrl = document.getElementById('video-url').value;
+    const category = document.getElementById('category').value;
+    const tags = document.getElementById('tags').value;
+
+    // Prepare the request body
+    const formData = {
+      content_type: contentType,
+      title: title,
+      description: description,
+      video_url: contentType === 'video' ? videoUrl : null, // Only include video URL if the content type is video
+      category: category,
+      tags: tags.split(',').map(tag => tag.trim()) // Split tags into an array
+    };
+
+    try {
+      // Send POST request to your API
+      const response = await fetch('/api/videos3.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer YOUR_TOKEN_HERE`, // Replace with actual token
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // Handle the response
+      if (response.ok) {
+        const result = await response.json();
+        alert('Content added successfully!');
+        console.log('Success:', result);
+        // You can reset the form here if needed
+        document.getElementById('add-content-form').reset();
+      } else {
+        const error = await response.json();
+        alert('Failed to add content: ' + error.error);
+        console.log('Error:', error);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while adding content.');
+    }
+  });
+
+
+
+    
 </script>
 <script src="prodnav.js"></script>
 <script src="videoplayer.js"></script>
