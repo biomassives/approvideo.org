@@ -338,78 +338,736 @@
 </div>
 </div>
 </footer>
-<script>
-        // DOM elements
-        const contentForm = document.getElementById('content-form');
-        const authForm = document.getElementById('auth-form');
-        const messageDiv = document.getElementById('message');
+  <script>
 
-        // Check authentication status
-        async function checkAuth() {
-            const token = localStorage.getItem('authToken');
-            if (token) {
-                try {
-                    const response = await fetch('/api/auth', {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': `Bearer ${token}`
-                        }
-                    });
-                    if (response.ok) {
-                        contentForm.classList.remove('hidden');
-                        authForm.classList.add('hidden');
-                        return;
-                    }
-                } catch (error) {
-                    console.error('Auth check failed:', error);
-                }
-            }
-            // If we get here, user is not authenticated
-            contentForm.classList.add('hidden');
-            authForm.classList.remove('hidden');
-            localStorage.removeItem('authToken');
-        }
+    
+function toggleSublinks(category) {
+  const dropUpMenus = document.querySelectorAll('.drop-up-menu');
+  dropUpMenus.forEach(menu => {
+    const parentCategory = menu.closest('.group').querySelector('a').getAttribute('data-category');
+    if (parentCategory === category) {
+      menu.classList.toggle('hidden');
+    } else {
+      menu.classList.add('hidden'); // Hide other menus
+    }
+  });
+}
 
-        // Handle auth form submission
-        authForm.addEventListener('submit', async (e) => {
+    
+function renderStars(rating) {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStar;
+    return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
+}
+
+
+function setupFloatingIcons() {
+    const header = document.querySelector('.header');
+    const icons = document.querySelectorAll('.floating-icon');
+    
+    icons.forEach((icon, index) => {
+        icon.style.left = `${Math.random() * 100}%`;
+        icon.style.top = `${Math.random() * 100}%`;
+        
+        setTimeout(() => {
+            icon.classList.add('active');
+        }, 1400 + (index * 100)); // Staggered delay starting at 1.4 seconds
+    });
+
+    header.addEventListener('mousemove', (e) => {
+        const { left, top, width, height } = header.getBoundingClientRect();
+        const x = (e.clientX - left) / width - 0.5;
+        const y = (e.clientY - top) / height - 0.5;
+
+        icons.forEach((icon) => {
+            const speed = parseFloat(icon.style.getPropertyValue('--i')) * 2;
+            const rotateX = y * speed;
+            const rotateY = -x * speed;
+            const translateZ = Math.abs(x * y) * 50;
+            icon.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+        });
+    });
+
+    header.addEventListener('mouseleave', () => {
+        icons.forEach((icon) => {
+            icon.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+        });
+    });
+}
+
+
+function setupVideoDetailListeners() {
+    document.querySelectorAll('.video-detail-link').forEach(link => {
+        link.addEventListener('click', function(e) {
             e.preventDefault();
-            const email = document.getElementById('email').value;
-
-            try {
-                const response = await fetch('/api/auth', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email })
-                });
-                const data = await response.json();
-                if (!response.ok) throw new Error(data.error);
-                showMessage('Check your email for the login link!', 'success');
-            } catch (error) {
-                showMessage(error.message, 'error');
+            const videoId = this.getAttribute('data-id');
+            const video = window.videoData.find(v => v.id === videoId);
+            if (video) {
+                document.getElementById('video-content').innerHTML = renderVideoDetails(video);
+                document.getElementById('video-detail').classList.remove('hidden');
+                // Load a new background image each time the modal is opened
+                document.getElementById('video-detail').style.backgroundImage = `url('https://source.unsplash.com/1600x900/?sky,night,stars&random=${new Date().getTime()}')`;
+                setupPanelNavigation();
             }
         });
+    });
+}
 
-        // Helper function to show messages
-        function showMessage(message, type) {
-            messageDiv.textContent = message;
-            messageDiv.className = type;
+  
+function setupPanelNavigation() {
+    const panels = document.querySelectorAll('.info-panel');
+    const prevBtn = document.getElementById('prev-panel');
+    const nextBtn = document.getElementById('next-panel');
+    let currentPanel = 0;
+
+    function updatePanels() {
+        panels.forEach((panel, index) => {
+            panel.classList.toggle('active', index === currentPanel);
+        });
+        prevBtn.disabled = currentPanel === 0;
+        nextBtn.disabled = currentPanel === panels.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPanel > 0) {
+            currentPanel--;
+            updatePanels();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPanel < panels.length - 1) {
+            currentPanel++;
+            updatePanels();
+        }
+    });
+
+    updatePanels();
+}
+
+function setupEventListeners() {
+    document.getElementById('search').addEventListener('input', filterAndSortVideos);
+    document.getElementById('categories').addEventListener('click', handleVideoDetailClick);
+    document.getElementById('close-detail').addEventListener('click', closeVideoDetail);
+    document.querySelectorAll('.category-link').forEach(link => {
+        link.addEventListener('click', handleCategoryClick);
+    });
+
+     // Single event listener on the header for both main categories and dropdown items
+      document.querySelector('.header').addEventListener('click', (e) => {
+        const target = e.target.closest('a');
+    
+        if (target) {
+          e.preventDefault();
+
+        
+        if (target.classList.contains('category-link')) {
+          const category = target.getAttribute('data-category');
+          toggleSublinks(category); // Toggle sublinks
+        } else if (target.classList.contains('drop-up-item')) {
+          const category = target.getAttribute('data-category');
+          const tag = target.getAttribute('data-tag');
+    
+          // Update URL and filter videos
+          const urlParams = new URLSearchParams(window.location.search);
+          urlParams.set('category', category);
+          urlParams.set('tag', tag);
+          history.pushState(null, '', `?${urlParams.toString()}`);
+          filterAndSortVideos();
+        const heroVideo = document.getElementById('hero-video');
+        if (heroVideo) {
+            heroVideo.style.display = 'none';
+        }
+    
+    
+          // Hide the dropdown after clicking a sublink
+          target.closest('.drop-up-menu').classList.add('hidden'); 
+        }
+        
+          let category, tag;
+          if (target.classList.contains('category-link')) {
+            category = target.getAttribute('data-category');
+          } else if (target.classList.contains('drop-up-item')) {
+            category = target.getAttribute('data-category');
+            tag = target.getAttribute('data-tag');
+          }
+
+            if (category) {
+              // Clear the search field
+              const searchInput = document.getElementById('search');
+              if (searchInput) {
+                searchInput.value = '';
+              }
+         }
+            
+          // Update URL and filter videos
+          const urlParams = new URLSearchParams(window.location.search);
+          if (tag) {
+            urlParams.set('tag', tag);
+          } else {
+            urlParams.delete('tag'); 
+          }
+          history.pushState(null, '', `?${urlParams.toString()}`);
+          filterAndSortVideos();
+        const heroVideo = document.getElementById('hero-video');
+        if (heroVideo) {
+            heroVideo.style.display = 'none';
+        }
+    
+        }
+      });
+
+
+    
+    setupThemeToggle();
+
+    // Handle initial page load with URL parameters
+    filterAndSortVideos();
+        const heroVideo = document.getElementById('hero-video');
+        if (heroVideo) {
+            heroVideo.style.display = 'none';
+        }
+    
+    
+}
+
+function slugify(text) {
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+}
+
+
+let isAuthenticated = false;
+
+function renderVideo(video) {
+    const mainCategory = video.categories[0];
+    const mainTag = video.tags[0];
+    const detailUrl = `/${slugify(mainCategory)}/${slugify(mainTag)}/${slugify(video.title)}`;
+    
+    return `
+        <div class="video-card rounded-lg shadow-md p-4 mb-4">
+            <h3 class="text-xl font-semibold mb-2">${video.title}</h3>
+            <div class="aspect-w-16 aspect-h-9 mb-2">
+                <img src="https://img.youtube.com/vi/${video.youtubeId}/0.jpg" alt="${video.title}" class="w-full h-64 object-cover">
+            </div>
+            <p class="mb-2">${video.description}</p>
+            <div class="flex flex-wrap mb-2">
+                ${video.tags.map(tag => `
+                    <a href="#" class="video-tag tag text-sm font-medium mr-2 mb-2 px-2.5 py-0.5 rounded cursor-pointer bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors duration-200" data-tag="${tag}">
+                        ${tag}
+                    </a>
+                `).join('')}
+            </div>
+            <div class="text-yellow-400">${renderStars(video.rating)}</div>
+            <div class="text-sm opacity-75">Date: ${video.date}</div>
+            <a href="${detailUrl}" class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 video-detail-link" data-id="${video.id}">View Details</a>
+            ${isAuthenticated ? `<a href="#" class="edit-link mt-2 inline-block bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600" data-id="${video.id}">Edit</a>` : ''}
+        </div>
+    `;
+}
+
+function setupModals() {
+    const sponsorButton = document.getElementById('sponsor-us');
+    const editorButton = document.getElementById('be-an-editor');
+    const sponsorModal = document.getElementById('sponsor-modal');
+    const editorModal = document.getElementById('editor-modal');
+    const closeSponsorModal = document.getElementById('close-sponsor-modal');
+    const closeEditorModal = document.getElementById('close-editor-modal');
+
+    function openModal(modal) {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 10);
+    }
+
+    function closeModal(modal) {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
+
+    sponsorButton.addEventListener('click', () => openModal(sponsorModal));
+    editorButton.addEventListener('click', () => openModal(editorModal));
+    closeSponsorModal.addEventListener('click', () => closeModal(sponsorModal));
+    closeEditorModal.addEventListener('click', () => closeModal(editorModal));
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target === sponsorModal) closeModal(sponsorModal);
+        if (e.target === editorModal) closeModal(editorModal);
+    });
+}
+
+
+
+
+
+
+
+function setupTagListeners() {
+    document.querySelectorAll('.video-tag').forEach(tagLink => {
+        tagLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const tag = this.getAttribute('data-tag');
+            filterByTag(tag);
+        });
+    });
+}
+
+function filterByTag(tag) {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('tag', tag);
+    history.pushState(null, '', `?${urlParams.toString()}`);
+    filterAndSortVideos();
+        const heroVideo = document.getElementById('hero-video');
+        if (heroVideo) {
+            heroVideo.style.display = 'none';
+        }
+    
+}
+
+    
+    
+function renderVideoDetails(video) {
+
+
+    let detailsHTML = `
+         <h1 class="text-3xl font-bold mb-4 text-orange-700 dark:text-blue-400">${video.title}</h1>
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+            <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-96"></iframe>
+        </div>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">${video.description}</p>
+        <div class="mb-4">
+            ${video.tags.map(tag => `<span class="tag text-sm font-medium mr-2 px-2.5 py-0.5 rounded cursor-pointer bg-orange-100 text-orange-800 dark:bg-gray-700 dark:text-blue-300">${tag}</span>`).join('')}
+        </div>
+        <div class="text-yellow-600 dark:text-yellow-400 mb-2">${renderStars(video.rating)}</div>
+        <p class="text-sm opacity-75 mb-4 text-gray-600 dark:text-gray-400">Date: ${video.date}</p>
+
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Materials Needed:</h2>
+        <ul class="list-disc list-inside mb-4 text-gray-700 dark:text-gray-300">
+            ${video.materials.map(material => `<li>${material}</li>`).join('') ?? 'No materials data' }    
+        </ul>
+
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Steps:</h2>
+        <ol class="list-decimal list-inside mb-4 text-gray-700 dark:text-gray-300">
+            ${video.steps.map(step => `<li>${step}</li>`).join('')}
+        </ol>
+
+        <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Transcript:</h2>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">${video.transcript}</p>
+    `;
+
+
+    if (video.panels && video.panels.length > 0) {
+        detailsHTML += `
+            <h2 class="text-2xl font-bold mb-2">Additional Information:</h2>
+            <div class="panel-container">
+                ${video.panels.map((panel, index) => `
+                    <div class="info-panel ${index === 0 ? 'active' : ''}" data-panel-index="${index}">
+                        <h3 class="text-lg font-semibold mb-2">${panel.title}</h3>
+                        <p class="text-sm">${panel.content}</p>
+                        <i class="panel-icon fas fa-${getPanelIcon(panel.title)}"></i>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="panel-nav">
+                <button id="prev-panel" disabled>Previous</button>
+                <button id="next-panel" ${video.panels.length > 1 ? '' : 'disabled'}>Next</button>
+            </div>
+        `;
+    }
+
+    return detailsHTML;
+}
+
+
+// 1. Load YouTube Iframe API script
+let player; // Declare the player variable globally
+
+function onYouTubeIframeAPIReady() {
+  // Create the YouTube player when the API is ready
+  player = new YT.Player('hero-video', {
+    height: '390',
+    width: '640',
+    videoId: 'YOUR_VIDEO_ID',
+    playerVars: {
+      autoplay: 1,
+      mute: 1,
+      loop: 1,
+      playlist: 'YOUR_VIDEO_ID', // Ensure continuous looping
+    },
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+function onPlayerReady(event) {
+  // Play the video when it's ready
+  event.target.playVideo();
+}
+
+function onPlayerStateChange(event) {
+  // If the video ends, restart it (for continuous loop)
+  if (event.data == YT.PlayerState.ENDED) {
+    player.playVideo(); 
+  }
+}
+
+// 2. Modify renderHeroSection
+function renderHeroSection() {
+  const heroContainer = document.getElementById('hero');
+  if (isUserAuthenticated()) {
+    // User is authenticated, create a container for the YouTube player
+    heroContainer.innerHTML = `
+      <div id="hero-video"></div> 
+      <p id="adblock-message" class="hidden text-red-500">
+        Video might be blocked by an ad blocker. 
+        <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" class="text-blue-500 underline">
+          Watch on YouTube
+        </a>
+      </p>
+    `;
+
+    // Load the IFrame Player API code asynchronously
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];  
+
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);  
+
+  } else {
+    // User is not authenticated, display a link
+    heroContainer.innerHTML = `
+      <a href="/login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Login to view video
+      </a>
+    `;
+  }
+}
+
+// 3. Handle potential ad-blocking (similar to previous example)
+
+function handleEmbedLoad() {
+  const iframe = document.querySelector('#hero-video iframe');
+  const adblockMessage = document.getElementById('adblock-message');
+
+  // Check if the iframe content is empty (potential ad-block)
+  if (iframe && iframe.contentDocument && iframe.contentDocument.body.innerHTML.trim() === '') {
+      adblockMessage.classList.remove('hidden'); // Show the ad-block message
+  }
+}
+
+
+function getPanelIcon(title) {
+    const iconMap = {
+        'Temperature Control': 'thermometer-half',
+        'Moisture Management': 'tint',
+        'Pile Location': 'map-marker-alt',
+        'Aeration': 'wind',
+        'Function of a First Flush Diverter': 'filter',
+        'Choosing the Right Size': 'ruler',
+        'Maintenance Tips': 'tools',
+        'Safety Precautions': 'hard-hat'
+    };
+    return iconMap[title] || 'info-circle';
+}
+
+
+function renderCategories(videos) {
+    const categoriesContainer = document.getElementById('categories');
+    if (videos.length === 0) {
+        categoriesContainer.innerHTML = '<p class="text-center text-gray-500">No videos found. Try adjusting your search.</p>';
+    } else {
+        categoriesContainer.innerHTML = videos.map(renderVideo).join('');
+        setupTagListeners(); // Add this line to set up the tag listeners after rendering
+    }
+    setupVideoDetailListeners();
+}
+
+function filterAndSortVideos() {
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+    const tag = urlParams.get('tag');
+
+    let filteredVideos = window.videoData.filter(video => {
+        // Check if video matches the category or tag (if specified)
+        const categoryMatch = !category || video.categories.some(cat => cat.toLowerCase().includes(category.toLowerCase()));
+        const tagMatch = !tag || video.tags.some(t => t.toLowerCase().includes(tag.toLowerCase()));
+
+        // Check if video matches the search term
+        const searchMatch = 
+            video.title.toLowerCase().includes(searchTerm) ||
+            video.description.toLowerCase().includes(searchTerm) ||
+            video.categories.some(cat => cat.toLowerCase().includes(searchTerm)) ||
+            video.tags.some(t => t.toLowerCase().includes(searchTerm));
+
+        // Return true if the video matches the search term AND (matches category OR tag OR neither are specified)
+        return searchMatch && (categoryMatch || tagMatch || (!category && !tag));
+    });
+
+    // Sort videos by rating (assuming higher rating is better)
+    filteredVideos.sort((a, b) => b.rating - a.rating);
+
+    renderCategories(filteredVideos);
+}
+
+function renderCategories(videos) {
+    const categoriesContainer = document.getElementById('categories');
+    if (videos.length === 0) {
+        categoriesContainer.innerHTML = '<p class="text-center text-gray-500">No videos found. Try adjusting your search.</p>';
+    } else {
+        categoriesContainer.innerHTML = videos.map(renderVideo).join('');
+    }
+    setupVideoDetailListeners();
+}
+function handleVideoDetailClick(e) {
+    if (e.target.classList.contains('video-detail-link')) {
+        e.preventDefault();
+        const videoId = e.target.getAttribute('data-id');
+        const video = window.videoData.find(v => v.id === videoId);
+        if (video) {
+            document.getElementById('video-content').innerHTML = renderVideoDetails(video);
+            document.getElementById('video-detail').classList.remove('hidden');
+            setupPanelNavigation();
+        }
+    }
+}
+
+function closeVideoDetail() {
+    document.getElementById('video-detail').classList.add('hidden');
+}
+
+function handleCategoryClick(e) {
+    e.preventDefault();
+    const category = this.getAttribute('data-category');
+    history.pushState(null, '', `?category=${category}`);
+    filterAndSortVideos();
+        const heroVideo = document.getElementById('hero-video');
+        if (heroVideo) {
+            heroVideo.style.display = 'none';
+        }
+    
+}
+
+function setupThemeToggle() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    function setTheme(isDark) {
+        document.body.classList.remove(isDark ? 'light' : 'dark');
+        document.body.classList.add(isDark ? 'dark' : 'light');
+        themeToggleDarkIcon.classList.toggle('hidden', !isDark);
+        themeToggleLightIcon.classList.toggle('hidden', isDark);
+
+        // Force a repaint of the video detail overlay if it's open
+        const videoDetail = document.getElementById('video-detail');
+        if (!videoDetail.classList.contains('hidden')) {
+            videoDetail.style.display = 'none';
+            videoDetail.offsetHeight; // Force a repaint
+            videoDetail.style.display = '';
         }
 
-        // Initial auth check
-        checkAuth();
+        // Store the user's preference
+        localStorage.setItem('darkMode', isDark);
+    }
 
-        // Listen for successful auth redirect
-        window.addEventListener('load', async () => {
-            const hashParams = new URLSearchParams(window.location.hash.slice(1));
-            const accessToken = hashParams.get('access_token');
-            if (accessToken) {
-                localStorage.setItem('authToken', accessToken);
-                await checkAuth();
-                window.history.replaceState(null, '', window.location.pathname);
+    function toggleTheme() {
+        const isDark = document.body.classList.contains('dark');
+        setTheme(!isDark);
+    }
+
+    // Check for saved user preference
+    const savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode !== null) {
+        setTheme(JSON.parse(savedDarkMode));
+    } else {
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        setTheme(prefersDarkScheme.matches);
+    }
+
+    themeToggleBtn.addEventListener('click', toggleTheme);
+}
+
+
+
+
+    document.getElementById('edit-detail').addEventListener('click', function() {
+        const videoId = this.closest('#video-detail').getAttribute('data-video-id');
+        console.log('Edit video with ID:', videoId);
+        // Implement your edit functionality here
+    });
+
+    // Add content button
+    document.getElementById('add-content').addEventListener('click', function() {
+        console.log('Add new content');
+        // Implement your add content functionality here
+    });
+
+
+    
+
+// Initial setup
+document.addEventListener('DOMContentLoaded', () => {
+    const missionReveal = document.getElementById('mission-reveal');
+    const missionText = missionReveal.querySelector('.mission-text');
+    const addContentButton = document.getElementById('add-content');
+    const addContentModal = document.getElementById('add-content-modal');
+    const closeModalButton = document.getElementById('close-modal');
+    const addContentForm = document.getElementById('add-content-form');
+    const contentTypeSelect = document.getElementById('content-type');
+    const videoFields = document.getElementById('video-fields');
+
+
+    if (typeof setupModals === 'function') {
+        setupModals();
+    } else {
+        console.error('setupModals function not found. Make sure modalinteractions.js is loaded correctly.');
+    }
+
+
+    addContentButton.addEventListener('click', () => {
+        addContentModal.classList.remove('hidden');
+    });
+
+    closeModalButton.addEventListener('click', () => {
+        addContentModal.classList.add('hidden');
+    });
+
+    contentTypeSelect.addEventListener('change', () => {
+        if (contentTypeSelect.value === 'video') {
+            videoFields.style.display = 'block';
+        } else {
+            videoFields.style.display = 'none';
+        }
+    });
+
+    addContentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(addContentForm);
+        const data = Object.fromEntries(formData.entries());
+        
+        // Here you would typically send this data to your server or Supabase
+        console.log('Form data:', data);
+        
+        // For demonstration, we'll just log it and close the modal
+        alert('Content submitted successfully!');
+        addContentModal.classList.add('hidden');
+        addContentForm.reset();
+    });
+    
+
+                            
+
+    function closeVideoDetail() {
+        document.getElementById('video-detail').classList.add('hidden');
+    }
+
+    // Existing close button
+    document.getElementById('close-detail').addEventListener('click', closeVideoDetail);
+
+    // New close button (X)
+    document.getElementById('close-detail-x').addEventListener('click', closeVideoDetail);
+
+    
+    document.body.addEventListener('click', (e) => {
+        const target = e.target.closest('a');
+        if (!target) return;
+
+        e.preventDefault();
+
+        let category, tag;
+
+        if (target.closest('.header')) {
+            // Header links
+            if (target.classList.contains('drop-up-item')) {
+                category = target.closest('.group').querySelector('a').getAttribute('data-category');
+                tag = target.textContent.trim();
+            } else {
+                category = target.getAttribute('data-category');
+                toggleSublinks(category);
+                return; // Exit early for main category toggles
             }
+        } else if (target.classList.contains('category-link')) {
+            // Bottom category links
+            category = target.getAttribute('data-category');
+        }
+
+        if (category) {
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('category', category);
+            if (tag) {
+                urlParams.set('tag', tag);
+            } else {
+                urlParams.delete('tag');
+            }
+            history.pushState(null, '', `?${urlParams.toString()}`);
+            filterAndSortVideos();
+        const heroVideo = document.getElementById('hero-video');
+        if (heroVideo) {
+            heroVideo.style.display = 'none';
+        }
+    
+
+            // Hide all dropdowns
+            document.querySelectorAll('.drop-up-menu').forEach(menu => menu.classList.add('hidden'));
+        }
+    });
+
+    
+    missionReveal.addEventListener('click', () => {
+        missionText.classList.toggle('hidden');
+        missionText.classList.toggle('active');
+    });
+
+    // Hover effect for links
+    const links = document.querySelectorAll('.footer-link');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            link.style.transform = 'translateX(5px)';
         });
-        </script>
+        link.addEventListener('mouseleave', () => {
+            link.style.transform = 'translateX(0)';
+        });
+    });
+    
+      console.log('DOM fully loaded');
+      console.log(window.videoData);
+      filterAndSortVideos();
+        const heroVideo = document.getElementById('hero-video');
+        if (heroVideo) {
+            heroVideo.style.display = 'none';
+        }
+    
+         document.getElementById('search').addEventListener('input', filterAndSortVideos);
+      setupEventListeners();
+      setupFloatingIcons();
+      setupModals();
+    
+
+window.renderVideo = renderVideo;
+window.filterAndSortVideos = filterAndSortVideos;
+window.isAuthenticated = isAuthenticated;
+
+    
+ });
+
+  
+  </script>
+
+  
 <script src="prodnav.js"></script>
 <script src="videoplayer.js"></script>
+<srcipt src="supaauth.js"></srcipt>
 
 </head></html>
