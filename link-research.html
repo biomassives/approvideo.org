@@ -1,176 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ApproVideo - Appropriate Technology Videos for the DIY Sector - September 2024</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="./videoData2b.js"></script> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-  <link rel="stylesheet" href="style8.css">
-  <style>
-    /* Add CSS for the active tab */
-    .tab-button.active {
-      background-color: #f0f0f0; /* Example active tab background color */
-    }
-  </style>
-</head>
+  </head>
 <body>
   <div class="embossed-background"></div>
 
   <div class="absolute top-2 right-2 flex items-center space-x-2">
-    <button id="add-content" class="theme-toggle2 text-2xl" aria-label="Add Content"> 
-      <i class="fas fa-plus-circle" id="theme-toggle-light-icon2"></i>
-      <i class="fas fa-plus-circle hidden" id="theme-toggle-dark-icon2"></i>
-    </button>
-
-    <button id="theme-toggle" class="theme-toggle text-2xl" aria-label="Toggle Theme">
-      <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
-      <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
-    </button>
-  </div>
+     </div>
 
   <div class="floating-icons"> 
-    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Drinking Water">
-      <i class="fas fa-tint fa-3x floating-icon" style="--i:1;"></i>
-    </a>
-    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Waste Management">
-      <i class="fas fa-recycle fa-3x floating-icon" style="--i:2;"></i>
-    </a>
-    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Energy">
-      <i class="fas fa-solar-panel fa-3x floating-icon" style="--i:3;"></i>
-    </a>
-    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Appropriate Tech">
-      <i class="fas fa-heartbeat fa-3x floating-icon" style="--i:4;"></i>
-    </a>
-  </div>
-
-  <header class="relative overflow-hidden"> 
-    <h1 class="text-center text-4xl font-bold my-8">ApproVideo</h1> 
-
-    <div class="tab-buttons container mx-auto flex justify-center space-x-8 mb-4">
-      <button class="tab-button active" data-tab="shelter">Shelter</button>
-      <button class="tab-button" data-tab="water">Water</button>
-      <button class="tab-button" data-tab="waste">Waste Management</button>
-      <button class="tab-button" data-tab="energy">Energy</button>
-      <button class="tab-button" data-tab="appropriate-tech">Appropriate Tech.</button>
-      <button class="tab-button" data-tab="agronomy">Agronomy</button>
     </div>
 
-    <nav class="container mx-auto flex justify-center space-x-8"> 
-      <div id="shelter" class="tab-content"> 
-        <div class="group"> 
-          <a href="#" class="flex items-center px-4 py-3 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Shelter">
-            <i class="fas fa-home mr-2"></i>
-          </a>
-          <div class="drop-up-menu absolute group-hover:block bg-white shadow-md rounded-md mt-2 py-2 z-10">
-            <a href="#" class="drop-up-item category-link" data-category="Temporary Shelter">Temporary Shelter</a>
-            <a href="#" class="drop-up-item category-link" data-category="Permanent Housing">Permanent Housing</a>
-            <a href="#" class="drop-up-item category-link" data-category="Insulation">Insulation</a>
-            <a href="#" class="drop-up-item category-link" data-category="Ventilation">Ventilation</a>
-            <a href="#" class="drop-up-item category-link" data-category="Natural Building">Natural Building</a>
-          </div>
-        </div>
+  <h1 class="text-center text-4xl font-bold my-8">ApproVideo</h1> 
+
+  <div class="tab-buttons container mx-auto flex justify-center space-x-8 mb-4">
+    <button class="tab-button active" data-tab="shelter">Shelter</button>
+    <button class="tab-button" data-tab="water">Water</button>
+    <button class="tab-button" data-tab="waste">Waste Management</button>
+    <button class="tab-button" data-tab="energy">Energy</button>
+    <button class="tab-button" data-tab="appropriate-tech">Appropriate Tech.</button>
+    <button class="tab-button" data-tab="agronomy">Agronomy</button>
+  </div>
+
+  <div class="tab-contents container mx-auto flex justify-center space-x-8">
+    <div id="shelter" class="tab-content">
+
+      s
       </div>
 
-      <div id="water" class="tab-content hidden">
-        <div class="group"> 
-          <a href="#" class="flex items-center px-4 py-3 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Water">
-            <i class="fas fa-tint mr-2"></i>
-          </a>
-          <div class="drop-up-menu absolute group-hover:block bg-white shadow-md rounded-md mt-2 py-2 z-10">
-            <a href="https://www.youtube.com/results?search_query=DIY+Water+Filtration"  class="drop-up-item category-link" data-category="Water Filtration">Filtration</a>
-            <a href="https://www.youtube.com/results?search_query=DIY+Urban+Water"  class="drop-up-item category-link" data-category="Urban Water">*Urban</a>
-            <a href="https://www.youtube.com/results?search_query=DIY+Water+Purification" class="drop-up-item category-link" data-category="Water Purification">Purification</a>
-            <a href="https://www.youtube.com/results?search_query=DIY+Drinking+Water+Storage" class="drop-up-item category-link" data-category="Drinking Water Storage">Storage</a>
-            <a href="https://www.youtube.com/results?search_query=DIY+Water+Distribution" class="drop-up-item category-link" data-category="Water Distribution">Distribution</a>
-          </div>
-        </div>
+    <div id="water" class="tab-content hidden">
+
+      w
       </div>
 
-<div id="waste-management" class="tab-content hidden">
-<div class="group">                    
-    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Waste Management">                        
-        <i class="fas fa-recycle mr-2"></i>                    
-    </a>                    
-    <div class="drop-up-menu">                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Composting" class="drop-up-item" data-category="Composting">Composting</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Recycling" class="drop-up-item" data-category="Recycling">Recycling</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Upcycling" class="drop-up-item" data-category="Upcycling">Upcycling</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Hygiene" class="drop-up-item" data-category="Hygiene">Health & Hygiene</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Zero+Waste" class="drop-up-item" data-category="Zero Waste">Zero Waste</a>   
-        <a href="https://www.youtube.com/results?search_query=Producer+Responsibility+for+Plastics" class="drop-up-item" data-category="Producer Responsibility">Write a Letter:  Producer Responsibility for Plastics</a>  
-        <a href="https://www.youtube.com/results?search_query=Eliminate+PFOA/PFOS+in+Food+Packaging" class="drop-up-item" data-category="PFOA/PFOS Elimination">Write a Letter: Eliminate PFOA/PFOS in Food Packaging</a>                 
-    </div>                
-</div>    
-</div>    
+    <div id="waste" class="tab-content hidden">
 
+      ww
+      </div>
 
-<div id="energy" class="tab-content hidden">
-<div class="group">                    
-    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Energy">                        
-        <i class="fas fa-solar-panel mr-2"></i>                                            
-    </a>                    
-    <div class="drop-up-menu">                       
-        <a href="https://www.youtube.com/results?search_query=DIY+Solar" class="drop-up-item" data-category="Solar">Solar</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Wind" class="drop-up-item" data-category="Wind">Wind</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Hydropower" class="drop-up-item" data-category="Hydropower">Hydropower</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Biogas" class="drop-up-item" data-category="Biogas">Biogas</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Motors" class="drop-up-item" data-category="Motors">Motors</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Wiring" class="drop-up-item" data-category="Wiring">Wiring</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Compressors" class="drop-up-item" data-category="Compressors">Compressors</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+HVAC" class="drop-up-item" data-category="HVAC">HVAC</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Plumbing" class="drop-up-item" data-category="Plumbing">Plumbing</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Design" class="drop-up-item" data-category="Design">Design</a>                    
-    </div>                
-</div>   
-</div> 
-        
+    <div id="energy" class="tab-content hidden">
+      ee
+      </div>
 
-<div id="water" class="tab-content hidden">
-<div class="group">                    
-    <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Appropriate Tech.">                        
-        <i class="fas fa-heartbeat mr-2"></i>                                           
-    </a>                    
-    <div class="drop-up-menu">                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Agriculture" class="drop-up-item" data-category="Agriculture">Agriculture</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Construction" class="drop-up-item" data-category="Construction">Construction</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+People" class="drop-up-item" data-category="People">People</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Healthcare" class="drop-up-item" data-category="Healthcare">Healthcare</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+PTSD+Care" class="drop-up-item" data-category="ptsd">PTSD Care</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Ventilation2" class="drop-up-item" data-category="field-medicine">Field Medicine</a>                        
-        <a href="https://www.youtube.com/results?search_query=DIY+Ventilation3" class="drop-up-item" data-category="Education">Education</a>                    
-    </div>                
-</div>    
-</div> 
+    <div id="appropriate-tech" class="tab-content hidden">
 
+      at
+      </div>
 
-<div id="agronomy" class="tab-content hidden">
-<div class="group">                
-    <a href="#" class="flex items-center px-4 py-3 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Agronomy">                    
-        <i class="fas fa-seedling mr-2"></i>                
-    </a>                
-    <div class="drop-up-menu">                    
-        <a href="https://www.youtube.com/results?search_query=DIY+Ventilation4" class="drop-up-item">Integrated Pest Management</a>                    
-        <a href="https://www.youtube.com/results?search_query=DIY+Ventilation5" class="drop-up-item" data-category="Soil Improvement">Soil Improvement</a>                    
-        <a href="https://www.youtube.com/results?search_query=DIY+Ventilation6" class="drop-up-item" data-category="Cover Cropping">Cover Cropping</a>                    
-        <a href="https://www.youtube.com/results?search_query=DIY+Ventilation7" class="drop-up-item" data-category="Diversified Agriculture">Diversified Agriculture</a>                    
-        <a href="https://www.youtube.com/results?search_query=DIY+Ventilation8" class="drop-up-item" data-category="Specialty Crops">Specialty Crops</a>                    
-        <a href="https://www.youtube.com/results?search_query=DIY+Ventilation9" class="drop-up-item" data-category="Organic Techniques">Organic Techniques</a>                
-    </div>            
-</div>
-</div> 
-
-
-
-      
-      </nav>
-  </header>
+    <div id="agronomy" class="tab-content hidden">
+      ags
+      </div>
+  </div>
 
   <script>
     // Event delegation for category links
-    const nav = document.querySelector('nav');
-    nav.addEventListener('click', function(event) {
+    const tabContents = document.querySelector('.tab-contents');
+    tabContents.addEventListener('click', function(event) {
       if (event.target.classList.contains('category-link')) {
         event.preventDefault();
         const category = event.target.dataset.category;
@@ -182,30 +67,23 @@
 
     // Tabbed display logic
     const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
+    const tabContentElements = document.querySelectorAll('.tab-content');
 
     tabButtons.forEach(button => {
       button.addEventListener('click', () => {
         const tabId = button.dataset.tab;
 
-        // Hide all tab contents
-        tabContents.forEach(content => {
+        tabContentElements.forEach(content => {
           content.classList.add('hidden');
         });
-
-        // Remove 'active' class from all buttons
         tabButtons.forEach(btn => {
           btn.classList.remove('active');
         });
 
-        // Show the selected tab content
         document.getElementById(tabId).classList.remove('hidden');
-
-        // Add 'active' class to the clicked button
         button.classList.add('active');
       });
     });
   </script>
 </body>
 </html>
-        
