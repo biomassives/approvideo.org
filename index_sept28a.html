@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ApproVideo - Appropriate Technology Videos for the DIY Sector - September 2024</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="./videoData2b.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet"/>
+<link href="style8.css" rel="stylesheet"/>
+<style>
+</style>
+<div class="embossed-background"></div>
+<div class="absolute top-2 right-2 flex items-center space-x-2">
+<button class="theme-toggle2 text-2xl" id="add-content">
+<i class="fas fa-plus-circle" id="theme-toggle-light-icon2"></i>
+<i class="fas fa-plus-circle hidden" id="theme-toggle-dark-icon2"></i>
+</button>
+<button class="theme-toggle text-2xl" id="theme-toggle">
+<i class="fas fa-sun" id="theme-toggle-light-icon"></i>
+<i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
+</button>
+</div>
+<div class="floating-icons">
+<a class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Drinking Water" href="#"><i class="fas fa-tint fa-3x floating-icon" style="--i:1;"></i></a>
+<i class="fas fa-recycle fa-3x floating-icon" style="--i:2;"></i>
+<i class="fas fa-solar-panel fa-3x floating-icon" style="--i:3;"></i>
+<i class="fas fa-heartbeat fa-3x floating-icon" style="--i:4;"></i>
+</div>
+<div class="header relative overflow-hidden">
+<div class="container mx-auto flex justify-center space-x-8">
+<div class="group">
+<a class="flex items-center px-4 py-3 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Shelter" href="#">
+<i class="fas fa-home mr-2"></i>
+</a>
+<div class="drop-up-menu absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 py-2 z-10">
+<a class="drop-up-item category-link" data-category="Temporary Shelter" href="#">Temporary Shelter</a>
+<a class="drop-up-item category-link" data-category="Permanent Housing" href="#">Permanent Housing</a>
+<a class="drop-up-item category-link" data-category="Insulation" href="#">Insulation</a>
+<a class="drop-up-item category-link" data-category="Ventilation" href="#">Ventilation</a>
+<a class="drop-up-item category-link" data-category="Natural Building" href="#">Natural Building</a>
+</div>
+</div>
+<div class="group">
+<a class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Water" href="#">
+<i class="fas fa-tint mr-2"></i>
+</a>
+<div class="drop-up-menu">
+<a class="drop-up-item category-link" data-category="Water Filtration" href="#">Filtration</a>
+<a class="drop-up-item category-link" data-category="Urban Water" href="#">*Urban</a>
+<a class="drop-up-item category-link" data-category="Water Purification" href="#">Purification</a>
+<a class="drop-up-item category-link" data-category="Drinking Water Storage" href="#">Storage</a>
+<a class="drop-up-item category-link" data-category="Water Distribution" href="#">Distribution</a>
+</div>
+</div>
+<div class="group">
+<a class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Waste Management" href="#">
+<i class="fas fa-recycle mr-2"></i>
+</a>
+<div class="drop-up-menu">
+<a class="drop-up-item" data-category="Composting" href="#">Composting</a>
+<a class="drop-up-item" data-category="Recycling" href="#">Recycling</a>
+<a class="drop-up-item" data-category="Upcycling" href="#">Upcycling</a>
+<a class="drop-up-item" data-category="Hygiene" href="#">Health &amp; Hygiene</a>
+<a class="drop-up-item" data-category="Zero Waste" href="#">Zero Waste</a>
+<a class="drop-up-item" data-category="Producer Responsibility" href="#">Write a Letter:  Producer Responsibility for Plastics</a>
+<a class="drop-up-item" data-category="PFOA/PFOS Elimination" href="#">Write a Letter: Eliminate PFOA/PFOS in Food Packaging</a>
+</div>
+</div>                           
+                        ApproVideo                       
+                        <div class="group">
+<a class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Energy" href="#">
+<i class="fas fa-solar-panel mr-2"></i>
+</a>
+<div class="drop-up-menu">u                        
+                                <a class="drop-up-item" data-category="Solar" href="#">Solar</a>
+<a class="drop-up-item" data-category="Wind" href="#">Wind</a>
+<a class="drop-up-item" data-category="Hydropower" href="#">Hydropower</a>
+<a class="drop-up-item" data-category="Biogas" href="#">Biogas</a>
+<a class="drop-up-item" data-category="Motors" href="#">Motors</a>
+<a class="drop-up-item" data-category="Wiring" href="#">Wiring</a>
+<a class="drop-up-item" data-category="Compressors" href="#">Compressors</a>
+<a class="drop-up-item" data-category="HVAC" href="#">HVAC</a>
+<a class="drop-up-item" data-category="Plumbing" href="#">Plumbing</a>
+<a class="drop-up-item" data-category="Design" href="#">Design</a>
+</div>
+</div>
+<div class="group">
+<a class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Appropriate Tech." href="#">
+<i class="fas fa-heartbeat mr-2"></i>
+</a>
+<div class="drop-up-menu">
+<a class="drop-up-item" data-category="Agriculture" href="#">Agriculture</a>
+<a class="drop-up-item" data-category="Construction" href="#">Construction</a>
+<a class="drop-up-item" data-category="People" href="#">People</a>
+<a class="drop-up-item" data-category="Healthcare" href="#">Healthcare</a>
+<a class="drop-up-item" data-category="ptsd" href="#">PTSD Care</a>
+<a class="drop-up-item" data-category="field-medicine" href="#">Field Medicine</a>
+<a class="drop-up-item" data-category="Education" href="#">Education</a>
+</div>
+</div>
+<div class="group">
+<a class="flex items-center px-4 py-3 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Agronomy" href="#">
+<i class="fas fa-seedling mr-2"></i>
+</a>
+<div class="drop-up-menu">
+<a class="drop-up-item" href="#">Integrated Pest Management</a>
+<a class="drop-up-item" data-category="Soil Improvement" href="#">Soil Improvement</a>
+<a class="drop-up-item" data-category="Cover Cropping" href="#">Cover Cropping</a>
+<a class="drop-up-item" data-category="Diversified Agriculture" href="#">Diversified Agriculture</a>
+<a class="drop-up-item" data-category="Specialty Crops" href="#">Specialty Crops</a>
+<a class="drop-up-item" data-category="Organic Techniques" href="#">Organic Techniques</a>
+</div>
+</div>
+</div>
+<div class="floating-icons">
+<div class="floating-icons">
+<i class="fas fa-tint fa-2x floating-icon" style="--i:1;"></i>
+<i class="fas fa-recycle fa-2x floating-icon" style="--i:2;"></i>
+<i class="fas fa-solar-panel fa-2x floating-icon" style="--i:3;"></i>
+<i class="fas fa-heartbeat fa-2x floating-icon" style="--i:4;"></i>
+<i class="fas fa-leaf fa-2x floating-icon" style="--i:5;"></i>
+<i class="fas fa-seedling fa-2x floating-icon" style="--i:6;"></i>
+<i class="fas fa-water fa-2x floating-icon" style="--i:7;"></i>
+<i class="fas fa-wind fa-2x floating-icon" style="--i:8;"></i>
+</div>
+</div>
+<div class="subheader">Appropriate Technology Videos for the DIY Sector</div>
+<div class="aspect-w-16 aspect-h-9 mb-4" id="hero">
+</div>
+</div>
+<div class="p-4 mt-4">
+<div class="mb-4 flex justify-center space-x-4">
+<a class="category-link bg-blue-500/50 hover:bg-blue-500/80 dark:text-white text-black font-semibold py-2 px-4 border-2 dark:border-white border-blue rounded-full shadow-sm transition duration-300 ease-in-out flex items-center" data-category="Drinking Water" href="#">
+<i class="fas fa-tint mr-2 text-xl"></i>
+<span>Drinking Water</span>
+</a>
+<a class="category-link bg-green-500/50 hover:bg-green-500/80 dark:text-white text-black font-semibold py-2 px-4 border-2 dark:border-white border-blue rounded-full shadow-sm transition duration-300 ease-in-out flex items-center" data-category="Waste Management" href="#">
+<i class="fas fa-recycle mr-2 text-xl"></i>
+<span>Waste Management</span>
+</a>
+<a class="category-link bg-yellow-500/50 hover:bg-yellow-500/80 dark:text-white text-black font-semibold py-2 px-4 border-2 dark:border-white border-blue rounded-full shadow-sm transition duration-300 ease-in-out flex items-center" data-category="Energy" href="#">
+<i class="fas fa-solar-panel mr-2 text-xl"></i>
+<span>Energy Systems</span>
+</a>
+<a class="category-link bg-red-500/50 hover:bg-red-500/80 dark:text-white text-black font-semibold py-2 px-4 border-2 dark:border-white border-blue rounded-full shadow-sm transition duration-300 ease-in-out flex items-center" data-category="Health" href="#">
+<i class="fas fa-heartbeat mr-2 text-xl"></i>
+<span>Appropriate Tech</span>
+</a>
+</div>
+<div class="mb-4">
+<input class="w-full p-2 border rounded dark:bg-gray-700 dark:text-white" id="search" placeholder="Search videos..." type="text"/>
+</div>
+<div class="relative left-0 right-0 bg-white dark:bg-gray-800 p-4 hidden" id="mondrian-box">
+<div class="flex flex-wrap justify-center" id="subcategory-links"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="categories"></div>
+</div>
+<div class="fixed inset-0 bg-opacity-50 overflow-y-auto h-full w-full hidden" id="video-detail">
+<div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md">
+<div>
+<button class="absolute top-2 right-2 text-white-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white" id="close-detail-x">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<button class="absolute top-2 left-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200" id="edit-detail">
+<i class="fas fa-edit h-6 w-6"></i>
+</button>
+</div>
+<div class="curved-line"></div>
+<div class="curved-line"></div>
+<div class="curved-line"></div>
+<div class="curved-line"></div>
+<div id="video-content"></div>
+<div class="text-center mt-4">
+<button class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300" id="close-detail">
+                        Close
+                    </button>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden" id="add-content-modal">
+<div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
+<div class="mt-3 text-center">
+<h3 class="text-lg leading-6 font-medium text-gray-900">Add New Content</h3>
+<form class="mt-2 text-left" id="add-content-form">
+<div class="mb-4">
+<label class="block text-gray-700 text-sm font-bold mb-2" for="content-type">Content Type</label>
+<select class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="content-type" name="content-type">
+<option value="video">Video</option>
+<option value="suggestion">Suggestion</option>
+</select>
+</div>
+<div class="mb-4">
+<label class="block text-gray-700 text-sm font-bold mb-2" for="title">Title</label>
+<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" name="title" required="" type="text"/>
+</div>
+<div class="mb-4">
+<label class="block text-gray-700 text-sm font-bold mb-2" for="description">Description</label>
+<textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" name="description" required="" rows="3"></textarea>
+</div>
+<div class="mb-4" id="video-fields">
+<label class="block text-gray-700 text-sm font-bold mb-2" for="video-url">Video URL</label>
+<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="video-url" name="video-url" type="url"/>
+</div>
+<div class="mb-4">
+<label class="block text-gray-700 text-sm font-bold mb-2" for="category">Category</label>
+<select class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="category" name="category" required="">
+<option value="">Select a category</option>
+<option value="Drinking Water">Drinking Water</option>
+<option value="Waste Management">Waste Management</option>
+<option value="Energy Systems">Energy Systems</option>
+<option value="Appropriate Tech">Appropriate Tech</option>
+</select>
+</div>
+<div class="mb-4">
+<label class="block text-gray-700 text-sm font-bold mb-2" for="tags">Tags (comma-separated)</label>
+<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="tags" name="tags" type="text"/>
+</div>
+<div class="flex items-center justify-between mt-4">
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        Submit
+                    </button>
+<button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="close-modal" type="button">
+                        Cancel
+                    </button>
+</div>
+</form>
+<div id="auth-container">
+<div id="auth-toggle">
+<button class="active" id="magic-link-toggle">Magic Link</button>
+<button id="token-toggle">Set Token</button>
+</div>
+<form id="magic-link-form">
+<h2>Sign In with Magic Link</h2>
+<div>
+<label for="email">Email</label>
+<input id="email" name="email" required="" type="email"/>
+</div>
+<button type="submit">Send Magic Link</button>
+</form>
+
+</div>
+<div id="message"></div>
+</div>
+</div>
+</div>
+
+<footer class="footer-gradient dark:footer-gradient-light text-gray-800 dark:text-gray-200 py-12 mt-12 transition-colors duration-300">
+<div class="landscape">
+<img alt="Approvideo Sept 2024 - blocky landscape 0" src="gyyy5r.webp"/>
+</div>
+<div class="container mx-auto px-4">
+<div class="flex flex-wrap justify-between items-start">
+<div class="w-full md:w-1/3 mb-8 md:mb-0">
+<h3 class="footer-title mb-2 text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500">ApproVideo</h3>
+<p class="footer-subtitle text-lg">Appropriate Technology Videos for the DIY Sector</p>
+<div class="mt-4 relative overflow-hidden cursor-pointer" id="mission-reveal">
+<p class="text-sm font-semibold">Our Mission (Click to reveal)</p>
+<div class="mission-text hidden mt-2 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg transform transition-all duration-500 ease-in-out">
+<p>To empower individuals and communities with accessible, sustainable technology solutions through educational videos.</p>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/3 mb-8 md:mb-0">
+<h4 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">Quick Links</h4>
+<ul class="space-y-2">
+<li><a class="footer-link hover:text-green-500 transition duration-300 flex items-center" href="https://github.com/yourusername/approtech"><i class="fab fa-github mr-2"></i>GitHub Repository</a></li>
+<li><a class="footer-link hover:text-green-500 transition duration-300 flex items-center" href="https://www.gnu.org/licenses/gpl-3.0.en.html"><i class="fas fa-balance-scale mr-2"></i>GPL v3 License</a></li>
+<li><a class="footer-link hover:text-green-500 transition duration-300 flex items-center" href="https://scdhub.org"><i class="fas fa-globe mr-2"></i>SCD Hub Website</a></li>
+</ul>
+</div>
+<div class="w-full md:w-1/3 flex flex-col items-center md:items-end">
+<button class="footer-button bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 mb-4 transform hover:scale-105" id="sponsor-us">
+                    Sponsor us!
+                </button>
+<button class="footer-button bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-105 transition duration-300" id="be-an-editor">
+                    Be an editor
+                </button>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-gray-700 dark:border-gray-300 text-center text-sm">
+<p>© 2024 ApproVideo. All rights reserved. | <a class="footer-link hover:text-blue-400 transition duration-300" href="#">Privacy Policy</a> | <a class="footer-link hover:text-blue-400 transition duration-300" href="#">Terms of Service</a></p>
+<p class="mt-2">A project of SCD Hub 501(c)(3)</p>
+</div>
+</div>
+<div class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50" id="sponsor-modal">
+<div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
+<div class="mt-3 text-center">
+<h3 class="text-lg leading-6 font-medium text-gray-900">Sponsor ApproVideo</h3>
+<div class="mt-2 px-7 py-3">
+<p class="text-sm text-gray-500">
+                    Help us continue providing valuable educational content on appropriate technology. Your sponsorship makes a difference!
+                </p>
+<!-- Add sponsorship options or a form here -->
+</div>
+<div class="items-center px-4 py-3">
+<button class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300" id="close-sponsor-modal">
+                    Close
+                </button>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50" id="editor-modal">
+<div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
+<div class="mt-3 text-center">
+<h3 class="text-lg leading-6 font-medium text-gray-900">Become an Editor</h3>
+<div class="mt-2 px-7 py-3">
+<p class="text-sm text-gray-500">
+                    Join our team of editors and help curate high-quality content on appropriate technology. Share your expertise with the world!
+                </p>
+<form class="space-y-4" id="editor-login-form">
+<div>
+<label class="block text-sm font-medium text-gray-700" for="username">Username</label>
+<input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" id="username" name="username" required="" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="password">Password</label>
+<input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" id="password" name="password" required="" type="password"/>
+</div>
+<div>
+<button class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit">
+                            Login
+                        </button>
+</div>
+</form>
+<p class="mt-2 text-sm text-red-600 hidden" id="login-message"></p>
+</div>
+<div class="items-center px-4 py-3">
+<button class="px-4 py-2 bg-purple-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-300" id="close-editor-modal">
+                    Close
+                </button>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // DOM elements
+        const contentForm = document.getElementById('content-form');
+        const authForm = document.getElementById('auth-form');
+        const messageDiv = document.getElementById('message');
+
+        // Check authentication status
+        async function checkAuth() {
+            const token = localStorage.getItem('authToken');
+            if (token) {
+                try {
+                    const response = await fetch('/api/auth', {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+                    if (response.ok) {
+                        contentForm.classList.remove('hidden');
+                        authForm.classList.add('hidden');
+                        return;
+                    }
+                } catch (error) {
+                    console.error('Auth check failed:', error);
+                }
+            }
+            // If we get here, user is not authenticated
+            contentForm.classList.add('hidden');
+            authForm.classList.remove('hidden');
+            localStorage.removeItem('authToken');
+        }
+
+        // Handle auth form submission
+        authForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+
+            try {
+                const response = await fetch('/api/auth', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error);
+                showMessage('Check your email for the login link!', 'success');
+            } catch (error) {
+                showMessage(error.message, 'error');
+            }
+        });
+
+        // Helper function to show messages
+        function showMessage(message, type) {
+            messageDiv.textContent = message;
+            messageDiv.className = type;
+        }
+
+        // Initial auth check
+        checkAuth();
+
+        // Listen for successful auth redirect
+        window.addEventListener('load', async () => {
+            const hashParams = new URLSearchParams(window.location.hash.slice(1));
+            const accessToken = hashParams.get('access_token');
+            if (accessToken) {
+                localStorage.setItem('authToken', accessToken);
+                await checkAuth();
+                window.history.replaceState(null, '', window.location.pathname);
+            }
+        });
+        </script>
+<script src="prodnav.js"></script>
+<script src="videoplayer.js"></script>
+
+</head></html>
