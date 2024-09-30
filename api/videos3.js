@@ -1,6 +1,8 @@
 const { createClient } = require('@supabase/supabase-js');
 
 module.exports = async (req, res) => {
+  console.log('API route invoked');
+
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -13,34 +15,41 @@ module.exports = async (req, res) => {
     return;
   }
 
-  // Get the user's token from the request headers
-  const token = req.headers.authorization?.split(' ')[1];
-  if (!token) {
-    return res.status(401).json({ error: 'No authentication token provided' });
-  }
+  try {
+    // Get the user's token from the request headers
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) {
+      return res.status(401).json({ error: 'No authentication token provided' });
+    }
 
-  // Initialize Supabase client with the user's token
-  const supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_ANON_KEY,
-    { global: { headers: { Authorization: `Bearer ${token}` } } }
-  );
+    console.log('Initializing Supabase client');
+    // Initialize Supabase client with the user's token
+    const supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_ANON_KEY,
+      { global: { headers: { Authorization: `Bearer ${token}` } } }
+    );
 
-  switch (req.method) {
-    case 'GET':
-      await getVideos(supabase, res);
-      break;
-    case 'POST':
-      await createVideo(supabase, req, res);
-      break;
-    default:
-      res.setHeader('Allow', ['GET', 'POST']);
-      res.status(405).end(`Method ${req.method} Not Allowed`);
+    switch (req.method) {
+      case 'GET':
+        await getVideos(supabase, res);
+        break;
+      case 'POST':
+        await createVideo(supabase, req, res);
+        break;
+      default:
+        res.setHeader('Allow', ['GET', 'POST']);
+        res.status(405).end(`Method ${req.method} Not Allowed`);
+    }
+  } catch (error) {
+    console.error('Unexpected error:', error);
+    res.status(500).json({ error: 'An unexpected error occurred', details: error.message });
   }
 };
 
 async function getVideos(supabase, res) {
   try {
+    console.log('Fetching videos');
     const { data, error } = await supabase
       .from('videos')
       .select(`
@@ -51,25 +60,24 @@ async function getVideos(supabase, res) {
     res.status(200).json(data);
   } catch (error) {
     console.error('Error fetching videos:', error);
-    res.status(500).json({ error: 'Failed to fetch videos' });
+    res.status(500).json({ error: 'Failed to fetch videos', details: error.message });
   }
 }
 
 async function createVideo(supabase, req, res) {
   try {
+    console.log('Creating video');
     const { panels, ...videoData } = JSON.parse(req.body);
     // Validate video data
     if (!videoData.title || !videoData.description) {
       return res.status(400).json({ error: 'Title and description are required' });
     }
-
     // Insert the video data
     const { data: video, error: videoError } = await supabase
       .from('videos')
       .insert([videoData])
       .single();
     if (videoError) throw videoError;
-
     // If panels exist, insert them with the new video_id
     if (panels && Array.isArray(panels) && panels.length > 0) {
       const panelsWithVideoId = panels.map(panel => ({
@@ -81,10 +89,9 @@ async function createVideo(supabase, req, res) {
         .insert(panelsWithVideoId);
       if (panelsError) throw panelsError;
     }
-
     res.status(201).json(video);
   } catch (error) {
     console.error('Error creating video:', error);
-    res.status(500).json({ error: 'Failed to create video' });
+    res.status(500).json({ error: 'Failed to create video', details: error.message });
   }
 }
