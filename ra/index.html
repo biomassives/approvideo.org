@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Recyclers Auction</title>
+  <script src="app.js" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Slow-moving animations */
+    .animate-cloud {
+      animation: moveCloud 20s linear infinite;
+    }
+    .animate-sun {
+      animation: rotateSun 10s linear infinite;
+    }
+    .animate-water {
+      animation: waveWater 5s ease-in-out infinite;
+    }
+
+    @keyframes moveCloud {
+      0% { transform: translateX(-100px); }
+      100% { transform: translateX(100vw); }
+    }
+
+    @keyframes rotateSun {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes waveWater {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body class="bg-red-50 font-sans leading-normal tracking-normal text-green-900">
+  <!-- Fun African-inspired header -->
+  <header class="bg-red-600 text-white p-4 shadow">
+    <div class="flex justify-between items-center">
+      <h1 class="text-center text-3xl font-bold">The Recyclers Auction</h1>
+      <!-- Sun animation -->
+      <svg class="w-12 h-12 animate-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 18.5A6.5 6.5 0 1 0 12 5a6.5 6.5 0 0 0 0 13.5z"/>
+        <path d="M12 1v3m9 8h-3M4 12H1m20.71 6.71l-2.12-2.12M4.41 6.41 2.29 8.53m14.08 14.08-2.12-2.12M8.53 4.41 6.41 2.29"/>
+      </svg>
+    </div>
+  </header>
+
+  <!-- Floating clouds animation -->
+  <div class="absolute top-0 left-0 w-full h-48">
+    <svg class="w-16 h-16 absolute left-10 animate-cloud" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M6.5 18.5a5.5 5.5 0 1 0 11 0 6.5 6.5 0 1 0-11 0z"/>
+    </svg>
+    <svg class="w-16 h-16 absolute right-10 animate-cloud" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M6.5 18.5a5.5 5.5 0 1 0 11 0 6.5 6.5 0 1 0-11 0z"/>
+    </svg>
+  </div>
+
+  <main class="container mx-auto mt-12 p-4">
+    <section class="bg-white p-6 rounded-lg shadow-md">
+      <h2 class="text-xl font-semibold mb-4 text-yellow-600">Active Auctions</h2>
+      <div id="auction-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Auction items will be injected here -->
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-xl font-semibold mb-4 text-yellow-600">Salvage Worker Upload</h2>
+      <form id="uploadForm" class="bg-white p-6 rounded-lg shadow-md">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="itemImage">
+            Upload Image of Item
+          </label>
+          <input type="file" id="itemImage" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:border-green-500">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="itemName">
+            Item Name
+          </label>
+          <input type="text" id="itemName" class="block w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-green-500" placeholder="e.g. Scrap Metal, Old Electronics">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="itemDescription">
+            Item Description
+          </label>
+          <textarea id="itemDescription" class="block w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-green-500" placeholder="Describe the item"></textarea>
+        </div>
+        <div class="text-right">
+          <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+            Upload Item
+          </button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="bg-green-500 text-white text-center py-4 mt-10">
+    <p>&copy; 2024 The Recyclers Auction | Powered by SCD Hub Kenya</p>
+    <svg class="w-8 h-8 mx-auto animate-water" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 1C7 6 3 10.5 3 15a9 9 0 1 0 18 0c0-4.5-4-9-9-14z"/>
+    </svg>
+  </footer>
+</body>
+</html>
