@@ -1,97 +1,106 @@
 const { createClient } = require('@supabase/supabase-js');
+const ethers = require('ethers');
+// You'll need to install and import libraries for other chains as needed
+// const algosdk = require('algosdk');
+// const solanaWeb3 = require('@solana/web3.js');
+// ... other chain-specific libraries
 
-module.exports = async (req, res) => {
-  console.log('API route invoked');
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
 
-  // Set CORS headers
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization');
+const supportedChains = ['celo', 'sui', 'tron', 'algorand', 'cardano', 'polygon', 'rmrk', 'flow', 'near', 'solana'];
 
-  // Handle OPTIONS request for CORS preflight
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
+async function verifyNFTOwnership(chain, address, tokenId) {
+  // Implement chain-specific NFT ownership verification
+  switch (chain) {
+    case 'celo':
+      // Implement Celo NFT verification
+      break;
+    case 'sui':
+      // Implement Sui NFT verification
+      break;
+    // ... implement for other chains
+    default:
+      throw new Error('Unsupported chain');
+  }
+}
+
+async function authenticateUser(req) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) throw new Error('No authentication provided');
+
+  const [authType, token] = authHeader.split(' ');
+
+  if (authType === 'Bearer') {
+    // Supabase token authentication
+    const { user, error } = await supabase.auth.api.getUser(token);
+    if (error) throw error;
+    return user;
+  } else if (authType === 'NFT') {
+    // NFT-based authentication
+    const [chain, address, tokenId] = token.split(':');
+    if (!supportedChains.includes(chain)) throw new Error('Unsupported chain');
+    const isValid = await verifyNFTOwnership(chain, address, tokenId);
+    if (!isValid) throw new Error('Invalid NFT credentials');
+    return { address, chain, tokenId };
   }
 
-  try {
-    // Get the user's token from the request headers
-    const token = req.headers.authorization?.split(' ')[1];
-    if (!token) {
-      return res.status(401).json({ error: 'No authentication token provided' });
-    }
+  throw new Error('Invalid authentication method');
+}
 
-    console.log('Initializing Supabase client');
-    // Initialize Supabase client with the user's token
-    const supabase = createClient(
-      process.env.SUPABASE_URL,
-      process.env.SUPABASE_ANON_KEY,
-      { global: { headers: { Authorization: `Bearer ${token}` } } }
-    );
+async function isEditor(user) {
+  // Implement editor check logic here
+  // This could involve checking a role in Supabase or verifying specific NFT ownership
+  return false; // Placeholder
+}
+
+module.exports = async (req, res) => {
+  try {
+    const user = await authenticateUser(req);
+    const editor = await isEditor(user);
 
     switch (req.method) {
       case 'GET':
-        await getVideos(supabase, res);
+        // Fetch videos, potentially with different logic for editors
+        const { data, error } = await supabase
+          .from('videos')
+          .select('*')
+          .order('created_at', { ascending: false });
+        
+        if (error) throw error;
+        res.status(200).json(data);
         break;
+
       case 'POST':
-        await createVideo(supabase, req, res);
+        // Only allow editors to post new videos
+        if (!editor) {
+          res.status(403).json({ error: 'Only editors can post new videos' });
+          return;
+        }
+        
+        const { title, description, url } = req.body;
+        const { data: newVideo, error: postError } = await supabase
+          .from('videos')
+          .insert([{ title, description, url, user_id: user.id }])
+          .single();
+        
+        if (postError) throw postError;
+        res.status(201).json(newVideo);
         break;
+
+      case 'PUT':
+        // Update video logic (editor only)
+        break;
+
+      case 'DELETE':
+        // Delete video logic (editor only)
+        break;
+
       default:
-        res.setHeader('Allow', ['GET', 'POST']);
+        res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
         res.status(405).end(`Method ${req.method} Not Allowed`);
     }
   } catch (error) {
-    console.error('Unexpected error:', error);
-    res.status(500).json({ error: 'An unexpected error occurred', details: error.message });
+    console.error('API Error:', error);
+    res.status(500).json({ error: error.message });
   }
 };
-
-async function getVideos(supabase, res) {
-  try {
-    console.log('Fetching videos');
-    const { data, error } = await supabase
-      .from('videos')
-      .select(`
-        *,
-        panels (*)
-      `);
-    if (error) throw error;
-    res.status(200).json(data);
-  } catch (error) {
-    console.error('Error fetching videos:', error);
-    res.status(500).json({ error: 'Failed to fetch videos', details: error.message });
-  }
-}
-
-async function createVideo(supabase, req, res) {
-  try {
-    console.log('Creating video');
-    const { panels, ...videoData } = JSON.parse(req.body);
-    // Validate video data
-    if (!videoData.title || !videoData.description) {
-      return res.status(400).json({ error: 'Title and description are required' });
-    }
-    // Insert the video data
-    const { data: video, error: videoError } = await supabase
-      .from('videos')
-      .insert([videoData])
-      .single();
-    if (videoError) throw videoError;
-    // If panels exist, insert them with the new video_id
-    if (panels && Array.isArray(panels) && panels.length > 0) {
-      const panelsWithVideoId = panels.map(panel => ({
-        ...panel,
-        video_id: video.id
-      }));
-      const { error: panelsError } = await supabase
-        .from('panels')
-        .insert(panelsWithVideoId);
-      if (panelsError) throw panelsError;
-    }
-    res.status(201).json(video);
-  } catch (error) {
-    console.error('Error creating video:', error);
-    res.status(500).json({ error: 'Failed to create video', details: error.message });
-  }
-}
