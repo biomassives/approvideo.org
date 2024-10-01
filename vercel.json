@@ -11,8 +11,8 @@
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "env": {
-    "supabase_url": "@supabase_url",
-    "supabase_anon_key": "@supabase_anon_key"
+    "supabase_url": "supabase_url",
+    "supabase_anon_key": "supabase_anon_key"
   },
   "headers": [
     {
