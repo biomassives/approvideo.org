@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorldBridger One / Exotopia / EcoCity FAQ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .blockchain-details { display: none; transition: all 0.5s ease-in-out; }
+    .open .blockchain-details { display: block; }
+    .funky-icon { transition: transform 0.5s; }
+    .funky-icon:hover { transform: rotate(360deg); }
+    .eco-layer { border: 2px solid #4ade80; padding: 10px; border-radius: 10px; background: rgba(74, 222, 128, 0.1); }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+  <div class="container mx-auto p-6">
+    <h1 class="text-4xl font-bold text-center text-green-600 mb-6">WorldBridger One / Exotopia / EcoCity Community FAQ</h1>
+    <p class="text-center mb-10">Explore the blockchains and learn how to set up your wallet, access code, and join our community.</p>
+
+    <div class="eco-layer">
+      <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+        <thead>
+          <tr>
+            <th class="px-6 py-3 bg-green-500 text-left text-white uppercase tracking-wider">Blockchain</th>
+            <th class="px-6 py-3 bg-green-500 text-left text-white uppercase tracking-wider">Wallet</th>
+            <th class="px-6 py-3 bg-green-500 text-left text-white uppercase tracking-wider">Developer Resources</th>
+            <th class="px-6 py-3 bg-green-500 text-left text-white uppercase tracking-wider">Community</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Celo -->
+          <tr class="border-b">
+            <td class="px-6 py-4 flex items-center">
+              <span class="blockchain-name font-bold">Celo</span>
+              <span class="ml-2 funky-icon cursor-pointer">🌿</span>
+              <button onclick="toggleDetails(this)" class="ml-4 text-green-500">▼</button>
+              <div class="blockchain-details ml-10 mt-4">
+                <p class="text-gray-700">Celo is a mobile-first blockchain focused on accessible decentralized financial services.</p>
+                <img src="https://via.placeholder.com/150" alt="Celo Image" class="mt-2 rounded-lg shadow-md">
+              </div>
+            </td>
+            <td class="px-6 py-4"><a href="https://valoraapp.com" class="text-green-500 hover:underline">Valora Wallet</a></td>
+            <td class="px-6 py-4"><a href="https://docs.celo.org" class="text-green-500 hover:underline">Celo Docs</a></td>
+            <td class="px-6 py-4"><a href="https://discord.com/invite/6yWMkgM" class="text-green-500 hover:underline">Celo Discord</a></td>
+          </tr>
+          <!-- Sui -->
+          <tr class="border-b">
+            <td class="px-6 py-4 flex items-center">
+              <span class="blockchain-name font-bold">Sui</span>
+              <span class="ml-2 funky-icon cursor-pointer">💧</span>
+              <button onclick="toggleDetails(this)" class="ml-4 text-blue-500">▼</button>
+              <div class="blockchain-details ml-10 mt-4">
+                <p class="text-gray-700">Sui is a high-performance blockchain optimized for secure and scalable smart contracts.</p>
+                <img src="https://via.placeholder.com/150" alt="Sui Image" class="mt-2 rounded-lg shadow-md">
+              </div>
+            </td>
+            <td class="px-6 py-4"><a href="https://docs.sui.io/devnet/wallets" class="text-blue-500 hover:underline">Sui Wallet</a></td>
+            <td class="px-6 py-4"><a href="https://docs.sui.io" class="text-blue-500 hover:underline">Sui Developer Docs</a></td>
+            <td class="px-6 py-4"><a href="https://discord.gg/sui" class="text-blue-500 hover:underline">Sui Discord</a></td>
+          </tr>
+          <!-- Tron -->
+          <tr class="border-b">
+            <td class="px-6 py-4 flex items-center">
+              <span class="blockchain-name font-bold">Tron</span>
+              <span class="ml-2 funky-icon cursor-pointer">🔥</span>
+              <button onclick="toggleDetails(this)" class="ml-4 text-red-500">▼</button>
+              <div class="blockchain-details ml-10 mt-4">
+                <p class="text-gray-700">Tron is a blockchain-based decentralized platform that aims to build a free, global digital content entertainment system.</p>
+                <img src="https://via.placeholder.com/150" alt="Tron Image" class="mt-2 rounded-lg shadow-md">
+              </div>
+            </td>
+            <td class="px-6 py-4"><a href="https://www.tronlink.org" class="text-red-500 hover:underline">TronLink Wallet</a></td>
+            <td class="px-6 py-4"><a href="https://developers.tron.network" class="text-red-500 hover:underline">Tron Developer Hub</a></td>
+            <td class="px-6 py-4"><a href="https://t.me/TronNetworkEN" class="text-red-500 hover:underline">Tron Telegram</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function toggleDetails(button) {
+      const row = button.closest('tr');
+      const details = row.querySelector('.blockchain-details');
+      row.classList.toggle('open');
+      details.style.display = details.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
