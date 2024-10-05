@@ -1,24 +1,22 @@
 const { createClient } = require('@supabase/supabase-js');
 const ethers = require('ethers');
-// You'll need to install and import libraries for other chains as needed
-// const algosdk = require('algosdk');
-// const solanaWeb3 = require('@solana/web3.js');
-// ... other chain-specific libraries
+// Other blockchain SDKs can be imported here...
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
 
 const supportedChains = ['celo', 'sui', 'tron', 'algorand', 'cardano', 'polygon', 'rmrk', 'flow', 'near', 'solana'];
 
 async function verifyNFTOwnership(chain, address, tokenId) {
-  // Implement chain-specific NFT ownership verification
   switch (chain) {
+    case 'polygon':
+      const provider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com/');
+      const contract = new ethers.Contract(contractAddress, abi, provider);
+      const owner = await contract.ownerOf(tokenId);
+      return owner.toLowerCase() === address.toLowerCase();
     case 'celo':
       // Implement Celo NFT verification
       break;
-    case 'sui':
-      // Implement Sui NFT verification
-      break;
-    // ... implement for other chains
+    // Add other chain-specific logic here...
     default:
       throw new Error('Unsupported chain');
   }
@@ -31,12 +29,11 @@ async function authenticateUser(req) {
   const [authType, token] = authHeader.split(' ');
 
   if (authType === 'Bearer') {
-    // Supabase token authentication
     const { user, error } = await supabase.auth.api.getUser(token);
     if (error) throw error;
+    if (!user) throw new Error('Invalid token');
     return user;
   } else if (authType === 'NFT') {
-    // NFT-based authentication
     const [chain, address, tokenId] = token.split(':');
     if (!supportedChains.includes(chain)) throw new Error('Unsupported chain');
     const isValid = await verifyNFTOwnership(chain, address, tokenId);
@@ -48,9 +45,14 @@ async function authenticateUser(req) {
 }
 
 async function isEditor(user) {
-  // Implement editor check logic here
-  // This could involve checking a role in Supabase or verifying specific NFT ownership
-  return false; // Placeholder
+  const { data, error } = await supabase
+    .from('users')
+    .select('role')
+    .eq('id', user.id)
+    .single();
+  
+  if (error) throw error;
+  return data.role === 'editor';
 }
 
 module.exports = async (req, res) => {
@@ -60,7 +62,6 @@ module.exports = async (req, res) => {
 
     switch (req.method) {
       case 'GET':
-        // Fetch videos, potentially with different logic for editors
         const { data, error } = await supabase
           .from('videos')
           .select('*')
@@ -71,13 +72,17 @@ module.exports = async (req, res) => {
         break;
 
       case 'POST':
-        // Only allow editors to post new videos
         if (!editor) {
           res.status(403).json({ error: 'Only editors can post new videos' });
           return;
         }
-        
+
         const { title, description, url } = req.body;
+        if (!title || !description || !url) {
+          res.status(400).json({ error: 'Missing required fields' });
+          return;
+        }
+
         const { data: newVideo, error: postError } = await supabase
           .from('videos')
           .insert([{ title, description, url, user_id: user.id }])
@@ -87,16 +92,8 @@ module.exports = async (req, res) => {
         res.status(201).json(newVideo);
         break;
 
-      case 'PUT':
-        // Update video logic (editor only)
-        break;
-
-      case 'DELETE':
-        // Delete video logic (editor only)
-        break;
-
       default:
-        res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
+        res.setHeader('Allow', ['GET', 'POST']);
         res.status(405).end(`Method ${req.method} Not Allowed`);
     }
   } catch (error) {
