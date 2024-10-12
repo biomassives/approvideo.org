@@ -744,7 +744,6 @@ function filterByTag(tag) {
     
 function renderVideoDetails(video) {
 
-
     let detailsHTML = `
          <h1 class="text-3xl font-bold mb-4 text-orange-700 dark:text-blue-400">${video.title}</h1>
         <div class="aspect-w-16 aspect-h-9 mb-4">
@@ -759,7 +758,7 @@ function renderVideoDetails(video) {
 
         <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Materials Needed:</h2>
         <ul class="list-disc list-inside mb-4 text-gray-700 dark:text-gray-300">
-            ${video.materials.map(material => `<li>${material}</li>`).join('') ?? 'No materials data' }    
+            ${video.materials?.map(material => `<li>${material}</li>`).join('') ?? 'No materials data' }    
         </ul>
 
         <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Steps:</h2>
