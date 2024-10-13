@@ -569,7 +569,7 @@ function setupEventListeners() {
           e.preventDefault();
 
         
-        if (target.clam ssList.contains('category-link')) {
+        if (target.classList.contains('category-link')) {
           const category = target.getAttribute('data-category');
           toggleSublinks(category); // Toggle sublinks
         } else if (target.classList.contains('drop-up-item')) {
