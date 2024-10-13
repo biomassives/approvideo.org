@@ -569,7 +569,7 @@ function setupEventListeners() {
           e.preventDefault();
 
         
-        if (target.classList.contains('category-link')) {
+        if (target.clam ssList.contains('category-link')) {
           const category = target.getAttribute('data-category');
           toggleSublinks(category); // Toggle sublinks
         } else if (target.classList.contains('drop-up-item')) {
@@ -763,7 +763,7 @@ function renderVideoDetails(video) {
 
         <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Steps:</h2>
         <ol class="list-decimal list-inside mb-4 text-gray-700 dark:text-gray-300">
-            ${video.steps.map(step => `<li>${step}</li>`).join('')}
+            ${video.steps?.map(step => `<li>${step}</li>`).join('') ?? 'No steps data (yet)' }
         </ol>
 
         <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Transcript:</h2>
