@@ -763,7 +763,7 @@ function renderVideoDetails(video) {
 
         <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Steps:</h2>
         <ol class="list-decimal list-inside mb-4 text-gray-700 dark:text-gray-300">
-            ${video.steps?.map(step => `<li>${step}</li>`).join('') ?? 'No steps data (yet)' }
+            ${video.steps?.map(step => `<li>${step}</li>`).join('') ?? 'No steps data' }
         </ol>
 
         <h2 class="text-2xl font-bold mb-2 text-orange-700 dark:text-blue-400">Transcript:</h2>
@@ -1073,8 +1073,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
 
-                            
-
     function closeVideoDetail() {
         document.getElementById('video-detail').classList.add('hidden');
     }
@@ -1159,20 +1157,16 @@ document.addEventListener('DOMContentLoaded', () => {
       setupEventListeners();
       setupFloatingIcons();
       setupModals();
-    
+            
+        window.renderVideo = renderVideo;
+        window.filterAndSortVideos = filterAndSortVideos;
+        window.isAuthenticated = isAuthenticated;
 
-window.renderVideo = renderVideo;
-window.filterAndSortVideos = filterAndSortVideos;
-window.isAuthenticated = isAuthenticated;
-
-    
  });
-
 </script>
+    
 <script src="prodnav.js"></script>
 <script src="videoplayer.js"></script>
-        
-
 </body>
 </html>
 
