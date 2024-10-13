@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Ops - WB1 | EcoCity | Exotopia NFT Rewards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: #2e8b57;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background: #3cb371;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            padding: 2rem;
+        }
+        h2 {
+            color: #2e8b57;
+        }
+        footer {
+            background: #2e8b57;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 1rem;
+            scroll-behavior: smooth;
+        }
+        .slider-item {
+            display: inline-block;
+            min-width: 300px;
+            padding: 1.5rem;
+            background-color: #2e8b57;
+            color: white;
+            margin: 0 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .slider-item.active {
+            background-color: #3cb371;
+        }
+        .slider-controls {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .slider-controls button {
+            background-color: #3cb371;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+        .slider-controls button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Eco Ops - WB1 | EcoCity | Exotopia NFT Rewards System</h1>
+</header>
+
+<nav>
+    <a href="#overview">Overview</a>
+    <a href="#nft-system">NFT Rewards System</a>
+    <a href="#community-impact">Community Impact</a>
+    <a href="#bounty-program">Bounty Program</a>
+</nav>
+
+<section id="info-slider">
+    <h2>Project Information Stages</h2>
+
+    <div class="slider" id="infoSlider">
+        <div class="slider-item active" id="step1">
+            <h3>Step 1: Site Assessment</h3>
+            <p>In this step, we assess the site to understand the environmental conditions and the extent of contamination.</p>
+        </div>
+        <div class="slider-item" id="step2">
+            <h3>Step 2: Contaminant Identification</h3>
+            <p>Identify the specific contaminants present in the area to develop a targeted remediation plan.</p>
+        </div>
+        <div class="slider-item" id="step3">
+            <h3>Step 3: Treatment Selection</h3>
+            <p>Choose the best treatment strategy to address the contaminants, whether through bioremediation, phytoremediation, or other methods.</p>
+        </div>
+        <div class="slider-item" id="step4">
+            <h3>Step 4: Microbial Inoculation</h3>
+            <p>Introduce specific microbial species to break down harmful substances and improve the ecosystem's health.</p>
+        </div>
+        <div class="slider-item" id="step5">
+            <h3>Step 5: Monitoring</h3>
+            <p>Regular monitoring ensures that the remediation process is on track and adjustments can be made if needed.</p>
+        </div>
+        <div class="slider-item" id="step6">
+            <h3>Step 6: Evaluation & Reporting</h3>
+            <p>Once the remediation is complete, we evaluate the results and report on the success and impact of the project.</p>
+        </div>
+    </div>
+
+    <div class="slider-controls">
+        <button onclick="scrollSlider(-300)">Previous</button>
+        <button onclick="scrollSlider(300)">Next</button>
+    </div>
+</section>
+
+<footer>
+    <p>Eco Ops | WB1 | EcoCity | Exotopia NFT Rewards © 2024</p>
+</footer>
+
+<script>
+    function scrollSlider(offset) {
+        document.getElementById('infoSlider').scrollBy({
+            left: offset,
+            behavior: 'smooth'
+        });
+    }
+</script>
+
+</body>
+</html>
