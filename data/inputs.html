@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Supabase and Vercel Setup</title>
+
+  <!-- Tailwind CSS CDN for styling -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Supabase CDN for client-side fetching -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <style>
+    body {
+      background-color: #f9fafb;
+      font-family: 'Inter', sans-serif;
+    }
+    .video-item {
+      border: 1px solid #e5e7eb;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <div class="container mx-auto p-8">
+    <h1 class="text-3xl font-bold mb-6">Supabase Video Data</h1>
+
+    <!-- Container for loading videos dynamically -->
+    <div id="video-list" class="space-y-4"></div>
+  </div>
+
+  <script>
+    // Supabase Client Initialization
+    const supabaseUrl = 'https://vlvbodwrtblttvwnxkjx.supabase.co'; // Replace with your Supabase project URL
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsdmJvZHdydGJsdHR2d254a2p4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY3NDk2NzIsImV4cCI6MjAwMjMyNTY3Mn0.TRT1HeX85vP1zDxnU7qBz5GqNPgYZUj-BOdek4qmtEg'; // Replace with your Supabase anon key
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    // Function to fetch videos from Supabase and display them
+    async function loadVideos() {
+      const { data: videos, error } = await supabase
+        .from('video') // Assuming you have a 'video' table in Supabase
+        .select('*'); // Adjust the select fields based on your needs
+
+      if (error) {
+        console.error('Error fetching videos:', error);
+      } else {
+        const videoList = document.getElementById('video-list');
+        videoList.innerHTML = ''; // Clear the list before loading
+
+        // Loop through each video and create HTML elements for display
+        videos.forEach(video => {
+          const videoItem = document.createElement('div');
+          videoItem.classList.add('video-item');
+
+          videoItem.innerHTML = `
+            <h3 class="text-2xl font-semibold">${video.title}</h3>
+            <p>${video.description}</p>
+            <p><strong>Rating:</strong> ${video.rating}</p>
+            <p><strong>Date:</strong> ${video.date}</p>
+            <a href="https://youtube.com/watch?v=${video.youtube_id}" target="_blank">Watch Video</a>
+          `;
+          
+          videoList.appendChild(videoItem);
+        });
+      }
+    }
+
+    // Load videos on page load
+    window.onload = loadVideos;
+  </script>
+
+</body>
+</html>
