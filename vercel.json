@@ -4,10 +4,14 @@
     { "src": "*.html", "use": "@vercel/static" },
     { "src": "*.js", "use": "@vercel/static" },
     { "src": "*.css", "use": "@vercel/static" },
+    { "src": "data/**/*", "use": "@vercel/static" },
+    { "src": "ra/**/*", "use": "@vercel/static" },
     { "src": "api/**/*.js", "use": "@vercel/node" }
   ],
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" }
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/data/(.*)", "destination": "/data/$1" },
+    { "source": "/ra/(.*)", "destination": "/ra/$1" }
   ],
   "env": {
     "supabase_url": "supabase_url",
