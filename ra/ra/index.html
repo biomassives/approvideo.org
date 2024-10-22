@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Medicine Flow</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        #chart-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            background: #f0f0f0;
+        }
+        .icon {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            transition: transform 1s ease;
+        }
+        .flow-path {
+            width: 5px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-blue-50">
+    <div class="flex flex-col items-center mt-10">
+        <h1 class="text-3xl font-bold mb-6">Energy Flow in Chinese Medicine</h1>
+
+        <div id="chart-container" class="bg-white shadow-lg rounded-lg relative">
+            <!-- Icons will be added dynamically by JavaScript -->
+        </div>
+
+        <div class="mt-6">
+            <button id="switch-mode" class="bg-blue-500 text-white px-4 py-2 rounded">Switch to Advanced Mode</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
