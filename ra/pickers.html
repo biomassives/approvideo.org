@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Ops Waste Picker Onboarding</title>
+</head>
+<body>
+    <div id="onboardingWizard">
+        <!-- Wizard Steps Navigation -->
+        <div id="wizardNav">
+            <button onclick="previousStep()">Previous</button>
+            <span id="stepIndicator">Step 1 of 5</span>
+            <button onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- Wizard Content -->
+        <div id="wizardContent">
+            <!-- Step 1: Welcome -->
+            <div class="wizard-step" data-step="1">
+                <h2>Karibu! Welcome to Eco Ops</h2>
+                <p>Let's learn how to calculate the best prices for your materials.</p>
+                <label>Your Name:
+                    <input type="text" id="userName" onchange="updateUserData('name', this.value)">
+                </label>
+                <label>Main Collection Area:
+                    <input type="text" id="userArea" onchange="updateUserData('area', this.value)">
+                </label>
+            </div>
+
+            <!-- Step 2: Material Selection -->
+            <div class="wizard-step" data-step="2" style="display: none;">
+                <h2>What materials do you usually collect?</h2>
+                <div id="materialSelection">
+                    <label>
+                        <input type="checkbox" value="PET" onchange="updateMaterials(this)">
+                        PET Bottles (Chupa za Plastiki)
+                    </label>
+                    <label>
+                        <input type="checkbox" value="HDPE" onchange="updateMaterials(this)">
+                        HDPE (Plastiki Ngumu)
+                    </label>
+                    <label>
+                        <input type="checkbox" value="Cardboard" onchange="updateMaterials(this)">
+                        Cardboard (Karatasi Ngumu)
+                    </label>
+                    <label>
+                        <input type="checkbox" value="Aluminum" onchange="updateMaterials(this)">
+                        Aluminum Cans (Makopo)
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step 3: Price Calculator Demo -->
+            <div class="wizard-step" data-step="3" style="display: none;">
+                <h2>Let's Try the Price Calculator</h2>
+                <div id="calculatorDemo">
+                    <select id="materialSelect" onchange="updateCalculator()">
+                        <option value="">Select Material</option>
+                    </select>
+                    <input type="number" id="materialAmount" placeholder="Amount in KG" onchange="updateCalculator()">
+                    <select id="qualitySelect" onchange="updateCalculator()">
+                        <option value="clean">Clean (Safi)</option>
+                        <option value="mixed">Mixed (Mchanganyiko)</option>
+                        <option value="dirty">Dirty (Chafu)</option>
+                    </select>
+                    <div id="calculationResult">
+                        Estimated Value: KES <span id="estimatedValue">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Daily Planning -->
+            <div class="wizard-step" data-step="4" style="display: none;">
+                <h2>Plan Your Collection</h2>
+                <div id="planningTools">
+                    <label>Preferred Start Time:
+                        <input type="time" id="startTime" onchange="updateSchedule(this.value)">
+                    </label>
+                    <div id="recommendedRoute"></div>
+                </div>
+            </div>
+
+            <!-- Step 5: Community Features -->
+            <div class="wizard-step" data-step="5" style="display: none;">
+                <h2>Join the Community</h2>
+                <div id="communityFeatures">
+                    <button onclick="enableNotifications()">Enable Price Alerts</button>
+                    <button onclick="joinCommunity()">Join Local Group</button>
+                </div>
+                <div id="completeSetup">
+                    <button onclick="completeOnboarding()">Complete Setup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State management
+        const state = {
+            currentStep: 1,
+            userData: {
+                name: '',
+                area: '',
+                materials: [],
+                startTime: '',
+                notifications: false
+            },
+            prices: {
+                PET: { clean: 15.5, mixed: 12.4, dirty: 7.75 },
+                HDPE: { clean: 18.75, mixed: 16.87, dirty: 11.25 },
+                Cardboard: { clean: 8.25, mixed: 5.77, dirty: 2.47 },
+                Aluminum: { clean: 35.0, mixed: 29.75, dirty: 17.5 }
+            }
+        };
+
+        // Navigation functions
+        function showStep(step) {
+            document.querySelectorAll('.wizard-step').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelector(`.wizard-step[data-step="${step}"]`).style.display = 'block';
+            document.getElementById('stepIndicator').textContent = `Step ${step} of 5`;
+        }
+
+        function nextStep() {
+            if (state.currentStep < 5) {
+                state.currentStep++;
+                showStep(state.currentStep);
+                updateStepContent();
+            }
+        }
+
+        function previousStep() {
+            if (state.currentStep > 1) {
+                state.currentStep--;
+                showStep(state.currentStep);
+                updateStepContent();
+            }
+        }
+
+        // Data update functions
+        function updateUserData(field, value) {
+            state.userData[field] = value;
+        }
+
+        function updateMaterials(checkbox) {
+            if (checkbox.checked) {
+                state.userData.materials.push(checkbox.value);
+            } else {
+                state.userData.materials = state.userData.materials.filter(m => m !== checkbox.value);
+            }
+            updateCalculatorMaterials();
+        }
+
+        function updateCalculatorMaterials() {
+            const select = document.getElementById('materialSelect');
+            select.innerHTML = '<option value="">Select Material</option>';
+            state.userData.materials.forEach(material => {
+                const option = document.createElement('option');
+                option.value = material;
+                option.textContent = material;
+                select.appendChild(option);
+            });
+        }
+
+        function updateCalculator() {
+            const material = document.getElementById('materialSelect').value;
+            const amount = parseFloat(document.getElementById('materialAmount').value) || 0;
+            const quality = document.getElementById('qualitySelect').value;
+            
+            if (material && amount) {
+                const price = state.prices[material][quality];
+                const value = price * amount;
+                document.getElementById('estimatedValue').textContent = value.toFixed(2);
+            }
+        }
+
+        function updateSchedule(time) {
+            state.userData.startTime = time;
+            const routeDiv = document.getElementById('recommendedRoute');
+            routeDiv.innerHTML = `
+                <h3>Recommended Route:</h3>
+                <p>Starting at ${time}</p>
+                <ul>
+                    ${state.userData.materials.map(material => 
+                        `<li>${material}: Best collection area based on your location</li>`
+                    ).join('')}
+                </ul>
+            `;
+        }
+
+        // Feature functions
+        function enableNotifications() {
+            state.userData.notifications = true;
+            alert('Price alerts will be sent to your phone (Feature coming soon)');
+        }
+
+        function joinCommunity() {
+            alert(`Welcome to the ${state.userData.area} waste picker community! (Feature coming soon)`);
+        }
+
+        function completeOnboarding() {
+            alert(`Setup complete! Welcome ${state.userData.name} to Eco Ops!`);
+            console.log('User Data:', state.userData);
+        }
+
+        // Initialize wizard
+        function initWizard() {
+            showStep(1);
+        }
+
+        // Start the wizard when page loads
+        document.addEventListener('DOMContentLoaded', initWizard);
+    </script>
+</body>
+</html
