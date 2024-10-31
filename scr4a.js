@@ -287,47 +287,62 @@ function showMainContent() {
 
     async function loadFeed() {
         try {
-            const projects = await state.store.getItem('projects') || [];
-            console.log('Loaded projects from store:', projects.length);  // Debug log
-            
+            // Load projects from the store or set as an empty array if not available
+            const projects = (await state.store.getItem('projects')) || [];
+            console.log('Loaded projects from store:', projects.length);
+    
+            // Validate that 'projects' is an array
             if (!Array.isArray(projects)) {
                 console.error('Invalid projects data:', projects);
                 showError('Error loading videos');
+               
                 return;
             }
     
+            // Start with a copy of the projects to filter and sort
             let filteredProjects = [...projects];
     
-            // Apply filters
+            // Filter by category if it's not 'all'
             if (state.currentFilter !== 'all') {
-                filteredProjects = filteredProjects.filter(p => p.category === state.currentFilter);
+                filteredProjects = filteredProjects.filter(project => project?.category === state.currentFilter);
             }
     
+            // Apply search filter if there is a search query
             if (state.searchQuery) {
                 const query = state.searchQuery.toLowerCase();
-                filteredProjects = filteredProjects.filter(p => 
-                    p.title?.toLowerCase().includes(query) || 
-                    p.description?.toLowerCase().includes(query)
+                filteredProjects = filteredProjects.filter(project => 
+                    project?.title?.toLowerCase().includes(query) || 
+                    project?.description?.toLowerCase().includes(query)
                 );
             }
     
-            // Apply sorting
+            // Sort the projects based on the currentSort state
             filteredProjects.sort((a, b) => {
+                const dateA = new Date(a.date || 0);
+                const dateB = new Date(b.date || 0);
+                const ratingA = a.rating || 0;
+                const ratingB = b.rating || 0;
+                const titleA = a.title || '';
+                const titleB = b.title || '';
+    
                 switch (state.currentSort) {
-                    case 'dateAsc': return new Date(a.date || 0) - new Date(b.date || 0);
-                    case 'dateDesc': return new Date(b.date || 0) - new Date(a.date || 0);
-                    case 'ratingHigh': return (b.rating || 0) - (a.rating || 0);
-                    case 'ratingLow': return (a.rating || 0) - (b.rating || 0);
-                    case 'titleAZ': return (a.title || '').localeCompare(b.title || '');
-                    case 'titleZA': return (b.title || '').localeCompare(a.title || '');
+                    case 'dateAsc': return dateA - dateB;
+                    case 'dateDesc': return dateB - dateA;
+                    case 'ratingHigh': return ratingB - ratingA;
+                    case 'ratingLow': return ratingA - ratingB;
+                    case 'titleAZ': return titleA.localeCompare(titleB);
+                    case 'titleZA': return titleB.localeCompare(titleA);
                     default: return 0;
                 }
             });
     
+            // Update current projects state
             state.currentProjects = filteredProjects;
             console.log('Filtered projects:', filteredProjects.length);  // Debug log
-            renderProjects(filteredProjects);
             
+            // Render projects
+            renderProjects(filteredProjects);
+    
         } catch (error) {
             console.error('Error loading feed:', error);
             showError('Failed to load videos');
@@ -335,9 +350,6 @@ function showMainContent() {
     }
     
 
-
-    
-    
 
     // UI Event Handlers
     function setupEventListeners() {
