@@ -337,54 +337,6 @@ function showMainContent() {
 
 
     
-    async function loadFeed() {
-        try {
-            const projects = await state.store.getItem('projects') || [];
-            console.log('Loaded projects from store:', projects.length);  // Debug log
-            
-            if (!Array.isArray(projects)) {
-                console.error('Invalid projects data:', projects);
-                showError('Error loading videos');
-                return;
-            }
-    
-            let filteredProjects = [...projects];
-    
-            // Apply filters
-            if (state.currentFilter !== 'all') {
-                filteredProjects = filteredProjects.filter(p => p.category === state.currentFilter);
-            }
-    
-            if (state.searchQuery) {
-                const query = state.searchQuery.toLowerCase();
-                filteredProjects = filteredProjects.filter(p => 
-                    p.title?.toLowerCase().includes(query) || 
-                    p.description?.toLowerCase().includes(query)
-                );
-            }
-    
-            // Apply sorting
-            filteredProjects.sort((a, b) => {
-                switch (state.currentSort) {
-                    case 'dateAsc': return new Date(a.date || 0) - new Date(b.date || 0);
-                    case 'dateDesc': return new Date(b.date || 0) - new Date(a.date || 0);
-                    case 'ratingHigh': return (b.rating || 0) - (a.rating || 0);
-                    case 'ratingLow': return (a.rating || 0) - (b.rating || 0);
-                    case 'titleAZ': return (a.title || '').localeCompare(b.title || '');
-                    case 'titleZA': return (b.title || '').localeCompare(a.title || '');
-                    default: return 0;
-                }
-            });
-    
-            state.currentProjects = filteredProjects;
-            console.log('Filtered projects:', filteredProjects.length);  // Debug log
-            renderProjects(filteredProjects);
-            
-        } catch (error) {
-            console.error('Error loading feed:', error);
-            showError('Failed to load videos');
-        }
-    }
     
 
     // UI Event Handlers
