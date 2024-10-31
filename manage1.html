@@ -810,7 +810,8 @@ function renderProjects(projects) {
         return {
           initialize,
           handleLogin,
-          handleLogout,
+          handleLogout, 
+          toggleDashboard,  // Add this
           showProjectDetails,
           playVideo,
           closeModal,
@@ -823,13 +824,25 @@ function renderProjects(projects) {
       window.VideoApp = VideoApp;
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      if (window.VideoApp) {
-        VideoApp.initialize().catch(error => {
-          console.error('Failed to initialize app:', error);
-        });
-      }
-    });
+
+
+  
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        await VideoApp.initialize();
+    } catch (error) {
+        console.error('Failed to initialize app:', error);
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'fixed top-16 right-4 max-w-sm z-50 p-4 rounded-lg shadow-lg bg-red-100 text-red-800';
+        errorDiv.textContent = 'Failed to initialize application. Please refresh the page.';
+        document.body.appendChild(errorDiv);
+    }
+});
+
+
+
+
+  
   </script>
 </body>
 </html>
