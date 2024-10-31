@@ -606,18 +606,33 @@ async function displayVideos(page = 1, filter = 'all', searchTerm = '') {
 function renderProjects(projects) {
     const projectsList = document.getElementById('videoGrid');
     if (!projectsList) return;
-    
-    // Add null check and filter out undefined/null projects
-    const validProjects = projects.filter(project => project != null);
+
+    // Filter out invalid or undefined/null projects
+    const validProjects = projects.filter(project => project && project.id);
+
+    // If no valid projects, display a message
+    if (validProjects.length === 0) {
+        projectsList.innerHTML = `<p class="text-gray-600">No projects available to display.</p>`;
+        return;
+    }
+
+
+
     
     projectsList.innerHTML = validProjects.map(project => {
-        // Add null checks for all project properties
+        // Safely retrieve project properties
         const title = project.title || 'Untitled';
         const description = project.description || 'No description available';
         const thumbnail = project.thumbnail || '/placeholder-image.jpg';
         const rating = project.rating || 0;
         const category = project.category || 'Uncategorized';
         const id = project.id || '';
+        const tags = Array.from(state.tags?.get(id) || []);
+
+        // Helper function to create tag elements
+        const renderTags = tags.map(tag => `
+            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">${tag}</span>
+        `).join('');
 
         return `
             <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
@@ -637,10 +652,31 @@ function renderProjects(projects) {
                         </button>
                     </div>
                     <p class="text-gray-600 mb-4">${description.substring(0, 100)}...</p>
+
+                    <!-- Render tags -->
+                    <div class="mb-2 flex flex-wrap gap-1">${renderTags}</div>
+
                     <div class="mt-2 flex items-center justify-between text-sm text-gray-500">
                         <span>Rating: ${rating}/5</span>
                         <span>Category: ${category}</span>
                     </div>
+
+                    <!-- Action Buttons Grid -->
+                    <div class="mt-3 grid grid-cols-3 gap-2">
+                        <button onclick="VideoApp.editVideo('${id}')"
+                            class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 text-sm">
+                            Edit
+                        </button>
+                        <button onclick="VideoApp.manageTags('${id}')"
+                            class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-sm">
+                            Tags
+                        </button>
+                        <button onclick="VideoApp.archiveVideo('${id}')"
+                            class="bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 text-sm">
+                            Archive
+                        </button>
+                    </div>
+
                     <button onclick="VideoApp.showProjectDetails(${JSON.stringify(project)})" 
                         class="mt-3 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
                         View Details
@@ -651,8 +687,7 @@ function renderProjects(projects) {
     }).join('');
 }
 
-
-
+        
         
 
         function debounce(func, wait) {
