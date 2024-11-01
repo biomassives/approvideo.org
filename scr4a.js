@@ -66,6 +66,25 @@ function showMainContent() {
             
             await checkDependencies();
             await initializeStore();
+
+            // Initialize archived state
+            const savedArchived = localStorage.getItem('approVideo_archived');
+            if (savedArchived) {
+                state.archived = new Set(JSON.parse(savedArchived));
+            } else {
+                state.archived = new Set();
+            }
+
+            // Initialize tags
+            if (!state.tags) {
+                state.tags = new Map();
+                const savedTags = localStorage.getItem('approVideo_tags');
+                if (savedTags) {
+                    const parsedTags = JSON.parse(savedTags);
+                    state.tags = new Map(parsedTags);
+                }
+            }
+    
             await initializeData();
             loadSavedFavorites();
             setupUIHandlers();  
@@ -287,62 +306,47 @@ function showMainContent() {
 
     async function loadFeed() {
         try {
-            // Load projects from the store or set as an empty array if not available
-            const projects = (await state.store.getItem('projects')) || [];
-            console.log('Loaded projects from store:', projects.length);
-    
-            // Validate that 'projects' is an array
+            const projects = await state.store.getItem('projects') || [];
+            console.log('Loaded projects from store:', projects.length);  // Debug log
+            
             if (!Array.isArray(projects)) {
                 console.error('Invalid projects data:', projects);
                 showError('Error loading videos');
-               
                 return;
             }
     
-            // Start with a copy of the projects to filter and sort
             let filteredProjects = [...projects];
     
-            // Filter by category if it's not 'all'
+            // Apply filters
             if (state.currentFilter !== 'all') {
-                filteredProjects = filteredProjects.filter(project => project?.category === state.currentFilter);
+                filteredProjects = filteredProjects.filter(p => p.category === state.currentFilter);
             }
     
-            // Apply search filter if there is a search query
             if (state.searchQuery) {
                 const query = state.searchQuery.toLowerCase();
-                filteredProjects = filteredProjects.filter(project => 
-                    project?.title?.toLowerCase().includes(query) || 
-                    project?.description?.toLowerCase().includes(query)
+                filteredProjects = filteredProjects.filter(p => 
+                    p.title?.toLowerCase().includes(query) || 
+                    p.description?.toLowerCase().includes(query)
                 );
             }
     
-            // Sort the projects based on the currentSort state
+            // Apply sorting
             filteredProjects.sort((a, b) => {
-                const dateA = new Date(a.date || 0);
-                const dateB = new Date(b.date || 0);
-                const ratingA = a.rating || 0;
-                const ratingB = b.rating || 0;
-                const titleA = a.title || '';
-                const titleB = b.title || '';
-    
                 switch (state.currentSort) {
-                    case 'dateAsc': return dateA - dateB;
-                    case 'dateDesc': return dateB - dateA;
-                    case 'ratingHigh': return ratingB - ratingA;
-                    case 'ratingLow': return ratingA - ratingB;
-                    case 'titleAZ': return titleA.localeCompare(titleB);
-                    case 'titleZA': return titleB.localeCompare(titleA);
+                    case 'dateAsc': return new Date(a.date || 0) - new Date(b.date || 0);
+                    case 'dateDesc': return new Date(b.date || 0) - new Date(a.date || 0);
+                    case 'ratingHigh': return (b.rating || 0) - (a.rating || 0);
+                    case 'ratingLow': return (a.rating || 0) - (b.rating || 0);
+                    case 'titleAZ': return (a.title || '').localeCompare(b.title || '');
+                    case 'titleZA': return (b.title || '').localeCompare(a.title || '');
                     default: return 0;
                 }
             });
     
-            // Update current projects state
             state.currentProjects = filteredProjects;
             console.log('Filtered projects:', filteredProjects.length);  // Debug log
-            
-            // Render projects
             renderProjects(filteredProjects);
-    
+            
         } catch (error) {
             console.error('Error loading feed:', error);
             showError('Failed to load videos');
@@ -350,6 +354,57 @@ function showMainContent() {
     }
     
 
+
+    
+    async function loadFeed() {
+        try {
+            const projects = await state.store.getItem('projects') || [];
+            console.log('Loaded projects from store:', projects.length);  // Debug log
+            
+            if (!Array.isArray(projects)) {
+                console.error('Invalid projects data:', projects);
+                showError('Error loading videos');
+                return;
+            }
+    
+            let filteredProjects = [...projects];
+    
+            // Apply filters
+            if (state.currentFilter !== 'all') {
+                filteredProjects = filteredProjects.filter(p => p.category === state.currentFilter);
+            }
+    
+            if (state.searchQuery) {
+                const query = state.searchQuery.toLowerCase();
+                filteredProjects = filteredProjects.filter(p => 
+                    p.title?.toLowerCase().includes(query) || 
+                    p.description?.toLowerCase().includes(query)
+                );
+            }
+    
+            // Apply sorting
+            filteredProjects.sort((a, b) => {
+                switch (state.currentSort) {
+                    case 'dateAsc': return new Date(a.date || 0) - new Date(b.date || 0);
+                    case 'dateDesc': return new Date(b.date || 0) - new Date(a.date || 0);
+                    case 'ratingHigh': return (b.rating || 0) - (a.rating || 0);
+                    case 'ratingLow': return (a.rating || 0) - (b.rating || 0);
+                    case 'titleAZ': return (a.title || '').localeCompare(b.title || '');
+                    case 'titleZA': return (b.title || '').localeCompare(a.title || '');
+                    default: return 0;
+                }
+            });
+    
+            state.currentProjects = filteredProjects;
+            console.log('Filtered projects:', filteredProjects.length);  // Debug log
+            renderProjects(filteredProjects);
+            
+        } catch (error) {
+            console.error('Error loading feed:', error);
+            showError('Failed to load videos');
+        }
+    }
+    
 
     // UI Event Handlers
     function setupEventListeners() {
@@ -544,6 +599,27 @@ function showMainContent() {
     }
 
     // Public API
+    
+    // Video editing functionality
+    function editVideo(id) {
+        console.log('Editing video:', id);
+        // Add your edit video logic here
+    }
+
+    // Tag management functionality
+    function manageTags(id) {
+        console.log('Managing tags for:', id);
+        // Add your tag management logic here
+    }
+
+    // Archive functionality
+    function archiveVideo(id) {
+        if (!state.archived) state.archived = new Set();
+        state.archived.add(id);
+        loadFeed(); // Refresh the display
+        localStorage.setItem('approVideo_archived', JSON.stringify([...state.archived]));
+    }
+    
     return {
         initialize,
         handleLogin,
