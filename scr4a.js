@@ -58,7 +58,6 @@ function showMainContent() {
 }
 
 
-
     
     // Initialize function with event handlers setup
     async function initialize() {
@@ -304,107 +303,177 @@ function showMainContent() {
     }
 
 
-    async function loadFeed() {
-        try {
-            const projects = await state.store.getItem('projects') || [];
-            console.log('Loaded projects from store:', projects.length);  // Debug log
-            
-            if (!Array.isArray(projects)) {
-                console.error('Invalid projects data:', projects);
-                showError('Error loading videos');
-                return;
-            }
-    
-            let filteredProjects = [...projects];
-    
-            // Apply filters
-            if (state.currentFilter !== 'all') {
-                filteredProjects = filteredProjects.filter(p => p.category === state.currentFilter);
-            }
-    
-            if (state.searchQuery) {
-                const query = state.searchQuery.toLowerCase();
-                filteredProjects = filteredProjects.filter(p => 
-                    p.title?.toLowerCase().includes(query) || 
-                    p.description?.toLowerCase().includes(query)
-                );
-            }
-    
-            // Apply sorting
-            filteredProjects.sort((a, b) => {
-                switch (state.currentSort) {
-                    case 'dateAsc': return new Date(a.date || 0) - new Date(b.date || 0);
-                    case 'dateDesc': return new Date(b.date || 0) - new Date(a.date || 0);
-                    case 'ratingHigh': return (b.rating || 0) - (a.rating || 0);
-                    case 'ratingLow': return (a.rating || 0) - (b.rating || 0);
-                    case 'titleAZ': return (a.title || '').localeCompare(b.title || '');
-                    case 'titleZA': return (b.title || '').localeCompare(a.title || '');
-                    default: return 0;
-                }
-            });
-    
-            state.currentProjects = filteredProjects;
-            console.log('Filtered projects:', filteredProjects.length);  // Debug log
-            renderProjects(filteredProjects);
-            
-        } catch (error) {
-            console.error('Error loading feed:', error);
-            showError('Failed to load videos');
+async function loadFeed() {
+    showLoading();
+    try {
+        // Get projects from store
+        let projects = await state.store.getItem('projects');
+        
+        // Ensure projects is an array and filter out any undefined/null values
+        projects = Array.isArray(projects) ? projects.filter(p => p != null) : [];
+        
+        console.log('Loaded projects:', projects.length); // Debug log
+
+        if (projects.length === 0) {
+            hideLoading(LoadingStates.EMPTY, 'No videos found');
+            return;
         }
-    }
+
+        const now = Date.now();
+        if (projects.length === 0 || (now - state.lastVideoLoad) > 60000) {
+            try {
+                const newData = await loadVideoData();
+                if (Array.isArray(newData) && newData.length > 0) {
+                    projects = newData;
+                    await state.store.setItem('projects', newData);
+                    state.lastVideoLoad = now;
+                }
+            } catch (error) {
+                console.error('Error loading new video data:', error);
+            }
+        }
+
+        let filteredProjects = [...projects];
     
+        // Apply filters
+        if (state.currentFilter !== 'all') {
+            filteredProjects = filteredProjects.filter(p => p && p.category === state.currentFilter);
+        }
+
+        if (state.searchQuery) {
+            const query = state.searchQuery.toLowerCase();
+            filteredProjects = filteredProjects.filter(p => 
+                p && (
+                    (p.title && p.title.toLowerCase().includes(query)) || 
+                    (p.description && p.description.toLowerCase().includes(query))
+                )
+            );
+        }
+
+        // Apply sorting
+        filteredProjects.sort((a, b) => {
+            if (!a || !b) return 0;
+            
+            switch (state.currentSort) {
+                case 'dateAsc': return new Date(a.date || 0) - new Date(b.date || 0);
+                case 'dateDesc': return new Date(b.date || 0) - new Date(a.date || 0);
+                case 'ratingHigh': return (b.rating || 0) - (a.rating || 0);
+                case 'ratingLow': return (a.rating || 0) - (b.rating || 0);
+                case 'titleAZ': return (a.title || '').localeCompare(b.title || '');
+                case 'titleZA': return (b.title || '').localeCompare(a.title || '');
+                default: return 0;
+            }
+        });
+
+        // Filter out archived projects if the feature is enabled
+        if (state.archived) {
+            filteredProjects = filteredProjects.filter(p => p && !state.archived.has(p.id));
+        }
+
+        if (filteredProjects.length === 0) {
+            hideLoading(LoadingStates.EMPTY, 'No videos match your filters');
+            return;
+        }
 
 
-    
-    async function loadFeed() {
-        try {
-            const projects = await state.store.getItem('projects') || [];
-            console.log('Loaded projects from store:', projects.length);  // Debug log
-            
-            if (!Array.isArray(projects)) {
-                console.error('Invalid projects data:', projects);
-                showError('Error loading videos');
-                return;
-            }
-    
-            let filteredProjects = [...projects];
-    
-            // Apply filters
-            if (state.currentFilter !== 'all') {
-                filteredProjects = filteredProjects.filter(p => p.category === state.currentFilter);
-            }
-    
-            if (state.searchQuery) {
-                const query = state.searchQuery.toLowerCase();
-                filteredProjects = filteredProjects.filter(p => 
-                    p.title?.toLowerCase().includes(query) || 
-                    p.description?.toLowerCase().includes(query)
-                );
-            }
-    
-            // Apply sorting
-            filteredProjects.sort((a, b) => {
-                switch (state.currentSort) {
-                    case 'dateAsc': return new Date(a.date || 0) - new Date(b.date || 0);
-                    case 'dateDesc': return new Date(b.date || 0) - new Date(a.date || 0);
-                    case 'ratingHigh': return (b.rating || 0) - (a.rating || 0);
-                    case 'ratingLow': return (a.rating || 0) - (b.rating || 0);
-                    case 'titleAZ': return (a.title || '').localeCompare(b.title || '');
-                    case 'titleZA': return (b.title || '').localeCompare(a.title || '');
-                    default: return 0;
-                }
-            });
-    
-            state.currentProjects = filteredProjects;
-            console.log('Filtered projects:', filteredProjects.length);  // Debug log
-            renderProjects(filteredProjects);
-            
-        } catch (error) {
-            console.error('Error loading feed:', error);
-            showError('Failed to load videos');
+        state.currentProjects = filteredProjects;
+        console.log('Projects to render:', filteredProjects.length);
+        renderProjects(filteredProjects);
+        hideLoading(LoadingStates.SUCCESS);
+    } catch (error) {
+        console.error('Error loading feed:', error);
+	hideLoading(LoadingStates.ERROR, 'Failed to load videos');
+        showError('Failed to load videos');
+    } finally {
+        hideLoading();
+    }
+}
+
+
+
+// Helper for managing loading states
+const LoadingStates = {
+    LOADING: 'loading',
+    ERROR: 'error',
+    SUCCESS: 'success',
+    EMPTY: 'empty'
+};
+
+function showLoading() {
+    const gridContainer = document.getElementById('videoGrid');
+    if (gridContainer) {
+        // Save current content in case we need to revert
+        state.lastContent = gridContainer.innerHTML;
+        
+        gridContainer.innerHTML = `
+            <div class="col-span-full flex flex-col items-center justify-center py-12">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
+                <p class="text-gray-600">Loading videos...</p>
+            </div>
+        `;
+        
+        // Update loading state
+        state.loadingState = LoadingStates.LOADING;
+    }
+}
+
+function hideLoading(status = LoadingStates.SUCCESS, message = '') {
+    const gridContainer = document.getElementById('videoGrid');
+    if (!gridContainer) return;
+
+    // Clear loading spinner
+    if (state.loadingState === LoadingStates.LOADING) {
+        switch (status) {
+            case LoadingStates.ERROR:
+                gridContainer.innerHTML = `
+                    <div class="col-span-full text-center py-8">
+                        <div class="bg-red-50 rounded-lg p-4 max-w-md mx-auto">
+                            <svg class="h-6 w-6 text-red-500 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <p class="text-red-800">${message || 'Error loading videos'}</p>
+                            <button onclick="VideoApp.retryLoad()" 
+                                class="mt-2 text-sm text-red-600 hover:text-red-800 underline">
+                                Retry
+                            </button>
+                        </div>
+                    </div>
+                `;
+                break;
+
+            case LoadingStates.EMPTY:
+                gridContainer.innerHTML = `
+                    <div class="col-span-full text-center py-8">
+                        <div class="bg-gray-50 rounded-lg p-4 max-w-md mx-auto">
+                            <svg class="h-6 w-6 text-gray-400 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                            </svg>
+                            <p class="text-gray-600">${message || 'No videos available'}</p>
+                        </div>
+                    </div>
+                `;
+                break;
+
+            case LoadingStates.SUCCESS:
+                // Don't do anything here as renderProjects will handle the content
+                break;
         }
     }
-    
+
+    // Update loading state
+    state.loadingState = status;
+}
+
+// Add retry functionality
+function retryLoad() {
+    if (state.loadingState === LoadingStates.ERROR) {
+        loadFeed();
+    }
+}
+
+
 
     // UI Event Handlers
     function setupEventListeners() {
@@ -453,41 +522,96 @@ function showMainContent() {
         });
     }
 
-    // Project Display
-    function renderProjects(projects) {
-        const projectsList = document.getElementById('videoGrid');
-        if (!projectsList) return;
-        
-        projectsList.innerHTML = projects.map(project => `
-            <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-                    <img src="${project.thumbnail}" 
-                        alt="${project.title}" 
-                        class="w-full h-48 object-cover"
-                        onerror="this.src='/placeholder-image.jpg'"
-                    >
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-lg font-semibold text-gray-900">${project.title}</h3>
-                        <button onclick="VideoApp.toggleFavorite('${project.id}')" 
-                            class="text-yellow-500 hover:text-yellow-600">
-                            ${state.favorites.has(project.id) ? '★' : '☆'}
+
+
+
+
+// Replace the existing renderProjects function with this version
+function renderProjects(projects) {
+    const projectsList = document.getElementById('videoGrid');
+    if (!projectsList) return;
+
+    // Ensure we have valid data
+    if (!Array.isArray(projects) || projects.length === 0) {
+        projectsList.innerHTML = '<div class="col-span-full text-center py-8 text-gray-500">No videos available</div>';
+        return;
+    }
+
+    try {
+        projectsList.innerHTML = projects.map(project => {
+            if (!project) return '';  // Skip invalid projects
+            
+            // Safely get project properties with defaults
+            const title = project.title || 'Untitled';
+            const description = project.description || 'No description available';
+            const thumbnail = project.thumbnail || '/placeholder-image.jpg';
+            const rating = project.rating || 0;
+            const category = project.category || 'Uncategorized';
+            const id = project.id || '';
+            const tags = Array.from(state.tags?.get(id) || []);
+
+            return `
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                        <img src="${thumbnail}" 
+                            alt="${title}" 
+                            class="w-full h-48 object-cover"
+                            onerror="this.src='/placeholder-image.jpg'"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-semibold text-gray-900">${title}</h3>
+                            <button onclick="VideoApp.toggleFavorite('${id}')" 
+                                class="text-yellow-500 hover:text-yellow-600">
+                                ${state.favorites.has(id) ? '★' : '☆'}
+                            </button>
+                        </div>
+                        <p class="text-gray-600 mb-4">${description.substring(0, 100)}...</p>
+                        <div class="mb-2 flex flex-wrap gap-1">
+                            ${tags.map(tag => `
+                                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                                    ${tag}
+                                </span>
+                            `).join('')}
+                        </div>
+                        <div class="mt-2 flex items-center justify-between text-sm text-gray-500">
+                            <span>Rating: ${rating}/5</span>
+                            <span>Category: ${category}</span>
+                        </div>
+                        <div class="mt-3 grid grid-cols-3 gap-2">
+                            <button onclick="VideoApp.editVideo('${id}')"
+                                class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 text-sm">
+                                Edit
+                            </button>
+                            <button onclick="VideoApp.manageTags('${id}')"
+                                class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-sm">
+                                Tags
+                            </button>
+                            <button onclick="VideoApp.archiveVideo('${id}')"
+                                class="bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 text-sm">
+                                Archive
+                            </button>
+                        </div>
+                        <button onclick="VideoApp.showProjectDetails(${JSON.stringify(project)})" 
+                            class="mt-3 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                            View Details
                         </button>
                     </div>
-                    <p class="text-gray-600 mb-4">${project.description.substring(0, 100)}...</p>
-                    <div class="mt-2 flex items-center justify-between text-sm text-gray-500">
-                        <span>Rating: ${project.rating}/5</span>
-                        <span>Category: ${project.category}</span>
-                    </div>
-                    <button onclick="VideoApp.showProjectDetails(${JSON.stringify(project)})" 
-                        class="mt-3 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
-                        View Details
-                    </button>
                 </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
+    } catch (error) {
+        console.error('Error rendering projects:', error);
+        projectsList.innerHTML = '<div class="col-span-full text-center py-8 text-red-500">Error displaying videos</div>';
     }
+}
+
+
+
+
+
+
 
     // Modal Management
     function showProjectDetails(project) {
@@ -632,6 +756,10 @@ function showMainContent() {
         closeProjectModal,
         playVideo,
         toggleFavorite,
+        retryLoad,
+        editVideo,         // Add this
+        manageTags,        // Add this
+        archiveVideo,      // Add this
         isLoggedIn: () => !!localStorage.getItem('approVideoToken'),
         getState: () => ({...state})
     };
