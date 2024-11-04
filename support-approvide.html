@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approvideo - Sustainable DIY Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script> 
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <header class="bg-green-500 py-4">
+        <div class="container mx-auto text-center text-white">
+            <h1 class="text-3xl font-bold">Welcome to Approvideo</h1>
+            <p class="text-lg">Sustainable solutions for the DIY sector</p>
+        </div>
+    
+    <div class="floating-icons">
+        <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-opacity-20 hover:bg-white" data-category="Drinking Water"><i class="fas fa-tint fa-3x floating-icon" style="--i:1;"></i></a>
+        <i class="fas fa-recycle fa-3x floating-icon" style="--i:2;"></i>
+        <i class="fas fa-solar-panel fa-3x floating-icon" style="--i:3;"></i>
+        <i class="fas fa-heartbeat fa-3x floating-icon" style="--i:4;"></i>
+    </div>
+
+      
+    </header>
+
+    <main class="container mx-auto py-8">
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <img src="images/hero-image.jpg" alt="Hero Image" class="rounded-lg shadow-md"> 
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-4">Empowering DIYers for a Sustainable Future</h2>
+                <p class="text-gray-700">
+                    Approvideo is your one-stop platform for practical, collaborative content on a wide range of sustainable DIY topics. We're building a community where you can learn and share knowledge about:
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mt-4">
+                    <li>**Shelter:** From temporary shelters to permanent housing, insulation, ventilation, and natural building techniques.
+                        <ul class="list-disc list-inside ml-6">
+                            <li>Did you know that well-designed natural buildings can significantly reduce energy consumption and carbon emissions?</li>
+                            <li>Access to safe and adequate housing is a fundamental human right recognized by the Universal Declaration of Human Rights.</li>
+                        </ul>
+                    </li>
+                    <li>**Water:**  Water filtration, purification, storage, distribution, and urban water solutions.
+                        <ul class="list-disc list-inside ml-6">
+                            <li>Clean water is essential for life, and access to safe drinking water is a human right.</li>
+                            <li>Simple DIY filtration methods can make a huge difference in communities lacking clean water infrastructure.</li>
+                        </ul>
+                    </li>
+                    <li>**Waste Management:** Composting, recycling, upcycling, hygiene, zero waste, and advocating for producer responsibility.
+                        <ul class="list-disc list-inside ml-6">
+                            <li>Effective waste management protects environmental health and conserves valuable resources.</li>
+                            <li>By reducing waste and embracing circular economy principles, we can minimize our impact on the planet.</li>
+                        </ul>
+                    </li>
+                    <li>**Energy:** Harnessing solar, wind, and hydropower; exploring biogas; and mastering motors, wiring, compressors, HVAC, plumbing, and energy-efficient design.
+                        <ul class="list-disc list-inside ml-6">
+                            <li>Renewable energy sources like solar and wind power offer clean and sustainable alternatives to fossil fuels.</li>
+                            <li>Energy efficiency is key to reducing our carbon footprint and promoting a sustainable future.</li>
+                        </ul>
+                    </li>
+                    <li>**Appropriate Technology:**  Sustainable solutions for agriculture, construction, healthcare, and community development, including PTSD care and field medicine.
+                        <ul class="list-disc list-inside ml-6">
+                            <li>Appropriate technology focuses on using simple, accessible solutions to address local needs and challenges.</li>
+                            <li>It emphasizes community ownership and empowerment, promoting self-reliance and sustainability.</li>
+                        </ul>
+                    </li>
+                    <li>**Agronomy:** Integrated pest management, soil improvement, cover cropping, diversified agriculture, specialty crops, and organic techniques.
+                        <ul class="list-disc list-inside ml-6">
+                            <li>Sustainable agriculture practices protect biodiversity, enhance soil health, and promote food security.</li>
+                            <li>Organic farming methods minimize the use of synthetic chemicals, protecting human and environmental health.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="text-gray-700 mt-4">
+                    Join us in creating a greener future through DIY!
+                </p>
+            </div>
+        </section>
+
+        <section class="py-8">
+            <h2 class="text-2xl font-bold mb-4">Support Our Mission</h2>
+            <p class="text-gray-700">
+                Your donation will help us expand our library of sustainable DIY resources, reach a wider audience, and promote eco-conscious practices in the DIY community.
+            </p>
+            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-6">
+                Donate Now
+            </button>
+        </section>
+    </main>
+
+    <footer class="bg-gray-200 py-4">
+        <div class="container mx-auto text-center text-gray-700">
+            &copy; 2024 Approvideo. All rights of Original authors reserved. Eductional Act content.
+        </div>
+    </footer>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  const floatingIcons = document.querySelectorAll('.floating-icon');
+
+  function randomizeIconPosition(icon) {
+    const x = Math.random() * (window.innerWidth - icon.offsetWidth);
+    const y = Math.random() * (window.innerHeight - icon.offsetHeight);
+    const delay = Math.random() * 5; // Random delay up to 5 seconds
+    icon.style.left = `${x}px`;
+    icon.style.top = `${y}px`;
+    icon.style.animationDelay = `${delay}s`;
+    icon.classList.add('active');
+  }
+
+  floatingIcons.forEach(randomizeIconPosition);
+});
+  
+</script>
+
+  
+</body>
+</html>
