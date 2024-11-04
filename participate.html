@@ -5,35 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Approvideo - Create sustainable DIY solutions and mint NFTs to support environmental initiatives">
     <meta name="theme-color" content="#059669">
-
-
-<!-- Add these just after the Tailwind script in the head section -->
-<script src="https://unpkg.com/svelte@3.x.x/dist/svelte.min.js"></script>
-<script src="https://unpkg.com/@sveltejs/kit@1.x.x/dist/kit.js"></script>
-<script src="https://unpkg.com/lucide-svelte@latest"></script>
-
-<!-- Optional: Add SvelteKit service worker for PWA support -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js');
-  }
-</script>
-
-<!-- Add manifest for PWA -->
-<link rel="manifest" href="/manifest.json">
-
-<!-- Add these meta tags for better SEO and social sharing -->
-<meta property="og:title" content="Approvideo - Sustainable DIY Solutions">
-<meta property="og:description" content="Create sustainable DIY solutions and mint NFTs to support environmental initiatives">
-<meta property="og:image" content="/path-to-your-og-image.jpg">
-<meta name="twitter:card" content="summary_large_image">
-
-<!-- Preload key assets -->
-<link rel="modulepreload" href="https://unpkg.com/lucide-svelte@latest/dist/esm/icons/recycle.js">
-<link rel="modulepreload" href="https://unpkg.com/lucide-svelte@latest/dist/esm/icons/zap.js">
-
-
-
+    <script src="https://unpkg.com/svelte@3/compiler.js"></script>
+    <script>
+      // Create a new Svelte component
+      const app = new Svelte({
+        target: document.getElementById('app'),
+        props: {
+          // Initial props here
+        }
+      });
+    </script>
+    
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js');
+      }
+    </script>
+    
+    <!-- Add manifest for PWA -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Add these meta tags for better SEO and social sharing -->
+    <meta property="og:title" content="Approvideo - Sustainable DIY Solutions">
+    <meta property="og:description" content="Create sustainable DIY solutions and mint NFTs to support environmental initiatives">
+    <meta property="og:image" content="/path-to-your-og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Preload key assets -->
+    <link rel="modulepreload" href="https://unpkg.com/lucide-svelte@latest/dist/esm/icons/recycle.js">
+    <link rel="modulepreload" href="https://unpkg.com/lucide-svelte@latest/dist/esm/icons/zap.js">
+    
+    
+    
     
     <!-- Accessibility Meta Tags -->
     <meta name="application-name" content="Approvideo">
