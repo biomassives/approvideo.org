@@ -29,7 +29,7 @@
     async function loadVideos() {
       try {
         
-        const response = await fetch("/api/get_video_feed");
+        const response = await fetch("/api/get_video_feed.js");
         const data = await response.json();
 
         const videoGrid = document.getElementById('videoGrid');
