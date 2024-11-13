@@ -28,7 +28,8 @@
     // Function to fetch and display video data
     async function loadVideos() {
       try {
-        const response = await fetch('/.netlify/functions/get_video_feed'); // Replace with your function URL
+        
+        const response = await fetch("/api/get_video_feed");
         const data = await response.json();
 
         const videoGrid = document.getElementById('videoGrid');
