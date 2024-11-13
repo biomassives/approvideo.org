@@ -25,17 +25,28 @@
   </div>
 
   <script>
-    // Function to fetch and display video data
+    // Supabase client initialization
+    const supabaseUrl = 'YOUR_SUPABASE_URL'; // Replace with your Supabase URL
+    const supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY'; // Replace with your Supabase anon key
+    const { createClient } = supabase; // Assuming you have the Supabase JS library included
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
     async function loadVideos() {
       try {
-        
-        const response = await fetch("/api/get_video_feed.js");
-        const data = await response.json();
+        // Fetch video data directly from Supabase
+        const { data: videos, error } = await supabase
+          .from('Video')
+          .select('*');
+
+        if (error) {
+          console.error('Error loading videos:', error);
+          return;
+        }
 
         const videoGrid = document.getElementById('videoGrid');
         videoGrid.innerHTML = ''; // Clear existing videos
 
-        data.videos.forEach(video => {
+        videos.forEach(video => {
           const videoElement = `
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
               <img src="${video.thumbnail_url}" alt="${video.title}" class="w-full">
@@ -48,6 +59,7 @@
               </div>
             </div>
           `;
+
           videoGrid.innerHTML += videoElement;
         });
 
@@ -72,6 +84,7 @@
 
     // Toggle button visibility (you might want to call this after a login event)
     toggleNewVideoButton();
+
   </script>
 </body>
 </html>
