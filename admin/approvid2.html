@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Video Portal</title>
+  <style>
+    /* Hide the button by default */
+    #newVideoButton {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-4">Video Portal</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="videoGrid">
+      </div>
+
+    <button id="newVideoButton" class="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+      +
+    </button>
+  </div>
+
+  <script>
+    // Function to fetch and display video data
+    async function loadVideos() {
+      try {
+        const response = await fetch('/.netlify/functions/get_video_feed'); // Replace with your function URL
+        const data = await response.json();
+
+        const videoGrid = document.getElementById('videoGrid');
+        videoGrid.innerHTML = ''; // Clear existing videos
+
+        data.videos.forEach(video => {
+          const videoElement = `
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <img src="${video.thumbnail_url}" alt="${video.title}" class="w-full">
+              <div class="p-4">
+                <h2 class="text-xl font-semibold mb-2">${video.title}</h2>
+                <p class="text-gray-600 text-sm">${video.description}</p>
+                <div class="flex justify-end mt-2">
+                  <button class="text-blue-500 hover:text-blue-700">Edit</button>
+                </div>
+              </div>
+            </div>
+          `;
+          videoGrid.innerHTML += videoElement;
+        });
+
+      } catch (error) {
+        console.error('Error loading videos:', error);
+      }
+    }
+
+    // Function to toggle the new video button
+    function toggleNewVideoButton() {
+      const isLoggedIn = true; // Replace with your actual login check or fake it
+      const newVideoButton = document.getElementById('newVideoButton');
+      if (isLoggedIn) {
+        newVideoButton.style.display = 'block';
+      } else {
+        newVideoButton.style.display = 'none';
+      }
+    }
+
+    // Load videos on page load
+    loadVideos();
+
+    // Toggle button visibility (you might want to call this after a login event)
+    toggleNewVideoButton();
+  </script>
+</body>
+</html>
